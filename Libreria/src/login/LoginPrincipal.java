@@ -5,7 +5,10 @@
  */
 package login;
 
+
 import java.awt.Menu;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 import java.beans.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +25,8 @@ public class LoginPrincipal extends javax.swing.JFrame {
      * Creates new form LoginPrincipal
      */
     public LoginPrincipal() {
-        initComponents();   
+        initComponents();
+        
     }
 
     /**
@@ -49,6 +53,9 @@ public class LoginPrincipal extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_presentacion.setBackground(new java.awt.Color(81, 101, 101));
@@ -214,6 +221,7 @@ public class LoginPrincipal extends javax.swing.JFrame {
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresarActionPerformed
