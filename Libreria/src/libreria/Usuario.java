@@ -9,12 +9,7 @@ package libreria;
  *
  * @author Sebastian
  */
+
 public class Usuario {
-    fnsd,fnsdm,fsdsd
-            sdfsdfsd
-                    sfsdf
-                    sdfsd
-                            fsd
-                            sd
-                                    f
+   
 }
