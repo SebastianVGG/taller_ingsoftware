@@ -5,11 +5,13 @@
  */
 package tables;
 
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +25,11 @@ public class Provincia {
 
     public Provincia(String nombre) {
       this.nombre=nombre;
+    }
+
+    public Provincia() {
+        int id = this.id;
+        String nombre = this.nombre;
     }
 
     public int getId() {
@@ -59,5 +66,71 @@ public class Provincia {
         myConnection.close();
     }
     
+    public void delete_provincia(int id) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("DELETE FROM provincia WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "Provincia eliminada");  
+        statement.close();  
+        myConnection.close();
+    }
+    public void update_provincia(int id, String nombre) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("UPDATE provincia SET nombre='"+nombre+"' WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "Provincia actualizada");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public Provincia select_one_provincia(int id) throws SQLException{
+        Provincia provincia = new Provincia();
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id, nombre FROM provincia WHERE id="+id;
+        ResultSet rs = statement.executeQuery(sql);
+        this.id=rs.getInt("id");
+        this.nombre=rs.getString("nombre");
+        statement.close();  
+        myConnection.close();
+        return provincia;
+    }
+    
+    
+    public List<Provincia> select() throws SQLException{
+      List<Provincia> provincias = new ArrayList<Provincia>();  
+      Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+      Statement stmt = myConnection.createStatement(); 
+      String sql = "SELECT id, nombre FROM provincia";
+      ResultSet rs = stmt.executeQuery(sql);
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+         Provincia provincia = new Provincia();
+         this.id  = rs.getInt("id");
+         provincia.setId(this.id);
+        this.nombre = rs.getString("nombre");
+        provincia.setNombre(this.nombre);
+        provincias.add(provincia);
+        }
+      
+      rs.close();
+      return provincias;
+    }
+    
+    public String toString(){
+        String provincia ="|"+this.id+"|"+" Nombre: "+this.nombre;
+        return provincia;
+    }
     
 }
+
+ 
+
