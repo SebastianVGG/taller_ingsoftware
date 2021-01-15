@@ -1,4 +1,6 @@
 package libreria;
+
+
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import login.LoginPrincipal;
@@ -9,7 +11,6 @@ import login.LoginPrincipal;
  */
 public class Libreria extends javax.swing.JFrame{
  
-    JDesktopPane escritorio;
     public static void main(String[] args) {
         
         new LoginPrincipal().setVisible(true);
