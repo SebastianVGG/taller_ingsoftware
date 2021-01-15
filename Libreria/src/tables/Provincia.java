@@ -95,10 +95,15 @@ public class Provincia {
         Statement statement = myConnection.createStatement();  
         String sql= "SELECT id, nombre FROM provincia WHERE id="+id;
         ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
         this.id=rs.getInt("id");
+        provincia.setId(this.id);
         this.nombre=rs.getString("nombre");
+        provincia.setNombre(this.nombre);
+        }
         statement.close();  
         myConnection.close();
+        rs.close();
         return provincia;
     }
     
