@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -99,7 +99,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Component id="txt_direccion_insert2" max="32767" attributes="0"/>
+                                  <Component id="txt_insert_año_publicacion" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -113,10 +113,10 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txt_isbn_insert" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_insert_isbn" alignment="0" max="32767" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txt_direccion_insert" alignment="0" pref="322" max="32767" attributes="0"/>
-                                          <Component id="txt_titulo_insert" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txt_insert_direccion" alignment="0" pref="322" max="32767" attributes="0"/>
+                                          <Component id="txt_insert_titulo" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -127,8 +127,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbx_editorial" min="-2" pref="198" max="-2" attributes="0"/>
-                                      <Component id="cbx_autor" min="-2" pref="198" max="-2" attributes="0"/>
+                                      <Component id="cbx_insert_editorial" min="-2" pref="198" max="-2" attributes="0"/>
+                                      <Component id="cbx_insert_autor" min="-2" pref="198" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -141,35 +141,35 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_titulo_insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_titulo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_direccion_insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_direccion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_isbn_insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_isbn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_direccion_insert2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_año_publicacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace pref="57" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_autor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbx_insert_autor" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_editorial" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbx_insert_editorial" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="94" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           <Component id="btn_insert" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -179,7 +179,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Direccion"/>
+                    <Property name="text" type="java.lang.String" value="Descripcion"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
@@ -187,11 +187,11 @@
                     <Property name="text" type="java.lang.String" value="Titulo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_titulo_insert">
+                <Component class="javax.swing.JTextField" name="txt_insert_titulo">
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_direccion_insert">
+                <Component class="javax.swing.JTextField" name="txt_insert_direccion">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbx_autor">
+                <Component class="javax.swing.JComboBox" name="cbx_insert_autor">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -226,11 +226,11 @@
                     <Property name="text" type="java.lang.String" value="Editorial"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_isbn_insert">
+                <Component class="javax.swing.JTextField" name="txt_insert_isbn">
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_direccion_insert2">
+                <Component class="javax.swing.JTextField" name="txt_insert_a&#xf1;o_publicacion">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbx_editorial">
+                <Component class="javax.swing.JComboBox" name="cbx_insert_editorial">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -281,7 +281,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tbl_almacen">
+                <Component class="javax.swing.JTable" name="tbl_libro">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="7" rowCount="4">

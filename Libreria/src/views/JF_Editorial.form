@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -99,7 +99,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Component id="txt_url_insert" max="32767" attributes="0"/>
+                                  <Component id="txt_insert_url" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -109,17 +109,17 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txt_telefono_insert" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_insert_telefono" alignment="0" max="32767" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txt_direccion_insert" alignment="0" pref="322" max="32767" attributes="0"/>
-                                          <Component id="txt_nombre_insert" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txt_insert_direccion" alignment="0" pref="322" max="32767" attributes="0"/>
+                                          <Component id="txt_insert_nombre" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="cbx_localidad_editorial" min="-2" pref="198" max="-2" attributes="0"/>
+                                  <Component id="cbx_insert_localidad" min="-2" pref="198" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -132,27 +132,27 @@
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_nombre_insert" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_nombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_direccion_insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_direccion" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_telefono_insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_telefono" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_url_insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_insert_url" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbx_localidad_editorial" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbx_insert_localidad" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="121" max="32767" attributes="0"/>
                           <Component id="btn_insert" min="-2" max="-2" attributes="0"/>
@@ -172,11 +172,11 @@
                     <Property name="text" type="java.lang.String" value="Nombre"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_nombre_insert">
+                <Component class="javax.swing.JTextField" name="txt_insert_nombre">
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_direccion_insert">
+                <Component class="javax.swing.JTextField" name="txt_insert_direccion">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbx_localidad_editorial">
+                <Component class="javax.swing.JComboBox" name="cbx_insert_localidad">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
@@ -206,9 +206,9 @@
                     <Property name="text" type="java.lang.String" value="Telefono"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_telefono_insert">
+                <Component class="javax.swing.JTextField" name="txt_insert_telefono">
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_url_insert">
+                <Component class="javax.swing.JTextField" name="txt_insert_url">
                 </Component>
               </SubComponents>
             </Container>
@@ -228,8 +228,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="714" max="-2" attributes="0"/>
-                      <EmptySpace pref="265" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="659" max="-2" attributes="0"/>
+                      <EmptySpace pref="320" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -237,8 +237,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="312" max="-2" attributes="0"/>
-                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="184" max="-2" attributes="0"/>
+                      <EmptySpace pref="255" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -251,7 +251,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tbl_almacen">
+                <Component class="javax.swing.JTable" name="tbl_editorial">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="6" rowCount="4">
