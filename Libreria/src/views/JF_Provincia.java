@@ -339,6 +339,7 @@ public class JF_Provincia extends javax.swing.JFrame {
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         int id = Integer.parseInt(txt_id.getText());
         String nombre = txt_nombre_ud.getText();
+        gdfgdfgfgdg
         try {
             prov.update_provincia(id, nombre);
         } catch (SQLException ex) {
