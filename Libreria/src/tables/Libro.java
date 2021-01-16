@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class Libro {
     
-    private int libro;
+    private int id;
     private String titulo;
     private String descripcion;
     private String isbn;
@@ -28,13 +28,15 @@ public class Libro {
     private int id_autor;
     private int id_editorial;
 
-    public int getLibro() {
-        return libro;
+    public int getId() {
+        return id;
     }
 
-    public void setLibro(int libro) {
-        this.libro = libro;
+    public void setId(int id) {
+        this.id = id;
     }
+
+
 
     public String getTitulo() {
         return titulo;
@@ -84,4 +86,107 @@ public class Libro {
         this.id_editorial = id_editorial;
     }
     
+    public void insert_libro() throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("INSERT INTO `libro` (`id`, `titulo`, `descripcion`, `isbn`, `año_publicacion`, `id_autor`, `id_editorial`) VALUES "
+                + "(NULL, '"+this.titulo+"','"+this.descripcion+"','"+this.isbn+"',"+this.año_publicacion+","+this.id_autor+","+this.id_editorial+")"
+
+                        + "");
+        JOptionPane.showMessageDialog(null, "Nuevo libro");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public void delete_libro(int id) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("DELETE FROM libro WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "libro eliminado");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public void update_libro(int id, String titulo, String descripcion,String isbn, int año_publicacion, int id_autor, int id_editorial) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("UPDATE libro SET titulo='"+titulo+"', descripcion='"+descripcion+"',"
+                + "isbn='"+isbn+"', año_publicacion="+año_publicacion+",id_autor="+id_autor+",id_editorial="+id_editorial+" WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "libro actualizado");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public Libro select_one_libro(int id) throws SQLException{
+        Libro provincia = new Libro();
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id, titulo, descripcion, isbn, año_publicacion, id_autor, id_editorial  FROM libro WHERE id="+id;
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.titulo=rs.getString("titulo");
+        provincia.setTitulo(this.titulo);
+        this.descripcion=rs.getString("descripcion");
+        provincia.setDescripcion(this.descripcion);
+        this.isbn=rs.getString("isbn");
+        provincia.setIsbn(this.isbn);
+        this.año_publicacion=rs.getString("año_publicacion");
+        provincia.setAño_publicacion(this.año_publicacion);
+        this.id_autor=rs.getInt("id_autor");
+        provincia.setId_autor(this.id_autor);
+        this.id_editorial=rs.getInt("id_editorial");
+        provincia.setId_editorial(this.id_editorial);
+        }
+        statement.close();  
+        myConnection.close();
+        rs.close();
+        return provincia;
+    }
+    
+    
+    public List<Libro> select() throws SQLException{
+      List<Libro> provincias = new ArrayList<Libro>();  
+      Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+      Statement stmt = myConnection.createStatement(); 
+      String sql = "SELECT id, titulo, descripcion, isbn, año_publicacion, id_autor, id_editorial FROM libro";
+      ResultSet rs = stmt.executeQuery(sql);
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+        Libro provincia = new Libro();
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.titulo=rs.getString("titulo");
+        provincia.setTitulo(this.titulo);
+        this.descripcion=rs.getString("descripcion");
+        provincia.setDescripcion(this.descripcion);
+        this.isbn=rs.getString("isbn");
+        provincia.setIsbn(this.isbn);
+        this.año_publicacion=rs.getString("año_publicacion");
+        provincia.setAño_publicacion(this.año_publicacion);
+        this.id_autor=rs.getInt("id_autor");
+        provincia.setId_autor(this.id_autor);
+        this.id_editorial=rs.getInt("id_editorial");
+        provincia.setId_editorial(this.id_editorial);
+        }
+      
+      rs.close();
+      return provincias;
+    }
+    
+    public String toString(){
+        String provincia ="|"+this.id+"|"+" Titulo: "+this.titulo+" descr: "+this.descripcion;
+        return provincia;
+    }
 }

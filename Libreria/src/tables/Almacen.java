@@ -57,4 +57,94 @@ public class Almacen {
         this.id_localidad_almacen = id_localidad_almacen;
     }
     
+    public void insert_almacen() throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("INSERT INTO almacen (id, direccion, telefono, id_localidad_almacen) VALUES (NULL, '"+this.direccion+"',"+this.telefono+","+this.id_localidad_almacen+")"
+
+                        + "");
+        JOptionPane.showMessageDialog(null, "Nuevo almacen");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public void delete_almacen(int id) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("DELETE FROM almacen WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "almacen eliminado");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public void update_almacen(int id, String direccion, int telefono, int id_localidad_almacen) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("UPDATE almacen SET direccion='"+direccion+"', telefono="+telefono+", id_localidad_almacen="+id_localidad_almacen+" WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "almacen actualizada");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public Almacen select_one_almacen(int id) throws SQLException{
+        Almacen provincia = new Almacen();
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id, direccion, telefono, id_localidad_almacen FROM almacen WHERE id="+id;
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.direccion=rs.getString("direccion");
+        provincia.setDireccion(this.direccion);
+        this.telefono=rs.getString("telefono");
+        provincia.setTelefono(this.telefono);
+        this.id_localidad_almacen=rs.getInt("id_localidad_almacen");
+        provincia.setId_localidad_almacen(this.id_localidad_almacen);
+        }
+        statement.close();  
+        myConnection.close();
+        rs.close();
+        return provincia;
+    }
+    
+    
+    public List<Almacen> select() throws SQLException{
+      List<Almacen> provincias = new ArrayList<Almacen>();  
+      Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+      Statement stmt = myConnection.createStatement(); 
+      String sql = "SELECT id, direccion, telefono, id_localidad_almacen FROM almacen";
+      ResultSet rs = stmt.executeQuery(sql);
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+         Almacen provincia = new Almacen();
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.direccion=rs.getString("direccion");
+        provincia.setDireccion(this.direccion);
+        this.telefono=rs.getString("telefono");
+        provincia.setTelefono(this.telefono);
+        this.id_localidad_almacen=rs.getInt("id_localidad_almacen");
+        provincia.setId_localidad_almacen(this.id_localidad_almacen);
+        }
+      
+      rs.close();
+      return provincias;
+    }
+    
+    public String toString(){
+        String provincia ="|"+this.id+"|"+" Direccion: "+this.direccion+" telefono: "+this.telefono;
+        return provincia;
+    }
+    
 }
