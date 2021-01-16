@@ -28,7 +28,7 @@ public class JF_Provincia extends javax.swing.JFrame {
     
     DefaultListModel defaultListModel=new DefaultListModel();
     Provincia prov = new Provincia();
-    List<Provincia> provincia_select = prov.select(); 
+    List<Provincia> provincia_select = prov.select_provincia(); 
     
     public JF_Provincia() throws SQLException {
         initComponents();
