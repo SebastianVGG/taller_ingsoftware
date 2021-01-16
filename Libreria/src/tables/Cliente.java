@@ -168,7 +168,7 @@ public class Cliente {
     }
     
     
-    public List<Cliente> select() throws SQLException{
+    public List<Cliente> select_cliente() throws SQLException{
       List<Cliente> provincias = new ArrayList<Cliente>();  
       Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""

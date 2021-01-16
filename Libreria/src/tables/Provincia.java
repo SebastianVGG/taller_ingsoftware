@@ -108,7 +108,7 @@ public class Provincia {
     }
     
     
-    public List<Provincia> select() throws SQLException{
+    public List<Provincia> select_provincia() throws SQLException{
       List<Provincia> provincias = new ArrayList<Provincia>();  
       Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""

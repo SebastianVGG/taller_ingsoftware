@@ -93,4 +93,110 @@ public class Autor {
         this.id_localidad_autor = id_localidad_autor;
     }
     
+    
+    public void insert_autor() throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("INSERT INTO autor "
+                + "(id, nombre, apellido1, apellido2, direccion, telefono, url) VALUES "
+                + "(NULL, '"+this.nombre+"', '"+this.apellido1+"', '"+this.apellido2+"', '"+this.direccion+"', "+this.telefono+", '"+this.url+"')"
+
+                        + "");
+        JOptionPane.showMessageDialog(null, "Nuevo autor");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public void delete_autor(int id) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("DELETE FROM autor WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "autor eliminado");  
+        statement.close();  
+        myConnection.close();
+    }
+    public void update_autor(int id, String nombre, String apellido1,String apellido2,String direccion,String telefono,String url) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("UPDATE autor SET "
+                + "nombre='"+nombre+"',apellido1='"+apellido1+"',apellido2='"+apellido2+"',direccion='"+direccion+"',telefono='"+telefono+"',url='"+url+"' WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "Autor actualizado");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public Autor select_one_autor(int id) throws SQLException{
+        Autor provincia = new Autor();
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id, nombre, apellido1, apellido2, direccion, telefono, url FROM autor WHERE id="+id;
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.nombre=rs.getString("nombre");
+        provincia.setNombre(this.nombre);
+        this.apellido1=rs.getString("apellido1");
+        provincia.setApellido1(this.apellido1);
+        this.apellido2=rs.getString("apellido2");
+        provincia.setApellido2(this.apellido2);
+        this.direccion=rs.getString("direccion");
+        provincia.setDireccion(this.direccion);
+        this.telefono=rs.getString("telefono");
+        provincia.setTelefono(this.telefono);
+        this.url=rs.getString("url");
+        provincia.setUrl(this.url);
+        }
+        statement.close();  
+        myConnection.close();
+        rs.close();
+        return provincia;
+    }
+    
+    
+    public List<Autor> select() throws SQLException{
+      List<Autor> provincias = new ArrayList<Autor>();  
+      Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+      Statement stmt = myConnection.createStatement(); 
+      String sql = "SELECT id, nombre FROM provincia";
+      ResultSet rs = stmt.executeQuery(sql);
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+        Autor provincia = new Autor();
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.nombre=rs.getString("nombre");
+        provincia.setNombre(this.nombre);
+        this.apellido1=rs.getString("apellido1");
+        provincia.setApellido1(this.apellido1);
+        this.apellido2=rs.getString("apellido2");
+        provincia.setApellido2(this.apellido2);
+        this.direccion=rs.getString("direccion");
+        provincia.setDireccion(this.direccion);
+        this.telefono=rs.getString("telefono");
+        provincia.setTelefono(this.telefono);
+        this.url=rs.getString("url");
+        provincia.setUrl(this.url);
+        provincias.add(provincia);
+        }
+      
+      rs.close();
+      return provincias;
+    }
+    
+    public String toString(){
+        String provincia ="|"+this.id+"|"+" Nombre: "+this.nombre;
+        return provincia;
+    }
+    
 }
