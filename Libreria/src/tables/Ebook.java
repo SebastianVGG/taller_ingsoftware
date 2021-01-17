@@ -57,4 +57,94 @@ public class Ebook {
         this.id_libro_ebook = id_libro_ebook;
     }
     
+        public void insert_ebook() throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("INSERT INTO ebook "
+                + "(id, tamaño, precio, id_libro_ebook) VALUES "
+                + "(NULL, '"+this.tamaño+"', "+this.precio+","+this.id_libro_ebook+")"
+
+                        + "");
+        JOptionPane.showMessageDialog(null, "Nuevo Ebook");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public void delete_ebook(int id) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("DELETE FROM ebook WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "Ebook eliminado");  
+        statement.close();  
+        myConnection.close();
+    }
+    public void update_ebook(int id, String tamaño, int precio, int id_libro_ebook) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("UPDATE provincia SET tamaño='"+tamaño+"', precio="+precio+", id_libro_ebook="+id_libro_ebook+" WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "Ebook actualizado");  
+        statement.close();  
+        myConnection.close();
+    }
+    
+    public Ebook select_one_ebook(int id) throws SQLException{
+        Ebook provincia = new Ebook();
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id, tamaño, precio, id_libro_ebook FROM ebookWHERE id="+id;
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.tamaño=rs.getString("tamaño");
+        provincia.setTamaño(this.tamaño);
+        this.precio=rs.getInt("precio");
+        provincia.setPrecio(this.precio);
+        this.id_libro_ebook=rs.getInt("id_libro_ebook");
+        provincia.setId_libro_ebook(this.id_libro_ebook);
+        }
+        statement.close();  
+        myConnection.close();
+        rs.close();
+        return provincia;
+    }
+    
+    
+    public List<Ebook> select_ebook() throws SQLException{
+      List<Ebook> provincias = new ArrayList<Ebook>();  
+      Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+      Statement stmt = myConnection.createStatement(); 
+      String sql = "SELECT id, tamaño, precio, id_libro_ebook FROM ebook";
+      ResultSet rs = stmt.executeQuery(sql);
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+        Ebook provincia = new Ebook();
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.tamaño=rs.getString("tamaño");
+        provincia.setTamaño(this.tamaño);
+        this.precio=rs.getInt("precio");
+        provincia.setPrecio(this.precio);
+        this.id_libro_ebook=rs.getInt("id_libro_ebook");
+        provincia.setId_libro_ebook(this.id_libro_ebook);
+        }
+      
+      rs.close();
+      return provincias;
+    }
+    
+    public String toString(){
+        String provincia ="|"+this.id+"|"+" Tamaño: "+this.tamaño;
+        return provincia;
+    }
 }

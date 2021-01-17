@@ -117,7 +117,7 @@ public class Almacen {
     }
     
     
-    public List<Almacen> select() throws SQLException{
+    public List<Almacen> select_almacen() throws SQLException{
       List<Almacen> provincias = new ArrayList<Almacen>();  
       Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
