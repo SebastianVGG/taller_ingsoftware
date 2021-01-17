@@ -28,6 +28,29 @@ public class Libro {
     private int id_autor;
     private int id_editorial;
 
+    public Libro(int id, String titulo, String descripcion, String isbn, String año_publicacion, int id_autor, int id_editorial) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.isbn = isbn;
+        this.año_publicacion = año_publicacion;
+        this.id_autor = id_autor;
+        this.id_editorial = id_editorial;
+    }
+
+    public Libro(String titulo, String descripcion, String isbn, String año_publicacion, int id_autor, int id_editorial) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.isbn = isbn;
+        this.año_publicacion = año_publicacion;
+        this.id_autor = id_autor;
+        this.id_editorial = id_editorial;
+    }
+
+    public Libro() {
+    }
+
+
     public int getId() {
         return id;
     }
@@ -92,7 +115,7 @@ public class Libro {
                 );
         Statement statement = myConnection.createStatement();  
         statement.executeUpdate("INSERT INTO `libro` (`id`, `titulo`, `descripcion`, `isbn`, `año_publicacion`, `id_autor`, `id_editorial`) VALUES "
-                + "(NULL, '"+this.titulo+"','"+this.descripcion+"','"+this.isbn+"',"+this.año_publicacion+","+this.id_autor+","+this.id_editorial+")"
+                + "(NULL, '"+this.titulo+"','"+this.descripcion+"','"+this.isbn+"','"+this.año_publicacion+"',"+this.id_autor+","+this.id_editorial+")"
 
                         + "");
         JOptionPane.showMessageDialog(null, "Nuevo libro");  
@@ -111,13 +134,13 @@ public class Libro {
         myConnection.close();
     }
     
-    public void update_libro(int id, String titulo, String descripcion,String isbn, int año_publicacion, int id_autor, int id_editorial) throws SQLException{
+    public void update_libro(int id, String titulo, String descripcion,String isbn, String año_publicacion, int id_autor, int id_editorial) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
         statement.executeUpdate("UPDATE libro SET titulo='"+titulo+"', descripcion='"+descripcion+"',"
-                + "isbn='"+isbn+"', año_publicacion="+año_publicacion+",id_autor="+id_autor+",id_editorial="+id_editorial+" WHERE id="+id);
+                + "isbn='"+isbn+"', año_publicacion='"+año_publicacion+"',id_autor="+id_autor+",id_editorial="+id_editorial+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "libro actualizado");  
         statement.close();  
         myConnection.close();
@@ -179,14 +202,11 @@ public class Libro {
         provincia.setId_autor(this.id_autor);
         this.id_editorial=rs.getInt("id_editorial");
         provincia.setId_editorial(this.id_editorial);
+        provincias.add(provincia);
         }
       
       rs.close();
       return provincias;
     }
     
-    public String toString(){
-        String provincia ="|"+this.id+"|"+" Titulo: "+this.titulo+" descr: "+this.descripcion;
-        return provincia;
-    }
 }

@@ -166,6 +166,7 @@ public class Editorial {
         provincia.setUrl(this.url);
         this.id_localidad_editorial=rs.getInt("id_localidad_editorial");
         provincia.setId_localidad_editorial(this.id_localidad_editorial);
+        provincias.add(provincia);
         }
       
       rs.close();
