@@ -89,6 +89,11 @@ public class JF_Cliente extends javax.swing.JFrame {
         jLabel1.setText("Nombre");
 
         btn_insert.setText("Insert");
+        btn_insert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_insertActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Apellido Materno");
 
@@ -380,6 +385,19 @@ public class JF_Cliente extends javax.swing.JFrame {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tb_clienteMouseClicked
+
+    private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
+        try {
+            List <Provincia> provincia_select = provincia.select_provincia();
+            String nombre = txt_insert_nombre.getText();
+            int cbx_id_provincia = cbx_insert_provincia.getSelectedIndex();
+            int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
+            Localidad localidad = new Localidad(nombre,id_provincia_localidad);
+            localidad.insert_localidad();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_insertActionPerformed
 
     /**
      * @param args the command line arguments

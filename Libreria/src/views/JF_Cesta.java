@@ -85,6 +85,11 @@ public class JF_Cesta extends javax.swing.JFrame {
         jLabel4.setText("Libro:");
 
         btn_insertar.setText("Insertar");
+        btn_insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_insertarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -339,6 +344,19 @@ public class JF_Cesta extends javax.swing.JFrame {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tb_cestaMouseClicked
+
+    private void btn_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarActionPerformed
+        try {
+            List <Provincia> provincia_select = provincia.select_provincia();
+            String nombre = txt_insert_nombre.getText();
+            int cbx_id_provincia = cbx_insert_provincia.getSelectedIndex();
+            int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
+            Localidad localidad = new Localidad(nombre,id_provincia_localidad);
+            localidad.insert_localidad();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_insertarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -31,13 +31,13 @@ public class JF_Almacen extends javax.swing.JFrame {
     public void get_localidad_dates(int id_localidad) throws SQLException{
         Localidad datos_localidad = localidad.select_one_localidad(id_localidad);
         label_id.setText(String.valueOf(datos_localidad.getId()));
-        txt_update_nombre.setText(datos_localidad.getNombre());
+        txt_update_direccion.setText(datos_localidad.getNombre());
         Provincia datos_provincia = provincia.select_one_provincia(datos_localidad.getId_provincia());
-        cbx_update_provincia.setSelectedItem(datos_provincia.getNombre());
+        cbx_update_localidad.setSelectedItem(datos_provincia.getNombre());
     }
     
     public void refrescar(){
-        txt_update_nombre.setText("");
+        txt_update_direccion.setText("");
         label_id.setText("");
     }
     @SuppressWarnings("unchecked")
@@ -61,12 +61,14 @@ public class JF_Almacen extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         label_id = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_update_nombre = new javax.swing.JTextField();
+        txt_update_direccion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cbx_update_provincia = new javax.swing.JComboBox<>();
-        btn_update1 = new javax.swing.JButton();
-        btn_delete1 = new javax.swing.JButton();
-        btn_refrescar1 = new javax.swing.JButton();
+        cbx_update_localidad = new javax.swing.JComboBox<>();
+        btn_update = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txt_update_telefono = new javax.swing.JTextField();
+        btn_refrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,50 +170,60 @@ public class JF_Almacen extends javax.swing.JFrame {
 
         jLabel4.setText("ID");
 
-        jLabel5.setText("Nombre");
+        jLabel5.setText("Direccion");
 
-        jLabel6.setText("Provincia");
+        jLabel6.setText("Localidad");
 
-        btn_update1.setText("Update");
-        btn_update1.addActionListener(new java.awt.event.ActionListener() {
+        btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_update1ActionPerformed(evt);
+                btn_updateActionPerformed(evt);
             }
         });
 
-        btn_delete1.setText("Delete");
-        btn_delete1.addActionListener(new java.awt.event.ActionListener() {
+        btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_delete1ActionPerformed(evt);
+                btn_deleteActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Telefono");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(btn_update1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(142, 142, 142)
-                        .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addComponent(cbx_update_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(173, 173, 173))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addGap(99, 99, 99)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(105, 105, 105)
+                                .addComponent(txt_update_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(142, 142, 142)
+                                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(105, 105, 105)
+                                    .addComponent(txt_update_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,23 +234,27 @@ public class JF_Almacen extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_update_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_update_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbx_update_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_update1)
-                    .addComponent(btn_delete1))
-                .addGap(41, 41, 41))
+                    .addComponent(btn_update)
+                    .addComponent(btn_delete))
+                .addContainerGap())
         );
 
-        btn_refrescar1.setText("Refrescar");
-        btn_refrescar1.addActionListener(new java.awt.event.ActionListener() {
+        btn_refrescar.setText("Refrescar");
+        btn_refrescar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_refrescar1ActionPerformed(evt);
+                btn_refrescarActionPerformed(evt);
             }
         });
 
@@ -251,26 +267,26 @@ public class JF_Almacen extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(428, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap(853, Short.MAX_VALUE)
-                    .addComponent(btn_refrescar1)
+                    .addComponent(btn_refrescar)
                     .addGap(220, 220, 220)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(8, 8, 8)
-                    .addComponent(btn_refrescar1)
+                    .addComponent(btn_refrescar)
                     .addContainerGap(523, Short.MAX_VALUE)))
         );
 
@@ -291,26 +307,35 @@ public class JF_Almacen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
-        // TODO add your handling code here:
+        try {
+            List <Provincia> provincia_select = provincia.select_provincia();
+            String nombre = txt_insert_nombre.getText();
+            int cbx_id_provincia = cbx_insert_provincia.getSelectedIndex();
+            int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
+            Localidad localidad = new Localidad(nombre,id_provincia_localidad);
+            localidad.insert_localidad();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_insertActionPerformed
 
-    private void btn_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update1ActionPerformed
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         List <Provincia> provincia_select = provincia.select_provincia();
         int r = tbl_localidad.getSelectedRow();
         int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        int cbx_id_provincia = cbx_update_provincia.getSelectedIndex();
+        int cbx_id_provincia = cbx_update_localidad.getSelectedIndex();
         int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
-        String nombre = txt_update_nombre.getText();
+        String nombre = txt_update_direccion.getText();
         localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
-    }//GEN-LAST:event_btn_update1ActionPerformed
+    }//GEN-LAST:event_btn_updateActionPerformed
 
-    private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         int r = tbl_localidad.getSelectedRow();
         int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
         localidad.delete_localidad(id_localidad);
-    }//GEN-LAST:event_btn_delete1ActionPerformed
+    }//GEN-LAST:event_btn_deleteActionPerformed
 
-    private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
+    private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         try {
             DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
             tblModel.setRowCount(0);
@@ -319,7 +344,7 @@ public class JF_Almacen extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_refrescar1ActionPerformed
+    }//GEN-LAST:event_btn_refrescarActionPerformed
 
     private void tbl_almacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_almacenMouseClicked
          try {
@@ -367,18 +392,19 @@ public class JF_Almacen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_delete1;
+    private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_insert;
-    private javax.swing.JButton btn_refrescar1;
-    private javax.swing.JButton btn_update1;
+    private javax.swing.JButton btn_refrescar;
+    private javax.swing.JButton btn_update;
     private javax.swing.JComboBox<String> cbx_insert_localidad;
-    private javax.swing.JComboBox<String> cbx_update_provincia;
+    private javax.swing.JComboBox<String> cbx_update_localidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -389,13 +415,14 @@ public class JF_Almacen extends javax.swing.JFrame {
     private javax.swing.JTable tbl_almacen;
     private javax.swing.JTextField txt_insert_direccion;
     private javax.swing.JTextField txt_insert_telefono;
-    private javax.swing.JTextField txt_update_nombre;
+    private javax.swing.JTextField txt_update_direccion;
+    private javax.swing.JTextField txt_update_telefono;
     // End of variables declaration//GEN-END:variables
     public void agregarItem_cbx() throws SQLException{
         List <Provincia> provincia_select = provincia.select_provincia();
         for (int i = 0; i < provincia_select.size(); i++) {
             cbx_insert_provincia.addItem(provincia_select.get(i).getNombre());
-            cbx_update_provincia.addItem(provincia_select.get(i).getNombre());
+            cbx_update_localidad.addItem(provincia_select.get(i).getNombre());
         } 
     }
     
