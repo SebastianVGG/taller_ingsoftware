@@ -182,6 +182,11 @@ public class JF_Localidad extends javax.swing.JFrame {
         });
 
         btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -333,6 +338,16 @@ public class JF_Localidad extends javax.swing.JFrame {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_refrescarActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        try {
+            int r = tbl_localidad.getSelectedRow();
+            int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
+            localidad.delete_localidad(id_localidad);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
 
     /**
      * @param args the command line arguments
