@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import tables.Almacen;
 import tables.Localidad;
-import tables.Provincia;
 
 /**
  *
@@ -19,26 +19,32 @@ import tables.Provincia;
  */
 public class JF_Almacen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_Almacen
-     */
+    private Localidad localidad = new Localidad(); //Localidad es llave foranea
+    private Almacen almacen = new Almacen(); //Del jframe que estamos editadno
+    
+    
     public JF_Almacen() throws SQLException {
         initComponents();
         agregarItem_cbx();
         agregarItem_tbl();
     }
 
-    public void get_localidad_dates(int id_localidad) throws SQLException{
-        Localidad datos_localidad = localidad.select_one_localidad(id_localidad);
-        label_id.setText(String.valueOf(datos_localidad.getId()));
-        txt_update_direccion.setText(datos_localidad.getNombre());
-        Provincia datos_provincia = provincia.select_one_provincia(datos_localidad.getId_provincia());
-        cbx_update_localidad.setSelectedItem(datos_provincia.getNombre());
+    public void get_almacen_dates(int id_almacen) throws SQLException{ //Se obtienen los datos de la tabla para los txt y cbx
+        
+        Almacen datos_almacen = almacen.select_one_almacen(id_almacen); //Seleccionamos un almacen especifico
+        label_id.setText(String.valueOf(datos_almacen.getId())); //Se colocan los valores en los campos
+        txt_update_telefono.setText(datos_almacen.getTelefono());
+        txt_update_direccion.setText(datos_almacen.getDireccion());
+        
+        Localidad datos_localidad = localidad.select_one_localidad(datos_almacen.getId_localidad_almacen()); //Seleccionamos una localidad especifica
+        cbx_update_localidad.setSelectedItem(datos_localidad.getNombre()); //Se coloca el nombre de la localidad en el combobox
+        
     }
     
-    public void refrescar(){
+    public void refrescar(){ //Sirve para que cuando demos en "update" se limpien los datos
         txt_update_direccion.setText("");
         label_id.setText("");
+        txt_update_telefono.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -202,28 +208,30 @@ public class JF_Almacen extends javax.swing.JFrame {
                 .addGap(38, 38, 38))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                        .addComponent(cbx_update_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(173, 173, 173))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbx_update_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(105, 105, 105)
-                                .addComponent(txt_update_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(142, 142, 142)
-                                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(105, 105, 105)
-                                    .addComponent(txt_update_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(txt_update_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(380, 380, 380))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(105, 105, 105))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(137, 137, 137)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_update_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,37 +315,54 @@ public class JF_Almacen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
+        
         try {
-            List <Provincia> provincia_select = provincia.select_provincia();
-            String nombre = txt_insert_nombre.getText();
-            int cbx_id_provincia = cbx_insert_provincia.getSelectedIndex();
-            int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
-            Localidad localidad = new Localidad(nombre,id_provincia_localidad);
-            localidad.insert_localidad();
+            
+            List <Localidad> localidad_select = localidad.select_localidad(); //Se crea lista de objectos de la clase Localidad (foranea)
+            String direccion = txt_insert_direccion.getText(); //Se guardan en variables de los txtfield
+            String telefono = txt_insert_telefono.getText();
+            int cbx_id_localidad = cbx_insert_localidad.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
+            int id_almacen_localidad = localidad_select.get(cbx_id_localidad).getId(); //Se obtiene la id de la localidad seleccionada
+            Almacen almacen = new Almacen(direccion,telefono,id_almacen_localidad); //Se introduce un nuevo objecto con los datos anteriores
+            almacen.insert_almacen(); //Se ejecuta el insert con el objecto creado
+            
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        List <Provincia> provincia_select = provincia.select_provincia();
-        int r = tbl_localidad.getSelectedRow();
-        int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        int cbx_id_provincia = cbx_update_localidad.getSelectedIndex();
-        int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
-        String nombre = txt_update_direccion.getText();
-        localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
+        
+        try {
+            List <Localidad> localidad_select = localidad.select_localidad(); //Lista de objectos foranea
+            int r = tbl_almacen.getSelectedRow();
+            int id_almacen = (int) tbl_almacen.getValueAt(r, 0);
+            int cbx_id_localidad = cbx_update_localidad.getSelectedIndex();
+            int id_almacen_localidad = localidad_select.get(cbx_id_localidad).getId();
+            String direccion = txt_update_direccion.getText();
+            String telefono = txt_update_telefono.getText();
+            almacen.update_almacen(id_almacen, direccion, telefono, id_almacen_localidad);
+            refrescar();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        int r = tbl_localidad.getSelectedRow();
-        int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        localidad.delete_localidad(id_localidad);
+        try {
+            int r = tbl_almacen.getSelectedRow();
+            int id_almacen = (int) tbl_almacen.getValueAt(r, 0);
+            almacen.delete_almacen(id_almacen);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_almacen.getModel();
             tblModel.setRowCount(0);
             agregarItem_tbl();
             refrescar();
@@ -348,9 +373,9 @@ public class JF_Almacen extends javax.swing.JFrame {
 
     private void tbl_almacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_almacenMouseClicked
          try {
-            int r = tbl_localidad.getSelectedRow();
-            int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-            get_localidad_dates(id_localidad);
+            int r = tbl_almacen.getSelectedRow();
+            int id_almacen = (int) tbl_almacen.getValueAt(r, 0);
+            get_almacen_dates(id_almacen);
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -386,7 +411,11 @@ public class JF_Almacen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Almacen().setVisible(true);
+                try {
+                    new JF_Almacen().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -418,24 +447,28 @@ public class JF_Almacen extends javax.swing.JFrame {
     private javax.swing.JTextField txt_update_direccion;
     private javax.swing.JTextField txt_update_telefono;
     // End of variables declaration//GEN-END:variables
-    public void agregarItem_cbx() throws SQLException{
-        List <Provincia> provincia_select = provincia.select_provincia();
-        for (int i = 0; i < provincia_select.size(); i++) {
-            cbx_insert_provincia.addItem(provincia_select.get(i).getNombre());
-            cbx_update_localidad.addItem(provincia_select.get(i).getNombre());
+   
+    public void agregarItem_cbx() throws SQLException{ //Agregar datos a los combo box de las llaves foraneas
+        
+        List <Localidad> localidad_select = localidad.select_localidad(); //Lista foreanea
+        for (int i = 0; i < localidad_select.size(); i++) {
+            cbx_insert_localidad.addItem(localidad_select.get(i).getNombre());
+            cbx_update_localidad.addItem(localidad_select.get(i).getNombre());
         } 
     }
     
+    
     public void agregarItem_tbl() throws SQLException{
-        DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
-        List <Localidad> localidad_select = localidad.select_localidad();
-        Object[] column = new Object[localidad_select.size()];
+        DefaultTableModel tblModel = (DefaultTableModel) tbl_almacen.getModel();
+        List <Almacen> almacen_select = almacen.select_almacen(); //Lista local
+        Object[] column = new Object[4];
         
-        for (int i = 0; i < localidad_select.size(); i++){
+        for (int i = 0; i < almacen_select.size(); i++){
             
-            column[0] = localidad_select.get(i).getId();
-            column[1] = localidad_select.get(i).getNombre();
-            column[2] = localidad_select.get(i).getId_provincia();
+            column[0] = almacen_select.get(i).getId();
+            column[1] = almacen_select.get(i).getDireccion();
+            column[2] = almacen_select.get(i).getTelefono();
+            column[3] = almacen_select.get(i).getId_localidad_almacen();
             
             tblModel.addRow(column);
             

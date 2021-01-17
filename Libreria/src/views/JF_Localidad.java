@@ -424,7 +424,7 @@ public class JF_Localidad extends javax.swing.JFrame {
     public void agregarItem_tbl() throws SQLException{
         DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
         List <Localidad> localidad_select = localidad.select_localidad();
-        Object[] column = new Object[localidad_select.size()];
+        Object[] column = new Object[3];
         
         for (int i = 0; i < localidad_select.size(); i++){
             

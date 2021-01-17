@@ -18,9 +18,10 @@ import tables.Provincia;
  * @author Sebastian
  */
 public class JF_Autor extends javax.swing.JFrame {
-
-private Localidad localidad = new Localidad();
-
+ 
+ private Localidad localidad = new Localidad();
+ private Provincia provincia = new Provincia();
+ 
     public JF_Autor() throws SQLException {
         initComponents();
         agregarItem_cbx();

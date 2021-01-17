@@ -25,6 +25,19 @@ public class Almacen {
     private String telefono;
     private int id_localidad_almacen;
 
+    public Almacen(String direccion, String telefono, int id_almacen_localidad) {
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.id_localidad_almacen = id_almacen_localidad;
+    }
+
+    public Almacen() {
+        int id = this.id;
+        String direccion = this.direccion;
+        String telefono = this.telefono;
+        int id_localidad_almacen = this.id_localidad_almacen;
+    }
+
     public int getId() {
         return id;
     }
@@ -62,7 +75,7 @@ public class Almacen {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("INSERT INTO almacen (id, direccion, telefono, id_localidad_almacen) VALUES (NULL, '"+this.direccion+"',"+this.telefono+","+this.id_localidad_almacen+")"
+        statement.executeUpdate("INSERT INTO almacen (id, direccion, telefono, id_localidad_almacen) VALUES (NULL, '"+this.direccion+"','"+this.telefono+"',"+this.id_localidad_almacen+")"
 
                         + "");
         JOptionPane.showMessageDialog(null, "Nuevo almacen");  
@@ -81,12 +94,12 @@ public class Almacen {
         myConnection.close();
     }
     
-    public void update_almacen(int id, String direccion, int telefono, int id_localidad_almacen) throws SQLException{
+    public void update_almacen(int id, String direccion, String telefono, int id_localidad_almacen) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("UPDATE almacen SET direccion='"+direccion+"', telefono="+telefono+", id_localidad_almacen="+id_localidad_almacen+" WHERE id="+id);
+        statement.executeUpdate("UPDATE almacen SET direccion='"+direccion+"', telefono='"+telefono+"', id_localidad_almacen="+id_localidad_almacen+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "almacen actualizada");  
         statement.close();  
         myConnection.close();
@@ -136,6 +149,7 @@ public class Almacen {
         provincia.setTelefono(this.telefono);
         this.id_localidad_almacen=rs.getInt("id_localidad_almacen");
         provincia.setId_localidad_almacen(this.id_localidad_almacen);
+        provincias.add(provincia);
         }
       
       rs.close();
