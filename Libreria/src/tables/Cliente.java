@@ -176,7 +176,7 @@ public class Cliente {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
       Statement stmt = myConnection.createStatement(); 
-      String sql = "SELECT id, nombre FROM cliente";
+      String sql = "SELECT id, nombre, apellido1, apellido2, direccion, email, telefono, id_localidad_cliente FROM cliente";
       ResultSet rs = stmt.executeQuery(sql);
       //STEP 5: Extract data from result set
       while(rs.next()){

@@ -24,6 +24,18 @@ public class Cesta {
     private String fecha_compra;
     private int id_cliente;
     private int id_libro;
+    
+    public Cesta(String fecha_compra, int id_cliente, int id_libro){
+        this.fecha_compra = fecha_compra;
+        this.id_cliente = id_cliente;
+        this.id_libro = id_libro;
+    }
+    public Cesta(){
+        int id = this.id;
+        String fecha_compra = this.fecha_compra;
+        int id_cliente = this.id_cliente;
+        int id_libro = this.id_libro;
+    }
 
     public int getId() {
         return id;

@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import tables.Cesta;
+import tables.Cliente;
+import tables.Libro;
 import tables.Localidad;
 import tables.Provincia;
 
@@ -18,26 +21,34 @@ import tables.Provincia;
  * @author Sebastian
  */
 public class JF_Cesta extends javax.swing.JFrame {
+    
+    private Cliente cliente = new Cliente();
+    private Libro libro = new Libro();
+    private Cesta cesta = new Cesta();
 
     /**
      * Creates new form JF_Cesta
      */
     public JF_Cesta() throws SQLException {
         initComponents();
-        agregarItem_cbx();
-        agregarItem_tbl();
+        agregarItemCliente_cbx();
+        agregarItemLibro_cbx();
+        agregarItemCliente_tbl();
+        agregarItemLibro_tbl();
     }
 
-    public void get_localidad_dates(int id_localidad) throws SQLException{
-        Localidad datos_localidad = localidad.select_one_localidad(id_localidad);
-        label_id.setText(String.valueOf(datos_localidad.getId()));
-        txt_update_nombre.setText(datos_localidad.getNombre());
-        Provincia datos_provincia = provincia.select_one_provincia(datos_localidad.getId_provincia());
-        cbx_update_provincia.setSelectedItem(datos_provincia.getNombre());
+    public void get_cesta_dates(int id_cesta) throws SQLException{
+        Cesta datos_cesta = cesta.select_one_cesta(id_cesta);
+        label_id.setText(String.valueOf(datos_cesta.getId()));
+        txt_update_fecha_compra.setText(datos_cesta.getFecha_compra());
+        Cliente datos_cliente = cliente.select_one_cliente(datos_cesta.getId_cliente());
+        cbx_update_id_cliente.setSelectedItem(datos_cliente.getNombre());
+        Libro datos_libro = libro.select_one_libro(datos_cesta.getId_libro());
+        cbx_update_id_cliente.setSelectedItem(datos_cliente.getNombre());
     }
     
     public void refrescar(){
-        txt_update_nombre.setText("");
+        txt_update_fecha_compra.setText("");
         label_id.setText("");
     }
     @SuppressWarnings("unchecked")
@@ -47,15 +58,13 @@ public class JF_Cesta extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtf_insert_id = new javax.swing.JTextField();
         txtf_insert_fecha_compra = new javax.swing.JTextField();
         btn_insertar = new javax.swing.JButton();
         cbx_insert_cliente = new javax.swing.JComboBox<>();
-        cbx_insert_libro_cesta = new javax.swing.JComboBox<>();
+        cbx_insert_libro = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_cesta = new javax.swing.JTable();
@@ -63,11 +72,13 @@ public class JF_Cesta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         label_id = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txt_update_nombre = new javax.swing.JTextField();
+        txt_update_fecha_compra = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cbx_update_provincia = new javax.swing.JComboBox<>();
+        cbx_update_id_cliente = new javax.swing.JComboBox<>();
         btn_update1 = new javax.swing.JButton();
         btn_delete1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        cbx_update_id_libro = new javax.swing.JComboBox<>();
         btn_refrescar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,8 +86,6 @@ public class JF_Cesta extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
-
-        jLabel1.setText("ID:");
 
         jLabel2.setText("Fecha:");
 
@@ -96,33 +105,25 @@ public class JF_Cesta extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(54, 54, 54)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_insertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addGap(60, 60, 60)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtf_insert_fecha_compra)
-                            .addComponent(txtf_insert_id)
                             .addComponent(cbx_insert_cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbx_insert_libro_cesta, 0, 191, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(btn_insertar, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                            .addComponent(cbx_insert_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtf_insert_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtf_insert_fecha_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,8 +134,8 @@ public class JF_Cesta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cbx_insert_libro_cesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(cbx_insert_libro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addComponent(btn_insertar)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -153,7 +154,7 @@ public class JF_Cesta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editar cesta", jPanel1);
@@ -185,9 +186,9 @@ public class JF_Cesta extends javax.swing.JFrame {
 
         jLabel5.setText("ID");
 
-        jLabel6.setText("Nombre");
+        jLabel6.setText("Fecha");
 
-        jLabel7.setText("Provincia");
+        jLabel7.setText("Cliente");
 
         btn_update1.setText("Update");
         btn_update1.addActionListener(new java.awt.event.ActionListener() {
@@ -203,32 +204,32 @@ public class JF_Cesta extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Libro");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(97, 97, 97)
                 .addComponent(btn_update1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addComponent(btn_delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGap(137, 137, 137))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(142, 142, 142)
-                        .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6))
-                        .addGap(99, 99, 99)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(309, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel8))
+                .addGap(99, 99, 99)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_update_fecha_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_update_id_libro, 0, 210, Short.MAX_VALUE)
+                    .addComponent(cbx_update_id_cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,17 +240,21 @@ public class JF_Cesta extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_update_fecha_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbx_update_id_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cbx_update_id_libro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_update1)
                     .addComponent(btn_delete1))
-                .addGap(41, 41, 41))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         btn_refrescar1.setText("Refrescar");
@@ -264,15 +269,16 @@ public class JF_Cesta extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-                .addComponent(btn_refrescar1)
-                .addGap(182, 182, 182))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(btn_refrescar1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(414, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,10 +288,11 @@ public class JF_Cesta extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
+                        .addGap(65, 65, 65)
                         .addComponent(btn_refrescar1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar cesta", jPanel2);
@@ -301,34 +308,48 @@ public class JF_Cesta extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 157, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update1ActionPerformed
-        List <Provincia> provincia_select = provincia.select_provincia();
-        int r = tbl_localidad.getSelectedRow();
-        int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        int cbx_id_provincia = cbx_update_provincia.getSelectedIndex();
-        int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
-        String nombre = txt_update_nombre.getText();
-        localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
+        try {
+            List <Cliente> cliente_select = cliente.select_cliente();
+            List <Libro> libro_select = libro.select();
+            int r = tb_cesta.getSelectedRow();
+            int id_cesta = (int) tb_cesta.getValueAt(r, 0);
+            int cbx_id_cliente = cbx_update_id_cliente.getSelectedIndex();
+            int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId();
+            int cbx_id_libro = cbx_update_id_libro.getSelectedIndex();
+            int id_cesta_libro = libro_select.get(cbx_id_libro).getId();
+            String fecha_compra = txt_update_fecha_compra.getText();
+            cesta.update_cesta(id_cesta, fecha_compra, id_cesta_cliente, id_cesta_libro);
+            refrescar();
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Cesta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
-        int r = tbl_localidad.getSelectedRow();
-        int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        localidad.delete_localidad(id_localidad);
+        try {
+            int r = tb_cesta.getSelectedRow();
+            int id_cesta = (int) tb_cesta.getValueAt(r, 0);
+            cesta.delete_cesta(id_cesta);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_delete1ActionPerformed
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
+            DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
             tblModel.setRowCount(0);
-            agregarItem_tbl();
+            agregarItemCliente_tbl();
+            agregarItemLibro_tbl();
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
@@ -337,9 +358,9 @@ public class JF_Cesta extends javax.swing.JFrame {
 
     private void tb_cestaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_cestaMouseClicked
         try {
-            int r = tbl_localidad.getSelectedRow();
-            int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-            get_localidad_dates(id_localidad);
+            int r = tb_cesta.getSelectedRow();
+            int id_cesta = (int) tb_cesta.getValueAt(r, 0);
+            get_cesta_dates(id_cesta);
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -347,12 +368,17 @@ public class JF_Cesta extends javax.swing.JFrame {
 
     private void btn_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarActionPerformed
         try {
-            List <Provincia> provincia_select = provincia.select_provincia();
-            String nombre = txt_insert_nombre.getText();
-            int cbx_id_provincia = cbx_insert_provincia.getSelectedIndex();
-            int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
-            Localidad localidad = new Localidad(nombre,id_provincia_localidad);
-            localidad.insert_localidad();
+            
+            List <Cliente> cliente_select = cliente.select_cliente(); //Se crea lista de objectos de la clase Localidad (foranea)
+            List <Libro> libro_select = libro.select(); //Se crea lista de objectos de la clase Localidad (foranea)
+            String fecha = txtf_insert_fecha_compra.getText(); //Se guardan en variables de los txtfield
+            int cbx_id_cliente = cbx_insert_cliente.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
+            int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId(); //Se obtiene la id de la localidad seleccionada
+            int cbx_id_libro = cbx_insert_libro.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
+            int id_cesta_libro = libro_select.get(cbx_id_libro).getId(); //Se obtiene la id de la localidad seleccionada
+            Cesta cesta = new Cesta(fecha,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
+            cesta.insert_cesta(); //Se ejecuta el insert con el objecto creado
+            
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -388,7 +414,11 @@ public class JF_Cesta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Cesta().setVisible(true);
+                try {
+                    new JF_Cesta().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Cesta.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -399,15 +429,16 @@ public class JF_Cesta extends javax.swing.JFrame {
     private javax.swing.JButton btn_refrescar1;
     private javax.swing.JButton btn_update1;
     private javax.swing.JComboBox<String> cbx_insert_cliente;
-    private javax.swing.JComboBox<String> cbx_insert_libro_cesta;
-    private javax.swing.JComboBox<String> cbx_update_provincia;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbx_insert_libro;
+    private javax.swing.JComboBox<String> cbx_update_id_cliente;
+    private javax.swing.JComboBox<String> cbx_update_id_libro;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -416,33 +447,65 @@ public class JF_Cesta extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel label_id;
     private javax.swing.JTable tb_cesta;
-    private javax.swing.JTextField txt_update_nombre;
+    private javax.swing.JTextField txt_update_fecha_compra;
     private javax.swing.JTextField txtf_insert_fecha_compra;
-    private javax.swing.JTextField txtf_insert_id;
     // End of variables declaration//GEN-END:variables
-    public void agregarItem_cbx() throws SQLException{
-        List <Provincia> provincia_select = provincia.select_provincia();
-        for (int i = 0; i < provincia_select.size(); i++) {
-            cbx_insert_provincia.addItem(provincia_select.get(i).getNombre());
-            cbx_update_provincia.addItem(provincia_select.get(i).getNombre());
+    public void agregarItemCliente_cbx() throws SQLException{
+        List <Cliente> cliente_select = cliente.select_cliente(); //Lista foreanea
+        for (int i = 0; i < cliente_select.size(); i++) {
+            cbx_insert_cliente.addItem(cliente_select.get(i).getNombre());
+            cbx_update_id_cliente.addItem(cliente_select.get(i).getNombre());
         } 
     }
     
-    public void agregarItem_tbl() throws SQLException{
-        DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
-        List <Localidad> localidad_select = localidad.select_localidad();
-        Object[] column = new Object[localidad_select.size()];
+    public void agregarItemCliente_tbl() throws SQLException{
+        DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
+        List <Cliente> cliente_select = cliente.select_cliente();
+        Object[] column = new Object[cliente_select.size()];
         
-        for (int i = 0; i < localidad_select.size(); i++){
+        for (int i = 0; i < cliente_select.size(); i++){
             
-            column[0] = localidad_select.get(i).getId();
-            column[1] = localidad_select.get(i).getNombre();
-            column[2] = localidad_select.get(i).getId_provincia();
+            column[0] = cliente_select.get(i).getId();
+            column[1] = cliente_select.get(i).getNombre();
+            column[2] = cliente_select.get(i).getApellido1();
+            column[3] = cliente_select.get(i).getApellido2();
+            column[4] = cliente_select.get(i).getDireccion();
+            column[5] = cliente_select.get(i).getEmail();
+            column[6] = cliente_select.get(i).getTelefono();            
             
             tblModel.addRow(column);
             
             }
         
-    } 
+    }
+        
+    public void agregarItemLibro_cbx() throws SQLException{
+        List <Libro> libro_select = libro.select(); //Lista foreanea
+        for (int i = 0; i < libro_select.size(); i++) {
+            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
+            cbx_update_id_libro.addItem(libro_select.get(i).getTitulo());
+        } 
+    }
+    
+    public void agregarItemLibro_tbl() throws SQLException{
+        DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
+        List <Libro> libro_select = libro.select();
+        Object[] column = new Object[libro_select.size()];
+        
+        for (int i = 0; i < libro_select.size(); i++){
+            
+            column[0] = libro_select.get(i).getId();
+            column[1] = libro_select.get(i).getTitulo();
+            column[2] = libro_select.get(i).getDescripcion();
+            column[3] = libro_select.get(i).getIsbn();
+            column[4] = libro_select.get(i).getAño_publicacion();
+            column[5] = libro_select.get(i).getId_autor();
+            column[6] = libro_select.get(i).getId_editorial();
+            
+            tblModel.addRow(column);
+            
+            }
+        
+    }
 
 }
