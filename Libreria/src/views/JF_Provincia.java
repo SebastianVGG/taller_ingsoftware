@@ -4,16 +4,17 @@
  * and open the template in the editor.
  */
 package views;
-
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tables.Provincia;
 /**
  *
  * @author Sebastian
  */
 public class JF_Provincia extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_Provincia
-     */
+    Provincia provincia = new Provincia();
     public JF_Provincia() {
         initComponents();
     }
@@ -46,6 +47,11 @@ public class JF_Provincia extends javax.swing.JFrame {
         jLabel1.setText("Nombre");
 
         btn_insert.setText("Insert");
+        btn_insert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_insertActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -151,6 +157,16 @@ public class JF_Provincia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
+        try {
+            String nombre = txt_insert_nombre.getText();
+            Provincia provincia = new Provincia(nombre);
+            provincia.insert_provincia();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Provincia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_insertActionPerformed
 
     /**
      * @param args the command line arguments

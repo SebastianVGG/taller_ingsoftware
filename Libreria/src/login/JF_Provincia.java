@@ -291,11 +291,8 @@ public class JF_Provincia extends javax.swing.JFrame {
     private void btn_InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InsertActionPerformed
         String nombre = txt_nombre.getText();
         Provincia provincia = new Provincia(nombre);
-        try {
-            provincia.insert_provincia();
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Provincia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        provincia.insert_provincia();
+  
     }//GEN-LAST:event_btn_InsertActionPerformed
 
     private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
