@@ -26,7 +26,15 @@ public class Cliente {
     private String apellido2;
     private String direccion;
     private String email;
-    private int telefono;
+    private String telefono;
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
     private int id_localidad_cliente;
 
     public int getId() {
@@ -77,13 +85,7 @@ public class Cliente {
         this.email = email;
     }
 
-    public int getTelefono() {
-        return telefono;
-    }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
 
     public int getId_localidad_cliente() {
         return id_localidad_cliente;
@@ -104,7 +106,7 @@ public class Cliente {
         statement.executeUpdate("INSERT INTO `cliente` "
                 + "(`id`, `nombre`, `apellido1`, `apellido2`, `direccion`, `email`, `telefono`, `id_localidad_cliente`)"
                 + " VALUES "
-                + "(NULL, '"+this.nombre+"', '"+this.apellido1+"', '"+this.apellido2+"', '"+this.direccion+"', '"+this.email+"', "+this.telefono+","+this.id_localidad_cliente+" )"
+                + "(NULL, '"+this.nombre+"', '"+this.apellido1+"', '"+this.apellido2+"', '"+this.direccion+"', '"+this.email+"', '"+this.telefono+"',"+this.id_localidad_cliente+" )"
 
                         + "");
         JOptionPane.showMessageDialog(null, "Nuevo cliente");  
@@ -122,14 +124,14 @@ public class Cliente {
         statement.close();  
         myConnection.close();
     }
-    public void update_cliente(int id, String nombre, String apellido1, String apellido2, String direccion, String email, int telefono, int localidad_cliente) throws SQLException{
+    public void update_cliente(int id, String nombre, String apellido1, String apellido2, String direccion, String email, String telefono, int localidad_cliente) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
         statement.executeUpdate("UPDATE cliente SET "
                 + "nombre='"+nombre+"',apellido1='"+apellido1+"', apellido2='"+apellido2+"', direccion='"+direccion+"',"
-                        + " email='"+email+"', telefono="+telefono+", id_localidad_cliente="+localidad_cliente+" WHERE id="+id);
+                        + " email='"+email+"', telefono='"+telefono+"', id_localidad_cliente="+localidad_cliente+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "cliente actualizado");  
         statement.close();  
         myConnection.close();
@@ -156,7 +158,7 @@ public class Cliente {
         provincia.setDireccion(this.direccion);
         this.email=rs.getString("email");
         provincia.setEmail(this.email);
-        this.telefono=rs.getInt("telefono");
+        this.telefono=rs.getString("telefono");
         provincia.setTelefono(this.telefono);
         this.id_localidad_cliente=rs.getInt("id_localidad_cliente");
         provincia.setId_localidad_cliente(this.id_localidad_cliente);
@@ -191,7 +193,7 @@ public class Cliente {
         provincia.setDireccion(this.direccion);
         this.email=rs.getString("email");
         provincia.setEmail(this.email);
-        this.telefono=rs.getInt("telefono");
+        this.telefono=rs.getString("telefono");
         provincia.setTelefono(this.telefono);
         this.id_localidad_cliente=rs.getInt("id_localidad_cliente");
         provincia.setId_localidad_cliente(this.id_localidad_cliente);
