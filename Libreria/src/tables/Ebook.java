@@ -25,6 +25,15 @@ public class Ebook {
     private float precio;
     private int id_libro_ebook;
 
+    public Ebook(String tamaño, float precio, int id_libro_ebook) {
+        this.tamaño = tamaño;
+        this.precio = precio;
+        this.id_libro_ebook = id_libro_ebook;
+    }
+
+    public Ebook() {
+    }
+
     public int getId() {
         return id;
     }
@@ -82,12 +91,12 @@ public class Ebook {
         statement.close();  
         myConnection.close();
     }
-    public void update_ebook(int id, String tamaño, int precio, int id_libro_ebook) throws SQLException{
+    public void update_ebook(int id, String tamaño, float precio, int id_libro_ebook) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("UPDATE provincia SET tamaño='"+tamaño+"', precio="+precio+", id_libro_ebook="+id_libro_ebook+" WHERE id="+id);
+        statement.executeUpdate("UPDATE ebook SET tamaño='"+tamaño+"', precio="+precio+", id_libro_ebook="+id_libro_ebook+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "Ebook actualizado");  
         statement.close();  
         myConnection.close();
@@ -99,7 +108,7 @@ public class Ebook {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        String sql= "SELECT id, tamaño, precio, id_libro_ebook FROM ebookWHERE id="+id;
+        String sql= "SELECT id, tamaño, precio, id_libro_ebook FROM ebook WHERE id="+id;
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next()){
         this.id=rs.getInt("id");
@@ -137,14 +146,10 @@ public class Ebook {
         provincia.setPrecio(this.precio);
         this.id_libro_ebook=rs.getInt("id_libro_ebook");
         provincia.setId_libro_ebook(this.id_libro_ebook);
+        provincias.add(provincia);
         }
       
       rs.close();
       return provincias;
-    }
-    
-    public String toString(){
-        String provincia ="|"+this.id+"|"+" Tamaño: "+this.tamaño;
-        return provincia;
     }
 }

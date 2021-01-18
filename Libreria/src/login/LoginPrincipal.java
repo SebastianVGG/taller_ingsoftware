@@ -55,6 +55,7 @@ public class LoginPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocationByPlatform(true);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -152,10 +153,10 @@ public class LoginPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
                 .addComponent(btningresar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panel_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 470, 450));
+        getContentPane().add(panel_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 470, 400));
 
         jPanel1.setBackground(new java.awt.Color(81, 101, 101));
 

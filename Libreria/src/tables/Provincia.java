@@ -130,11 +130,6 @@ public class Provincia {
       return provincias;
     }
     
-    public String toString(){
-        String provincia ="|"+this.id+"|"+" Nombre: "+this.nombre;
-        return provincia;
-    }
-    
 }
 
  

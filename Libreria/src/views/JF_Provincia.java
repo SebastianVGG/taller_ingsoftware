@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import tables.Localidad;
 import tables.Provincia;
 /**
  *
@@ -20,16 +19,13 @@ public class JF_Provincia extends javax.swing.JFrame {
     Provincia provincia = new Provincia();
     public JF_Provincia() throws SQLException {
         initComponents();
-        agregarItem_cbx();
         agregarItem_tbl();
     }
 
-    public void get_localidad_dates(int id_localidad) throws SQLException{
-        Localidad datos_localidad = localidad.select_one_localidad(id_localidad);
-        label_id.setText(String.valueOf(datos_localidad.getId()));
-        txt_update_nombre.setText(datos_localidad.getNombre());
-        Provincia datos_provincia = provincia.select_one_provincia(datos_localidad.getId_provincia());
-        cbx_update_provincia.setSelectedItem(datos_provincia.getNombre());
+    public void get_localidad_dates(int id_provincia) throws SQLException{
+        Provincia datos_provincia = provincia.select_one_provincia(id_provincia);
+        label_id.setText(String.valueOf(datos_provincia.getId()));
+        txt_update_nombre.setText(datos_provincia.getNombre());
     }
     
     public void refrescar(){
@@ -54,11 +50,10 @@ public class JF_Provincia extends javax.swing.JFrame {
         label_id = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txt_update_nombre = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        cbx_update_provincia = new javax.swing.JComboBox<>();
+        jPanel5 = new javax.swing.JPanel();
+        btn_refrescar1 = new javax.swing.JButton();
         btn_update1 = new javax.swing.JButton();
         btn_delete1 = new javax.swing.JButton();
-        btn_refrescar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,10 +102,10 @@ public class JF_Provincia extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(272, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(201, 201, 201))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,43 +144,17 @@ public class JF_Provincia extends javax.swing.JFrame {
 
         jLabel5.setText("Nombre");
 
-        jLabel6.setText("Provincia");
-
-        btn_update1.setText("Update");
-        btn_update1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_update1ActionPerformed(evt);
-            }
-        });
-
-        btn_delete1.setText("Delete");
-        btn_delete1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_delete1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(btn_update1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addGap(99, 99, 99)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5)
+                        .addGap(105, 105, 105)
+                        .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(55, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -204,15 +173,7 @@ public class JF_Provincia extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_update1)
-                    .addComponent(btn_delete1))
-                .addGap(41, 41, 41))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btn_refrescar1.setText("Refrescar");
@@ -222,34 +183,70 @@ public class JF_Provincia extends javax.swing.JFrame {
             }
         });
 
+        btn_update1.setText("Update");
+        btn_update1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_update1ActionPerformed(evt);
+            }
+        });
+
+        btn_delete1.setText("Delete");
+        btn_delete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_delete1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btn_delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_update1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(btn_refrescar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_refrescar1)
+                .addGap(18, 18, 18)
+                .addComponent(btn_update1)
+                .addGap(18, 18, 18)
+                .addComponent(btn_delete1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(btn_refrescar1)
-                .addGap(92, 92, 92))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(btn_refrescar1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72))
         );
 
         jTabbedPane1.addTab("Nuevos almacenes", jPanel1);
@@ -258,9 +255,7 @@ public class JF_Provincia extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 994, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,14 +279,10 @@ public class JF_Provincia extends javax.swing.JFrame {
 
     private void btn_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update1ActionPerformed
         try {
-
-            List <Provincia> provincia_select = provincia.select_provincia();
-            int r = tbl_localidad.getSelectedRow();
-            int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-            int cbx_id_provincia = cbx_update_provincia.getSelectedIndex();
-            int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
+            int r = tbl_provincia.getSelectedRow();
+            int id_provincia = (int) tbl_provincia.getValueAt(r, 0);
             String nombre = txt_update_nombre.getText();
-            localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
+            provincia.update_provincia(id_provincia, nombre);
 
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
@@ -299,14 +290,19 @@ public class JF_Provincia extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
-        int r = tbl_localidad.getSelectedRow();
-        int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        localidad.delete_localidad(id_localidad);
+        try {
+            int r = tbl_provincia.getSelectedRow();
+            int id_provincia = (int) tbl_provincia.getValueAt(r, 0);
+            provincia.delete_provincia(id_provincia);
+            refrescar();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Provincia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_delete1ActionPerformed
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_provincia.getModel();
             tblModel.setRowCount(0);
             agregarItem_tbl();
             refrescar();
@@ -317,9 +313,9 @@ public class JF_Provincia extends javax.swing.JFrame {
 
     private void tbl_provinciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_provinciaMouseClicked
          try {
-            int r = tbl_localidad.getSelectedRow();
-            int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-            get_localidad_dates(id_localidad);
+            int r = tbl_provincia.getSelectedRow();
+            int id_provincia = (int) tbl_provincia.getValueAt(r, 0);
+            get_localidad_dates(id_provincia);
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -355,7 +351,11 @@ public class JF_Provincia extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Provincia().setVisible(true);
+                try {
+                    new JF_Provincia().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Provincia.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -365,15 +365,14 @@ public class JF_Provincia extends javax.swing.JFrame {
     private javax.swing.JButton btn_insert;
     private javax.swing.JButton btn_refrescar1;
     private javax.swing.JButton btn_update1;
-    private javax.swing.JComboBox<String> cbx_update_provincia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel label_id;
@@ -381,24 +380,16 @@ public class JF_Provincia extends javax.swing.JFrame {
     private javax.swing.JTextField txt_insert_nombre;
     private javax.swing.JTextField txt_update_nombre;
     // End of variables declaration//GEN-END:variables
-    public void agregarItem_cbx() throws SQLException{
-        List <Provincia> provincia_select = provincia.select_provincia();
-        for (int i = 0; i < provincia_select.size(); i++) {
-            cbx_insert_provincia.addItem(provincia_select.get(i).getNombre());
-            cbx_update_provincia.addItem(provincia_select.get(i).getNombre());
-        } 
-    }
-    
+  
     public void agregarItem_tbl() throws SQLException{
-        DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
-        List <Localidad> localidad_select = localidad.select_localidad();
-        Object[] column = new Object[localidad_select.size()];
+        DefaultTableModel tblModel = (DefaultTableModel) tbl_provincia.getModel();
+        List <Provincia> provincia_select = provincia.select_provincia();
+        Object[] column = new Object[2];
         
-        for (int i = 0; i < localidad_select.size(); i++){
+        for (int i = 0; i < provincia_select.size(); i++){
             
-            column[0] = localidad_select.get(i).getId();
-            column[1] = localidad_select.get(i).getNombre();
-            column[2] = localidad_select.get(i).getId_provincia();
+            column[0] = provincia_select.get(i).getId();
+            column[1] = provincia_select.get(i).getNombre();
             
             tblModel.addRow(column);
             
