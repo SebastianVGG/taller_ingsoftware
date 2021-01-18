@@ -5,13 +5,16 @@
  */
 package views;
 
+import java.util.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import tables.Localidad;
-import tables.Provincia;
+import tables.Almacen;
+import tables.Libro;
+import tables.Papel;
+
 
 /**
  *
@@ -19,25 +22,34 @@ import tables.Provincia;
  */
 public class JF_Papel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_Papel
-     */
+
+    Libro libro = new Libro();
+    Almacen almacen = new Almacen();
+    Papel papel = new Papel();
+    
     public JF_Papel() throws SQLException {
         initComponents();
         agregarItem_cbx();
         agregarItem_tbl();
     }
 
-    public void get_localidad_dates(int id_localidad) throws SQLException{
-        Localidad datos_localidad = localidad.select_one_localidad(id_localidad);
-        label_id.setText(String.valueOf(datos_localidad.getId()));
-        txt_update_nombre.setText(datos_localidad.getNombre());
-        Provincia datos_provincia = provincia.select_one_provincia(datos_localidad.getId_provincia());
-        cbx_update_provincia.setSelectedItem(datos_provincia.getNombre());
+    public void get_papel_dates(int id_papel) throws SQLException{
+        Papel datos_papel = papel.select_one_papel(id_papel);
+        
+        label_id.setText(String.valueOf(datos_papel.getId()));
+        date_update_fecha.setDate(datos_papel.getFecha_impresion());
+        txt_update_lugar.setText(datos_papel.getLugar_impresion());
+        txt_update_precio.setText(String.valueOf(datos_papel.getPrecio()));
+        
+        Libro datos_libro = libro.select_one_libro(datos_papel.getId_libro_papel());
+        Almacen datos_almacen = almacen.select_one_almacen(datos_papel.getId_almacen());
+        cbx_update_libro.setSelectedItem(datos_libro.getTitulo());
+        cbx_update_almacen.setSelectedItem(datos_almacen.getDireccion());
     }
     
     public void refrescar(){
-        txt_update_nombre.setText("");
+        txt_update_lugar.setText("");
+        txt_update_precio.setText("");
         label_id.setText("");
     }
     @SuppressWarnings("unchecked")
@@ -50,7 +62,6 @@ public class JF_Papel extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txt_insert_fecha_impresion = new javax.swing.JTextField();
         txt_insert_lugar_impresion = new javax.swing.JTextField();
         cbx_insert_almacen = new javax.swing.JComboBox<>();
         btn_insert = new javax.swing.JButton();
@@ -58,6 +69,7 @@ public class JF_Papel extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         cbx_insert_libro = new javax.swing.JComboBox<>();
+        date_insert_fecha = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_papel = new javax.swing.JTable();
@@ -65,12 +77,19 @@ public class JF_Papel extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         label_id = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txt_update_nombre = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cbx_update_provincia = new javax.swing.JComboBox<>();
+        cbx_update_libro = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        cbx_update_almacen = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        txt_update_lugar = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txt_update_precio = new javax.swing.JTextField();
+        date_update_fecha = new com.toedter.calendar.JDateChooser();
+        jPanel5 = new javax.swing.JPanel();
+        btn_refrescar1 = new javax.swing.JButton();
         btn_update1 = new javax.swing.JButton();
         btn_delete1 = new javax.swing.JButton();
-        btn_refrescar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,7 +128,9 @@ public class JF_Papel extends javax.swing.JFrame {
                         .addGap(89, 89, 89)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_insert_lugar_impresion, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
-                            .addComponent(txt_insert_fecha_impresion)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(date_insert_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,11 +154,11 @@ public class JF_Papel extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(txt_insert_fecha_impresion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addComponent(date_insert_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_insert_lugar_impresion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -184,15 +205,7 @@ public class JF_Papel extends javax.swing.JFrame {
             new String [] {
                 "ID", "Fecha de impresion", "Lugar de impresion", "Precio", "Libro", "Almacen"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         tbl_papel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_papelMouseClicked(evt);
@@ -202,9 +215,93 @@ public class JF_Papel extends javax.swing.JFrame {
 
         jLabel6.setText("ID");
 
-        jLabel7.setText("Nombre");
+        jLabel7.setText("Fecha de impresion");
 
-        jLabel8.setText("Provincia");
+        jLabel8.setText("Libro");
+
+        jLabel9.setText("Almacen");
+
+        jLabel10.setText("Lugar de impresion");
+
+        jLabel11.setText("Precio");
+
+        date_update_fecha.setDateFormatString("yyyy-MM-dd");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel6))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_update_lugar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(date_update_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(105, 105, 105)
+                                .addComponent(txt_update_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(99, 99, 99)
+                                .addComponent(cbx_update_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(99, 99, 99)
+                                .addComponent(cbx_update_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_update_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cbx_update_libro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addGap(31, 31, 31))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(50, 50, 50))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(date_update_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbx_update_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(txt_update_lugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(22, 22, 22))
+        );
+
+        btn_refrescar1.setText("Refrescar");
+        btn_refrescar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_refrescar1ActionPerformed(evt);
+            }
+        });
 
         btn_update1.setText("Update");
         btn_update1.addActionListener(new java.awt.event.ActionListener() {
@@ -220,91 +317,61 @@ public class JF_Papel extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(btn_update1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7))
-                        .addGap(99, 99, 99)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(20, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))))
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_update1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_refrescar1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbx_update_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_update1)
-                    .addComponent(btn_delete1))
-                .addGap(41, 41, 41))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btn_refrescar1)
+                .addGap(35, 35, 35)
+                .addComponent(btn_update1)
+                .addGap(30, 30, 30)
+                .addComponent(btn_delete1)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
-
-        btn_refrescar1.setText("Refrescar");
-        btn_refrescar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_refrescar1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addComponent(btn_refrescar1)
-                .addGap(75, 75, 75))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 265, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(btn_refrescar1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                        .addGap(68, 68, 68)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Nuevos almacenes", jPanel1);
@@ -328,24 +395,46 @@ public class JF_Papel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update1ActionPerformed
-        List <Provincia> provincia_select = provincia.select_provincia();
-        int r = tbl_localidad.getSelectedRow();
-        int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        int cbx_id_provincia = cbx_update_provincia.getSelectedIndex();
-        int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
-        String nombre = txt_update_nombre.getText();
-        localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
+        try {
+            List <Libro> libro_select = libro.select();
+            List <Almacen> almacen_select = almacen.select_almacen();
+            int r = tbl_papel.getSelectedRow();
+            int id_papel = (int) tbl_papel.getValueAt(r, 0);
+            
+            int cbx_id_libro = cbx_update_libro.getSelectedIndex();
+            int cbx_id_almacen = cbx_update_almacen.getSelectedIndex();
+            
+            int id_libro_papel = libro_select.get(cbx_id_libro).getId();
+            int id_almacen_papel = almacen_select.get(cbx_id_almacen).getId();
+            
+            Date date = (Date) date_update_fecha.getDate();
+            long d = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(d);
+            
+            String lugar = txt_update_lugar.getText();
+            float precio = Float.parseFloat(txt_update_precio.getText());
+            
+            papel.update_papel(id_papel, fecha, lugar, precio, id_libro_papel, id_almacen_papel);
+            refrescar();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Papel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
-        int r = tbl_localidad.getSelectedRow();
-        int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-        localidad.delete_localidad(id_localidad);
+        try {
+            int r = tbl_papel.getSelectedRow();
+            int id_papel = (int) tbl_papel.getValueAt(r, 0);
+            papel.delete_papel(id_papel);
+            refrescar();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Papel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_delete1ActionPerformed
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_papel.getModel();
             tblModel.setRowCount(0);
             agregarItem_tbl();
             refrescar();
@@ -356,9 +445,9 @@ public class JF_Papel extends javax.swing.JFrame {
 
     private void tbl_papelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_papelMouseClicked
          try {
-            int r = tbl_localidad.getSelectedRow();
-            int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
-            get_localidad_dates(id_localidad);
+            int r = tbl_papel.getSelectedRow();
+            int id_papel = (int) tbl_papel.getValueAt(r, 0);
+            get_papel_dates(id_papel);
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -366,12 +455,23 @@ public class JF_Papel extends javax.swing.JFrame {
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
         try {
-            List <Provincia> provincia_select = provincia.select_provincia();
-            String nombre = txt_insert_nombre.getText();
-            int cbx_id_provincia = cbx_insert_provincia.getSelectedIndex();
-            int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
-            Localidad localidad = new Localidad(nombre,id_provincia_localidad);
-            localidad.insert_localidad();
+            List <Libro> libro_select = libro.select();
+            List <Almacen> almacen_select = almacen.select_almacen();
+            
+            Date date = (Date) date_insert_fecha.getDate();
+            long d = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(d);
+            
+            String lugar = txt_insert_lugar_impresion.getText();
+            float precio = Float.parseFloat(txt_insert_precio.getText());
+            
+            int cbx_id_libro = cbx_insert_libro.getSelectedIndex();
+            int cbx_id_almacen = cbx_insert_almacen.getSelectedIndex();
+            int id_libro_papel = libro_select.get(cbx_id_libro).getId();
+            int id_almacen_papel = almacen_select.get(cbx_id_almacen).getId();
+            
+            Papel papel = new Papel(fecha,lugar, precio, id_libro_papel, id_almacen_papel);
+            papel.insert_papel();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -407,7 +507,11 @@ public class JF_Papel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Papel().setVisible(true);
+                try {
+                    new JF_Papel().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Papel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -419,8 +523,13 @@ public class JF_Papel extends javax.swing.JFrame {
     private javax.swing.JButton btn_update1;
     private javax.swing.JComboBox<String> cbx_insert_almacen;
     private javax.swing.JComboBox<String> cbx_insert_libro;
-    private javax.swing.JComboBox<String> cbx_update_provincia;
+    private javax.swing.JComboBox<String> cbx_update_almacen;
+    private javax.swing.JComboBox<String> cbx_update_libro;
+    private com.toedter.calendar.JDateChooser date_insert_fecha;
+    private com.toedter.calendar.JDateChooser date_update_fecha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -428,37 +537,52 @@ public class JF_Papel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel label_id;
     private javax.swing.JTable tbl_papel;
-    private javax.swing.JTextField txt_insert_fecha_impresion;
     private javax.swing.JTextField txt_insert_lugar_impresion;
     private javax.swing.JTextField txt_insert_precio;
-    private javax.swing.JTextField txt_update_nombre;
+    private javax.swing.JTextField txt_update_lugar;
+    private javax.swing.JTextField txt_update_precio;
     // End of variables declaration//GEN-END:variables
     public void agregarItem_cbx() throws SQLException{
-        List <Provincia> provincia_select = provincia.select_provincia();
-        for (int i = 0; i < provincia_select.size(); i++) {
-            cbx_insert_provincia.addItem(provincia_select.get(i).getNombre());
-            cbx_update_provincia.addItem(provincia_select.get(i).getNombre());
+        
+        List <Libro> libro_select = libro.select();
+        List <Almacen> almacen_select = almacen.select_almacen();
+
+        for (int i = 0; i < libro_select.size(); i++) {
+            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
+            cbx_update_libro.addItem(libro_select.get(i).getTitulo());
         } 
+        
+        for (int i = 0; i < almacen_select.size(); i++) {
+            cbx_insert_almacen.addItem(almacen_select.get(i).getDireccion());
+            cbx_update_almacen.addItem(almacen_select.get(i).getDireccion());
+        } 
+        
     }
     
     public void agregarItem_tbl() throws SQLException{
-        DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
-        List <Localidad> localidad_select = localidad.select_localidad();
-        Object[] column = new Object[localidad_select.size()];
         
-        for (int i = 0; i < localidad_select.size(); i++){
+        DefaultTableModel tblModel = (DefaultTableModel) tbl_papel.getModel();
+        List <Papel> papel_select = papel.select_papel();
+        Object[] column = new Object[6];
+        
+        for (int i = 0; i < papel_select.size(); i++){
             
-            column[0] = localidad_select.get(i).getId();
-            column[1] = localidad_select.get(i).getNombre();
-            column[2] = localidad_select.get(i).getId_provincia();
+            column[0] = papel_select.get(i).getId();
+            column[1] = papel_select.get(i).getFecha_impresion();
+            column[2] = papel_select.get(i).getLugar_impresion();
+            column[3] = papel_select.get(i).getPrecio();
+            column[4] = papel_select.get(i).getId_libro_papel();
+            column[5] = papel_select.get(i).getId_almacen();
             
             tblModel.addRow(column);
             

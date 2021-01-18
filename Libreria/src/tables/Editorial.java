@@ -27,6 +27,17 @@ public class Editorial {
     private String url;
     private int id_localidad_editorial;
 
+    public Editorial(String nombre, String direccion, String telefono, String url, int id_localidad_editorial) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.url = url;
+        this.id_localidad_editorial = id_localidad_editorial;
+    }
+
+    public Editorial() {
+    }
+    
     public int getId() {
         return id;
     }

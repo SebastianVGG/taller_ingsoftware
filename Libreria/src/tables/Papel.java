@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,11 +22,22 @@ import javax.swing.JOptionPane;
 public class Papel {
     
     private int id;
-    private String fecha_impresion;
+    private Date fecha_impresion;
     private String lugar_impresion;
     private float precio;
     private int id_libro_papel;
     private int id_almacen;
+
+    public Papel(Date fecha_impresion, String lugar_impresion, float precio, int id_libro_papel, int id_almacen) {
+        this.fecha_impresion = fecha_impresion;
+        this.lugar_impresion = lugar_impresion;
+        this.precio = precio;
+        this.id_libro_papel = id_libro_papel;
+        this.id_almacen = id_almacen;
+    }
+
+    public Papel() {
+    }
 
     public int getId() {
         return id;
@@ -35,13 +47,14 @@ public class Papel {
         this.id = id;
     }
 
-    public String getFecha_impresion() {
+    public Date getFecha_impresion() {
         return fecha_impresion;
     }
 
-    public void setFecha_impresion(String fecha_impresion) {
+    public void setFecha_impresion(Date fecha_impresion) {
         this.fecha_impresion = fecha_impresion;
     }
+
 
     public String getLugar_impresion() {
         return lugar_impresion;
@@ -80,7 +93,7 @@ public class Papel {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("INSERT INTO papel (id, fecha_impresion, lugar_impresion, precio, id_libro_papel, id_almacen) VALUES (NULL, '"+this.fecha_impresion+"',"+this.lugar_impresion+","+this.precio+","+this.id_libro_papel+","+this.id_almacen+")"
+        statement.executeUpdate("INSERT INTO papel (id, fecha_impresion, lugar_impresion, precio, id_libro_papel, id_almacen) VALUES (NULL, '"+this.fecha_impresion+"','"+this.lugar_impresion+"',"+this.precio+","+this.id_libro_papel+","+this.id_almacen+")"
 
                         + "");
         JOptionPane.showMessageDialog(null, "Nuevo libro fisico");  
@@ -99,12 +112,12 @@ public class Papel {
         myConnection.close();
     }
     
-    public void update_papel(int id, String fecha_impresion, String lugar_impresion, float precio, int id_libro_papel, int id_almacen) throws SQLException{
+    public void update_papel(int id, Date fecha_impresion, String lugar_impresion, float precio, int id_libro_papel, int id_almacen) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("UPDATE papel SET fecha_impresion='"+fecha_impresion+"', lugar_impresion="+lugar_impresion+", precio="+precio+", id_libro_papel="+id_libro_papel+", id_almacen="+id_almacen+" WHERE id="+id);
+        statement.executeUpdate("UPDATE papel SET fecha_impresion='"+fecha_impresion+"', lugar_impresion='"+lugar_impresion+"', precio="+precio+", id_libro_papel="+id_libro_papel+", id_almacen="+id_almacen+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "Libro fisico actualizado");  
         statement.close();  
         myConnection.close();
@@ -116,12 +129,12 @@ public class Papel {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        String sql= "SELECT id, fecha_impresion, lugar_impresion, precio, id_libro_pepel, id_almacen FROM papel WHERE id="+id;
+        String sql= "SELECT id, fecha_impresion, lugar_impresion, precio, id_libro_papel, id_almacen FROM papel WHERE id="+id;
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next()){
         this.id=rs.getInt("id");
         provincia.setId(this.id);
-        this.fecha_impresion=rs.getString("fecha_impresion");
+        this.fecha_impresion=rs.getDate("fecha_impresion");
         provincia.setFecha_impresion(this.fecha_impresion);
         this.lugar_impresion=rs.getString("lugar_impresion");
         provincia.setLugar_impresion(this.lugar_impresion);
@@ -139,7 +152,7 @@ public class Papel {
     }
     
     
-    public List<Papel> select() throws SQLException{
+    public List<Papel> select_papel() throws SQLException{
       List<Papel> provincias = new ArrayList<Papel>();  
       Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
@@ -152,7 +165,7 @@ public class Papel {
         Papel provincia = new Papel();
         this.id=rs.getInt("id");
         provincia.setId(this.id);
-        this.fecha_impresion=rs.getString("fecha_impresion");
+        this.fecha_impresion=rs.getDate("fecha_impresion");
         provincia.setFecha_impresion(this.fecha_impresion);
         this.lugar_impresion=rs.getString("lugar_impresion");
         provincia.setLugar_impresion(this.lugar_impresion);
@@ -162,15 +175,11 @@ public class Papel {
         provincia.setId_libro_papel(this.id_libro_papel);
         this.id_almacen=rs.getInt("id_almacen");
         provincia.setId_almacen(this.id_almacen);
+        provincias.add(provincia);
         }
       
       rs.close();
       return provincias;
-    }
-    
-    public String toString(){
-        String provincia ="|"+this.id+"|"+"fecha_impresion: " + this.fecha_impresion+"lugar_impresion: " + this.lugar_impresion+"precio: " + this.precio+"id_libro_papel: " + this.id_libro_papel+"id_almacen: " + this.id_almacen;
-        return provincia;
     }
     
 }

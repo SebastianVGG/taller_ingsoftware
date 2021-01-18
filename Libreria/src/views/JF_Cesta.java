@@ -490,7 +490,7 @@ public class JF_Cesta extends javax.swing.JFrame {
     public void agregarItemLibro_tbl() throws SQLException{
         DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
         List <Libro> libro_select = libro.select();
-        Object[] column = new Object[libro_select.size()];
+        Object[] column = new Object[4];
         
         for (int i = 0; i < libro_select.size(); i++){
             
