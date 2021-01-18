@@ -31,10 +31,8 @@ public class JF_Cesta extends javax.swing.JFrame {
      */
     public JF_Cesta() throws SQLException {
         initComponents();
-        agregarItemCliente_cbx();
-        agregarItemLibro_cbx();
-        agregarItemCliente_tbl();
-        agregarItemLibro_tbl();
+        agregarItem_cbx();
+        agregarItem_tbl();
     }
 
     public void get_cesta_dates(int id_cesta) throws SQLException{
@@ -44,7 +42,7 @@ public class JF_Cesta extends javax.swing.JFrame {
         Cliente datos_cliente = cliente.select_one_cliente(datos_cesta.getId_cliente());
         cbx_update_id_cliente.setSelectedItem(datos_cliente.getNombre());
         Libro datos_libro = libro.select_one_libro(datos_cesta.getId_libro());
-        cbx_update_id_cliente.setSelectedItem(datos_cliente.getNombre());
+        cbx_update_id_libro.setSelectedItem(datos_libro.getTitulo());
     }
     
     public void refrescar(){
@@ -154,7 +152,7 @@ public class JF_Cesta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editar cesta", jPanel1);
@@ -278,7 +276,7 @@ public class JF_Cesta extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(414, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,7 +290,7 @@ public class JF_Cesta extends javax.swing.JFrame {
                         .addComponent(btn_refrescar1)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar cesta", jPanel2);
@@ -308,8 +306,8 @@ public class JF_Cesta extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -348,14 +346,15 @@ public class JF_Cesta extends javax.swing.JFrame {
         try {
             DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
             tblModel.setRowCount(0);
-            agregarItemCliente_tbl();
-            agregarItemLibro_tbl();
+            agregarItem_tbl();
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_refrescar1ActionPerformed
 
+    
+    
     private void tb_cestaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_cestaMouseClicked
         try {
             int r = tb_cesta.getSelectedRow();
@@ -368,7 +367,6 @@ public class JF_Cesta extends javax.swing.JFrame {
 
     private void btn_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarActionPerformed
         try {
-            
             List <Cliente> cliente_select = cliente.select_cliente(); //Se crea lista de objectos de la clase Localidad (foranea)
             List <Libro> libro_select = libro.select(); //Se crea lista de objectos de la clase Localidad (foranea)
             String fecha = txtf_insert_fecha_compra.getText(); //Se guardan en variables de los txtfield
@@ -378,9 +376,9 @@ public class JF_Cesta extends javax.swing.JFrame {
             int id_cesta_libro = libro_select.get(cbx_id_libro).getId(); //Se obtiene la id de la localidad seleccionada
             Cesta cesta = new Cesta(fecha,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
             cesta.insert_cesta(); //Se ejecuta el insert con el objecto creado
-            
+           
         } catch (SQLException ex) {
-            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JF_Cesta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_insertarActionPerformed
 
@@ -450,57 +448,28 @@ public class JF_Cesta extends javax.swing.JFrame {
     private javax.swing.JTextField txt_update_fecha_compra;
     private javax.swing.JTextField txtf_insert_fecha_compra;
     // End of variables declaration//GEN-END:variables
-    public void agregarItemCliente_cbx() throws SQLException{
+    public void agregarItem_cbx() throws SQLException{
         List <Cliente> cliente_select = cliente.select_cliente(); //Lista foreanea
+        List <Libro> libro_select = libro.select();
         for (int i = 0; i < cliente_select.size(); i++) {
             cbx_insert_cliente.addItem(cliente_select.get(i).getNombre());
             cbx_update_id_cliente.addItem(cliente_select.get(i).getNombre());
-        } 
-    }
-    
-    public void agregarItemCliente_tbl() throws SQLException{
-        DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
-        List <Cliente> cliente_select = cliente.select_cliente();
-        Object[] column = new Object[cliente_select.size()];
-        
-        for (int i = 0; i < cliente_select.size(); i++){
-            
-            column[0] = cliente_select.get(i).getId();
-            column[1] = cliente_select.get(i).getNombre();
-            column[2] = cliente_select.get(i).getApellido1();
-            column[3] = cliente_select.get(i).getApellido2();
-            column[4] = cliente_select.get(i).getDireccion();
-            column[5] = cliente_select.get(i).getEmail();
-            column[6] = cliente_select.get(i).getTelefono();            
-            
-            tblModel.addRow(column);
-            
-            }
-        
-    }
-        
-    public void agregarItemLibro_cbx() throws SQLException{
-        List <Libro> libro_select = libro.select(); //Lista foreanea
-        for (int i = 0; i < libro_select.size(); i++) {
             cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
             cbx_update_id_libro.addItem(libro_select.get(i).getTitulo());
         } 
     }
     
-    public void agregarItemLibro_tbl() throws SQLException{
+    public void agregarItem_tbl() throws SQLException{
         DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
-        List <Libro> libro_select = libro.select();
-        Object[] column = new Object[4];
+        List <Cesta> cesta_select = cesta.select();
+        Object[] column = new Object[cesta_select.size()];
         
-        for (int i = 0; i < libro_select.size(); i++){
+        for (int i = 0; i < cesta_select.size(); i++){
             
-            column[0] = libro_select.get(i).getId();
-            column[1] = libro_select.get(i).getTitulo();
-            column[2] = libro_select.get(i).getDescripcion();
-            column[3] = libro_select.get(i).getIsbn();
-            column[4] = libro_select.get(i).getAño_publicacion();
-            column[5] = libro_select.get(i).getId_autor();
-            column[6] = libro_select.get(i).getId_editorial();
+            column[0] = cesta_select.get(i).getId();
+            column[1] = cesta_select.get(i).getFecha_compra();
+            column[2] = cesta_select.get(i).getId_cliente();
+            column[3] = cesta_select.get(i).getId_libro();          
             
             tblModel.addRow(column);
             
