@@ -127,8 +127,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-       mousepX=evt.getX();
-       mousepY=evt.getY();
+
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jLabel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseDragged
