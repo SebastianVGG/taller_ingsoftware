@@ -197,6 +197,7 @@ public class Cliente {
         provincia.setTelefono(this.telefono);
         this.id_localidad_cliente=rs.getInt("id_localidad_cliente");
         provincia.setId_localidad_cliente(this.id_localidad_cliente);
+        provincias.add(provincia);
         }
       
       rs.close();

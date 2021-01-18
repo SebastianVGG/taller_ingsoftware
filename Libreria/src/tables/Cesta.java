@@ -31,10 +31,6 @@ public class Cesta {
         this.id_libro = id_libro;
     }
     public Cesta(){
-        int id = this.id;
-        String fecha_compra = this.fecha_compra;
-        int id_cliente = this.id_cliente;
-        int id_libro = this.id_libro;
     }
 
     public int getId() {
@@ -147,6 +143,7 @@ public class Cesta {
         provincia.setId_cliente(this.id_cliente);
         this.id_libro=rs.getInt("id_libro");
         provincia.setId_libro(this.id_libro);
+        provincias.add(provincia);
         }
       
       rs.close();

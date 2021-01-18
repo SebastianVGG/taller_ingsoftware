@@ -13,8 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import tables.Cesta;
 import tables.Cliente;
 import tables.Libro;
-import tables.Localidad;
-import tables.Provincia;
 
 /**
  *
@@ -451,18 +449,22 @@ public class JF_Cesta extends javax.swing.JFrame {
     public void agregarItem_cbx() throws SQLException{
         List <Cliente> cliente_select = cliente.select_cliente(); //Lista foreanea
         List <Libro> libro_select = libro.select();
+        
+        for (int i = 0; i < libro_select.size(); i++) {   
+            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
+            cbx_update_id_libro.addItem(libro_select.get(i).getTitulo());
+        }
+        
         for (int i = 0; i < cliente_select.size(); i++) {
             cbx_insert_cliente.addItem(cliente_select.get(i).getNombre());
             cbx_update_id_cliente.addItem(cliente_select.get(i).getNombre());
-            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
-            cbx_update_id_libro.addItem(libro_select.get(i).getTitulo());
-        } 
+        }
     }
     
     public void agregarItem_tbl() throws SQLException{
         DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
         List <Cesta> cesta_select = cesta.select();
-        Object[] column = new Object[cesta_select.size()];
+        Object[] column = new Object[4];
         
         for (int i = 0; i < cesta_select.size(); i++){
             
