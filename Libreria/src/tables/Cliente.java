@@ -26,6 +26,29 @@ public class Cliente {
     private String apellido2;
     private String direccion;
     private String email;
+    private String password;
+
+    public Cliente(String nombre, String apellido1, String apellido2, String direccion, String email, String password, String telefono, int id_localidad_cliente) {
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.direccion = direccion;
+        this.email = email;
+        this.password = password;
+        this.telefono = telefono;
+        this.id_localidad_cliente = id_localidad_cliente;
+    }
+
+    public Cliente() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     private String telefono;
 
     public String getTelefono() {
@@ -104,9 +127,9 @@ public class Cliente {
                 );
         Statement statement = myConnection.createStatement();  
         statement.executeUpdate("INSERT INTO `cliente` "
-                + "(`id`, `nombre`, `apellido1`, `apellido2`, `direccion`, `email`, `telefono`, `id_localidad_cliente`)"
+                + "(`id`, `nombre`, `apellido1`, `apellido2`, `direccion`, `email`, password, `telefono`, `id_localidad_cliente`)"
                 + " VALUES "
-                + "(NULL, '"+this.nombre+"', '"+this.apellido1+"', '"+this.apellido2+"', '"+this.direccion+"', '"+this.email+"', '"+this.telefono+"',"+this.id_localidad_cliente+" )"
+                + "(NULL, '"+this.nombre+"', '"+this.apellido1+"', '"+this.apellido2+"', '"+this.direccion+"', '"+this.email+"', '"+this.password+"','"+this.telefono+"',"+this.id_localidad_cliente+" )"
 
                         + "");
         JOptionPane.showMessageDialog(null, "Nuevo cliente");  
@@ -124,14 +147,14 @@ public class Cliente {
         statement.close();  
         myConnection.close();
     }
-    public void update_cliente(int id, String nombre, String apellido1, String apellido2, String direccion, String email, String telefono, int localidad_cliente) throws SQLException{
+    public void update_cliente(int id, String nombre, String apellido1, String apellido2, String direccion, String email,String password, String telefono, int localidad_cliente) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
         statement.executeUpdate("UPDATE cliente SET "
                 + "nombre='"+nombre+"',apellido1='"+apellido1+"', apellido2='"+apellido2+"', direccion='"+direccion+"',"
-                        + " email='"+email+"', telefono='"+telefono+"', id_localidad_cliente="+localidad_cliente+" WHERE id="+id);
+                        + " email='"+email+"', password='"+password+"', telefono='"+telefono+"', id_localidad_cliente="+localidad_cliente+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "cliente actualizado");  
         statement.close();  
         myConnection.close();
@@ -143,7 +166,7 @@ public class Cliente {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        String sql= "SELECT id, nombre, `apellido1`, `apellido2`, `direccion`, `email`, `telefono`, `id_localidad_cliente` FROM cliente WHERE id="+id;
+        String sql= "SELECT id, nombre, `apellido1`, `apellido2`, `direccion`, `email`, password, `telefono`, `id_localidad_cliente` FROM cliente WHERE id="+id;
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next()){
         this.id=rs.getInt("id");
@@ -158,6 +181,8 @@ public class Cliente {
         provincia.setDireccion(this.direccion);
         this.email=rs.getString("email");
         provincia.setEmail(this.email);
+        this.password=rs.getString("password");
+        provincia.setPassword(this.password);
         this.telefono=rs.getString("telefono");
         provincia.setTelefono(this.telefono);
         this.id_localidad_cliente=rs.getInt("id_localidad_cliente");
@@ -176,7 +201,7 @@ public class Cliente {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
       Statement stmt = myConnection.createStatement(); 
-      String sql = "SELECT id, nombre, apellido1, apellido2, direccion, email, telefono, id_localidad_cliente FROM cliente";
+      String sql = "SELECT id, nombre, apellido1, apellido2, direccion, email, password, telefono, id_localidad_cliente FROM cliente";
       ResultSet rs = stmt.executeQuery(sql);
       //STEP 5: Extract data from result set
       while(rs.next()){
@@ -193,6 +218,8 @@ public class Cliente {
         provincia.setDireccion(this.direccion);
         this.email=rs.getString("email");
         provincia.setEmail(this.email);
+        this.password=rs.getString("password");
+        provincia.setPassword(this.password);
         this.telefono=rs.getString("telefono");
         provincia.setTelefono(this.telefono);
         this.id_localidad_cliente=rs.getInt("id_localidad_cliente");
@@ -202,11 +229,6 @@ public class Cliente {
       
       rs.close();
       return provincias;
-    }
-    
-    public String toString(){
-        String provincia ="|"+this.id+"|"+" Nombre: "+this.nombre;
-        return provincia;
     }
     
 }

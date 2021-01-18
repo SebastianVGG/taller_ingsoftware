@@ -134,6 +134,11 @@ public class Main_login extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(41, 32, 18));
         jTextField1.setText("Correo Electrónico");
         jTextField1.setBorder(null);
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTextField1MouseEntered(evt);
+            }
+        });
         jPanel3.add(jTextField1);
         jTextField1.setBounds(40, 30, 290, 20);
 
@@ -241,6 +246,10 @@ public class Main_login extends javax.swing.JFrame {
     private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed
        java.lang.System.exit(0);
     }//GEN-LAST:event_btn_closeActionPerformed
+
+    private void jTextField1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1MouseEntered
 
     /**
      * @param args the command line arguments
