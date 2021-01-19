@@ -5,6 +5,7 @@
  */
 package login;
 
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,6 +23,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
     /**
      * Creates new form JF_Crear_cuenta
      */
+
     Localidad localidad = new Localidad();
     Cliente cliente = new Cliente();
     public JF_Crear_cuenta() throws SQLException {
@@ -59,7 +61,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtf_insert_password_repetir = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -234,13 +236,14 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
             
             if  (password.equals(password_repetir)){
                 
-             Cliente cliente = new Cliente(nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
+            Cliente cliente = new Cliente(nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
             cliente.insert_cliente();
-            JOptionPane.showMessageDialog(null, "Cuenta creada");
-            }
+            JOptionPane.showMessageDialog(null,"Cuenta creada correctamente");
+          }
             
             else
-                JOptionPane.showMessageDialog(null, "La contraseña no es la misma"); 
+                JOptionPane.showMessageDialog(null, "La contraseña no se repite",
+  "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
 
         } catch (SQLException ex) {
             Logger.getLogger(JF_Crear_cuenta.class.getName()).log(Level.SEVERE, null, ex);

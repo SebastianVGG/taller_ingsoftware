@@ -301,6 +301,9 @@ public class Main_login extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_contraseñaMouseClicked
 
     private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
+        if(txt_correo.getText().isEmpty() || txtp_pass.getText().isEmpty())
+            JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctas");
+        else
         try {
             String email = cliente.select_email(txt_correo.getText());
             String pass = cliente.select_pass(txtp_pass.getText());
@@ -315,10 +318,7 @@ public class Main_login extends javax.swing.JFrame {
                     }
                     } catch (SQLException ex) {
             Logger.getLogger(Main_login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-
-            
+        }     
 
     }//GEN-LAST:event_btn_iniciar_sesionActionPerformed
 
