@@ -28,25 +28,40 @@ public class Main_view extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(251, 238, 218));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(120, 79, 37), 20, true));
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel5.setPreferredSize(new java.awt.Dimension(979, 800));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Bradley Hand ITC", 2, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 102, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("ERIAN LIBRARY");
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 102, 0), 10, true));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBackground(new java.awt.Color(251, 238, 218));
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jPanel5.setBackground(new java.awt.Color(251, 238, 218));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 12));
+        jPanel5.setDoubleBuffered(false);
+        jPanel5.setEnabled(false);
+        jPanel5.setPreferredSize(new java.awt.Dimension(100, 800));
+
+        jPanel6.setBackground(new java.awt.Color(251, 238, 218));
+
+        jButton1.setBackground(new java.awt.Color(251, 238, 218));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry Potter_La piedra filosofal.jpg"))); // NOI18N
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(251, 238, 218));
         jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("<html><center>Harry Potter y la piedra filosofal");
@@ -59,18 +74,15 @@ public class Main_view extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -81,7 +93,7 @@ public class Main_view extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(798, Short.MAX_VALUE))
+                .addContainerGap(680, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,13 +104,7 @@ public class Main_view extends javax.swing.JFrame {
         );
 
         jScrollPane1.setViewportView(jPanel5);
-
-        jLabel2.setBackground(new java.awt.Color(55, 36, 130));
-        jLabel2.setFont(new java.awt.Font("Bradley Hand ITC", 2, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("EL BISHO LIBRARY");
-        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 153)));
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,9 +116,9 @@ public class Main_view extends javax.swing.JFrame {
                         .addGap(196, 196, 196)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(35, 35, 35)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
