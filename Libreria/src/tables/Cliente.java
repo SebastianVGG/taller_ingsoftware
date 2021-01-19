@@ -132,7 +132,6 @@ public class Cliente {
                 + "(NULL, '"+this.nombre+"', '"+this.apellido1+"', '"+this.apellido2+"', '"+this.direccion+"', '"+this.email+"', '"+this.password+"','"+this.telefono+"',"+this.id_localidad_cliente+" )"
 
                         + "");
-        JOptionPane.showMessageDialog(null, "Nuevo cliente");  
         statement.close();  
         myConnection.close();
     }
@@ -158,6 +157,32 @@ public class Cliente {
         JOptionPane.showMessageDialog(null, "cliente actualizado");  
         statement.close();  
         myConnection.close();
+    }
+    
+    public String select_email(String search_email) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT email FROM cliente WHERE email='"+search_email+"'";
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.email=rs.getString("email");
+        }
+        return this.email;
+    }
+    
+    public String select_pass(String search_pass) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT password FROM cliente WHERE password='"+search_pass+"'";
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.password=rs.getString("password");
+        }
+        return this.password;
     }
     
     public Cliente select_one_cliente(int id) throws SQLException{
