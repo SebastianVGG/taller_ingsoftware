@@ -14,7 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sun.security.util.SecurityConstants.AWT;
+import tables.Administracion;
 import tables.Cliente;
+import views.JF_Administracion;
 import views.Main_view;
 
 /**
@@ -27,6 +29,9 @@ public class Main_login extends javax.swing.JFrame {
     int mousepX;
     int mousepY;
     Cliente cliente = new Cliente();
+    Administracion admin = new Administracion();
+    Main_view view = new Main_view();
+    JF_Administracion view_admin = new JF_Administracion();
     public Main_login() {
         initComponents();
     }
@@ -305,6 +310,8 @@ public class Main_login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctas");
         else
         try {
+            String email_admin = admin.select_email(txt_correo.getText());
+            String pass_admin = admin.select_pass(txtp_pass.getText());
             String email = cliente.select_email(txt_correo.getText());
             String pass = cliente.select_pass(txtp_pass.getText());
                 try{
@@ -314,7 +321,12 @@ public class Main_login extends javax.swing.JFrame {
                             this.cliente=cliente.select_one_cliente(id_cliente);
                             Main_view main_view = new Main_view(this.cliente);
                             main_view.setVisible(true);
+                            view_admin.setVisible(true);
                             }
+                    else if(email_admin.equals(txt_correo.getText()))
+                            if(pass_admin.equals(txtp_pass.getText()))
+                                view.setVisible(true);
+
             }catch(Exception e){
                       JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctas"); 
                     }
