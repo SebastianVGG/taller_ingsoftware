@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import tables.Autor;
 import tables.Cesta;
+import tables.Cliente;
 import tables.Ebook;
 import tables.Editorial;
 import tables.Libro;
@@ -30,14 +31,14 @@ public class JF_View_Libro extends javax.swing.JFrame {
     Cesta cesta = new Cesta();
     Papel papel = new Papel();
     Ebook ebook = new Ebook();
+    Cliente cliente = new Cliente();
     int id_libro_elegido;
-    int id_cliente;
     
-    public JF_View_Libro(String url, Libro libro_id, int id_cliente) throws SQLException {
+    public JF_View_Libro(String url, Libro libro_id, Cliente cliente) throws SQLException {
        initComponents();
         ScaleImage(url);
          this.id_libro_elegido=libro_id.getId();
-         this.id_cliente=id_cliente;
+         this.cliente=cliente;
         get_libro_dates(this.id_libro_elegido);
          
     }
@@ -384,7 +385,9 @@ public class JF_View_Libro extends javax.swing.JFrame {
             Papel papel_datos = papel.select_id_libro(id_libro_elegido);
             Ebook ebook_datos = ebook.select_id_libro(id_libro_elegido);
             Libro datos_libro = libro.select_one_libro(id_libro_elegido);
-            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,id_cliente);
+            boolean papel = true;
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,this.cliente,papel);
+            ver_cesta.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }

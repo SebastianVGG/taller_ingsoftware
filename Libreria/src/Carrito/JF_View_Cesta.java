@@ -5,10 +5,10 @@
  */
 package Carrito;
 
-import tables.Autor;
+import tables.Almacen;
 import tables.Cesta;
+import tables.Cliente;
 import tables.Ebook;
-import tables.Editorial;
 import tables.Libro;
 import tables.Papel;
 
@@ -18,18 +18,34 @@ import tables.Papel;
  */
 public class JF_View_Cesta extends javax.swing.JFrame {
     Libro libro = new Libro();
-    Autor autor = new Autor();
-    Editorial editorial = new Editorial();
     Cesta cesta = new Cesta();
     Papel papel = new Papel();
     Ebook ebook = new Ebook();
+    Cliente cliente = new Cliente();
+    Almacen almacen = new Almacen();
+    
+    boolean papel_ebook;
     public JF_View_Cesta() {
         initComponents();
     }
-        public JF_View_Cesta(Papel papel, Ebook ebook,) {
+        public JF_View_Cesta(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook) {
         initComponents();
+        this.libro=libro;
+        this.papel=papel;
+        this.ebook=ebook;
+        this.cliente=cliente;
+        this.papel_ebook=papel_ebook;
+        set_dates();
     }
 
+        public void set_dates(){
+            Almacen almacen_dates = almacen.select_one_almacen(papel.getId());
+            lbl_Titulo.setText(libro.getTitulo());
+            lbl_id_libro.setText(String.valueOf(libro.getId()));
+            if(this.papel_ebook==true){
+                lbl_precio.setText(String.valueOf(papel.getPrecio()));
+            }
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -9,6 +9,7 @@ import Carrito.JF_View_Libro;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tables.Cliente;
 import tables.Libro;
 
 /**
@@ -18,13 +19,14 @@ import tables.Libro;
 public class Main_view extends javax.swing.JFrame {
 
     Libro libros = new Libro();
-    int id_cliente;
+    Cliente cliente = new Cliente();
+    
     public Main_view() {
         initComponents();
     }
-        public Main_view(int id_cliente) {
+        public Main_view(Cliente cliente) {
         initComponents();
-        this.id_cliente=id_cliente;
+        this.cliente=cliente;
     }
 
     /**
@@ -165,7 +167,7 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_1.getText());
             Libro libro = libros.select_one_libro(id);
             String url = "../images/Harry Potter_La piedra filosofal.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.id_cliente);
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
             ver_libro.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);

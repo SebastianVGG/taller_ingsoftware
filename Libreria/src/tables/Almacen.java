@@ -129,6 +129,24 @@ public class Almacen {
         return provincia;
     }
     
+        public Almacen select_id_papel(int id) throws SQLException{
+        Almacen provincia = new Almacen();
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id, direccion, telefono, id_localidad_almacen FROM almacen WHERE id="+id;
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.direccion=rs.getString("direccion");
+        provincia.setDireccion(this.direccion);
+        }
+        statement.close();  
+        myConnection.close();
+        rs.close();
+        return provincia;
+    }
+    
     
     public List<Almacen> select_almacen() throws SQLException{
       List<Almacen> provincias = new ArrayList<Almacen>();  
