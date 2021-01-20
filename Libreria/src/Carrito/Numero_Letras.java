@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class Numero_Letras {
 
-    private final String[] UNIDADES = {"", "un ", "dos ", "tres ", "cuatro ", "cinco ", "seis ", "siete ", "ocho ", "nueve "};
+    private final String[] UNIDADES = {"", "un ", "dos  ", "tres ", "cuatro ", "cinco ", "seis ", "siete ", "ocho ", "nueve "};
     private final String[] DECENAS = {"diez ", "once ", "doce ", "trece ", "catorce ", "quince ", "dieciseis ",
         "diecisiete ", "dieciocho ", "diecinueve", "veinte ", "treinta ", "cuarenta ",
         "cincuenta ", "sesenta ", "setenta ", "ochenta ", "noventa "};
@@ -37,7 +37,7 @@ public class Numero_Letras {
             //se divide el numero 0000000,00 -> entero y decimal
             String Num[] = numero.split(",");
             //de da formato al numero decimal
-            parte_decimal = "y " + Num[1] + "/100 Soles.";
+            parte_decimal = "con " + Num[1] + "/100 centavos.";
             //se convierte el numero a literal
             if (Integer.parseInt(Num[0]) == 0) {//si el valor es cero
                 literal = "cero ";
