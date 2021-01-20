@@ -129,8 +129,7 @@ public class Almacen {
         return provincia;
     }
     
-        public Almacen select_id_papel(int id) throws SQLException{
-        Almacen provincia = new Almacen();
+        public String select_id_papel(int id) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
@@ -139,12 +138,11 @@ public class Almacen {
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next()){
         this.direccion=rs.getString("direccion");
-        provincia.setDireccion(this.direccion);
         }
         statement.close();  
         myConnection.close();
         rs.close();
-        return provincia;
+        return this.direccion;
     }
     
     
