@@ -122,7 +122,34 @@ public class Papel {
         statement.close();  
         myConnection.close();
     }
-    
+        public Papel select_id_libro(int id) throws SQLException{
+        Papel provincia = new Papel();
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id, fecha_impresion, lugar_impresion, precio, id_libro_papel, id_almacen FROM papel WHERE id_libro_papel="+id;
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.fecha_impresion=rs.getDate("fecha_impresion");
+        provincia.setFecha_impresion(this.fecha_impresion);
+        this.lugar_impresion=rs.getString("lugar_impresion");
+        provincia.setLugar_impresion(this.lugar_impresion);
+        this.precio=rs.getFloat("precio");
+        provincia.setPrecio(this.precio);
+        this.id_libro_papel=rs.getInt("id_libro_papel");
+        provincia.setId_libro_papel(this.id_libro_papel);
+        this.id_almacen=rs.getInt("id_almacen");
+        provincia.setId_almacen(this.id_almacen);
+        }
+        statement.close();  
+        myConnection.close();
+        rs.close();
+        return provincia;
+    }
+        
     public Papel select_one_papel(int id) throws SQLException{
         Papel provincia = new Papel();
         Connection myConnection=DriverManager.getConnection(

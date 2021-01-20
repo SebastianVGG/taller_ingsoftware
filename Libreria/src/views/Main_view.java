@@ -5,17 +5,26 @@
  */
 package views;
 
+import Carrito.JF_View_Libro;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tables.Libro;
+
 /**
  *
  * @author Sebastian
  */
 public class Main_view extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main_view
-     */
+    Libro libros = new Libro();
+    int id_cliente;
     public Main_view() {
         initComponents();
+    }
+        public Main_view(int id_cliente) {
+        initComponents();
+        this.id_cliente=id_cliente;
     }
 
     /**
@@ -31,9 +40,9 @@ public class Main_view extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        pnl_1 = new javax.swing.JPanel();
+        btn_1 = new javax.swing.JButton();
+        lbl_1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,33 +65,38 @@ public class Main_view extends javax.swing.JFrame {
         jPanel5.setEnabled(false);
         jPanel5.setPreferredSize(new java.awt.Dimension(100, 800));
 
-        jPanel6.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_1.setBackground(new java.awt.Color(251, 238, 218));
 
-        jButton1.setBackground(new java.awt.Color(251, 238, 218));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry Potter_La piedra filosofal.jpg"))); // NOI18N
+        btn_1.setBackground(new java.awt.Color(251, 238, 218));
+        btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry Potter_La piedra filosofal.jpg"))); // NOI18N
+        btn_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_1ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setBackground(new java.awt.Color(251, 238, 218));
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><center>Harry Potter y la piedra filosofal");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel1.setAutoscrolls(true);
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel1.setOpaque(true);
+        lbl_1.setBackground(new java.awt.Color(251, 238, 218));
+        lbl_1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_1.setText("Harry Potter y la piedra filosofal");
+        lbl_1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lbl_1.setAutoscrolls(true);
+        lbl_1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbl_1.setOpaque(true);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout pnl_1Layout = new javax.swing.GroupLayout(pnl_1);
+        pnl_1.setLayout(pnl_1Layout);
+        pnl_1Layout.setHorizontalGroup(
+            pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnl_1Layout.setVerticalGroup(
+            pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_1Layout.createSequentialGroup()
+                .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -92,14 +106,14 @@ public class Main_view extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(680, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnl_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -146,6 +160,19 @@ public class Main_view extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+        try {
+            int id = libros.select_id(lbl_1.getText());
+            Libro libro = libros.select_one_libro(id);
+            String url = "../images/Harry Potter_La piedra filosofal.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.id_cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btn_1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -182,12 +209,12 @@ public class Main_view extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_1;
+    private javax.swing.JPanel pnl_1;
     // End of variables declaration//GEN-END:variables
 }

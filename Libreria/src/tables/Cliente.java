@@ -159,6 +159,19 @@ public class Cliente {
         myConnection.close();
     }
     
+       public int select_id(String search_email) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id FROM cliente WHERE email='"+search_email+"'";
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.id=rs.getInt("id");
+        }
+        return this.id;
+    }
+    
     public String select_email(String search_email) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""

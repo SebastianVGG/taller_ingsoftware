@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views;
+package Carrito;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.table.DefaultTableModel;
 import tables.Autor;
+import tables.Cesta;
+import tables.Ebook;
 import tables.Editorial;
 import tables.Libro;
+import tables.Papel;
 
 /**
  *
@@ -25,21 +27,36 @@ public class JF_View_Libro extends javax.swing.JFrame {
     Libro libro = new Libro();
     Autor autor = new Autor();
     Editorial editorial = new Editorial();
-    public JF_View_Libro() throws SQLException {
-        initComponents();
-        
+    Cesta cesta = new Cesta();
+    Papel papel = new Papel();
+    Ebook ebook = new Ebook();
+    int id_libro_elegido;
+    int id_cliente;
+    
+    public JF_View_Libro(String url, Libro libro_id, int id_cliente) throws SQLException {
+       initComponents();
+        ScaleImage(url);
+         this.id_libro_elegido=libro_id.getId();
+         this.id_cliente=id_cliente;
+        get_libro_dates(this.id_libro_elegido);
+         
+    }
+
+    private JF_View_Libro() {
+          initComponents();
     }
     
+    
     public void ScaleImage(String url){
-        ImageIcon icon = new ImageIcon();
+        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(url)));
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(lbl_picture.getWidth(),lbl_picture.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         lbl_picture.setIcon(scaledIcon);
+        
     }
     
     public void get_libro_dates(int id_libro) throws SQLException{
-        
         Libro datos_libro = libro.select_one_libro(id_libro);
         lbl_titulo.setText(datos_libro.getTitulo());
         txt_descripcion.setText(datos_libro.getDescripcion());
@@ -47,8 +64,12 @@ public class JF_View_Libro extends javax.swing.JFrame {
         lbl_paginas.setText(datos_libro.getPaginas());
         lbl_idioma.setText(datos_libro.getIdioma());
         lbl_año.setText(datos_libro.getAño_publicacion());
+        Papel papel_datos = papel.select_id_libro(datos_libro.getId());
+        Ebook ebook_datos = ebook.select_id_libro(datos_libro.getId());
         Autor datos_autor = autor.select_one_autor(datos_libro.getId_autor());
         Editorial datos_editorial = editorial.select_one_editorial(datos_libro.getId_editorial());
+        lbl_precio_ebook.setText(String.valueOf(ebook_datos.getPrecio()));
+        lbl_precio_papel.setText(String.valueOf(papel_datos.getPrecio()));
         lbl_autor.setText(datos_autor.getNombre());
         lbl_editorial.setText(datos_editorial.getNombre());
     }
@@ -63,15 +84,19 @@ public class JF_View_Libro extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lbl_picture = new javax.swing.JLabel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_titulo1 = new javax.swing.JLabel();
         lbl_autor = new javax.swing.JLabel();
         lbl_titulo2 = new javax.swing.JLabel();
         lbl_editorial = new javax.swing.JLabel();
+        lbl_picture = new javax.swing.JLabel();
         btn_ebook = new javax.swing.JButton();
         btn_papel = new javax.swing.JButton();
         lbl_titulo3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        lbl_titulo8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_descripcion = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         lbl_titulo4 = new javax.swing.JLabel();
         lbl_isbn = new javax.swing.JLabel();
@@ -85,71 +110,68 @@ public class JF_View_Libro extends javax.swing.JFrame {
         lbl_paginas = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        lbl_titulo8 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txt_descripcion = new javax.swing.JTextArea();
+        lbl_precio_ebook = new javax.swing.JLabel();
+        lbl_precio_papel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbl_picture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry Potter_La piedra filosofal.jpg"))); // NOI18N
-
-        lbl_titulo.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        lbl_titulo.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        lbl_titulo1.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        lbl_titulo1.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         lbl_titulo1.setText("Autor:");
 
-        lbl_autor.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        lbl_autor.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
 
-        lbl_titulo2.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        lbl_titulo2.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         lbl_titulo2.setText("Editorial:");
 
-        lbl_editorial.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        lbl_editorial.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lbl_picture)
+                .addContainerGap()
+                .addComponent(lbl_picture, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_titulo2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_editorial, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_titulo1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_autor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(10, 10, 10))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbl_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(lbl_titulo2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_editorial, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_titulo1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_autor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_autor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lbl_picture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_picture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_autor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(126, Short.MAX_VALUE))))
         );
 
         btn_ebook.setBackground(new java.awt.Color(255, 255, 255));
@@ -157,18 +179,38 @@ public class JF_View_Libro extends javax.swing.JFrame {
         btn_ebook.setBorder(null);
         btn_ebook.setBorderPainted(false);
         btn_ebook.setContentAreaFilled(false);
-        btn_ebook.setOpaque(false);
+        btn_ebook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ebookActionPerformed(evt);
+            }
+        });
 
         btn_papel.setBackground(new java.awt.Color(255, 255, 255));
         btn_papel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/button_comprar (1).png"))); // NOI18N
         btn_papel.setBorder(null);
         btn_papel.setBorderPainted(false);
         btn_papel.setContentAreaFilled(false);
-        btn_papel.setOpaque(false);
+        btn_papel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_papelActionPerformed(evt);
+            }
+        });
 
         lbl_titulo3.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lbl_titulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_titulo3.setText("Información adicional");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbl_titulo8.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        lbl_titulo8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_titulo8.setText("Sinopsis");
+
+        txt_descripcion.setEditable(false);
+        txt_descripcion.setColumns(20);
+        txt_descripcion.setRows(5);
+        txt_descripcion.setLineWrap(true);
+        jScrollPane1.setViewportView(txt_descripcion);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
@@ -189,20 +231,20 @@ public class JF_View_Libro extends javax.swing.JFrame {
         lbl_titulo5.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         lbl_titulo5.setText("Año");
         jPanel3.add(lbl_titulo5);
-        lbl_titulo5.setBounds(380, 10, 21, 16);
+        lbl_titulo5.setBounds(470, 10, 21, 16);
 
         lbl_año.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jPanel3.add(lbl_año);
-        lbl_año.setBounds(380, 30, 60, 20);
+        lbl_año.setBounds(470, 30, 60, 20);
 
         lbl_titulo6.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         lbl_titulo6.setText("Idioma");
         jPanel3.add(lbl_titulo6);
-        lbl_titulo6.setBounds(380, 70, 35, 16);
+        lbl_titulo6.setBounds(470, 70, 35, 16);
 
         lbl_idioma.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
         jPanel3.add(lbl_idioma);
-        lbl_idioma.setBounds(380, 90, 70, 20);
+        lbl_idioma.setBounds(470, 90, 70, 20);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/libro.png"))); // NOI18N
         jPanel3.add(jLabel6);
@@ -214,43 +256,53 @@ public class JF_View_Libro extends javax.swing.JFrame {
         lbl_titulo7.setBounds(50, 70, 39, 16);
 
         lbl_paginas.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        lbl_paginas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel3.add(lbl_paginas);
-        lbl_paginas.setBounds(50, 90, 60, 20);
+        lbl_paginas.setBounds(50, 90, 50, 20);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/calendar.png"))); // NOI18N
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(340, 10, 32, 32);
+        jLabel3.setBounds(430, 10, 32, 32);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/idioma.png"))); // NOI18N
         jPanel3.add(jLabel5);
-        jLabel5.setBounds(340, 70, 32, 32);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbl_titulo8.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
-        lbl_titulo8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_titulo8.setText("Sinopsis");
-
-        txt_descripcion.setColumns(20);
-        txt_descripcion.setRows(5);
-        jScrollPane1.setViewportView(txt_descripcion);
+        jLabel5.setBounds(430, 70, 32, 32);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addComponent(lbl_titulo8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addComponent(lbl_titulo8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                .addGap(4, 4, 4))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lbl_precio_ebook.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_precio_ebook.setForeground(new java.awt.Color(21, 96, 189));
+
+        lbl_precio_papel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_precio_papel.setForeground(new java.awt.Color(34, 139, 34));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 139, 34));
+        jLabel1.setText("$");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(21, 96, 189));
+        jLabel2.setText("$");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -259,36 +311,54 @@ public class JF_View_Libro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_titulo3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_papel)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_ebook)
-                                .addGap(15, 15, 15)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(42, 42, 42)
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbl_precio_papel))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(47, 47, 47)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lbl_precio_ebook))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btn_ebook))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_papel))))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lbl_precio_papel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_papel)
-                        .addGap(30, 30, 30)
-                        .addComponent(btn_ebook)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_precio_ebook))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_ebook)
+                        .addGap(47, 47, 47)))
                 .addComponent(lbl_titulo3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -301,11 +371,28 @@ public class JF_View_Libro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_papelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_papelActionPerformed
+        try {
+            Papel papel_datos = papel.select_id_libro(id_libro_elegido);
+            Ebook ebook_datos = ebook.select_id_libro(id_libro_elegido);
+            Libro datos_libro = libro.select_one_libro(id_libro_elegido);
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,id_cliente);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_papelActionPerformed
+
+    private void btn_ebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ebookActionPerformed
+         JF_View_Cesta ver_cesta = new JF_View_Cesta();
+    }//GEN-LAST:event_btn_ebookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,11 +424,7 @@ public class JF_View_Libro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new JF_View_Libro().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new JF_View_Libro().setVisible(true);
             }
         });
     }
@@ -349,6 +432,8 @@ public class JF_View_Libro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_ebook;
     private javax.swing.JButton btn_papel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -365,6 +450,8 @@ public class JF_View_Libro extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_isbn;
     private javax.swing.JLabel lbl_paginas;
     private javax.swing.JLabel lbl_picture;
+    private javax.swing.JLabel lbl_precio_ebook;
+    private javax.swing.JLabel lbl_precio_papel;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_titulo1;
     private javax.swing.JLabel lbl_titulo2;

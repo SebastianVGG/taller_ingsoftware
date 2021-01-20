@@ -307,10 +307,11 @@ public class Main_login extends javax.swing.JFrame {
         try {
             String email = cliente.select_email(txt_correo.getText());
             String pass = cliente.select_pass(txtp_pass.getText());
+            int id_cliente = cliente.select_id(txt_correo.getText());
                 try{
                     if (email.equals(txt_correo.getText()))
                          if(pass.equals(txtp_pass.getText())){
-                            Main_view main_view = new Main_view();
+                            Main_view main_view = new Main_view(id_cliente);
                             main_view.setVisible(true);
                             }
             }catch(Exception e){

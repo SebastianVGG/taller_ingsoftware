@@ -168,6 +168,22 @@ public class Libro {
         myConnection.close();
     }
     
+    public int select_id(String titulo) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        String sql= "SELECT id  FROM libro WHERE titulo='"+titulo+"'";
+        ResultSet rs = statement.executeQuery(sql);
+        while(rs.next()){
+        this.id=rs.getInt("id");
+        }
+        statement.close();  
+        myConnection.close();
+        rs.close();
+        return this.id;
+    }
+    
     public Libro select_one_libro(int id) throws SQLException{
         Libro provincia = new Libro();
         Connection myConnection=DriverManager.getConnection(
