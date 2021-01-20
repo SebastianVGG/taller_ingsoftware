@@ -386,7 +386,7 @@ public class JF_View_Libro extends javax.swing.JFrame {
             Ebook ebook_datos = ebook.select_id_libro(id_libro_elegido);
             Libro datos_libro = libro.select_one_libro(id_libro_elegido);
             boolean papel = true;
-            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,this.cliente,papel);
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,this.cliente,papel,2);
             ver_cesta.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
@@ -394,7 +394,16 @@ public class JF_View_Libro extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_papelActionPerformed
 
     private void btn_ebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ebookActionPerformed
-         JF_View_Cesta ver_cesta = new JF_View_Cesta();
+        try {
+            Papel papel_datos = papel.select_id_libro(id_libro_elegido);
+            Ebook ebook_datos = ebook.select_id_libro(id_libro_elegido);
+            Libro datos_libro = libro.select_one_libro(id_libro_elegido);
+            boolean ebook = false;
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,this.cliente,ebook,2);
+            ver_cesta.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_ebookActionPerformed
 
     /**

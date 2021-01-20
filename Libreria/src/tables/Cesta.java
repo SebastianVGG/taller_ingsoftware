@@ -8,6 +8,7 @@ package tables;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -65,18 +66,23 @@ public class Cesta {
         this.id_libro = id_libro;
     }
     
-    public void insert_cesta() throws SQLException{
+    public int insert_cesta() throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
-        Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("INSERT INTO cesta (id, fecha_compra, id_cliente, id_libro) VALUES (NULL, '"+this.fecha_compra+"',"+this.id_cliente+","+this.id_libro+")"
-
-                        + "");
+        String SQL_INSERT = "INSERT INTO cesta (id, fecha_compra, id_cliente, id_libro) VALUES (NULL, '"+this.fecha_compra+"',"+this.id_cliente+","+this.id_libro+")";
+        PreparedStatement statement = myConnection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
+        statement.execute();
         JOptionPane.showMessageDialog(null, "Nueva cesta");  
+        ResultSet rs = statement.getGeneratedKeys();
+        if (rs.next()) {
+            this.id = rs.getInt(1);
+        }
         statement.close();  
         myConnection.close();
+        return this.id;
     }
+    
     
     public void delete_cesta(int id) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
