@@ -11,6 +11,8 @@ import java.awt.Point;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import login.Main_login;
 
 import tables.Cliente;
 import tables.Libro;
@@ -84,6 +86,8 @@ public class Main_view extends javax.swing.JFrame {
         btn_12 = new javax.swing.JButton();
         lbl_12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btn_cerrar_sesion = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -620,11 +624,34 @@ public class Main_view extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 60, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 0, 880, 100);
+        jPanel3.setBounds(0, 0, 880, 60);
+
+        btn_cerrar_sesion.setText("Cerrar sesión");
+        btn_cerrar_sesion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 10));
+        btn_cerrar_sesion.setContentAreaFilled(false);
+        btn_cerrar_sesion.setDefaultCapable(false);
+        btn_cerrar_sesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cerrar_sesionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cerrar_sesion);
+        btn_cerrar_sesion.setBounds(790, 80, 120, 40);
+
+        btn_exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close_mainview.png"))); // NOI18N
+        btn_exit.setBorderPainted(false);
+        btn_exit.setContentAreaFilled(false);
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_exit);
+        btn_exit.setBounds(890, 20, 40, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -797,6 +824,22 @@ public class Main_view extends javax.swing.JFrame {
             this.setLocation(point.x-mousepX, point.y-mousepY);
     }//GEN-LAST:event_jPanel3MouseDragged
 
+    private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
+       dispose();
+       Main_login login = new Main_login();
+       login.setVisible(true);
+    }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+            String[] options = new String[] {"¡¡Si!!", "No :)"};
+            int response = JOptionPane.showOptionDialog(null, "¿Seguro que deseas salir?", "EXIT",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, options[0]);
+            if(response == 0)
+                 System.exit(0);
+       
+    }//GEN-LAST:event_btn_exitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -845,6 +888,8 @@ public class Main_view extends javax.swing.JFrame {
     private javax.swing.JButton btn_7;
     private javax.swing.JButton btn_8;
     private javax.swing.JButton btn_9;
+    private javax.swing.JButton btn_cerrar_sesion;
+    private javax.swing.JButton btn_exit;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

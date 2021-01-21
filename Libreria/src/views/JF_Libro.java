@@ -6,13 +6,17 @@
 package views;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Autor;
 import tables.Editorial;
 import tables.Libro;
+
 
 
 /**
@@ -23,7 +27,8 @@ public class JF_Libro extends javax.swing.JFrame {
 
     Autor autor = new Autor();
     Editorial editorial = new Editorial();
-    
+    JF_Papel papel = new JF_Papel();
+    JF_Ebook ebook = new JF_Ebook();
     Libro libro = new Libro();
     
     public JF_Libro() throws SQLException {
@@ -573,7 +578,18 @@ public class JF_Libro extends javax.swing.JFrame {
             
             Libro libro = new Libro(titulo,descripcion, isbn, año, paginas,idioma,id_autor_libro, id_editorial_libro);
             libro.insert_libro();
-            
+            String[] options = new String[] {"Papel", "Ebook", "Ambos"};
+            int response = JOptionPane.showOptionDialog(null, "Será libro formato fisico, ebook o ambos", "Agregar formato",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, options[0]);
+            if(response == 0)
+                papel.setVisible(true);
+            if(response==1)
+                ebook.setVisible(true);
+            if(response==2){
+                papel.setVisible(true);
+                ebook.setVisible(true);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -672,15 +688,25 @@ public class JF_Libro extends javax.swing.JFrame {
         
         List <Autor> autor_select = autor.select_all();
         List <Editorial> editorial_select = editorial.select_editorial();
+        ArrayList<String> list_autor= new ArrayList<String>();
+        ArrayList<String> list_editorial= new ArrayList<String>();
+        
+        for (int i = 0; i < autor_select.size(); i++) 
+             list_autor.add(autor_select.get(i).getNombre());
+        Collections.sort(list_autor);
+        
+           for (int i = 0; i < editorial_select.size(); i++) 
+             list_editorial.add(editorial_select.get(i).getNombre());
+        Collections.sort(list_editorial);
         
         for (int i = 0; i < autor_select.size(); i++) {
-            cbx_insert_autor.addItem(autor_select.get(i).getNombre());
-            cbx_update_autor.addItem(autor_select.get(i).getNombre());
+            cbx_insert_autor.addItem(list_autor.get(i));
+            cbx_update_autor.addItem(list_autor.get(i));
         } 
         
         for (int i = 0; i < editorial_select.size(); i++) {
-            cbx_insert_editorial.addItem(editorial_select.get(i).getNombre());
-            cbx_update_editorial.addItem(editorial_select.get(i).getNombre());
+            cbx_insert_editorial.addItem(list_editorial.get(i));
+            cbx_update_editorial.addItem(list_editorial.get(i));
         }
         
     }

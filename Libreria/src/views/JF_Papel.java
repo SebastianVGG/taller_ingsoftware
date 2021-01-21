@@ -7,6 +7,8 @@ package views;
 
 import java.util.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -565,16 +567,26 @@ public class JF_Papel extends javax.swing.JFrame {
     public void agregarItem_cbx() throws SQLException{
         
         List <Libro> libro_select = libro.select();
-        List <Almacen> almacen_select = almacen.select_almacen();
-
-        for (int i = 0; i < libro_select.size(); i++) {
-            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
-            cbx_update_libro.addItem(libro_select.get(i).getTitulo());
+        ArrayList<String> list_libro= new ArrayList<String>();
+        for (int i = 0; i < libro_select.size(); i++) 
+             list_libro.add(libro_select.get(i).getTitulo());
+        Collections.sort(list_libro);     
+        
+          for (int i = 0; i < libro_select.size(); i++) {
+            cbx_insert_libro.addItem(list_libro.get(i));
+            cbx_update_libro.addItem(list_libro.get(i));
         } 
         
+        List <Almacen> almacen_select = almacen.select_almacen();
+        ArrayList<String> list_almacen= new ArrayList<String>();
+        for (int i = 0; i < almacen_select.size(); i++) 
+             list_almacen.add(almacen_select.get(i).getDireccion());
+        Collections.sort(list_almacen);
+
+        
         for (int i = 0; i < almacen_select.size(); i++) {
-            cbx_insert_almacen.addItem(almacen_select.get(i).getDireccion());
-            cbx_update_almacen.addItem(almacen_select.get(i).getDireccion());
+            cbx_insert_almacen.addItem(list_almacen.get(i));
+            cbx_update_almacen.addItem(list_almacen.get(i));
         } 
         
     }

@@ -6,6 +6,8 @@
 package views;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -465,10 +467,14 @@ public class JF_Ebook extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public void agregarItem_cbx() throws SQLException{
         List <Libro> libro_select = libro.select();
-        for (int i = 0; i < libro_select.size(); i++) {
-            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
-            cbx_update_libro.addItem(libro_select.get(i).getTitulo());
-        } 
+        ArrayList<String> list= new ArrayList<String>();
+        for (int i = 0; i < libro_select.size(); i++) 
+             list.add(libro_select.get(i).getTitulo());
+        Collections.sort(list);
+        for (int i = 0; i < libro_select.size(); i++){
+              cbx_insert_libro.addItem(list.get(i));
+            cbx_update_libro.addItem(list.get(i));
+        }
     }
     
     public void agregarItem_tbl() throws SQLException{

@@ -323,12 +323,15 @@ public class Main_login extends javax.swing.JFrame {
                             this.cliente=cliente.select_one_cliente(id_cliente);
                             dispose();
                             Main_view main_view = new Main_view(this.cliente);
+                            main_view.setLocationRelativeTo(null);
                             main_view.setVisible(true);
                             
                         }
                         else if(txt_correo.getText().equals(email_admin) & txtp_pass.getText().equals(pass_admin)){
                            dispose();
+                            view.setLocationRelativeTo(null);
                             view.setVisible(true);
+                            view_admin.setLocationRelativeTo(null);
                             view_admin.setVisible(true);
                         }
                         else
