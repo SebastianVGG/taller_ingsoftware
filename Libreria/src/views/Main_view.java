@@ -827,6 +827,7 @@ public class Main_view extends javax.swing.JFrame {
     private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
        dispose();
        Main_login login = new Main_login();
+       login.setLocationRelativeTo(null);
        login.setVisible(true);
     }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
 
