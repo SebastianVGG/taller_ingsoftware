@@ -7,6 +7,7 @@ package login;
 
 import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.sql.SQLException;
@@ -64,6 +65,7 @@ public class Main_login extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         pnl_move_brown = new javax.swing.JPanel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
@@ -306,34 +308,39 @@ public class Main_login extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_contraseñaMouseClicked
 
     private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
+        
         if(txt_correo.getText().isEmpty() || txtp_pass.getText().isEmpty())
             JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctas");
-        else
-        try {
-            String email_admin = admin.select_email(txt_correo.getText());
-            String pass_admin = admin.select_pass(txtp_pass.getText());
-            String email = cliente.select_email(txt_correo.getText());
-            String pass = cliente.select_pass(txtp_pass.getText());
-                try{
-                    if (email.equals(txt_correo.getText()))
-                         if(pass.equals(txtp_pass.getText())){
+        
+        else{
+            try {
+                String email_admin = admin.select_email(txt_correo.getText());
+                String pass_admin = admin.select_pass(txtp_pass.getText());
+                String email = cliente.select_email(txt_correo.getText());
+                String pass = cliente.select_pass(txtp_pass.getText());
+                System.out.println(txt_correo.getText().equals(email));
+
+                        if (txt_correo.getText().equals(email)  & txtp_pass.getText().equals(pass) ){
+
                             int id_cliente = cliente.select_id(txt_correo.getText());
                             this.cliente=cliente.select_one_cliente(id_cliente);
+                            dispose();
                             Main_view main_view = new Main_view(this.cliente);
                             main_view.setVisible(true);
+                            
+                        }
+                        else if(txt_correo.getText().equals(email_admin) & txtp_pass.getText().equals(pass_admin)){
+                           dispose();
+                            view.setVisible(true);
                             view_admin.setVisible(true);
-                            }
-                    else if(email_admin.equals(txt_correo.getText()))
-                            if(pass_admin.equals(txtp_pass.getText()))
-                                view.setVisible(true);
-
-            }catch(Exception e){
-                      JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctas"); 
-                    }
-                    } catch (SQLException ex) {
-            Logger.getLogger(Main_login.class.getName()).log(Level.SEVERE, null, ex);
-        }     
-
+                        }
+                        else
+                           JOptionPane.showMessageDialog(null, "El correo o la contraseña no son correctas"); 
+  
+            } catch (SQLException ex) {
+                Logger.getLogger(Main_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           }
     }//GEN-LAST:event_btn_iniciar_sesionActionPerformed
 
     private void btn_crear_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crear_cuentaActionPerformed

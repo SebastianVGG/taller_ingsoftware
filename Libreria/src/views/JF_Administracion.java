@@ -5,15 +5,17 @@
  */
 package views;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Sebastian
  */
 public class JF_Administracion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_Administracion
-     */
+    
     public JF_Administracion() {
         initComponents();
     }
@@ -27,21 +29,267 @@ public class JF_Administracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        btn_almacen = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btn_autor = new javax.swing.JButton();
+        btn_cliente = new javax.swing.JButton();
+        btn_provincia = new javax.swing.JButton();
+        btn_ebook = new javax.swing.JButton();
+        btn_editorial = new javax.swing.JButton();
+        btn_libro = new javax.swing.JButton();
+        btn_cesta = new javax.swing.JButton();
+        btn_localidad = new javax.swing.JButton();
+        btn_papel = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        btn_almacen.setText("ALMACEN");
+        btn_almacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_almacenActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("PANEL ADMINISTRATIVO");
+
+        btn_autor.setText("AUTOR");
+        btn_autor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_autorActionPerformed(evt);
+            }
+        });
+
+        btn_cliente.setText("CLIENTE");
+        btn_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clienteActionPerformed(evt);
+            }
+        });
+
+        btn_provincia.setText("PROVINCIA");
+        btn_provincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_provinciaActionPerformed(evt);
+            }
+        });
+
+        btn_ebook.setText("EBOOK");
+        btn_ebook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ebookActionPerformed(evt);
+            }
+        });
+
+        btn_editorial.setText("EDITORIAL");
+        btn_editorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editorialActionPerformed(evt);
+            }
+        });
+
+        btn_libro.setText("LIBRO");
+        btn_libro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_libroActionPerformed(evt);
+            }
+        });
+
+        btn_cesta.setText("CESTA");
+        btn_cesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cestaActionPerformed(evt);
+            }
+        });
+
+        btn_localidad.setText("LOCALIDAD");
+        btn_localidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_localidadActionPerformed(evt);
+            }
+        });
+
+        btn_papel.setText("PAPEL");
+        btn_papel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_papelActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_ebook, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(103, 103, 103)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btn_autor, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                                        .addComponent(btn_cesta, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btn_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btn_papel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btn_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(49, 49, 49)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_autor, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cesta, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(btn_ebook, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_papel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 749, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_almacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_almacenActionPerformed
+        try {
+            JF_Almacen almacen = new JF_Almacen();
+            almacen.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_almacenActionPerformed
+
+    private void btn_autorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_autorActionPerformed
+        try {
+            JF_Autor autor = new JF_Autor();
+            autor.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_autorActionPerformed
+
+    private void btn_cestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cestaActionPerformed
+        try {
+            JF_Cesta cesta = new JF_Cesta();
+            cesta.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_cestaActionPerformed
+
+    private void btn_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clienteActionPerformed
+        try {
+            JF_Cliente cliente = new JF_Cliente();
+            cliente.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_clienteActionPerformed
+
+    private void btn_ebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ebookActionPerformed
+        try {
+            JF_Ebook ebook = new JF_Ebook();
+            ebook.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_ebookActionPerformed
+
+    private void btn_editorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editorialActionPerformed
+        try {
+            JF_Editorial editorial = new JF_Editorial();
+            editorial.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_editorialActionPerformed
+
+    private void btn_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_libroActionPerformed
+        try {
+            JF_Libro libro = new JF_Libro();
+            libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_libroActionPerformed
+
+    private void btn_localidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_localidadActionPerformed
+        try {
+            JF_Localidad localidad = new JF_Localidad();
+            localidad.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_localidadActionPerformed
+
+    private void btn_papelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_papelActionPerformed
+        try {
+            JF_Papel papel = new JF_Papel();
+            papel.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_papelActionPerformed
+
+    private void btn_provinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_provinciaActionPerformed
+        try {
+            JF_Provincia provincia = new JF_Provincia();
+            provincia.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Administracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_provinciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +327,17 @@ public class JF_Administracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_almacen;
+    private javax.swing.JButton btn_autor;
+    private javax.swing.JButton btn_cesta;
+    private javax.swing.JButton btn_cliente;
+    private javax.swing.JButton btn_ebook;
+    private javax.swing.JButton btn_editorial;
+    private javax.swing.JButton btn_libro;
+    private javax.swing.JButton btn_localidad;
+    private javax.swing.JButton btn_papel;
+    private javax.swing.JButton btn_provincia;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
