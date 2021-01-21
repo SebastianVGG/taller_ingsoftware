@@ -5,16 +5,13 @@
  */
 package login;
 
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.HeadlessException;
+
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import sun.security.util.SecurityConstants.AWT;
 import tables.Administracion;
 import tables.Cliente;
 import views.JF_Administracion;
