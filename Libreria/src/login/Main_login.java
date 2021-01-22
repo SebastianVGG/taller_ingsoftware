@@ -26,14 +26,29 @@ public class Main_login extends javax.swing.JFrame {
 
     int mousepX;
     int mousepY;
+    String email_cuenta;
+    String password_cuenta;
     Cliente cliente = new Cliente();
     Administracion admin = new Administracion();
     Main_view view = new Main_view();
     JF_Administracion view_admin = new JF_Administracion();
+    
     public Main_login() {
         initComponents();
+        txtp_pass.setEchoChar((char)0);
+    }
+    
+        public Main_login(String email, String password) {
+        initComponents();
+        this.email_cuenta=email;
+        this.password_cuenta=password;
+        colocar_em_pass();
     }
 
+        void colocar_em_pass(){
+            txt_correo.setText(this.email_cuenta);
+            txtp_pass.setText(this.password_cuenta);
+        }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -43,8 +58,7 @@ public class Main_login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btn_iniciar_sesion = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        lbl_contraseña = new javax.swing.JLabel();
-        txt_pass = new javax.swing.JTextField();
+        check_box = new javax.swing.JCheckBox();
         txt_correo = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
@@ -92,27 +106,13 @@ public class Main_login extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
 
-        lbl_contraseña.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        lbl_contraseña.setText("Contraseña");
-        lbl_contraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_contraseñaMouseClicked(evt);
+        check_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check_boxActionPerformed(evt);
             }
         });
-        jPanel3.add(lbl_contraseña);
-        lbl_contraseña.setBounds(40, 120, 100, 20);
-
-        txt_pass.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txt_pass.setForeground(new java.awt.Color(41, 32, 18));
-        txt_pass.setText("Contraseña");
-        txt_pass.setBorder(null);
-        txt_pass.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_passMouseClicked(evt);
-            }
-        });
-        jPanel3.add(txt_pass);
-        txt_pass.setBounds(40, 150, 290, 20);
+        jPanel3.add(check_box);
+        check_box.setBounds(320, 110, 20, 30);
 
         txt_correo.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         txt_correo.setForeground(new java.awt.Color(41, 32, 18));
@@ -142,7 +142,8 @@ public class Main_login extends javax.swing.JFrame {
         jPanel3.add(jLabel10);
         jLabel10.setBounds(340, 110, 24, 25);
 
-        txtp_pass.setFont(new java.awt.Font("Segoe UI Light", 0, 16)); // NOI18N
+        txtp_pass.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txtp_pass.setText("Contraseña");
         txtp_pass.setBorder(null);
         txtp_pass.setOpaque(false);
         txtp_pass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -151,7 +152,7 @@ public class Main_login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtp_pass);
-        txtp_pass.setBounds(40, 120, 290, 22);
+        txtp_pass.setBounds(40, 120, 270, 20);
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 162, 406, 177);
@@ -286,23 +287,14 @@ public class Main_login extends javax.swing.JFrame {
                          txt_correo.setText("");
 
     }//GEN-LAST:event_txt_correoMouseClicked
-
-    private void txt_passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passMouseClicked
-         if (txt_pass.getText().equals("Contraseña"))
-                         txt_pass.setText("");
-    }//GEN-LAST:event_txt_passMouseClicked
-
+void password(){
+     if (txtp_pass.getText().equals("Contraseña"))
+                         txtp_pass.setText("");
+}
     private void txtp_passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtp_passMouseClicked
-        if (lbl_contraseña.getText().equals("Contraseña"))
-                         lbl_contraseña.setText("");
-
+        password();
+         txtp_pass.setEchoChar('*');
     }//GEN-LAST:event_txtp_passMouseClicked
-
-    private void lbl_contraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_contraseñaMouseClicked
-             if (lbl_contraseña.getText().equals("Contraseña"))
-                         lbl_contraseña.setText("");
-
-    }//GEN-LAST:event_lbl_contraseñaMouseClicked
 
     private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
         
@@ -352,6 +344,14 @@ public class Main_login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_crear_cuentaActionPerformed
 
+    private void check_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check_boxActionPerformed
+        if(check_box.isSelected()){
+            txtp_pass.setEchoChar((char)0);
+        }else{
+            txtp_pass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_check_boxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,6 +392,7 @@ public class Main_login extends javax.swing.JFrame {
     private javax.swing.JButton btn_close;
     private javax.swing.JButton btn_crear_cuenta;
     private javax.swing.JButton btn_iniciar_sesion;
+    private javax.swing.JCheckBox check_box;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -406,10 +407,8 @@ public class Main_login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbl_contraseña;
     private javax.swing.JPanel pnl_move_brown;
     private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_pass;
     private javax.swing.JPasswordField txtp_pass;
     // End of variables declaration//GEN-END:variables
 }

@@ -479,25 +479,25 @@ public class JF_Cesta extends javax.swing.JFrame {
     public void agregarItem_cbx() throws SQLException{
         List <Cliente> cliente_select = cliente.select_cliente(); //Lista foreanea
         List <Libro> libro_select = libro.select();
-        ArrayList<String> list_cliente= new ArrayList<String>();
-        for (int i = 0; i < cliente_select.size(); i++) 
-             list_cliente.add(cliente_select.get(i).getNombre());
-        Collections.sort(list_cliente);
+//        ArrayList<String> list_cliente= new ArrayList<String>();
+//        for (int i = 0; i < cliente_select.size(); i++) 
+//             list_cliente.add(cliente_select.get(i).getNombre());
+//        Collections.sort(list_cliente);
         
-        ArrayList<String> list_libro= new ArrayList<String>();
-        for (int i = 0; i < libro_select.size(); i++) 
-             list_libro.add(libro_select.get(i).getTitulo());
-        Collections.sort(list_libro);
-        
+//        ArrayList<String> list_libro= new ArrayList<String>();
+//        for (int i = 0; i < libro_select.size(); i++) 
+//             list_libro.add(libro_select.get(i).getTitulo());
+//        Collections.sort(list_libro);
+//        
         
         for (int i = 0; i < libro_select.size(); i++) {   
-            cbx_insert_libro.addItem(list_libro.get(i));
-            cbx_update_id_libro.addItem(list_libro.get(i));
+            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
+            cbx_update_id_libro.addItem(libro_select.get(i).getTitulo());
         }
         
         for (int i = 0; i < cliente_select.size(); i++) {
-            cbx_insert_cliente.addItem(list_cliente.get(i));
-            cbx_update_id_cliente.addItem(list_cliente.get(i));
+            cbx_insert_cliente.addItem(cliente_select.get(i).getNombre());
+            cbx_update_id_cliente.addItem(cliente_select.get(i).getNombre());
         }
     }
     

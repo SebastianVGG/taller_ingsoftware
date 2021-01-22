@@ -567,14 +567,14 @@ public class JF_Papel extends javax.swing.JFrame {
     public void agregarItem_cbx() throws SQLException{
         
         List <Libro> libro_select = libro.select();
-        ArrayList<String> list_libro= new ArrayList<String>();
-        for (int i = 0; i < libro_select.size(); i++) 
-             list_libro.add(libro_select.get(i).getTitulo());
-        Collections.sort(list_libro);     
+//        ArrayList<String> list_libro= new ArrayList<String>();
+//        for (int i = 0; i < libro_select.size(); i++) 
+//             list_libro.add(libro_select.get(i).getTitulo());
+//        Collections.sort(list_libro);     
         
           for (int i = 0; i < libro_select.size(); i++) {
-            cbx_insert_libro.addItem(list_libro.get(i));
-            cbx_update_libro.addItem(list_libro.get(i));
+            cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
+            cbx_update_libro.addItem(libro_select.get(i).getTitulo());
         } 
         
         List <Almacen> almacen_select = almacen.select_almacen();

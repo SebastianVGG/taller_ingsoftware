@@ -447,14 +447,14 @@ public class JF_Localidad extends javax.swing.JFrame {
 
     public void agregarItem_cbx() throws SQLException{
         List <Provincia> provincia_select = provincia.select_provincia();
-        ArrayList<String> list= new ArrayList<String>();
-        for (int i = 0; i < provincia_select.size(); i++) 
-             list.add(provincia_select.get(i).getNombre());
-        Collections.sort(list);
+//        ArrayList<String> list= new ArrayList<String>();
+//        for (int i = 0; i < provincia_select.size(); i++) 
+//             list.add(provincia_select.get(i).getNombre());
+//        Collections.sort(list);
         
         for (int i = 0; i < provincia_select.size(); i++) {
-            cbx_insert_provincia.addItem(list.get(i));
-            cbx_update_provincia.addItem(list.get(i));
+            cbx_insert_provincia.addItem(provincia_select.get(i).getNombre());
+            cbx_update_provincia.addItem(provincia_select.get(i).getNombre());
         } 
     }
     

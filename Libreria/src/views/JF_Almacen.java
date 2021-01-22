@@ -488,14 +488,14 @@ public class JF_Almacen extends javax.swing.JFrame {
     public void agregarItem_cbx() throws SQLException{ //Agregar datos a los combo box de las llaves foraneas
         
         List <Localidad> localidad_select = localidad.select_localidad(); //Lista foreanea
-        ArrayList<String> list= new ArrayList<String>();
-        for (int i = 0; i < localidad_select.size(); i++) 
-             list.add(localidad_select.get(i).getNombre());
-        Collections.sort(list);
+//        ArrayList<String> list= new ArrayList<String>();
+//        for (int i = 0; i < localidad_select.size(); i++) 
+//             list.add(localidad_select.get(i).getNombre());
+//        Collections.sort(list);
         
         for (int i = 0; i < localidad_select.size(); i++) {
-            cbx_insert_localidad.addItem(list.get(i));
-            cbx_update_localidad.addItem(list.get(i));
+            cbx_insert_localidad.addItem(localidad_select.get(i).getNombre());
+            cbx_update_localidad.addItem(localidad_select.get(i).getNombre());
         } 
     }
     

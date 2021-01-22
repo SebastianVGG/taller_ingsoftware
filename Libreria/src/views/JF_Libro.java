@@ -688,25 +688,25 @@ public class JF_Libro extends javax.swing.JFrame {
         
         List <Autor> autor_select = autor.select_all();
         List <Editorial> editorial_select = editorial.select_editorial();
-        ArrayList<String> list_autor= new ArrayList<String>();
-        ArrayList<String> list_editorial= new ArrayList<String>();
-        
-        for (int i = 0; i < autor_select.size(); i++) 
-             list_autor.add(autor_select.get(i).getNombre());
-        Collections.sort(list_autor);
-        
-           for (int i = 0; i < editorial_select.size(); i++) 
-             list_editorial.add(editorial_select.get(i).getNombre());
-        Collections.sort(list_editorial);
+//        ArrayList<String> list_autor= new ArrayList<String>();
+//        ArrayList<String> list_editorial= new ArrayList<String>();
+//        
+//        for (int i = 0; i < autor_select.size(); i++) 
+//             list_autor.add(autor_select.get(i).getNombre());
+//        Collections.sort(list_autor);
+//        
+//           for (int i = 0; i < editorial_select.size(); i++) 
+//             list_editorial.add(editorial_select.get(i).getNombre());
+//        Collections.sort(list_editorial);
         
         for (int i = 0; i < autor_select.size(); i++) {
-            cbx_insert_autor.addItem(list_autor.get(i));
-            cbx_update_autor.addItem(list_autor.get(i));
+            cbx_insert_autor.addItem(autor_select.get(i).getNombre());
+            cbx_update_autor.addItem(autor_select.get(i).getNombre());
         } 
         
         for (int i = 0; i < editorial_select.size(); i++) {
-            cbx_insert_editorial.addItem(list_editorial.get(i));
-            cbx_update_editorial.addItem(list_editorial.get(i));
+            cbx_insert_editorial.addItem(editorial_select.get(i).getNombre());
+            cbx_update_editorial.addItem(editorial_select.get(i).getNombre());
         }
         
     }

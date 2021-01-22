@@ -26,6 +26,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
 
     Localidad localidad = new Localidad();
     Cliente cliente = new Cliente();
+    
     public JF_Crear_cuenta() throws SQLException {
         initComponents();
         agregarItem_cbx();
@@ -238,7 +239,17 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
                 
             Cliente cliente = new Cliente(nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
             cliente.insert_cliente();
-            JOptionPane.showMessageDialog(null,"Cuenta creada correctamente");
+            Main_login login = new Main_login(email,password);
+            String[] options = new String[] {"Iniciar sesión"};
+            int response = JOptionPane.showOptionDialog(null, "Cuenta creada correctamente", "",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, options[0]);
+            if(response == 0){
+                dispose();
+                login.setLocationRelativeTo(null);
+                 login.setVisible(true);
+            }
+               
           }
             
             else

@@ -467,13 +467,13 @@ public class JF_Ebook extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public void agregarItem_cbx() throws SQLException{
         List <Libro> libro_select = libro.select();
-        ArrayList<String> list= new ArrayList<String>();
-        for (int i = 0; i < libro_select.size(); i++) 
-             list.add(libro_select.get(i).getTitulo());
-        Collections.sort(list);
+//        ArrayList<String> list= new ArrayList<String>();
+//        for (int i = 0; i < libro_select.size(); i++) 
+//             list.add(libro_select.get(i).getTitulo());
+//        Collections.sort(list);
         for (int i = 0; i < libro_select.size(); i++){
-              cbx_insert_libro.addItem(list.get(i));
-            cbx_update_libro.addItem(list.get(i));
+              cbx_insert_libro.addItem(libro_select.get(i).getTitulo());
+            cbx_update_libro.addItem(libro_select.get(i).getTitulo());
         }
     }
     
