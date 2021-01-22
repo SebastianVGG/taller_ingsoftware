@@ -12,7 +12,17 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import static java.time.temporal.TemporalQueries.localTime;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import tables.Almacen;
@@ -39,7 +49,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
     public JF_View_Cesta() {
         initComponents();
     }
-        public JF_View_Cesta(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad) throws SQLException {
+        public JF_View_Cesta(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad) throws SQLException, ParseException {
         initComponents();
         this.libro=libro;
         this.papel=papel;
@@ -50,14 +60,16 @@ public class JF_View_Cesta extends javax.swing.JFrame {
         set_dates();
     }
 
-        public void set_dates() throws SQLException{
-            
-            LocalDate fecha = java.time.LocalDate.now();
+        public void set_dates() throws SQLException, ParseException{
+            Date date = new Date();
+            String fecha = new SimpleDateFormat("yyyy-MM-dd").format(date);
+           
             int id_cliente = cliente.getId();
             int id_libro = libro.getId();
-            Cesta cesta = new Cesta(String.valueOf(fecha),cantidad,id_cliente,id_libro);
+            
+            Cesta cesta = new Cesta(date,cantidad,id_cliente,id_libro);
             cesta.insert_cesta();
-            lbl_fecha_compra.setText(cesta.getFecha_compra());
+            lbl_fecha_compra.setText(String.valueOf(cesta.getFecha_compra()));
             lbl_no_cesta.setText(String.valueOf(cesta.getId()));
             lbl_Titulo.setText(libro.getTitulo());
             lbl_id_libro.setText(String.valueOf(libro.getId()));

@@ -79,6 +79,7 @@ public class JF_Ebook extends javax.swing.JFrame {
         btn_delete1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 

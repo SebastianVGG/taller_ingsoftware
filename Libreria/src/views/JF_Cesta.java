@@ -6,8 +6,7 @@
 package views;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +38,7 @@ public class JF_Cesta extends javax.swing.JFrame {
     public void get_cesta_dates(int id_cesta) throws SQLException{
         Cesta datos_cesta = cesta.select_one_cesta(id_cesta);
         label_id.setText(String.valueOf(datos_cesta.getId()));
-        txt_update_fecha_compra.setText(datos_cesta.getFecha_compra());
+        date_update_fecha.setDate(datos_cesta.getFecha_compra());
         Cliente datos_cliente = cliente.select_one_cliente(datos_cesta.getId_cliente());
         cbx_update_id_cliente.setSelectedItem(datos_cliente.getNombre());
         Libro datos_libro = libro.select_one_libro(datos_cesta.getId_libro());
@@ -47,7 +46,8 @@ public class JF_Cesta extends javax.swing.JFrame {
     }
     
     public void refrescar(){
-        txt_update_fecha_compra.setText("");
+       
+        txt_update_cantidad.setText("");
         label_id.setText("");
     }
     @SuppressWarnings("unchecked")
@@ -60,12 +60,12 @@ public class JF_Cesta extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtf_insert_fecha_compra = new javax.swing.JTextField();
         btn_insertar = new javax.swing.JButton();
         cbx_insert_cliente = new javax.swing.JComboBox<>();
         cbx_insert_libro = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         txt_insert_cantidad = new javax.swing.JTextField();
+        date_insert_fecha = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,19 +74,20 @@ public class JF_Cesta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         label_id = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txt_update_fecha_compra = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         cbx_update_id_cliente = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         cbx_update_id_libro = new javax.swing.JComboBox<>();
         txt_update_cantidad = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        date_update_fecha = new com.toedter.calendar.JDateChooser();
         jPanel5 = new javax.swing.JPanel();
         btn_refrescar1 = new javax.swing.JButton();
         btn_update1 = new javax.swing.JButton();
         btn_delete1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -127,18 +128,18 @@ public class JF_Cesta extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_insert_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtf_insert_fecha_compra)
                         .addComponent(cbx_insert_cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbx_insert_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addComponent(cbx_insert_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(date_insert_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(txtf_insert_fecha_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(date_insert_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -178,7 +179,7 @@ public class JF_Cesta extends javax.swing.JFrame {
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editorial cesta", jPanel1);
@@ -240,12 +241,12 @@ public class JF_Cesta extends javax.swing.JFrame {
                         .addGap(99, 99, 99)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_update_fecha_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbx_update_id_libro, 0, 210, Short.MAX_VALUE)
-                            .addComponent(cbx_update_id_cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cbx_update_id_cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(date_update_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                         .addComponent(txt_update_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(150, 150, 150)))
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -258,10 +259,10 @@ public class JF_Cesta extends javax.swing.JFrame {
                     .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_update_fecha_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(date_update_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_update_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
@@ -376,9 +377,13 @@ public class JF_Cesta extends javax.swing.JFrame {
             int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId();
             int cbx_id_libro = cbx_update_id_libro.getSelectedIndex();
             int id_cesta_libro = libro_select.get(cbx_id_libro).getId();
-            String fecha_compra = txt_update_fecha_compra.getText();
+            
+            Date date = (Date) date_update_fecha.getDate();
+            long d = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(d);
+
             int cantidad = Integer.parseInt(txt_update_cantidad.getText());
-            cesta.update_cesta(id_cesta, fecha_compra, cantidad,id_cesta_cliente, id_cesta_libro);
+            cesta.update_cesta(id_cesta, fecha, cantidad,id_cesta_cliente, id_cesta_libro);
             refrescar();
         
         } catch (SQLException ex) {
@@ -391,6 +396,7 @@ public class JF_Cesta extends javax.swing.JFrame {
             int r = tb_cesta.getSelectedRow();
             int id_cesta = (int) tb_cesta.getValueAt(r, 0);
             cesta.delete_cesta(id_cesta);
+            refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -423,7 +429,11 @@ public class JF_Cesta extends javax.swing.JFrame {
         try {
             List <Cliente> cliente_select = cliente.select_cliente(); //Se crea lista de objectos de la clase Localidad (foranea)
             List <Libro> libro_select = libro.select(); //Se crea lista de objectos de la clase Localidad (foranea)
-            String fecha = txtf_insert_fecha_compra.getText(); //Se guardan en variables de los txtfield
+            
+            Date date = (Date) date_insert_fecha.getDate();
+            long d = date.getTime();
+            java.sql.Date fecha = new java.sql.Date(d);
+
             int cbx_id_cliente = cbx_insert_cliente.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
             int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId(); //Se obtiene la id de la localidad seleccionada
             int cantidad = Integer.parseInt(txt_insert_cantidad.getText());
@@ -485,6 +495,8 @@ public class JF_Cesta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbx_insert_libro;
     private javax.swing.JComboBox<String> cbx_update_id_cliente;
     private javax.swing.JComboBox<String> cbx_update_id_libro;
+    private com.toedter.calendar.JDateChooser date_insert_fecha;
+    private com.toedter.calendar.JDateChooser date_update_fecha;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
@@ -506,8 +518,6 @@ public class JF_Cesta extends javax.swing.JFrame {
     private javax.swing.JTable tb_cesta;
     private javax.swing.JTextField txt_insert_cantidad;
     private javax.swing.JTextField txt_update_cantidad;
-    private javax.swing.JTextField txt_update_fecha_compra;
-    private javax.swing.JTextField txtf_insert_fecha_compra;
     // End of variables declaration//GEN-END:variables
     public void agregarItem_cbx() throws SQLException{
         List <Cliente> cliente_select = cliente.select_cliente(); //Lista foreanea

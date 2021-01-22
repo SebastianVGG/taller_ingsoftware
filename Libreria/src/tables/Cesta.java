@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,12 +23,12 @@ import javax.swing.JOptionPane;
 public class Cesta {
     
     private int id;
-    private String fecha_compra;
+    private Date fecha_compra;
     private int cantidad;
     private int id_cliente;
     private int id_libro;
     
-    public Cesta(String fecha_compra,int cantidad, int id_cliente, int id_libro){
+    public Cesta(Date fecha_compra,int cantidad, int id_cliente, int id_libro){
         this.fecha_compra = fecha_compra;
         this.cantidad=cantidad;
         this.id_cliente = id_cliente;
@@ -44,11 +45,11 @@ public class Cesta {
         this.id = id;
     }
 
-    public String getFecha_compra() {
+    public Date getFecha_compra() {
         return fecha_compra;
     }
 
-    public void setFecha_compra(String fecha_compra) {
+    public void setFecha_compra(Date fecha_compra) {
         this.fecha_compra = fecha_compra;
     }
    public int getCantidad() {
@@ -102,7 +103,7 @@ public class Cesta {
         myConnection.close();
     }
     
-    public void update_cesta(int id, String fecha_compra, int cantidad1,int id_cliente, int id_libro) throws SQLException{
+    public void update_cesta(int id,Date fecha_compra, int cantidad1,int id_cliente, int id_libro) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
@@ -124,7 +125,7 @@ public class Cesta {
         while(rs.next()){
         this.id=rs.getInt("id");
         provincia.setId(this.id);
-        this.fecha_compra=rs.getString("fecha_compra");
+        this.fecha_compra=rs.getDate("fecha_compra");
         provincia.setFecha_compra(this.fecha_compra);
         this.cantidad=rs.getInt("cantidad");
         provincia.setCantidad(this.cantidad);
@@ -152,7 +153,7 @@ public class Cesta {
         Cesta provincia = new Cesta();
         this.id=rs.getInt("id");
         provincia.setId(this.id);
-        this.fecha_compra=rs.getString("fecha_compra");
+        this.fecha_compra=rs.getDate("fecha_compra");
         provincia.setFecha_compra(this.fecha_compra);
         this.cantidad=rs.getInt("cantidad");
         provincia.setCantidad(this.cantidad);

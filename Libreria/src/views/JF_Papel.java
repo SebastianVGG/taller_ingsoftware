@@ -95,6 +95,7 @@ public class JF_Papel extends javax.swing.JFrame {
         btn_delete1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -399,7 +400,7 @@ public class JF_Papel extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -578,15 +579,15 @@ public class JF_Papel extends javax.swing.JFrame {
         } 
         
         List <Almacen> almacen_select = almacen.select_almacen();
-        ArrayList<String> list_almacen= new ArrayList<String>();
-        for (int i = 0; i < almacen_select.size(); i++) 
-             list_almacen.add(almacen_select.get(i).getDireccion());
-        Collections.sort(list_almacen);
+//        ArrayList<String> list_almacen= new ArrayList<String>();
+//        for (int i = 0; i < almacen_select.size(); i++) 
+//             list_almacen.add(almacen_select.get(i).getDireccion());
+//        Collections.sort(list_almacen);
 
         
         for (int i = 0; i < almacen_select.size(); i++) {
-            cbx_insert_almacen.addItem(list_almacen.get(i));
-            cbx_update_almacen.addItem(list_almacen.get(i));
+            cbx_insert_almacen.addItem(almacen_select.get(i).getDireccion());
+            cbx_update_almacen.addItem(almacen_select.get(i).getDireccion());
         } 
         
     }

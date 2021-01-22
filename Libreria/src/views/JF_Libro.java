@@ -14,8 +14,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Autor;
+import tables.Ebook;
 import tables.Editorial;
 import tables.Libro;
+import tables.Papel;
 
 
 
@@ -120,6 +122,7 @@ public class JF_Libro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1065, 600));
         setPreferredSize(new java.awt.Dimension(1065, 600));
+        setResizable(false);
 
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(1068, 561));
 
@@ -578,17 +581,19 @@ public class JF_Libro extends javax.swing.JFrame {
             
             Libro libro = new Libro(titulo,descripcion, isbn, año, paginas,idioma,id_autor_libro, id_editorial_libro);
             libro.insert_libro();
+             JF_Libro_papel papel_libro = new JF_Libro_papel(libro.getId());
+             JF_Libro_ebook ebook_libro = new JF_Libro_ebook(libro.getId());
             String[] options = new String[] {"Papel", "Ebook", "Ambos"};
             int response = JOptionPane.showOptionDialog(null, "Será libro formato fisico, ebook o ambos", "Agregar formato",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0)
-                papel.setVisible(true);
+                papel_libro.setVisible(true);
             if(response==1)
-                ebook.setVisible(true);
+                ebook_libro.setVisible(true);
             if(response==2){
-                papel.setVisible(true);
-                ebook.setVisible(true);
+                papel_libro.setVisible(true);
+                ebook_libro.setVisible(true);
             }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
