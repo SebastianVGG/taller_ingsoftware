@@ -39,6 +39,7 @@ public class JF_Cesta extends javax.swing.JFrame {
         Cesta datos_cesta = cesta.select_one_cesta(id_cesta);
         label_id.setText(String.valueOf(datos_cesta.getId()));
         date_update_fecha.setDate(datos_cesta.getFecha_compra());
+        txt_update_cantidad.setText(String.valueOf(datos_cesta.getCantidad()));
         Cliente datos_cliente = cliente.select_one_cliente(datos_cesta.getId_cliente());
         cbx_update_id_cliente.setSelectedItem(datos_cliente.getNombre());
         Libro datos_libro = libro.select_one_libro(datos_cesta.getId_libro());
@@ -547,14 +548,15 @@ public class JF_Cesta extends javax.swing.JFrame {
     public void agregarItem_tbl() throws SQLException{
         DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
         List <Cesta> cesta_select = cesta.select();
-        Object[] column = new Object[4];
+        Object[] column = new Object[5];
         
         for (int i = 0; i < cesta_select.size(); i++){
             
             column[0] = cesta_select.get(i).getId();
             column[1] = cesta_select.get(i).getFecha_compra();
-            column[2] = cesta_select.get(i).getId_cliente();
-            column[3] = cesta_select.get(i).getId_libro();          
+            column[2] = cesta_select.get(i).getCantidad();
+            column[3] = cesta_select.get(i).getId_cliente();
+            column[4] = cesta_select.get(i).getId_libro();          
             
             tblModel.addRow(column);
             

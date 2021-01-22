@@ -8,6 +8,7 @@ package tables;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -131,19 +132,24 @@ public class Libro {
         this.id_editorial = id_editorial;
     }
     
-    public void insert_libro() throws SQLException{
+          public int insert_libro() throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
-        Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("INSERT INTO `libro` (`id`, `titulo`, `descripcion`, `isbn`, `año_publicacion`, paginas, idioma, `id_autor`, `id_editorial`) VALUES "
-                + "(NULL, '"+this.titulo+"','"+this.descripcion+"','"+this.isbn+"','"+this.año_publicacion+"','"+this.paginas+"','"+this.idioma+"','"+this.id_autor+","+this.id_editorial+")"
+        String SQL_INSERT = "INSERT INTO `libro` (`id`, `titulo`, `descripcion`, `isbn`, `año_publicacion`, paginas, idioma, `id_autor`, `id_editorial`) VALUES "
+                + "(NULL, '"+this.titulo+"','"+this.descripcion+"','"+this.isbn+"',"+this.año_publicacion+",'"+this.paginas+"','"+this.idioma+"',"+this.id_autor+","+this.id_editorial+")";
 
-                        + "");
-        JOptionPane.showMessageDialog(null, "Nuevo libro");  
+        PreparedStatement statement = myConnection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
+        statement.execute();
+        ResultSet rs = statement.getGeneratedKeys();
+        if (rs.next()) {
+            this.id = rs.getInt(1);
+        }
         statement.close();  
         myConnection.close();
+        return this.id;
     }
+    
     
     public void delete_libro(int id) throws SQLException{
         Connection myConnection=DriverManager.getConnection(

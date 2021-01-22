@@ -18,12 +18,14 @@ import tables.Libro;
  */
 public class JF_Libro_ebook extends javax.swing.JFrame {
 
-    Libro libro;
+    Libro libro = new Libro();
+    int id_libro;
     
     public JF_Libro_ebook(int id_libro) throws SQLException {
         initComponents();
-        this.libro=libro.select_one_libro(id_libro);
-        txt_libro.setText(libro.getTitulo());
+        this.id_libro=id_libro;
+        Libro libro1=libro.select_one_libro(id_libro);
+        txt_libro.setText(libro1.getTitulo());
     }
         public JF_Libro_ebook(){
         initComponents();
@@ -49,7 +51,8 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
         txt_libro = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -168,7 +171,7 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
         try {
             String tamaño = txt_insert_tamaño.getText();
             float precio = Float.valueOf(txt_insert_precio.getText());
-            Ebook ebook = new Ebook(tamaño,precio,libro.getId());
+            Ebook ebook = new Ebook(tamaño,precio,this.id_libro);
             ebook.insert_ebook();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

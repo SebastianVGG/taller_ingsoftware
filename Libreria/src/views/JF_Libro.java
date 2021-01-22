@@ -580,9 +580,9 @@ public class JF_Libro extends javax.swing.JFrame {
             int id_editorial_libro = editorial_select.get(cbx_id_editorial).getId();
             
             Libro libro = new Libro(titulo,descripcion, isbn, año, paginas,idioma,id_autor_libro, id_editorial_libro);
-            libro.insert_libro();
-             JF_Libro_papel papel_libro = new JF_Libro_papel(libro.getId());
-             JF_Libro_ebook ebook_libro = new JF_Libro_ebook(libro.getId());
+            int id_libro = libro.insert_libro();
+             JF_Libro_papel papel_libro = new JF_Libro_papel(id_libro);
+             JF_Libro_ebook ebook_libro = new JF_Libro_ebook(id_libro);
             String[] options = new String[] {"Papel", "Ebook", "Ambos"};
             int response = JOptionPane.showOptionDialog(null, "Será libro formato fisico, ebook o ambos", "Agregar formato",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,

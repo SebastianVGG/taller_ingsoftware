@@ -22,14 +22,16 @@ import tables.Papel;
  */
 public class JF_Libro_papel extends javax.swing.JFrame {
 
-    Libro libro;
+     Libro libro= new Libro();
     Almacen almacen = new Almacen();
+    int id_libro;
     
     public JF_Libro_papel(int id_libro) throws SQLException {
         initComponents();
         agregarItem_cbx();
-        this.libro=libro.select_one_libro(id_libro);
-        txt_libro.setText(libro.getTitulo());
+        this.id_libro=id_libro;
+        Libro libro1=libro.select_one_libro(id_libro);
+        txt_libro.setText(libro1.getTitulo());
     }
 
     public JF_Libro_papel() throws SQLException {
@@ -52,7 +54,7 @@ public class JF_Libro_papel extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txt_insert_lugar_impresion2 = new javax.swing.JTextField();
+        txt_insert_lugar_impresion = new javax.swing.JTextField();
         cbx_almacen = new javax.swing.JComboBox<>();
         btn_insert2 = new javax.swing.JButton();
         txt_insert_precio = new javax.swing.JTextField();
@@ -62,7 +64,8 @@ public class JF_Libro_papel extends javax.swing.JFrame {
         txt_libro = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,7 +105,7 @@ public class JF_Libro_papel extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(date_insert_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_insert_lugar_impresion2)))
+                            .addComponent(txt_insert_lugar_impresion)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +133,7 @@ public class JF_Libro_papel extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txt_insert_lugar_impresion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_insert_lugar_impresion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -204,10 +207,10 @@ public class JF_Libro_papel extends javax.swing.JFrame {
             String lugar = txt_insert_lugar_impresion.getText();
             float precio = Float.parseFloat(txt_insert_precio.getText());
 
-            int cbx_id_almacen = cbx_insert_almacen.getSelectedIndex();
+            int cbx_id_almacen = cbx_almacen.getSelectedIndex();
             int id_almacen_papel = almacen_select.get(cbx_id_almacen).getId();
 
-            Papel papel = new Papel(fecha,lugar, precio, libro.getId(), id_almacen_papel);
+            Papel papel = new Papel(fecha,lugar, precio, this.id_libro, id_almacen_papel);
             papel.insert_papel();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
@@ -255,34 +258,18 @@ public class JF_Libro_papel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_insert;
-    private javax.swing.JButton btn_insert1;
     private javax.swing.JButton btn_insert2;
     private javax.swing.JComboBox<String> cbx_almacen;
-    private javax.swing.JComboBox<String> cbx_insert_almacen;
-    private javax.swing.JComboBox<String> cbx_insert_almacen1;
     private com.toedter.calendar.JDateChooser date_insert_fecha;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField txt_insert_lugar_impresion;
-    private javax.swing.JTextField txt_insert_lugar_impresion1;
-    private javax.swing.JTextField txt_insert_lugar_impresion2;
     private javax.swing.JTextField txt_insert_precio;
     private javax.swing.JTextField txt_libro;
     // End of variables declaration//GEN-END:variables
