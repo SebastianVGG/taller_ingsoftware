@@ -1,5 +1,6 @@
 package libreria;
 
+import java.sql.SQLException;
 import login.Main_login;
 
 
@@ -9,10 +10,10 @@ import login.Main_login;
  */
 public class Libreria extends javax.swing.JFrame{
  
-    public static void main(String[] args) {
-        Main_login login = new Main_login();
-        login.setLocationRelativeTo(null);
-        login.setVisible(true);
-    }
+    public static void main(String[] args) throws SQLException {
+        Main_login login_is = new Main_login();
+        login_is.setLocationRelativeTo(null);
+        login_is.setVisible(true);
+            }
     
 }

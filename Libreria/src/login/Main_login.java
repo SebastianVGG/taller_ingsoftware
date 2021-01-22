@@ -33,11 +33,11 @@ public class Main_login extends javax.swing.JFrame {
     Main_view view = new Main_view();
     JF_Administracion view_admin = new JF_Administracion();
     
-    public Main_login() {
+    
+        public Main_login() {
         initComponents();
         txtp_pass.setEchoChar((char)0);
     }
-    
         public Main_login(String email, String password) {
         initComponents();
         this.email_cuenta=email;
@@ -303,16 +303,15 @@ void password(){
         
         else{
             try {
+                int id_cliente = cliente.select_id(txt_correo.getText());
+               Cliente cliente=this.cliente.select_one_cliente(id_cliente);
                 String email_admin = admin.select_email(txt_correo.getText());
                 String pass_admin = admin.select_pass(txtp_pass.getText());
-                String email = cliente.select_email(txt_correo.getText());
-                String pass = cliente.select_pass(txtp_pass.getText());
-                System.out.println(txt_correo.getText().equals(email));
 
-                        if (txt_correo.getText().equals(email)  & txtp_pass.getText().equals(pass) ){
 
-                            int id_cliente = cliente.select_id(txt_correo.getText());
-                            this.cliente=cliente.select_one_cliente(id_cliente);
+                        if (txt_correo.getText().equals(cliente.getEmail())  & txtp_pass.getText().equals(cliente.getPassword()) ){
+
+                            this.cliente=cliente;
                             dispose();
                             Main_view main_view = new Main_view(this.cliente);
                             main_view.setLocationRelativeTo(null);
@@ -337,8 +336,12 @@ void password(){
 
     private void btn_crear_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crear_cuentaActionPerformed
         try {
-            JF_Crear_cuenta cuenta_nueva = new JF_Crear_cuenta();
-            cuenta_nueva.setVisible(true);
+            
+            dispose();
+            JF_Crear_cuenta cuenta = new JF_Crear_cuenta();
+            cuenta.setLocationRelativeTo(null);
+            cuenta.setVisible(true);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Main_login.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -351,7 +354,8 @@ void password(){
             txtp_pass.setEchoChar('*');
         }
     }//GEN-LAST:event_check_boxActionPerformed
-
+ 
+    
     /**
      * @param args the command line arguments
      */

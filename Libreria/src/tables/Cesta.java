@@ -24,6 +24,7 @@ public class Cesta {
     
     private int id;
     private Date fecha_compra;
+    private String fecha_compraS;
     private int cantidad;
     private int id_cliente;
     private int id_libro;
@@ -34,6 +35,14 @@ public class Cesta {
         this.id_cliente = id_cliente;
         this.id_libro = id_libro;
     }
+
+    public Cesta(String fecha_compraS, int cantidad, int id_cliente, int id_libro) {
+        this.fecha_compraS = fecha_compraS;
+        this.cantidad = cantidad;
+        this.id_cliente = id_cliente;
+        this.id_libro = id_libro;
+    }
+    
     public Cesta(){
     }
 
@@ -52,6 +61,16 @@ public class Cesta {
     public void setFecha_compra(Date fecha_compra) {
         this.fecha_compra = fecha_compra;
     }
+
+    public String getFecha_compraS() {
+        return fecha_compraS;
+    }
+
+    public void setFecha_compraS(String fecha_compraS) {
+        this.fecha_compraS = fecha_compraS;
+    }
+    
+    
    public int getCantidad() {
         return cantidad;
     }
@@ -75,7 +94,23 @@ public class Cesta {
         this.id_libro = id_libro;
     }
     
-    public int insert_cesta() throws SQLException{
+    public int insert_cesta_s() throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        String SQL_INSERT = "INSERT INTO cesta (id, fecha_compra, cantidad, id_cliente, id_libro) VALUES (NULL, '"+this.fecha_compraS+"',"+this.cantidad+","+this.id_cliente+","+this.id_libro+")";
+        PreparedStatement statement = myConnection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
+        statement.execute();
+        ResultSet rs = statement.getGeneratedKeys();
+        if (rs.next()) {
+            this.id = rs.getInt(1);
+        }
+        statement.close();  
+        myConnection.close();
+        return this.id;
+    }
+    
+       public int insert_cesta() throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );

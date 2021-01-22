@@ -17,12 +17,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import static java.time.temporal.TemporalQueries.localTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import tables.Almacen;
@@ -46,8 +50,9 @@ public class JF_View_Cesta extends javax.swing.JFrame {
     
     boolean papel_ebook;
     int cantidad;
-    public JF_View_Cesta() {
+    public JF_View_Cesta() throws SQLException, ParseException {
         initComponents();
+        set_dates();
     }
         public JF_View_Cesta(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad) throws SQLException, ParseException {
         initComponents();
@@ -63,13 +68,13 @@ public class JF_View_Cesta extends javax.swing.JFrame {
         public void set_dates() throws SQLException, ParseException{
             Date date = new Date();
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(date);
-           
+            System.out.print(fecha);
             int id_cliente = cliente.getId();
             int id_libro = libro.getId();
             
-            Cesta cesta = new Cesta(date,cantidad,id_cliente,id_libro);
-            cesta.insert_cesta();
-            lbl_fecha_compra.setText(String.valueOf(cesta.getFecha_compra()));
+            Cesta cesta = new Cesta(fecha,cantidad,id_cliente,id_libro);
+            cesta.insert_cesta_s();
+            lbl_fecha_compra.setText(String.valueOf(cesta.getFecha_compraS()));
             lbl_no_cesta.setText(String.valueOf(cesta.getId()));
             lbl_Titulo.setText(libro.getTitulo());
             lbl_id_libro.setText(String.valueOf(libro.getId()));
@@ -551,7 +556,15 @@ public class JF_View_Cesta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_View_Cesta().setVisible(true);
+                try {
+                    try {
+                        new JF_View_Cesta().setVisible(true);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(JF_View_Cesta.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_View_Cesta.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
