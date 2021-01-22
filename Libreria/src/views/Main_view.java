@@ -33,6 +33,8 @@ public class Main_view extends javax.swing.JFrame {
         public Main_view(Cliente cliente) {
         initComponents();
         this.cliente=cliente;
+        lbl_correo_usuario.setText("¡B I E N V E N I D O! "+(cliente.getNombre())+" "+cliente.getApellido1()+" "+cliente.getApellido2()+" , "+cliente.getEmail());
+
   
     }
 
@@ -88,6 +90,7 @@ public class Main_view extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btn_cerrar_sesion = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
+        lbl_correo_usuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -105,7 +108,7 @@ public class Main_view extends javax.swing.JFrame {
         jLabel2.setText("ERIAN LIBRARY");
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 102, 0), 10, true));
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(178, 45, 588, 86);
+        jLabel2.setBounds(180, 70, 588, 86);
 
         jScrollPane1.setBackground(new java.awt.Color(251, 238, 218));
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -139,8 +142,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_1.setLayout(pnl_1Layout);
         pnl_1Layout.setHorizontalGroup(
             pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_1Layout.createSequentialGroup()
+                .addGroup(pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_1Layout.setVerticalGroup(
             pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,8 +180,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_2.setLayout(pnl_2Layout);
         pnl_2Layout.setHorizontalGroup(
             pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_2Layout.createSequentialGroup()
+                .addGroup(pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_2Layout.setVerticalGroup(
             pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,8 +218,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_3.setLayout(pnl_3Layout);
         pnl_3Layout.setHorizontalGroup(
             pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_3Layout.createSequentialGroup()
+                .addGroup(pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_3Layout.setVerticalGroup(
             pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,8 +256,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_4.setLayout(pnl_4Layout);
         pnl_4Layout.setHorizontalGroup(
             pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_4Layout.createSequentialGroup()
+                .addGroup(pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_4Layout.setVerticalGroup(
             pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,8 +294,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_5.setLayout(pnl_5Layout);
         pnl_5Layout.setHorizontalGroup(
             pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_5Layout.createSequentialGroup()
+                .addGroup(pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_5Layout.setVerticalGroup(
             pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,8 +332,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_6.setLayout(pnl_6Layout);
         pnl_6Layout.setHorizontalGroup(
             pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_6Layout.createSequentialGroup()
+                .addGroup(pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_6Layout.setVerticalGroup(
             pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,8 +370,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_7.setLayout(pnl_7Layout);
         pnl_7Layout.setHorizontalGroup(
             pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_7Layout.createSequentialGroup()
+                .addGroup(pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_7Layout.setVerticalGroup(
             pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,8 +408,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_8.setLayout(pnl_8Layout);
         pnl_8Layout.setHorizontalGroup(
             pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_8Layout.createSequentialGroup()
+                .addGroup(pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_8Layout.setVerticalGroup(
             pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,8 +446,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_9.setLayout(pnl_9Layout);
         pnl_9Layout.setHorizontalGroup(
             pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_9, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_9Layout.createSequentialGroup()
+                .addGroup(pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_9Layout.setVerticalGroup(
             pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,7 +474,7 @@ public class Main_view extends javax.swing.JFrame {
         lbl_10.setBackground(new java.awt.Color(251, 238, 218));
         lbl_10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_10.setText("Cheque de Reyes");
+        lbl_10.setText("Choque de reyes");
         lbl_10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_10.setAutoscrolls(true);
         lbl_10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -454,8 +484,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_10.setLayout(pnl_10Layout);
         pnl_10Layout.setHorizontalGroup(
             pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_10, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_10Layout.createSequentialGroup()
+                .addGroup(pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_10Layout.setVerticalGroup(
             pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,8 +522,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_11.setLayout(pnl_11Layout);
         pnl_11Layout.setHorizontalGroup(
             pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_11, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_11Layout.createSequentialGroup()
+                .addGroup(pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_11Layout.setVerticalGroup(
             pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -524,8 +560,11 @@ public class Main_view extends javax.swing.JFrame {
         pnl_12.setLayout(pnl_12Layout);
         pnl_12Layout.setHorizontalGroup(
             pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_12, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnl_12Layout.createSequentialGroup()
+                .addGroup(pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnl_12Layout.setVerticalGroup(
             pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -565,7 +604,7 @@ public class Main_view extends javax.swing.JFrame {
                     .addComponent(pnl_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnl_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnl_12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -602,7 +641,7 @@ public class Main_view extends javax.swing.JFrame {
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(137, 149, 700, 432);
+        jScrollPane1.setBounds(137, 171, 700, 410);
 
         jPanel3.setOpaque(false);
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -624,11 +663,11 @@ public class Main_view extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 0, 880, 60);
+        jPanel3.setBounds(0, 0, 880, 40);
 
         btn_cerrar_sesion.setText("Cerrar sesión");
         btn_cerrar_sesion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 10));
@@ -652,6 +691,12 @@ public class Main_view extends javax.swing.JFrame {
         });
         jPanel1.add(btn_exit);
         btn_exit.setBounds(890, 20, 40, 40);
+
+        lbl_correo_usuario.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_correo_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_correo_usuario.setText("jLabel1");
+        jPanel1.add(lbl_correo_usuario);
+        lbl_correo_usuario.setBounds(79, 40, 800, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -908,6 +953,7 @@ public class Main_view extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_7;
     private javax.swing.JLabel lbl_8;
     private javax.swing.JLabel lbl_9;
+    private javax.swing.JLabel lbl_correo_usuario;
     private javax.swing.JPanel pnl_1;
     private javax.swing.JPanel pnl_10;
     private javax.swing.JPanel pnl_11;

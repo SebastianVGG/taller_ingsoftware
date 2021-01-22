@@ -23,11 +23,13 @@ public class Cesta {
     
     private int id;
     private String fecha_compra;
+    private int cantidad;
     private int id_cliente;
     private int id_libro;
     
-    public Cesta(String fecha_compra, int id_cliente, int id_libro){
+    public Cesta(String fecha_compra,int cantidad, int id_cliente, int id_libro){
         this.fecha_compra = fecha_compra;
+        this.cantidad=cantidad;
         this.id_cliente = id_cliente;
         this.id_libro = id_libro;
     }
@@ -49,7 +51,13 @@ public class Cesta {
     public void setFecha_compra(String fecha_compra) {
         this.fecha_compra = fecha_compra;
     }
+   public int getCantidad() {
+        return cantidad;
+    }
 
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
     public int getId_cliente() {
         return id_cliente;
     }
@@ -70,10 +78,9 @@ public class Cesta {
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
-        String SQL_INSERT = "INSERT INTO cesta (id, fecha_compra, id_cliente, id_libro) VALUES (NULL, '"+this.fecha_compra+"',"+this.id_cliente+","+this.id_libro+")";
+        String SQL_INSERT = "INSERT INTO cesta (id, fecha_compra, cantidad, id_cliente, id_libro) VALUES (NULL, '"+this.fecha_compra+"',"+this.cantidad+","+this.id_cliente+","+this.id_libro+")";
         PreparedStatement statement = myConnection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
         statement.execute();
-        JOptionPane.showMessageDialog(null, "Nueva cesta");  
         ResultSet rs = statement.getGeneratedKeys();
         if (rs.next()) {
             this.id = rs.getInt(1);
@@ -95,12 +102,12 @@ public class Cesta {
         myConnection.close();
     }
     
-    public void update_cesta(int id, String fecha_compra, int id_cliente, int id_libro) throws SQLException{
+    public void update_cesta(int id, String fecha_compra, int cantidad1,int id_cliente, int id_libro) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("UPDATE cesta SET fecha_compra='"+fecha_compra+"', id_cliente="+id_cliente+", id_libro="+id_libro+" WHERE id="+id);
+        statement.executeUpdate("UPDATE cesta SET fecha_compra='"+fecha_compra+"', cantidad="+cantidad1+", id_cliente="+id_cliente+", id_libro="+id_libro+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "cesta actualizada");  
         statement.close();  
         myConnection.close();
@@ -112,13 +119,15 @@ public class Cesta {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        String sql= "SELECT id, fecha_compra, id_cliente, id_libro FROM cesta WHERE id="+id;
+        String sql= "SELECT id, fecha_compra, cantidad, id_cliente, id_libro FROM cesta WHERE id="+id;
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next()){
         this.id=rs.getInt("id");
         provincia.setId(this.id);
         this.fecha_compra=rs.getString("fecha_compra");
         provincia.setFecha_compra(this.fecha_compra);
+        this.cantidad=rs.getInt("cantidad");
+        provincia.setCantidad(this.cantidad);
         this.id_cliente=rs.getInt("id_cliente");
         provincia.setId_cliente(this.id_cliente);
         this.id_libro=rs.getInt("id_libro");
@@ -136,7 +145,7 @@ public class Cesta {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
       Statement stmt = myConnection.createStatement(); 
-      String sql = "SELECT id, fecha_compra, id_cliente, id_libro FROM cesta";
+      String sql = "SELECT id, fecha_compra, cantidad, id_cliente, id_libro FROM cesta";
       ResultSet rs = stmt.executeQuery(sql);
       //STEP 5: Extract data from result set
       while(rs.next()){
@@ -145,6 +154,8 @@ public class Cesta {
         provincia.setId(this.id);
         this.fecha_compra=rs.getString("fecha_compra");
         provincia.setFecha_compra(this.fecha_compra);
+        this.cantidad=rs.getInt("cantidad");
+        provincia.setCantidad(this.cantidad);
         this.id_cliente=rs.getInt("id_cliente");
         provincia.setId_cliente(this.id_cliente);
         this.id_libro=rs.getInt("id_libro");
@@ -155,10 +166,6 @@ public class Cesta {
       rs.close();
       return provincias;
     }
-    
-    public String toString(){
-        String provincia ="|"+this.id+"|"+" fecha_compra: "+this.fecha_compra+" id_cliente: "+this.id_cliente+" id_libro: "+this.id_libro;
-        return provincia;
-    }
+
     
 }
