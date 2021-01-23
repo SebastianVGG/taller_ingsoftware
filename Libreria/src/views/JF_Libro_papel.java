@@ -227,7 +227,7 @@ public class JF_Libro_papel extends javax.swing.JFrame {
                                 boolean resultado;
                                 try {
                                     
-                                    this.precio = Integer.parseInt(txt_insert_precio.getText());
+                                    this.precio = Float.parseFloat(txt_insert_precio.getText());
                                     resultado = true;
                                 } catch (NumberFormatException excepcion) {
                                     resultado = false;
@@ -237,7 +237,7 @@ public class JF_Libro_papel extends javax.swing.JFrame {
                                     
                                     Papel papel = new Papel(this.fecha,lugar, this.precio, this.id_libro, id_almacen_papel);
                                     papel.insert_papel();
-                                    
+                                    dispose();
                                 }
                                 else
                                      JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");

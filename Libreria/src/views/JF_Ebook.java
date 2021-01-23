@@ -41,10 +41,13 @@ public class JF_Ebook extends javax.swing.JFrame {
         cbx_update_libro.setSelectedItem(datos_libro.getTitulo());
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_ebook.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_tamaño.setText("");
         txt_update_precio.setText("");
-        label_id.setText("");
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -359,6 +362,7 @@ public class JF_Ebook extends javax.swing.JFrame {
         }
             if(resultado){
             ebook.update_ebook(id_ebook, tamaño,this.precio_update, id_libro_ebook);
+            refrescar();
             }
             else
                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");  
@@ -373,6 +377,8 @@ public class JF_Ebook extends javax.swing.JFrame {
             int r = tbl_ebook.getSelectedRow();
             int id_ebook = (int) tbl_ebook.getValueAt(r, 0);
             ebook.delete_ebook(id_ebook);
+            label_id.setText("");
+            refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Ebook.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -380,9 +386,7 @@ public class JF_Ebook extends javax.swing.JFrame {
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_ebook.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

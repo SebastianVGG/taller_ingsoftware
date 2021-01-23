@@ -44,7 +44,10 @@ public class JF_Almacen extends javax.swing.JFrame {
         
     }
     
-    public void refrescar(){ //Sirve para que cuando demos en "update" se limpien los datos
+    public void refrescar() throws SQLException{ //Sirve para que cuando demos en "update" se limpien los datos
+                    DefaultTableModel tblModel = (DefaultTableModel) tbl_almacen.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_direccion.setText("");
         txt_update_telefono.setText("");
     }
@@ -437,20 +440,21 @@ public class JF_Almacen extends javax.swing.JFrame {
             int r = tbl_almacen.getSelectedRow();
             int id_almacen = (int) tbl_almacen.getValueAt(r, 0);
             almacen.delete_almacen(id_almacen);
+            refrescar();
+            label_id.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
+
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_almacen.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
             refrescar();
         } catch (SQLException ex) {
-            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_btn_refrescarActionPerformed
 
     private void tbl_almacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_almacenMouseClicked

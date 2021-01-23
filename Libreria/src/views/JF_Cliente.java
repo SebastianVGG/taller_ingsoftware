@@ -45,7 +45,10 @@ Cliente cliente = new Cliente();
         cbx_update_localidad.setSelectedItem(datos_localidad.getNombre());
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+                    DefaultTableModel tblModel = (DefaultTableModel) tbl_cliente.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txtf_update_nombre.setText("");
         txtf_update_apellido1.setText("");
         txtf_update_apellido2.setText("");
@@ -526,6 +529,7 @@ Cliente cliente = new Cliente();
             int id_cliente = (int) tbl_cliente.getValueAt(r, 0);
             cliente.delete_cliente(id_cliente);
             refrescar();
+            label_id.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(JF_Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -575,9 +579,7 @@ if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido1.is
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_cliente.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

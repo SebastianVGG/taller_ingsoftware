@@ -29,9 +29,12 @@ public class JF_Provincia extends javax.swing.JFrame {
         txt_update_nombre.setText(datos_provincia.getNombre());
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_provincia.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_nombre.setText("");
-        label_id.setText("");
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -310,6 +313,7 @@ public class JF_Provincia extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Dejaste el campo vacío, tienes que llenarlo");  
             else{
             provincia.update_provincia(id_provincia, nombre);
+            refrescar();
             }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
@@ -322,6 +326,7 @@ public class JF_Provincia extends javax.swing.JFrame {
             int id_provincia = (int) tbl_provincia.getValueAt(r, 0);
             provincia.delete_provincia(id_provincia);
             refrescar();
+            label_id.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(JF_Provincia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -329,9 +334,7 @@ public class JF_Provincia extends javax.swing.JFrame {
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_provincia.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

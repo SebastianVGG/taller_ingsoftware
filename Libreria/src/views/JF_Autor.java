@@ -51,7 +51,10 @@ public class JF_Autor extends javax.swing.JFrame {
         
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+                    DefaultTableModel tblModel = (DefaultTableModel) tbl_autor.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_nombre.setText("");
         txt_update_apellido1.setText("");
         txt_update_apellido2.setText("");
@@ -547,6 +550,8 @@ public class JF_Autor extends javax.swing.JFrame {
             int r = tbl_autor.getSelectedRow();
             int id_autor = (int) tbl_autor.getValueAt(r, 0);
             autor.delete_autor(id_autor);
+            label_id.setText("");
+            refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -554,9 +559,7 @@ public class JF_Autor extends javax.swing.JFrame {
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_autor.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

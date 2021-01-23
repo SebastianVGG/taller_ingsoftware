@@ -53,10 +53,13 @@ public class JF_Papel extends javax.swing.JFrame {
         cbx_update_almacen.setSelectedItem(datos_almacen.getDireccion());
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_papel.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_lugar.setText("");
         txt_update_precio.setText("");
-        label_id.setText("");
+       
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -468,6 +471,7 @@ public class JF_Papel extends javax.swing.JFrame {
             int id_papel = (int) tbl_papel.getValueAt(r, 0);
             papel.delete_papel(id_papel);
             refrescar();
+             label_id.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(JF_Papel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -475,9 +479,7 @@ public class JF_Papel extends javax.swing.JFrame {
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_papel.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

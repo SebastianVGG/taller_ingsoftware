@@ -50,8 +50,10 @@ public class JF_Cesta extends javax.swing.JFrame {
         cbx_update_id_libro.setSelectedItem(datos_libro.getTitulo());
     }
     
-    public void refrescar(){
-       
+    public void refrescar() throws SQLException{
+                   DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_cantidad.setText("");
     }
     @SuppressWarnings("unchecked")
@@ -425,6 +427,7 @@ public class JF_Cesta extends javax.swing.JFrame {
             int id_cesta = (int) tb_cesta.getValueAt(r, 0);
             cesta.delete_cesta(id_cesta);
             refrescar();
+            label_id.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -432,9 +435,7 @@ public class JF_Cesta extends javax.swing.JFrame {
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tb_cesta.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

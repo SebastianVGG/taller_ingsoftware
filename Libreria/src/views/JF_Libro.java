@@ -58,13 +58,16 @@ public class JF_Libro extends javax.swing.JFrame {
         cbx_update_editorial.setSelectedItem(datos_editorial.getNombre());
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_libro.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_titulo.setText("");
         txt_update_idioma.setText("");
         txt_update_paginas.setText("");
         txt_update_descripcion.setText("");
         txt_update_isbn.setText("");
-        label_id.setText("");
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -555,6 +558,8 @@ public class JF_Libro extends javax.swing.JFrame {
             int r = tbl_libro.getSelectedRow();
             int id_libro = (int) tbl_libro.getValueAt(r, 0);
             libro.delete_libro(id_libro);
+            refrescar();
+            label_id.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(JF_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -562,9 +567,7 @@ public class JF_Libro extends javax.swing.JFrame {
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_libro.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

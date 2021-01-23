@@ -48,12 +48,15 @@ Editorial editorial = new Editorial();
         
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_editorial.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_nombre.setText("");
         txt_update_direccion.setText("");
         txt_update_telefono.setText("");
         txt_update_url.setText("");
-        label_id.setText("");
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -454,6 +457,7 @@ Editorial editorial = new Editorial();
         int id_editorial = (int) tbl_editorial.getValueAt(r, 0);
         editorial.delete_editorial(id_editorial);
         refrescar();
+        label_id.setText("");
     } catch (SQLException ex) {
         Logger.getLogger(JF_Editorial.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -461,9 +465,7 @@ Editorial editorial = new Editorial();
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_editorial.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);

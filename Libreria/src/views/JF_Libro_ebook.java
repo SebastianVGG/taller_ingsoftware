@@ -172,13 +172,12 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
         try {
             String tamaño = txt_insert_tamaño.getText();
-            float precio = Float.valueOf(txt_insert_precio.getText());
             if(tamaño.isEmpty() || txt_insert_precio.getText().isEmpty())
                     JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
             else{
             boolean resultado;
             try {
-            Integer.parseInt(txt_insert_precio.getText());
+            Float.parseFloat(txt_insert_precio.getText());
            this.precio = Float.valueOf(txt_insert_precio.getText());
             resultado = true;
         } catch (NumberFormatException excepcion) {
@@ -187,8 +186,9 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
             if(resultado){
             
             
-            Ebook ebook = new Ebook(tamaño,precio,this.id_libro);
+            Ebook ebook = new Ebook(tamaño,this.precio,this.id_libro);
             ebook.insert_ebook();
+            dispose();
             }else
                   JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             }

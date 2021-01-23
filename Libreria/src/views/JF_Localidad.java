@@ -35,9 +35,12 @@ public class JF_Localidad extends javax.swing.JFrame {
         cbx_update_provincia.setSelectedItem(datos_provincia.getNombre());
     }
     
-    public void refrescar(){
+    public void refrescar() throws SQLException{
+            DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
+            tblModel.setRowCount(0);
+            agregarItem_tbl();
         txt_update_nombre.setText("");
-        label_id.setText("");
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -364,6 +367,7 @@ public class JF_Localidad extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Dejaste el campo vacío, tienes que llenarlo");  
             else{
             localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
+            refrescar();
             }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
@@ -372,9 +376,7 @@ public class JF_Localidad extends javax.swing.JFrame {
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
         try {
-            DefaultTableModel tblModel = (DefaultTableModel) tbl_localidad.getModel();
-            tblModel.setRowCount(0);
-            agregarItem_tbl();
+
             refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
@@ -386,6 +388,8 @@ public class JF_Localidad extends javax.swing.JFrame {
             int r = tbl_localidad.getSelectedRow();
             int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
             localidad.delete_localidad(id_localidad);
+            label_id.setText("");
+            refrescar();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
