@@ -267,6 +267,7 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                     String tipo = "Tarjeta de débito";
                      tarjeta4 = "**** **** **** "+tarjeta4;
                     JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta4);
+                    dispose();
                     ver_cesta.setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(JF_Pago_debit.class.getName()).log(Level.SEVERE, null, ex);

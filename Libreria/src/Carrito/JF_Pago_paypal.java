@@ -191,6 +191,7 @@ public class JF_Pago_paypal extends javax.swing.JFrame {
             String tipo = "Pay Pal";
             String tarjeta = "**** **** **** 4332";
             JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta);
+            dispose();
             ver_cesta.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
