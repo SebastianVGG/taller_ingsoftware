@@ -30,6 +30,7 @@ public class Main_view_LO extends javax.swing.JFrame {
     
     public Main_view_LO() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
         public Main_view_LO(Cliente cliente) {
         initComponents();
@@ -132,11 +133,10 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_1.setBackground(new java.awt.Color(218, 247, 251));
         lbl_1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_1.setText("Harry Potter y la piedra filosofal");
+        lbl_1.setText("<html><center>Harry Potter y la piedra filosofal");
         lbl_1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_1.setAutoscrolls(true);
         lbl_1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lbl_1.setOpaque(true);
 
         javax.swing.GroupLayout pnl_1Layout = new javax.swing.GroupLayout(pnl_1);
         pnl_1.setLayout(pnl_1Layout);
@@ -170,7 +170,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_2.setBackground(new java.awt.Color(218, 247, 251));
         lbl_2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_2.setText("Harry Potter y la cámara secreta");
+        lbl_2.setText("<html><center>Harry Potter y la cámara secreta");
         lbl_2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_2.setAutoscrolls(true);
         lbl_2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -208,7 +208,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_3.setBackground(new java.awt.Color(218, 247, 251));
         lbl_3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_3.setText("Harry Potter y el prisionero de Azkaban");
+        lbl_3.setText("<html><center>Harry Potter y el prisionero de Azkaban");
         lbl_3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_3.setAutoscrolls(true);
         lbl_3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -246,7 +246,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_4.setBackground(new java.awt.Color(218, 247, 251));
         lbl_4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_4.setText("Harry Potter y el cáliz de fuego");
+        lbl_4.setText("<html><center>Harry Potter y el cáliz de fuego");
         lbl_4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_4.setAutoscrolls(true);
         lbl_4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -284,7 +284,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_5.setBackground(new java.awt.Color(218, 247, 251));
         lbl_5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_5.setText("Harry Potter y la Orden del Fénix");
+        lbl_5.setText("<html><center>Harry Potter y la Orden del Fénix");
         lbl_5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_5.setAutoscrolls(true);
         lbl_5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -322,7 +322,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_6.setBackground(new java.awt.Color(218, 247, 251));
         lbl_6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_6.setText("Harry Potter y el misterio del principe");
+        lbl_6.setText("<html><center>Harry Potter y el misterio del príncipe");
         lbl_6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_6.setAutoscrolls(true);
         lbl_6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -360,7 +360,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_7.setBackground(new java.awt.Color(218, 247, 251));
         lbl_7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_7.setText("Harry Potter y las Reliquias de la Muerte");
+        lbl_7.setText("<html><center>Harry Potter y las Reliquias de la Muerte");
         lbl_7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_7.setAutoscrolls(true);
         lbl_7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -398,7 +398,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_8.setBackground(new java.awt.Color(218, 247, 251));
         lbl_8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_8.setText("Harry Potter y el legado maldito");
+        lbl_8.setText("<html><center>Harry Potter y el legado maldito");
         lbl_8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_8.setAutoscrolls(true);
         lbl_8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -436,7 +436,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_9.setBackground(new java.awt.Color(218, 247, 251));
         lbl_9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_9.setText("Juego de Tronos");
+        lbl_9.setText("<html><center>Juego de Tronos");
         lbl_9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_9.setAutoscrolls(true);
         lbl_9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -449,7 +449,7 @@ public class Main_view_LO extends javax.swing.JFrame {
             .addGroup(pnl_9Layout.createSequentialGroup()
                 .addGroup(pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_9))
                 .addGap(10, 10, 10))
         );
         pnl_9Layout.setVerticalGroup(
@@ -474,7 +474,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_10.setBackground(new java.awt.Color(218, 247, 251));
         lbl_10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_10.setText("Choque de reyes");
+        lbl_10.setText("<html><center>Choque de reyes");
         lbl_10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_10.setAutoscrolls(true);
         lbl_10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -487,7 +487,7 @@ public class Main_view_LO extends javax.swing.JFrame {
             .addGroup(pnl_10Layout.createSequentialGroup()
                 .addGroup(pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_10))
                 .addGap(10, 10, 10))
         );
         pnl_10Layout.setVerticalGroup(
@@ -512,7 +512,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_11.setBackground(new java.awt.Color(218, 247, 251));
         lbl_11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_11.setText("Tormenta de Espadas");
+        lbl_11.setText("<html><center>Tormenta de Espadas");
         lbl_11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_11.setAutoscrolls(true);
         lbl_11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -525,7 +525,7 @@ public class Main_view_LO extends javax.swing.JFrame {
             .addGroup(pnl_11Layout.createSequentialGroup()
                 .addGroup(pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_11))
                 .addGap(10, 10, 10))
         );
         pnl_11Layout.setVerticalGroup(
@@ -550,7 +550,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_12.setBackground(new java.awt.Color(218, 247, 251));
         lbl_12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_12.setText("Festín de Cuervos");
+        lbl_12.setText("<html><center>Festín de Cuervos");
         lbl_12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_12.setAutoscrolls(true);
         lbl_12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -563,7 +563,7 @@ public class Main_view_LO extends javax.swing.JFrame {
             .addGroup(pnl_12Layout.createSequentialGroup()
                 .addGroup(pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_12))
                 .addGap(10, 10, 10))
         );
         pnl_12Layout.setVerticalGroup(
@@ -840,10 +840,9 @@ public class Main_view_LO extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
-       dispose();
-       Main_login login = new Main_login();
-       login.setLocationRelativeTo(null);
-       login.setVisible(true);
+            Main_login ver_login = new Main_login();
+            ver_login.setVisible(true);
+            this.setVisible(false);
     }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed

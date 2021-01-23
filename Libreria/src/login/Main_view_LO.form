@@ -257,13 +257,12 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y la piedra filosofal"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y la piedra filosofal"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                           <Color id="Cursor Por defecto"/>
                         </Property>
-                        <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -321,7 +320,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y la c&#xe1;mara secreta"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y la c&#xe1;mara secreta"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -385,7 +384,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y el prisionero de Azkaban"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y el prisionero de Azkaban"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -449,7 +448,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y el c&#xe1;liz de fuego"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y el c&#xe1;liz de fuego"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -513,7 +512,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y la Orden del F&#xe9;nix"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y la Orden del F&#xe9;nix"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -577,7 +576,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y el misterio del principe"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y el misterio del pr&#xed;ncipe"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -641,7 +640,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y las Reliquias de la Muerte"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y las Reliquias de la Muerte"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -705,7 +704,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Harry Potter y el legado maldito"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Harry Potter y el legado maldito"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -769,7 +768,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Juego de Tronos"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Juego de Tronos"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -833,7 +832,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Choque de reyes"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Choque de reyes"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -897,7 +896,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Tormenta de Espadas"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Tormenta de Espadas"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -961,7 +960,7 @@
                           <Font name="Microsoft Sans Serif" size="14" style="1"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Fest&#xed;n de Cuervos"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;Fest&#xed;n de Cuervos"/>
                         <Property name="verticalAlignment" type="int" value="1"/>
                         <Property name="autoscrolls" type="boolean" value="true"/>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
