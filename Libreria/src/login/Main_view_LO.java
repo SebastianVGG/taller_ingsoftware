@@ -125,12 +125,13 @@ public class Main_view_LO extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(251, 238, 218));
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setEnabled(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1350, 1500));
 
         jPanel5.setBackground(new java.awt.Color(218, 247, 251));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 12));
         jPanel5.setDoubleBuffered(false);
-        jPanel5.setEnabled(false);
-        jPanel5.setPreferredSize(new java.awt.Dimension(100, 1350));
+        jPanel5.setPreferredSize(new java.awt.Dimension(100, 1580));
 
         pnl_1.setBackground(new java.awt.Color(218, 247, 251));
         pnl_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
@@ -786,7 +787,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(100, 170, 740, 410);
+        jScrollPane1.setBounds(100, 170, 740, 460);
 
         jPanel3.setOpaque(false);
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -846,9 +847,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
         );
 
         pack();
