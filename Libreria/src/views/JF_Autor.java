@@ -56,11 +56,17 @@ public class JF_Autor extends javax.swing.JFrame {
             tblModel.setRowCount(0);
             agregarItem_tbl();
         txt_update_nombre.setText("");
+        txt_insert_nombre.setText("");
         txt_update_apellido1.setText("");
+        txt_insert_apellido1.setText("");
         txt_update_apellido2.setText("");
+        txt_insert_apellido2.setText("");
         txt_update_direccion.setText("");
+        txt_insert_direccion.setText("");
         txt_update_telefono.setText("");
+        txt_insert_telefono.setText("");
         txt_update_url.setText("");
+        txt_insert_url.setText("");
 
        
     }

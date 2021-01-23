@@ -40,6 +40,7 @@ public class JF_Localidad extends javax.swing.JFrame {
             tblModel.setRowCount(0);
             agregarItem_tbl();
         txt_update_nombre.setText("");
+        txt_insert_nombre.setText("");
         
     }
     

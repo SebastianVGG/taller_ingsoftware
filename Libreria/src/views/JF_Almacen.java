@@ -49,7 +49,9 @@ public class JF_Almacen extends javax.swing.JFrame {
             tblModel.setRowCount(0);
             agregarItem_tbl();
         txt_update_direccion.setText("");
+        txt_insert_direccion.setText("");
         txt_update_telefono.setText("");
+        txt_insert_telefono.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -386,7 +388,7 @@ public class JF_Almacen extends javax.swing.JFrame {
                     int id_almacen_localidad = localidad_select.get(cbx_id_localidad).getId(); //Se obtiene la id de la localidad seleccionada
                     Almacen almacen = new Almacen(direccion,telefono,id_almacen_localidad); //Se introduce un nuevo objecto con los datos anteriores
                     almacen.insert_almacen(); //Se ejecuta el insert con el objecto creado
-                    
+                    refrescar();
                     
                 }else
                  JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");

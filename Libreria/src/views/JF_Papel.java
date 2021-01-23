@@ -58,7 +58,9 @@ public class JF_Papel extends javax.swing.JFrame {
             tblModel.setRowCount(0);
             agregarItem_tbl();
         txt_update_lugar.setText("");
+        txt_insert_lugar_impresion.setText("");
         txt_update_precio.setText("");
+        txt_insert_precio.setText("");
        
     }
     @SuppressWarnings("unchecked")

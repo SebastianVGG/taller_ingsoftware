@@ -46,7 +46,9 @@ public class JF_Ebook extends javax.swing.JFrame {
             tblModel.setRowCount(0);
             agregarItem_tbl();
         txt_update_tamaño.setText("");
+        txt_insert_tamaño.setText("");
         txt_update_precio.setText("");
+        txt_insert_precio.setText("");
         
     }
     @SuppressWarnings("unchecked")

@@ -63,10 +63,15 @@ public class JF_Libro extends javax.swing.JFrame {
             tblModel.setRowCount(0);
             agregarItem_tbl();
         txt_update_titulo.setText("");
+        txt_insert_titulo.setText("");
         txt_update_idioma.setText("");
+        txt_insert_idioma.setText("");
         txt_update_paginas.setText("");
+        txt_insert_paginas.setText("");
         txt_update_descripcion.setText("");
+        txt_insert_direccion.setText("");
         txt_update_isbn.setText("");
+        txt_insert_isbn.setText("");
         
     }
     @SuppressWarnings("unchecked")

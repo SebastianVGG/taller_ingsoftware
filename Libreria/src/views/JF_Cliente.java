@@ -50,12 +50,19 @@ Cliente cliente = new Cliente();
             tblModel.setRowCount(0);
             agregarItem_tbl();
         txtf_update_nombre.setText("");
+        txtf_insert_nombre.setText("");
         txtf_update_apellido1.setText("");
+        txtf_insert_apellido1.setText("");
         txtf_update_apellido2.setText("");
+        txtf_insert_apellido2.setText("");
         txtf_update_direccion.setText("");
+        txtf_insert_direccion.setText("");
         txtf_update_email.setText("");
+        txtf_insert_email.setText("");
         txtf_update_password.setText("");
+        txtf_insert_password.setText("");
         txtf_update_telefono.setText("");
+        txtf_insert_telefono.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
