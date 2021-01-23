@@ -53,7 +53,6 @@ Cliente cliente = new Cliente();
         txtf_update_email.setText("");
         txtf_update_password.setText("");
         txtf_update_telefono.setText("");
-        label_id.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -495,8 +494,12 @@ Cliente cliente = new Cliente();
         else{
             boolean resultado;
             try {
-                Integer.parseInt(telefono);
                 resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
             } catch (NumberFormatException excepcion) {
                 resultado = false;
             }
@@ -542,12 +545,31 @@ Cliente cliente = new Cliente();
             String direccion = txtf_update_direccion.getText();
             String email = txtf_update_email.getText();
             String password = txtf_update_password.getText();
-            String telefono = txtf_update_password.getText();
+            String telefono = txtf_update_telefono.getText();
 
+if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || email.isEmpty() || password.isEmpty())
+            JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
+        else{
+            boolean resultado;
+            try {
+                resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
+            } catch (NumberFormatException excepcion) {
+                resultado = false;
+            }
+            if(resultado){           
+            
             cliente.update_cliente(id_cliente, nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
             refrescar();
+            }else
+                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
+}
         } catch (SQLException ex) {
-            Logger.getLogger(JF_Cliente.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
     }//GEN-LAST:event_btn_updateActionPerformed
 

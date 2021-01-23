@@ -28,12 +28,6 @@ public class MyDBConnection {
         return this.myConnection;
     }
     
-    public Statement getStatement() throws SQLException{
-        Statement statement = myConnection.createStatement(); 
-        return statement; 
-    }
-    
-    
     public void close(ResultSet rs){
         
         if(rs !=null){

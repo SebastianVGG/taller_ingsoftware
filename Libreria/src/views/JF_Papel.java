@@ -29,8 +29,10 @@ public class JF_Papel extends javax.swing.JFrame {
     Libro libro = new Libro();
     Almacen almacen = new Almacen();
     Papel papel = new Papel();
-    Date fecha;
-    float precio;
+    Date fecha_insert;
+    Date fecha_update;
+    float precio_insert;
+    float precio_update;
     public JF_Papel() throws SQLException {
         initComponents();
         agregarItem_cbx();
@@ -412,6 +414,19 @@ public class JF_Papel extends javax.swing.JFrame {
         try {
             List <Libro> libro_select = libro.select();
             List <Almacen> almacen_select = almacen.select_almacen();
+
+            
+           boolean  res;
+                    try{
+                        Date date = (Date) date_update_fecha.getDate();
+                        long d = date.getTime();
+                        this.fecha_update = new java.sql.Date(d);
+                        res=true;
+                    }catch(Exception e){
+                        res=false;
+                    }
+                    
+                    if(res){
             int r = tbl_papel.getSelectedRow();
             int id_papel = (int) tbl_papel.getValueAt(r, 0);
             
@@ -420,16 +435,28 @@ public class JF_Papel extends javax.swing.JFrame {
             
             int id_libro_papel = libro_select.get(cbx_id_libro).getId();
             int id_almacen_papel = almacen_select.get(cbx_id_almacen).getId();
-            
-            Date date = (Date) date_update_fecha.getDate();
-            long d = date.getTime();
-            java.sql.Date fecha = new java.sql.Date(d);
-            
             String lugar = txt_update_lugar.getText();
-            float precio = Float.parseFloat(txt_update_precio.getText());
             
-            papel.update_papel(id_papel, fecha, lugar, precio, id_libro_papel, id_almacen_papel);
+            if(lugar.isEmpty() ||txt_update_precio.getText().isEmpty() )
+                            JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");
+                        else{
+                            boolean resultado;
+                            try {
+                                
+                                this.precio_update =  Float.parseFloat(txt_update_precio.getText());
+                                resultado = true;
+                            } catch (NumberFormatException excepcion) {
+                                resultado = false;
+                            }
+                            if(resultado){
+
+            papel.update_papel(id_papel, fecha_update, lugar, precio_update, id_libro_papel, id_almacen_papel);
             refrescar();
+                            }else
+                                   JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
+                                }
+                    }else
+                      JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");  
         } catch (SQLException ex) {
             Logger.getLogger(JF_Papel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -478,7 +505,7 @@ public class JF_Papel extends javax.swing.JFrame {
                     try{
                         Date date = (Date) date_insert_fecha.getDate();
                         long d = date.getTime();
-                        this.fecha = new java.sql.Date(d);
+                        this.fecha_insert = new java.sql.Date(d);
                         res=true;
                     }catch(Exception e){
                         res=false;
@@ -499,13 +526,13 @@ public class JF_Papel extends javax.swing.JFrame {
                             boolean resultado;
                             try {
                                 
-                                this.precio = Integer.parseInt(txt_insert_precio.getText());
+                                this.precio_insert =  Float.parseFloat(txt_insert_precio.getText());
                                 resultado = true;
                             } catch (NumberFormatException excepcion) {
                                 resultado = false;
                             }
                             if(resultado){
-                                Papel papel = new Papel(fecha,lugar, this.precio, id_libro_papel, id_almacen_papel);
+                                Papel papel = new Papel(fecha_insert,lugar, this.precio_insert, id_libro_papel, id_almacen_papel);
                                 papel.insert_papel();
                             }else
                                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");

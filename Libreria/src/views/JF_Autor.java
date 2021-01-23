@@ -58,7 +58,7 @@ public class JF_Autor extends javax.swing.JFrame {
         txt_update_direccion.setText("");
         txt_update_telefono.setText("");
         txt_update_url.setText("");
-        label_id.setText("");
+
        
     }
     @SuppressWarnings("unchecked")
@@ -459,8 +459,12 @@ public class JF_Autor extends javax.swing.JFrame {
          else{
              boolean resultado;
              try {
-                 Integer.parseInt(telefono);
-                 resultado = true;
+                resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
              } catch (NumberFormatException excepcion) {
                  resultado = false;
              }
@@ -478,7 +482,7 @@ public class JF_Autor extends javax.swing.JFrame {
              
          }
      } catch (SQLException ex) {
-         Logger.getLogger(JF_Autor.class.getName()).log(Level.SEVERE, null, ex);
+         
      }
     
     }//GEN-LAST:event_btn_insertActionPerformed
@@ -511,8 +515,28 @@ public class JF_Autor extends javax.swing.JFrame {
             String telefono = txt_update_telefono.getText();
             String url = txt_update_url.getText();
             
+         if(nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || direccion.isEmpty() || telefono.isEmpty())
+             JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
+         else{
+             boolean resultado;
+             try {
+                resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
+             } catch (NumberFormatException excepcion) {
+                 resultado = false;
+             }
+             if(resultado){  
+            
+            
             autor.update_autor(id_autor, nombre, apellido1, apellido2, direccion, telefono, url, id_localidad_autor);
             refrescar();
+             }else
+                  JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
+         }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }

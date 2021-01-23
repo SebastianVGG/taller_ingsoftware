@@ -25,8 +25,10 @@ public class JF_Cesta extends javax.swing.JFrame {
     private Cliente cliente = new Cliente();
     private Libro libro = new Libro();
     private Cesta cesta = new Cesta();
-    private int cantidad;
-    private Date fecha;
+    private int cantidad_insert;
+    private int cantidad_update;
+    private Date fecha_insert;
+    private Date fecha_update;
 
     /**
      * Creates new form JF_Cesta
@@ -51,7 +53,6 @@ public class JF_Cesta extends javax.swing.JFrame {
     public void refrescar(){
        
         txt_update_cantidad.setText("");
-        label_id.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -374,21 +375,45 @@ public class JF_Cesta extends javax.swing.JFrame {
         try {
             List <Cliente> cliente_select = cliente.select_cliente();
             List <Libro> libro_select = libro.select();
+
+            
+  boolean  res;
+            try{
+            Date date = (Date) date_update_fecha.getDate();
+            long d = date.getTime();
+             this.fecha_update = new java.sql.Date(d);
+             res=true;
+        }catch(Exception e){
+          res=false;
+        }
+            
+            if(res){
             int r = tb_cesta.getSelectedRow();
             int id_cesta = (int) tb_cesta.getValueAt(r, 0);
             int cbx_id_cliente = cbx_update_id_cliente.getSelectedIndex();
             int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId();
             int cbx_id_libro = cbx_update_id_libro.getSelectedIndex();
             int id_cesta_libro = libro_select.get(cbx_id_libro).getId();
+ if(txt_update_cantidad.getText().isEmpty())
+                            JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");  
+                        else{
+                            boolean resultado;
+                            try {
+                                this.cantidad_update = Integer.parseInt(txt_update_cantidad.getText());
+                                resultado = true;
+                            } catch (NumberFormatException excepcion) {
+                                resultado = false;
+                            }
+                            if(resultado){
             
-            Date date = (Date) date_update_fecha.getDate();
-            long d = date.getTime();
-            java.sql.Date fecha = new java.sql.Date(d);
-
-            int cantidad = Integer.parseInt(txt_update_cantidad.getText());
-            cesta.update_cesta(id_cesta, fecha, cantidad,id_cesta_cliente, id_cesta_libro);
+            
+            cesta.update_cesta(id_cesta, fecha_update, cantidad_update,id_cesta_cliente, id_cesta_libro);
             refrescar();
-        
+                            }else
+                                  JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");  
+ }
+            }else
+                 JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");  
         } catch (SQLException ex) {
             Logger.getLogger(JF_Cesta.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -437,7 +462,7 @@ public class JF_Cesta extends javax.swing.JFrame {
             try{
             Date date = (Date) date_insert_fecha.getDate();
             long d = date.getTime();
-             this.fecha = new java.sql.Date(d);
+             this.fecha_insert = new java.sql.Date(d);
              res=true;
         }catch(Exception e){
           res=false;
@@ -453,7 +478,7 @@ public class JF_Cesta extends javax.swing.JFrame {
                         else{
                             boolean resultado;
                             try {
-                                this.cantidad = Integer.parseInt(txt_insert_cantidad.getText());
+                                this.cantidad_insert = Integer.parseInt(txt_insert_cantidad.getText());
                                 resultado = true;
                             } catch (NumberFormatException excepcion) {
                                 resultado = false;
@@ -462,7 +487,7 @@ public class JF_Cesta extends javax.swing.JFrame {
 
                                 int cbx_id_libro = cbx_insert_libro.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
                                 int id_cesta_libro = libro_select.get(cbx_id_libro).getId(); //Se obtiene la id de la localidad seleccionada
-                                Cesta cesta = new Cesta(fecha,this.cantidad,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
+                                Cesta cesta = new Cesta(fecha_insert,this.cantidad_insert,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
                                 cesta.insert_cesta(); //Se ejecuta el insert con el objecto creado
                                 JOptionPane.showMessageDialog(null, "Nueva cesta");
                             }

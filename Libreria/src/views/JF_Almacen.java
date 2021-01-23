@@ -46,7 +46,6 @@ public class JF_Almacen extends javax.swing.JFrame {
     
     public void refrescar(){ //Sirve para que cuando demos en "update" se limpien los datos
         txt_update_direccion.setText("");
-        label_id.setText("");
         txt_update_telefono.setText("");
     }
     @SuppressWarnings("unchecked")
@@ -367,8 +366,12 @@ public class JF_Almacen extends javax.swing.JFrame {
             else{
             boolean resultado;
             try {
-            Integer.parseInt(telefono);
-            resultado = true;
+                resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
         } catch (NumberFormatException excepcion) {
              resultado = false;
         }
@@ -382,7 +385,8 @@ public class JF_Almacen extends javax.swing.JFrame {
                     almacen.insert_almacen(); //Se ejecuta el insert con el objecto creado
                     
                     
-                }
+                }else
+                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             }
         } catch (SQLException ex) {
             
@@ -400,10 +404,30 @@ public class JF_Almacen extends javax.swing.JFrame {
             int id_almacen_localidad = localidad_select.get(cbx_id_localidad).getId();
             String direccion = txt_update_direccion.getText();
             String telefono = txt_update_telefono.getText();
+            
+            if(direccion.isEmpty() || telefono.isEmpty() || tbl_almacen.getValueAt(r, 0).toString().isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+                resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
+        } catch (NumberFormatException excepcion) {
+             resultado = false;
+        }
+            if(resultado){
+            
             almacen.update_almacen(id_almacen, direccion, telefono, id_almacen_localidad);
             refrescar();
+            }else
+                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
         
     }//GEN-LAST:event_btn_updateActionPerformed

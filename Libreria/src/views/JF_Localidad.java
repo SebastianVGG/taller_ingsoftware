@@ -359,8 +359,12 @@ public class JF_Localidad extends javax.swing.JFrame {
             int cbx_id_provincia = cbx_update_provincia.getSelectedIndex();
             int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
             String nombre = txt_update_nombre.getText();
-            localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
             
+            if(nombre.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste el campo vacío, tienes que llenarlo");  
+            else{
+            localidad.update_localidad(id_localidad, nombre, id_provincia_localidad);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }

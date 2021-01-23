@@ -421,8 +421,28 @@ Editorial editorial = new Editorial();
         String direccion = txt_update_direccion.getText();
         String telefono = txt_update_telefono.getText();
         String url = txt_update_url.getText();
+        
+ if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+                resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
+        } catch (NumberFormatException excepcion) {
+             resultado = false;
+        }
+            if(resultado){
+        
         editorial.update_editorial(id_editorial, nombre, direccion, telefono, url, id_localidad_editorial);
         refrescar();
+            }else
+              JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");     
+ }
     } catch (SQLException ex) {
         Logger.getLogger(JF_Editorial.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -475,8 +495,12 @@ Editorial editorial = new Editorial();
             else{
             boolean resultado;
             try {
-            Integer.parseInt(telefono);
-            resultado = true;
+                resultado = true;
+                char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
         } catch (NumberFormatException excepcion) {
              resultado = false;
         }

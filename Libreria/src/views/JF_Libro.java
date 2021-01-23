@@ -521,8 +521,29 @@ public class JF_Libro extends javax.swing.JFrame {
             String idioma = txt_update_idioma.getText();
             String año = String.valueOf(chs_update_year.getYear());
 
+            if(titulo.isEmpty() || descripcion.isEmpty() || isbn.isEmpty() || paginas.isEmpty() || idioma.isEmpty() || año.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+                Integer.parseInt(paginas);
+                resultado = true;
+                char [] isbn2 = isbn.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
+
+        } catch (NumberFormatException excepcion) { 
+             resultado = false;
+        }
+            if(resultado){     
+            
             libro.update_libro(id_libro, titulo, descripcion, isbn, año,paginas,idioma, id_autor_libro, id_editorial_libro);
             refrescar();
+            }else
+                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");  
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }

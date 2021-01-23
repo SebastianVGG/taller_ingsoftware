@@ -305,8 +305,12 @@ public class JF_Provincia extends javax.swing.JFrame {
             int r = tbl_provincia.getSelectedRow();
             int id_provincia = (int) tbl_provincia.getValueAt(r, 0);
             String nombre = txt_update_nombre.getText();
+            
+            if(nombre.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste el campo vacío, tienes que llenarlo");  
+            else{
             provincia.update_provincia(id_provincia, nombre);
-
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
