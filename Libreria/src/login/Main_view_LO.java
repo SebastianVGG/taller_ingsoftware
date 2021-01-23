@@ -56,39 +56,51 @@ public class Main_view_LO extends javax.swing.JFrame {
         pnl_1 = new javax.swing.JPanel();
         btn_1 = new javax.swing.JButton();
         lbl_1 = new javax.swing.JLabel();
+        lbl_precio_1 = new javax.swing.JLabel();
         pnl_2 = new javax.swing.JPanel();
         btn_2 = new javax.swing.JButton();
         lbl_2 = new javax.swing.JLabel();
+        lbl_precio_2 = new javax.swing.JLabel();
         pnl_3 = new javax.swing.JPanel();
         btn_3 = new javax.swing.JButton();
         lbl_3 = new javax.swing.JLabel();
+        lbl_precio_3 = new javax.swing.JLabel();
         pnl_4 = new javax.swing.JPanel();
         btn_4 = new javax.swing.JButton();
         lbl_4 = new javax.swing.JLabel();
+        lbl_precio_4 = new javax.swing.JLabel();
         pnl_5 = new javax.swing.JPanel();
         btn_5 = new javax.swing.JButton();
         lbl_5 = new javax.swing.JLabel();
+        lbl_precio_5 = new javax.swing.JLabel();
         pnl_6 = new javax.swing.JPanel();
         btn_6 = new javax.swing.JButton();
         lbl_6 = new javax.swing.JLabel();
+        lbl_precio_6 = new javax.swing.JLabel();
         pnl_7 = new javax.swing.JPanel();
         btn_7 = new javax.swing.JButton();
         lbl_7 = new javax.swing.JLabel();
+        lbl_precio_7 = new javax.swing.JLabel();
         pnl_8 = new javax.swing.JPanel();
         btn_8 = new javax.swing.JButton();
         lbl_8 = new javax.swing.JLabel();
+        lbl_precio_8 = new javax.swing.JLabel();
         pnl_9 = new javax.swing.JPanel();
         btn_9 = new javax.swing.JButton();
         lbl_9 = new javax.swing.JLabel();
+        lbl_precio_9 = new javax.swing.JLabel();
         pnl_10 = new javax.swing.JPanel();
         btn_10 = new javax.swing.JButton();
         lbl_10 = new javax.swing.JLabel();
+        lbl_precio_10 = new javax.swing.JLabel();
         pnl_11 = new javax.swing.JPanel();
         btn_11 = new javax.swing.JButton();
         lbl_11 = new javax.swing.JLabel();
+        lbl_precio_11 = new javax.swing.JLabel();
         pnl_12 = new javax.swing.JPanel();
         btn_12 = new javax.swing.JButton();
         lbl_12 = new javax.swing.JLabel();
+        lbl_precio_12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btn_cerrar_sesion = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
@@ -121,6 +133,7 @@ public class Main_view_LO extends javax.swing.JFrame {
         jPanel5.setPreferredSize(new java.awt.Dimension(100, 1350));
 
         pnl_1.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_1.setBackground(new java.awt.Color(251, 238, 218));
         btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry Potter_La piedra filosofal.jpg"))); // NOI18N
@@ -138,15 +151,23 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_1.setAutoscrolls(true);
         lbl_1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        lbl_precio_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_1.setText("$ 390.86");
+
         javax.swing.GroupLayout pnl_1Layout = new javax.swing.GroupLayout(pnl_1);
         pnl_1.setLayout(pnl_1Layout);
         pnl_1Layout.setHorizontalGroup(
             pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_1Layout.createSequentialGroup()
-                .addGroup(pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         pnl_1Layout.setVerticalGroup(
             pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,10 +175,13 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_precio_1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pnl_2.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_2.setBackground(new java.awt.Color(251, 238, 218));
         btn_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/harry-potter-y-la-camara-secreta.jpg"))); // NOI18N
@@ -176,15 +200,26 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_2.setOpaque(true);
 
+        lbl_precio_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_2.setText("$ 385.89");
+
         javax.swing.GroupLayout pnl_2Layout = new javax.swing.GroupLayout(pnl_2);
         pnl_2.setLayout(pnl_2Layout);
         pnl_2Layout.setHorizontalGroup(
             pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_2Layout.createSequentialGroup()
-                .addGroup(pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addGroup(pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_2Layout.createSequentialGroup()
+                        .addGroup(pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_precio_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnl_2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_2Layout.setVerticalGroup(
             pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,10 +227,13 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnl_3.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_3.setBackground(new java.awt.Color(251, 238, 218));
         btn_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/harry-potter-y-el-prisionero-de-azkaban-4490.jpg"))); // NOI18N
@@ -214,15 +252,25 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_3.setOpaque(true);
 
+        lbl_precio_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_3.setText("$ 421.65");
+
         javax.swing.GroupLayout pnl_3Layout = new javax.swing.GroupLayout(pnl_3);
         pnl_3.setLayout(pnl_3Layout);
         pnl_3Layout.setHorizontalGroup(
             pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_3Layout.createSequentialGroup()
-                .addGroup(pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_3Layout.createSequentialGroup()
+                        .addComponent(lbl_precio_3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         pnl_3Layout.setVerticalGroup(
             pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,10 +278,13 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_precio_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pnl_4.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_4.setBackground(new java.awt.Color(251, 238, 218));
         btn_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_El_Caliz_De_Fuego.jpg"))); // NOI18N
@@ -252,15 +303,24 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_4.setOpaque(true);
 
+        lbl_precio_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_4.setText("$ 512.00");
+
         javax.swing.GroupLayout pnl_4Layout = new javax.swing.GroupLayout(pnl_4);
         pnl_4.setLayout(pnl_4Layout);
         pnl_4Layout.setHorizontalGroup(
             pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_4Layout.createSequentialGroup()
-                .addGroup(pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_4Layout.createSequentialGroup()
+                        .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_4Layout.setVerticalGroup(
             pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,10 +328,12 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_5.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_5.setBackground(new java.awt.Color(251, 238, 218));
         btn_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_La_Orden_Del_Fenix.jpg"))); // NOI18N
@@ -290,15 +352,24 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_5.setOpaque(true);
 
+        lbl_precio_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_5.setText("$ 389.99");
+
         javax.swing.GroupLayout pnl_5Layout = new javax.swing.GroupLayout(pnl_5);
         pnl_5.setLayout(pnl_5Layout);
         pnl_5Layout.setHorizontalGroup(
             pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_5Layout.createSequentialGroup()
-                .addGroup(pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_5Layout.createSequentialGroup()
+                        .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_5Layout.setVerticalGroup(
             pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,10 +377,13 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pnl_6.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_6.setBackground(new java.awt.Color(251, 238, 218));
         btn_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_y_el_Misterio_del_Príncipe.jpg"))); // NOI18N
@@ -328,15 +402,24 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_6.setOpaque(true);
 
+        lbl_precio_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_6.setText("$ 432.80");
+
         javax.swing.GroupLayout pnl_6Layout = new javax.swing.GroupLayout(pnl_6);
         pnl_6.setLayout(pnl_6Layout);
         pnl_6Layout.setHorizontalGroup(
             pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_6Layout.createSequentialGroup()
-                .addGroup(pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_6Layout.createSequentialGroup()
+                        .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_6Layout.setVerticalGroup(
             pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,10 +427,12 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_7.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_7.setBackground(new java.awt.Color(251, 238, 218));
         btn_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_Las_Reliquias_De_La_Muerte.jpg"))); // NOI18N
@@ -366,26 +451,37 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_7.setOpaque(true);
 
+        lbl_precio_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_7.setText("$ 367.65");
+
         javax.swing.GroupLayout pnl_7Layout = new javax.swing.GroupLayout(pnl_7);
         pnl_7.setLayout(pnl_7Layout);
         pnl_7Layout.setHorizontalGroup(
             pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_7Layout.createSequentialGroup()
-                .addGroup(pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_7Layout.createSequentialGroup()
+                        .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_7Layout.setVerticalGroup(
             pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_7Layout.createSequentialGroup()
                 .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_8.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_8.setBackground(new java.awt.Color(251, 238, 218));
         btn_8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_El_Legado_Maldito.jpg"))); // NOI18N
@@ -404,26 +500,37 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_8.setOpaque(true);
 
+        lbl_precio_8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_8.setText("$ 476.89");
+
         javax.swing.GroupLayout pnl_8Layout = new javax.swing.GroupLayout(pnl_8);
         pnl_8.setLayout(pnl_8Layout);
         pnl_8Layout.setHorizontalGroup(
             pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_8Layout.createSequentialGroup()
-                .addGroup(pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_8Layout.createSequentialGroup()
+                        .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_8Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_8Layout.setVerticalGroup(
             pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_8Layout.createSequentialGroup()
                 .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_9.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_9.setBackground(new java.awt.Color(251, 238, 218));
         btn_9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Juegos_De_Tronos.jpg"))); // NOI18N
@@ -442,26 +549,37 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_9.setOpaque(true);
 
+        lbl_precio_9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_9.setText("$ 564.24");
+
         javax.swing.GroupLayout pnl_9Layout = new javax.swing.GroupLayout(pnl_9);
         pnl_9.setLayout(pnl_9Layout);
         pnl_9Layout.setHorizontalGroup(
             pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_9Layout.createSequentialGroup()
-                .addGroup(pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_9))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_9Layout.createSequentialGroup()
+                        .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_9Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_9Layout.setVerticalGroup(
             pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_9Layout.createSequentialGroup()
                 .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_10.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_10.setBackground(new java.awt.Color(251, 238, 218));
         btn_10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/choque_De_Reyes.jpg"))); // NOI18N
@@ -480,26 +598,37 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_10.setOpaque(true);
 
+        lbl_precio_10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_10.setText("$ 467.41");
+
         javax.swing.GroupLayout pnl_10Layout = new javax.swing.GroupLayout(pnl_10);
         pnl_10.setLayout(pnl_10Layout);
         pnl_10Layout.setHorizontalGroup(
             pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_10Layout.createSequentialGroup()
-                .addGroup(pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_10))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_10Layout.createSequentialGroup()
+                        .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_10Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_10Layout.setVerticalGroup(
             pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_10Layout.createSequentialGroup()
                 .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(lbl_10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_11.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_11.setBackground(new java.awt.Color(251, 238, 218));
         btn_11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tormenta_De_Espadas.jpg"))); // NOI18N
@@ -518,15 +647,24 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_11.setOpaque(true);
 
+        lbl_precio_11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_11.setText("$ 453.10");
+
         javax.swing.GroupLayout pnl_11Layout = new javax.swing.GroupLayout(pnl_11);
         pnl_11.setLayout(pnl_11Layout);
         pnl_11Layout.setHorizontalGroup(
             pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_11Layout.createSequentialGroup()
-                .addGroup(pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_11))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_11Layout.createSequentialGroup()
+                        .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_11Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_11Layout.setVerticalGroup(
             pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,10 +672,12 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_precio_11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_12.setBackground(new java.awt.Color(218, 247, 251));
+        pnl_12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(70, 156, 168), 2));
 
         btn_12.setBackground(new java.awt.Color(251, 238, 218));
         btn_12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/festin_De_Cuervos.jpg"))); // NOI18N
@@ -556,15 +696,24 @@ public class Main_view_LO extends javax.swing.JFrame {
         lbl_12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_12.setOpaque(true);
 
+        lbl_precio_12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_12.setText("$ 514.00");
+
         javax.swing.GroupLayout pnl_12Layout = new javax.swing.GroupLayout(pnl_12);
         pnl_12.setLayout(pnl_12Layout);
         pnl_12Layout.setHorizontalGroup(
             pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_12Layout.createSequentialGroup()
-                .addGroup(pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_12))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_12Layout.createSequentialGroup()
+                        .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_12Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_12Layout.setVerticalGroup(
             pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,7 +721,8 @@ public class Main_view_LO extends javax.swing.JFrame {
                 .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_precio_12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -604,37 +754,32 @@ public class Main_view_LO extends javax.swing.JFrame {
                     .addComponent(pnl_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnl_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnl_12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnl_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnl_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnl_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(pnl_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnl_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnl_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnl_10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnl_11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnl_2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnl_5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pnl_4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel5);
@@ -715,8 +860,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_1ActionPerformed
 
     private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
@@ -725,8 +872,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_2ActionPerformed
 
     private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
@@ -735,8 +884,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_3ActionPerformed
 
     private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
@@ -745,8 +896,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_4ActionPerformed
 
     private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
@@ -755,8 +908,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_5ActionPerformed
 
     private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
@@ -765,8 +920,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_6ActionPerformed
 
     private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
@@ -775,8 +932,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_7ActionPerformed
 
     private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
@@ -785,8 +944,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_8ActionPerformed
 
     private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
@@ -795,8 +956,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_9ActionPerformed
 
     private void btn_10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_10ActionPerformed
@@ -805,8 +968,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_10ActionPerformed
 
     private void btn_11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_11ActionPerformed
@@ -815,8 +980,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_11ActionPerformed
 
     private void btn_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_12ActionPerformed
@@ -825,8 +992,10 @@ public class Main_view_LO extends javax.swing.JFrame {
             int response = JOptionPane.showOptionDialog(null, "Para visualizar el contenido necesita inicias sesion", "Modo vizualizador",
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
-            if(response == 0)
-                 ver_login.setVisible(true);
+            if(response == 0){
+                ver_login.setVisible(true);
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btn_12ActionPerformed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
@@ -923,6 +1092,18 @@ public class Main_view_LO extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_7;
     private javax.swing.JLabel lbl_8;
     private javax.swing.JLabel lbl_9;
+    private javax.swing.JLabel lbl_precio_1;
+    private javax.swing.JLabel lbl_precio_10;
+    private javax.swing.JLabel lbl_precio_11;
+    private javax.swing.JLabel lbl_precio_12;
+    private javax.swing.JLabel lbl_precio_2;
+    private javax.swing.JLabel lbl_precio_3;
+    private javax.swing.JLabel lbl_precio_4;
+    private javax.swing.JLabel lbl_precio_5;
+    private javax.swing.JLabel lbl_precio_6;
+    private javax.swing.JLabel lbl_precio_7;
+    private javax.swing.JLabel lbl_precio_8;
+    private javax.swing.JLabel lbl_precio_9;
     private javax.swing.JPanel pnl_1;
     private javax.swing.JPanel pnl_10;
     private javax.swing.JPanel pnl_11;
