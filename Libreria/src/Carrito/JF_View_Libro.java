@@ -55,7 +55,7 @@ public class JF_View_Libro extends javax.swing.JFrame {
     
     
     public void ScaleImage(String url){
-        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(url)));
+        ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource(url));
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(lbl_picture.getWidth(),lbl_picture.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgScale);
@@ -461,8 +461,9 @@ public class JF_View_Libro extends javax.swing.JFrame {
             Libro datos_libro = libro.select_one_libro(id_libro_elegido);
             boolean papel = true;
 
-            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,this.cliente,papel,cantidad);
-            ver_cesta.setVisible(true);
+            JF_Pago pago = new JF_Pago(papel_datos,ebook_datos,datos_libro,this.cliente,papel,cantidad);
+            pago.setLocationRelativeTo(null);
+            pago.setVisible(true);
             
         } catch (SQLException ex) {
             Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
@@ -478,8 +479,9 @@ public class JF_View_Libro extends javax.swing.JFrame {
             Libro datos_libro = libro.select_one_libro(id_libro_elegido);
             boolean ebook = false;
             int cantidad = spf_cantidad.getValue();
-            JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,this.cliente,ebook,cantidad);
-            ver_cesta.setVisible(true);
+            JF_Pago pago = new JF_Pago(papel_datos,ebook_datos,datos_libro,this.cliente,ebook,cantidad);
+            pago.setLocationRelativeTo(null);
+            pago.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {

@@ -62,7 +62,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtf_insert_password_repetir = new javax.swing.JTextField();
         btn_iniciarsesion_crearcuenta = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,7 +79,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
 
         cbx_insert_localidad_cliente.setFont(new java.awt.Font("Segoe UI Light", 0, 11)); // NOI18N
 
-        btn_insert.setFont(new java.awt.Font("Segoe UI Light", 0, 12)); // NOI18N
+        btn_insert.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         btn_insert.setText("Crear Cuenta");
         btn_insert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +105,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         jLabel12.setText("Repetir contraseña");
 
+        btn_iniciarsesion_crearcuenta.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
         btn_iniciarsesion_crearcuenta.setText("Iniciar Sesión");
         btn_iniciarsesion_crearcuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,12 +113,15 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("CREAR CUENTA");
+        jLabel20.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("CREAR CUENTA");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -145,7 +149,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbx_insert_localidad_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbx_insert_localidad_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,25 +166,20 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtf_insert_password, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtf_insert_email, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtf_insert_password_repetir, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_insert, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btn_iniciarsesion_crearcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                            .addComponent(txtf_insert_password_repetir, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_insert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(253, 253, 253))
+                .addComponent(btn_iniciarsesion_crearcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(169, 169, 169))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtf_insert_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -192,7 +191,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtf_insert_password_repetir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtf_insert_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,10 +215,10 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cbx_insert_localidad_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_insert, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_iniciarsesion_crearcuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(btn_insert, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_iniciarsesion_crearcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -231,7 +230,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -240,8 +239,9 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
-        try {
+
             
+        try {
             List <Localidad> localidad_select = localidad.select_localidad();
 
             String nombre = txtf_insert_nombre.getText();
@@ -256,31 +256,46 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
             int cbx_id_localidad= cbx_insert_localidad_cliente.getSelectedIndex();
             int id_localidad_cliente = localidad_select.get(cbx_id_localidad).getId();
             
-            if  (password.equals(password_repetir)){
-                
-            Cliente cliente = new Cliente(nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
-            cliente.insert_cliente();
-            Main_login login = new Main_login(email,password);
-            String[] options = new String[] {"Iniciar sesión"};
-            int response = JOptionPane.showOptionDialog(null, "            Cuenta creada correctamente", "",
-            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-            null, options, options[0]);
-            if(response == 0){
-                dispose();
-                login.setLocationRelativeTo(null);
-                login.setVisible(true);
-
-               
-          }
-            
-            else
-                JOptionPane.showMessageDialog(null, "La contraseña no se repite",
-  "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);
-
+            if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || email.isEmpty() || password.isEmpty() || password_repetir.isEmpty())
+                JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
+            else{
+                boolean resultado;
+                try {
+                    resultado = true;
+                    char [] isbn2 = telefono.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
+                } catch (NumberFormatException excepcion) {
+                    resultado = false;
+                }
+                if(resultado){
+                    
+                    if  (password.equals(password_repetir)){
+                        
+                        Cliente cliente = new Cliente(nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
+                        cliente.insert_cliente();
+                        Main_login login = new Main_login(email,password);
+                        String[] options = new String[] {"Iniciar sesión"};
+                        int response = JOptionPane.showOptionDialog(null, "            Cuenta creada correctamente", "",
+                                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                                null, options, options[0]);
+                        if(response == 0){
+                            dispose();
+                            login.setLocationRelativeTo(null);
+                            login.setVisible(true);
+                        } 
+                    }else
+                            JOptionPane.showMessageDialog(null, "La contraseña no se repite",
+                                    "WARNING_MESSAGE", JOptionPane.WARNING_MESSAGE);                
+                }else
+                    JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(JF_Crear_cuenta.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
+
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void btn_iniciarsesion_crearcuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarsesion_crearcuentaActionPerformed
@@ -337,12 +352,12 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txtf_insert_apellido1;
     private javax.swing.JTextField txtf_insert_apellido2;

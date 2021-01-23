@@ -71,9 +71,9 @@ public class Main_login extends javax.swing.JFrame {
         btn_close = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         pnl_move_brown = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -106,6 +106,7 @@ public class Main_login extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(null);
 
+        check_box.setContentAreaFilled(false);
         check_box.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 check_boxActionPerformed(evt);
@@ -124,7 +125,7 @@ public class Main_login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txt_correo);
-        txt_correo.setBounds(40, 30, 290, 20);
+        txt_correo.setBounds(40, 20, 290, 30);
 
         jSeparator1.setForeground(new java.awt.Color(41, 32, 18));
         jPanel3.add(jSeparator1);
@@ -152,7 +153,7 @@ public class Main_login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtp_pass);
-        txtp_pass.setBounds(40, 120, 270, 20);
+        txtp_pass.setBounds(40, 110, 270, 30);
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 162, 406, 177);
@@ -180,7 +181,7 @@ public class Main_login extends javax.swing.JFrame {
         jLabel4.setBounds(54, 25, 147, 64);
 
         btn_close.setBackground(new java.awt.Color(255, 255, 255));
-        btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close_mainview.png"))); // NOI18N
         btn_close.setBorder(null);
         btn_close.setContentAreaFilled(false);
         btn_close.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +190,7 @@ public class Main_login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btn_close);
-        btn_close.setBounds(364, 0, 42, 33);
+        btn_close.setBounds(370, 0, 40, 40);
 
         jPanel4.add(jPanel2);
         jPanel2.setBounds(380, 0, 410, 550);
@@ -203,26 +204,26 @@ public class Main_login extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Erick Daniel Villafuerte Zavala");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 154, 345, 60);
-
-        jLabel7.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Integrantes");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 37, 345, 60);
+        jLabel5.setBounds(0, 90, 370, 60);
 
         jLabel6.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Sebastián Valente García García");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 364, 345, 60);
+        jLabel6.setBounds(5, 364, 360, 60);
 
         jLabel8.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jLabel8);
         jLabel8.setBounds(10, 246, 345, 107);
+
+        jLabel11.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Integrantes");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(0, 0, 370, 60);
 
         jPanel4.add(jPanel1);
         jPanel1.setBounds(0, 0, 365, 550);
@@ -287,6 +288,7 @@ public class Main_login extends javax.swing.JFrame {
                          txt_correo.setText("");
 
     }//GEN-LAST:event_txt_correoMouseClicked
+    @SuppressWarnings("deprecation")
 void password(){
      if (txtp_pass.getText().equals("Contraseña"))
                          txtp_pass.setText("");
@@ -296,6 +298,7 @@ void password(){
          txtp_pass.setEchoChar('*');
     }//GEN-LAST:event_txtp_passMouseClicked
 
+    @SuppressWarnings("deprecation")
     private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
         
         if(txt_correo.getText().isEmpty() || txtp_pass.getText().isEmpty())
@@ -398,11 +401,11 @@ void password(){
     private javax.swing.JButton btn_iniciar_sesion;
     private javax.swing.JCheckBox check_box;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
