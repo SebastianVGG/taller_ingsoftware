@@ -5,6 +5,7 @@
  */
 package views;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,6 +29,7 @@ public class JF_Ebook extends javax.swing.JFrame {
         initComponents();
         agregarItem_cbx();
         agregarItem_tbl();
+        restringir();
     }
 
     public void get_ebook_dates(int id_ebook) throws SQLException{
@@ -534,5 +536,10 @@ public class JF_Ebook extends javax.swing.JFrame {
         
     } 
 
-
+    void restringir(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txt_insert_precio);
+            RestrictedTextField restricted2 = new RestrictedTextField(txt_update_precio);
+            restricted1.setLimit(6);
+            restricted2.setLimit(6);
+    }
 }

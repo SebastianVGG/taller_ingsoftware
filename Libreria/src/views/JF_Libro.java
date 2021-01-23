@@ -5,6 +5,7 @@
  */
 package views;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +38,7 @@ public class JF_Libro extends javax.swing.JFrame {
         initComponents();
         agregarItem_cbx();
         agregarItem_tbl();
+        restringir();
     }
 
     public void get_libro_dates(int id_libro) throws SQLException{
@@ -791,5 +793,18 @@ public class JF_Libro extends javax.swing.JFrame {
         
     } 
 
-
+    void restringir(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txt_insert_isbn);
+            RestrictedTextField restricted2 = new RestrictedTextField(txt_insert_paginas);
+            RestrictedTextField restricted4 = new RestrictedTextField(txt_update_isbn);
+            RestrictedTextField restricted5 = new RestrictedTextField(txt_update_paginas);
+            restricted1.setLimit(13);
+            restricted2.setLimit(4);
+            restricted4.setLimit(13);
+            restricted5.setLimit(4);
+            restricted1.setOnlyNums(true);
+            restricted2.setOnlyNums(true);
+            restricted4.setOnlyNums(true);
+            restricted5.setOnlyNums(true);
+    }
 }

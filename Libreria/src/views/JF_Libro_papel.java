@@ -6,6 +6,7 @@
 package views;
 
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -311,6 +312,11 @@ public class JF_Libro_papel extends javax.swing.JFrame {
         for (int i = 0; i < almacen_select.size(); i++) 
             cbx_almacen.addItem(almacen_select.get(i).getDireccion());
 
+    }
+    
+    void restringir(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txt_insert_precio);
+            restricted1.setLimit(6);
     }
 
 }

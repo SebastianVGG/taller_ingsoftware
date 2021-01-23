@@ -5,6 +5,7 @@
  */
 package views;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,7 @@ public class JF_Cesta extends javax.swing.JFrame {
         initComponents();
         agregarItem_cbx();
         agregarItem_tbl();
+        restringir();
     }
 
     public void get_cesta_dates(int id_cesta) throws SQLException{
@@ -617,6 +619,15 @@ public class JF_Cesta extends javax.swing.JFrame {
             
             }
         
+    }
+    
+    void restringir(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txt_insert_cantidad);
+            RestrictedTextField restricted2 = new RestrictedTextField(txt_update_cantidad);
+            restricted1.setLimit(5);
+            restricted2.setLimit(5);
+            restricted1.setOnlyNums(true);
+            restricted2.setOnlyNums(true);
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package Carrito;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -37,7 +38,9 @@ public class JF_Pago_debit extends javax.swing.JFrame {
         this.cliente=cliente;
         this.papel_ebook=papel_ebook;
         this.cantidad=cantidad;
+        limit_character();
         costo();
+       
     }
 
     public JF_Pago_debit() {
@@ -53,6 +56,30 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                lbl_costo_total.setText(String.valueOf("$ "+this.cantidad*this.ebook.getPrecio())+" MX.");
           }
       }
+          
+     void limit_character(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txt_numero_tarjeta1);
+            RestrictedTextField restricted2 = new RestrictedTextField(txt_numero_tarjeta2);
+            RestrictedTextField restricted3 = new RestrictedTextField(txt_numero_tarjeta3);
+            RestrictedTextField restricted4 = new RestrictedTextField(txt_numero_tarjeta4);
+            RestrictedTextField restricted_ano = new RestrictedTextField(txt_ano);
+            RestrictedTextField restricted_mes= new RestrictedTextField(txt_mes);
+            RestrictedTextField restricted_cvc= new RestrictedTextField(txt_cvc);
+            restricted1.setLimit(4);
+            restricted2.setLimit(4);
+            restricted3.setLimit(4);
+            restricted4.setLimit(4);
+            restricted_ano.setLimit(2);
+            restricted_mes.setLimit(2);
+            restricted_cvc.setLimit(3);
+            restricted_cvc.setOnlyNums(true);
+            restricted_ano.setOnlyNums(true);
+            restricted_mes.setOnlyNums(true);
+            restricted2.setOnlyNums(true);
+            restricted1.setOnlyNums(true);
+            restricted3.setOnlyNums(true);
+            restricted4.setOnlyNums(true);
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +93,6 @@ public class JF_Pago_debit extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        txt_numero_debito = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txt_mes = new javax.swing.JTextField();
@@ -74,6 +100,10 @@ public class JF_Pago_debit extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txt_cvc = new javax.swing.JTextField();
+        txt_numero_tarjeta1 = new javax.swing.JTextField();
+        txt_numero_tarjeta2 = new javax.swing.JTextField();
+        txt_numero_tarjeta3 = new javax.swing.JTextField();
+        txt_numero_tarjeta4 = new javax.swing.JTextField();
         btn_continuar = new javax.swing.JButton();
         lbl_costo_total = new javax.swing.JLabel();
 
@@ -86,8 +116,6 @@ public class JF_Pago_debit extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        txt_numero_debito.setText("Número de tarjeta");
 
         jLabel2.setText("Tarjeta de débito");
 
@@ -103,6 +131,8 @@ public class JF_Pago_debit extends javax.swing.JFrame {
 
         txt_cvc.setText("CVC");
 
+        txt_numero_tarjeta1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -111,7 +141,6 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_numero_debito, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,8 +153,16 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(txt_cvc, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                            .addComponent(txt_cvc, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txt_numero_tarjeta1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_numero_tarjeta2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_numero_tarjeta3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_numero_tarjeta4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +170,11 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_numero_debito, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_numero_tarjeta1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_numero_tarjeta2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_numero_tarjeta3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_numero_tarjeta4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -206,8 +247,11 @@ public class JF_Pago_debit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_continuarActionPerformed
-       String tarjeta = txt_numero_debito.getText();
-       if(tarjeta.isEmpty() || txt_ano.getText().isEmpty() || txt_cvc.getText().isEmpty())
+           String tarjeta1 = txt_numero_tarjeta1.getText();
+           String tarjeta2= txt_numero_tarjeta2.getText();
+           String tarjeta3 = txt_numero_tarjeta3.getText();
+           String tarjeta4 = txt_numero_tarjeta4.getText();
+       if(tarjeta1.isEmpty() || txt_ano.getText().isEmpty() || txt_cvc.getText().isEmpty() || tarjeta2.isEmpty() || tarjeta3.isEmpty() || tarjeta4.isEmpty())
             JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
         else{
             boolean resultado;
@@ -215,20 +259,14 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                 resultado = true;
                 Integer.parseInt( txt_ano.getText());
                 Integer.parseInt(txt_cvc.getText());
-                char [] isbn2 = tarjeta.toCharArray();
-                    for (int i = 0; i < isbn2.length; i++) {
-                        if(!Character.isDigit(isbn2[i]))
-                            resultado = false;
-                    }
             } catch (NumberFormatException excepcion) {
                 resultado = false;
             }
             if(resultado){
                 try {
                     String tipo = "Tarjeta de débito";
-                     tarjeta = tarjeta.substring(tarjeta.length() -4, tarjeta.length());
-                     tarjeta = "**** **** **** "+tarjeta;
-                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta);
+                     tarjeta4 = "**** **** **** "+tarjeta4;
+                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta4);
                     ver_cesta.setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(JF_Pago_debit.class.getName()).log(Level.SEVERE, null, ex);
@@ -289,6 +327,9 @@ public class JF_Pago_debit extends javax.swing.JFrame {
     private javax.swing.JTextField txt_ano;
     private javax.swing.JTextField txt_cvc;
     private javax.swing.JTextField txt_mes;
-    private javax.swing.JTextField txt_numero_debito;
+    private javax.swing.JTextField txt_numero_tarjeta1;
+    private javax.swing.JTextField txt_numero_tarjeta2;
+    private javax.swing.JTextField txt_numero_tarjeta3;
+    private javax.swing.JTextField txt_numero_tarjeta4;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package views;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,6 +29,7 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
         this.id_libro=id_libro;
         Libro libro1=libro.select_one_libro(id_libro);
         txt_libro.setText(libro1.getTitulo());
+        restringir();
     }
         public JF_Libro_ebook(){
         initComponents();
@@ -244,4 +246,9 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
     private javax.swing.JTextField txt_insert_tamaño;
     private javax.swing.JTextField txt_libro;
     // End of variables declaration//GEN-END:variables
+    void restringir(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txt_insert_precio);
+            restricted1.setLimit(6);
+    }
+
 }

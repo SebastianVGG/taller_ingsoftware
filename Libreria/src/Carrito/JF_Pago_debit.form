@@ -105,11 +105,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
-                          <Component id="txt_numero_debito" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
@@ -127,8 +126,17 @@
                                   <Component id="txt_cvc" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txt_numero_tarjeta1" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txt_numero_tarjeta2" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txt_numero_tarjeta3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txt_numero_tarjeta4" min="-2" pref="50" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <EmptySpace pref="64" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -138,7 +146,12 @@
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_numero_debito" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_numero_tarjeta1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="txt_numero_tarjeta2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="txt_numero_tarjeta3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="txt_numero_tarjeta4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -157,11 +170,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txt_numero_debito">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="N&#xfa;mero de tarjeta"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tarjeta de d&#xe9;bito"/>
@@ -196,6 +204,19 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="CVC"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_numero_tarjeta1">
+              <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Texto"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_numero_tarjeta2">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_numero_tarjeta3">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_numero_tarjeta4">
             </Component>
           </SubComponents>
         </Container>

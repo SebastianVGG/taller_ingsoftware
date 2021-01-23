@@ -5,6 +5,7 @@
  */
 package views;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.util.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -674,5 +675,8 @@ public class JF_Papel extends javax.swing.JFrame {
         
     } 
 
-
+    void restringir(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txt_insert_precio);
+            restricted1.setLimit(6);
+    }
 }
