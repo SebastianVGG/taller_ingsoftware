@@ -478,26 +478,43 @@ Cliente cliente = new Cliente();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
-        try {
-            List <Localidad> localidad_select = localidad.select_localidad();
-            
-            String nombre = txtf_insert_nombre.getText();
-            String apellido1 = txtf_insert_apellido1.getText();
-            String apellido2 = txtf_insert_apellido2.getText();
-            String direccion = txtf_insert_direccion.getText();
-            String email = txtf_insert_email.getText();
-            String password = txtf_insert_password.getText();
-            String telefono = txtf_insert_password.getText();
-            
-            int cbx_id_localidad= cbx_insert_localidad_cliente.getSelectedIndex();
-            int id_localidad_cliente = localidad_select.get(cbx_id_localidad).getId();
-            
-            Cliente cliente = new Cliente(nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
-            cliente.insert_cliente();
-            JOptionPane.showMessageDialog(null, "Nuevo cliente");
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+
+    try {
+        List <Localidad> localidad_select = localidad.select_localidad();
+        
+        String nombre = txtf_insert_nombre.getText();
+        String apellido1 = txtf_insert_apellido1.getText();
+        String apellido2 = txtf_insert_apellido2.getText();
+        String direccion = txtf_insert_direccion.getText();
+        String email = txtf_insert_email.getText();
+        String password = txtf_insert_password.getText();
+        String telefono = txtf_insert_telefono.getText();
+        
+        if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || email.isEmpty() || password.isEmpty())
+            JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
+        else{
+            boolean resultado;
+            try {
+                Integer.parseInt(telefono);
+                resultado = true;
+            } catch (NumberFormatException excepcion) {
+                resultado = false;
+            }
+            if(resultado){
+                
+                
+                int cbx_id_localidad= cbx_insert_localidad_cliente.getSelectedIndex();
+                int id_localidad_cliente = localidad_select.get(cbx_id_localidad).getId();
+                
+                Cliente cliente = new Cliente(nombre,apellido1,apellido2,direccion,email,password,telefono,id_localidad_cliente);
+                cliente.insert_cliente();
+                JOptionPane.showMessageDialog(null, "Nuevo cliente");
+            }else
+                  JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
         }
+    } catch (SQLException ex) {
+       
+    }
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed

@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Almacen;
 import tables.Libro;
@@ -28,7 +29,8 @@ public class JF_Papel extends javax.swing.JFrame {
     Libro libro = new Libro();
     Almacen almacen = new Almacen();
     Papel papel = new Papel();
-    
+    Date fecha;
+    float precio;
     public JF_Papel() throws SQLException {
         initComponents();
         agregarItem_cbx();
@@ -466,27 +468,55 @@ public class JF_Papel extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_papelMouseClicked
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
-        try {
-            List <Libro> libro_select = libro.select();
-            List <Almacen> almacen_select = almacen.select_almacen();
+   
+                try{
+                    
+                    List <Libro> libro_select = libro.select();
+                    List <Almacen> almacen_select = almacen.select_almacen();
+                    
+                    boolean  res;
+                    try{
+                        Date date = (Date) date_insert_fecha.getDate();
+                        long d = date.getTime();
+                        this.fecha = new java.sql.Date(d);
+                        res=true;
+                    }catch(Exception e){
+                        res=false;
+                    }
+                    
+                    if(res){
+                        
+                        String lugar = txt_insert_lugar_impresion.getText();
+                        
+                        int cbx_id_libro = cbx_insert_libro.getSelectedIndex();
+                        int cbx_id_almacen = cbx_insert_almacen.getSelectedIndex();
+                        int id_libro_papel = libro_select.get(cbx_id_libro).getId();
+                        int id_almacen_papel = almacen_select.get(cbx_id_almacen).getId();
+                        
+                        if(lugar.isEmpty() || txt_insert_precio.getText().isEmpty() )
+                            JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");
+                        else{
+                            boolean resultado;
+                            try {
+                                
+                                this.precio = Integer.parseInt(txt_insert_precio.getText());
+                                resultado = true;
+                            } catch (NumberFormatException excepcion) {
+                                resultado = false;
+                            }
+                            if(resultado){
+                                Papel papel = new Papel(fecha,lugar, this.precio, id_libro_papel, id_almacen_papel);
+                                papel.insert_papel();
+                            }else
+                                JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
+                        }
+                    }else
+                           JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");
+                    
+                }catch(SQLException ex){
+                    Logger.getLogger(JF_Papel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             
-            Date date = (Date) date_insert_fecha.getDate();
-            long d = date.getTime();
-            java.sql.Date fecha = new java.sql.Date(d);
-            
-            String lugar = txt_insert_lugar_impresion.getText();
-            float precio = Float.parseFloat(txt_insert_precio.getText());
-            
-            int cbx_id_libro = cbx_insert_libro.getSelectedIndex();
-            int cbx_id_almacen = cbx_insert_almacen.getSelectedIndex();
-            int id_libro_papel = libro_select.get(cbx_id_libro).getId();
-            int id_almacen_papel = almacen_select.get(cbx_id_almacen).getId();
-            
-            Papel papel = new Papel(fecha,lugar, precio, id_libro_papel, id_almacen_papel);
-            papel.insert_papel();
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_btn_insertActionPerformed
 
     /**

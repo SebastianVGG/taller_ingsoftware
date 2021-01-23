@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tables.Ebook;
 import tables.Libro;
 
@@ -20,6 +21,7 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
 
     Libro libro = new Libro();
     int id_libro;
+    float precio;
     
     public JF_Libro_ebook(int id_libro) throws SQLException {
         initComponents();
@@ -171,8 +173,25 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
         try {
             String tamaño = txt_insert_tamaño.getText();
             float precio = Float.valueOf(txt_insert_precio.getText());
+            if(tamaño.isEmpty() || txt_insert_precio.getText().isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+            Integer.parseInt(txt_insert_precio.getText());
+           this.precio = Float.valueOf(txt_insert_precio.getText());
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+             resultado = false;
+        }
+            if(resultado){
+            
+            
             Ebook ebook = new Ebook(tamaño,precio,this.id_libro);
             ebook.insert_ebook();
+            }else
+                  JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -25,6 +25,8 @@ public class JF_Cesta extends javax.swing.JFrame {
     private Cliente cliente = new Cliente();
     private Libro libro = new Libro();
     private Cesta cesta = new Cesta();
+    private int cantidad;
+    private Date fecha;
 
     /**
      * Creates new form JF_Cesta
@@ -427,30 +429,56 @@ public class JF_Cesta extends javax.swing.JFrame {
     }//GEN-LAST:event_tb_cestaMouseClicked
 
     private void btn_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarActionPerformed
+
         try {
             List <Cliente> cliente_select = cliente.select_cliente(); //Se crea lista de objectos de la clase Localidad (foranea)
             List <Libro> libro_select = libro.select(); //Se crea lista de objectos de la clase Localidad (foranea)
-            
+             boolean  res;
+            try{
             Date date = (Date) date_insert_fecha.getDate();
             long d = date.getTime();
-            java.sql.Date fecha = new java.sql.Date(d);
-
-            int cbx_id_cliente = cbx_insert_cliente.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
-            int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId(); //Se obtiene la id de la localidad seleccionada
-            int cantidad = Integer.parseInt(txt_insert_cantidad.getText());
-            int cbx_id_libro = cbx_insert_libro.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
-            int id_cesta_libro = libro_select.get(cbx_id_libro).getId(); //Se obtiene la id de la localidad seleccionada
-            Cesta cesta = new Cesta(fecha,cantidad,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
-            cesta.insert_cesta(); //Se ejecuta el insert con el objecto creado
-           JOptionPane.showMessageDialog(null, "Nueva cesta");  
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Cesta.class.getName()).log(Level.SEVERE, null, ex);
+             this.fecha = new java.sql.Date(d);
+             res=true;
+        }catch(Exception e){
+          res=false;
         }
+            
+            if(res){
+                        int cbx_id_cliente = cbx_insert_cliente.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
+                        int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId(); //Se obtiene la id de la localidad seleccionada
+
+
+                        if(txt_insert_cantidad.getText().isEmpty())
+                            JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");  
+                        else{
+                            boolean resultado;
+                            try {
+                                this.cantidad = Integer.parseInt(txt_insert_cantidad.getText());
+                                resultado = true;
+                            } catch (NumberFormatException excepcion) {
+                                resultado = false;
+                            }
+                            if(resultado){
+
+                                int cbx_id_libro = cbx_insert_libro.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
+                                int id_cesta_libro = libro_select.get(cbx_id_libro).getId(); //Se obtiene la id de la localidad seleccionada
+                                Cesta cesta = new Cesta(fecha,this.cantidad,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
+                                cesta.insert_cesta(); //Se ejecuta el insert con el objecto creado
+                                JOptionPane.showMessageDialog(null, "Nueva cesta");
+                            }
+                            else
+                                JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");  
+                        }
+            }else
+                JOptionPane.showMessageDialog(null, "Tienes que llenar los campos obligatorios");  
+            
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JF_Cesta.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        
     }//GEN-LAST:event_btn_insertarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

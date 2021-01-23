@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Editorial;
 import tables.Localidad;
@@ -469,11 +470,26 @@ Editorial editorial = new Editorial();
             String telefono = txt_insert_telefono.getText();
             String url = txt_insert_url.getText();
             
+            if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+            Integer.parseInt(telefono);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+             resultado = false;
+        }
+            if(resultado){
+            
             int cbx_id_localidad = cbx_insert_localidad.getSelectedIndex();
             int id_localidad_editorial = localida_select.get(cbx_id_localidad).getId();
             
             Editorial editorial = new Editorial(nombre,direccion, telefono, url, id_localidad_editorial);
             editorial.insert_editorial();
+            }else
+                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");  
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }

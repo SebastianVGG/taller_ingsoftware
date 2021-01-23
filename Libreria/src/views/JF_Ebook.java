@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Ebook;
 import tables.Libro;
@@ -23,7 +24,7 @@ public class JF_Ebook extends javax.swing.JFrame {
 
     Libro libro = new Libro();
     Ebook ebook = new Ebook();
-    
+    private  float precio;  
     public JF_Ebook() throws SQLException {
         initComponents();
         agregarItem_cbx();
@@ -388,13 +389,30 @@ public class JF_Ebook extends javax.swing.JFrame {
         try {
             List <Libro> libro_select = libro.select();
             String tamaño = txt_insert_tamaño.getText();
-            float precio = Float.valueOf(txt_insert_precio.getText());
+
+            if(tamaño.isEmpty() || txt_insert_precio.getText().isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+            Integer.parseInt(txt_insert_precio.getText());
+           this.precio = Float.valueOf(txt_insert_precio.getText());
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+             resultado = false;
+        }
+            if(resultado){
+            
+            
             int cbx_id_libro = cbx_insert_libro.getSelectedIndex();
             int id_libro_ebook = libro_select.get(cbx_id_libro).getId();
-            Ebook ebook = new Ebook(tamaño,precio,id_libro_ebook);
+            Ebook ebook = new Ebook(tamaño,this.precio,id_libro_ebook);
             ebook.insert_ebook();
+            }else
+                JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");  
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }//GEN-LAST:event_btn_insertActionPerformed
 

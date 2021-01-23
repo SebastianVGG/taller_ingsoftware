@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Provincia;
 /**
@@ -289,7 +290,11 @@ public class JF_Provincia extends javax.swing.JFrame {
         try {
             String nombre = txt_insert_nombre.getText();
             Provincia provincia = new Provincia(nombre);
+            if(nombre.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste el campo vacío, tienes que llenarlo");  
+            else{
             provincia.insert_provincia();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Provincia.class.getName()).log(Level.SEVERE, null, ex);
         }

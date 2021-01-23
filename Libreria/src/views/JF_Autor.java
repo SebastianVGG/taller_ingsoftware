@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Autor;
 import tables.Localidad;
@@ -441,26 +442,45 @@ public class JF_Autor extends javax.swing.JFrame {
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertActionPerformed
       
-        try {
+  
             
-            List <Localidad> localidad_select = localidad.select_localidad();
-            
-            String nombre = txt_insert_nombre.getText();
-            String apellido1 = txt_insert_apellido1.getText();
-            String apellido2 = txt_insert_apellido2.getText();
-            String direccion = txt_insert_direccion.getText();
-            String telefono = txt_insert_telefono.getText();
-            String url = txt_insert_url.getText();
-            
-            int cbx_id_localidad = cbx_insert_localidad.getSelectedIndex();
-            int id_localidad_autor = localidad_select.get(cbx_id_localidad).getId();
-            
-            Autor autor = new Autor(nombre,apellido1,apellido2,direccion,telefono,url,id_localidad_autor);
-            autor.insert_autor();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     try {
+         List <Localidad> localidad_select = localidad.select_localidad();
+         
+         String nombre = txt_insert_nombre.getText();
+         String apellido1 = txt_insert_apellido1.getText();
+         String apellido2 = txt_insert_apellido2.getText();
+         String direccion = txt_insert_direccion.getText();
+         String telefono = txt_insert_telefono.getText();
+         String url = txt_insert_url.getText();
+         
+         if(nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || direccion.isEmpty() || telefono.isEmpty())
+             JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
+         else{
+             boolean resultado;
+             try {
+                 Integer.parseInt(telefono);
+                 resultado = true;
+             } catch (NumberFormatException excepcion) {
+                 resultado = false;
+             }
+             if(resultado){
+                 
+                 int cbx_id_localidad = cbx_insert_localidad.getSelectedIndex();
+                 int id_localidad_autor = localidad_select.get(cbx_id_localidad).getId();
+                 
+                 Autor autor = new Autor(nombre,apellido1,apellido2,direccion,telefono,url,id_localidad_autor);
+                 autor.insert_autor();
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
+             }
+             
+         }
+     } catch (SQLException ex) {
+         Logger.getLogger(JF_Autor.class.getName()).log(Level.SEVERE, null, ex);
+     }
+    
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void tbl_autorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_autorMouseClicked

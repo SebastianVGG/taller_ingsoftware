@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Localidad;
 import tables.Provincia;
@@ -318,10 +319,16 @@ public class JF_Localidad extends javax.swing.JFrame {
         try {
             List <Provincia> provincia_select = provincia.select_provincia();
             String nombre = txt_insert_nombre.getText();
+            
+            if(nombre.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste el campo vacío, tienes que llenarlo");  
+            else{
+
             int cbx_id_provincia = cbx_insert_provincia.getSelectedIndex();
             int id_provincia_localidad = provincia_select.get(cbx_id_provincia).getId();
             Localidad localidad = new Localidad(nombre,id_provincia_localidad);
             localidad.insert_localidad();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }

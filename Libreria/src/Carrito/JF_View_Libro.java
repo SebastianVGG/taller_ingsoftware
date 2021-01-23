@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import tables.Autor;
 import tables.Cesta;
 import tables.Cliente;
@@ -43,6 +44,7 @@ public class JF_View_Libro extends javax.swing.JFrame {
         ScaleImage(url);
          this.id_libro_elegido=libro_id.getId();
          this.cliente=cliente;
+         spf_cantidad.setValue(1);
         get_libro_dates(this.id_libro_elegido);
          
     }
@@ -452,13 +454,16 @@ public class JF_View_Libro extends javax.swing.JFrame {
 
     private void btn_papelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_papelActionPerformed
         try {
+            
+            int cantidad = spf_cantidad.getValue();
             Papel papel_datos = papel.select_id_libro(id_libro_elegido);
             Ebook ebook_datos = ebook.select_id_libro(id_libro_elegido);
             Libro datos_libro = libro.select_one_libro(id_libro_elegido);
             boolean papel = true;
-            int cantidad = spf_cantidad.getValue();
+
             JF_View_Cesta ver_cesta = new JF_View_Cesta(papel_datos,ebook_datos,datos_libro,this.cliente,papel,cantidad);
             ver_cesta.setVisible(true);
+            
         } catch (SQLException ex) {
             Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {

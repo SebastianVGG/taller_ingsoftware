@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tables.Almacen;
 import tables.Localidad;
@@ -338,9 +339,10 @@ public class JF_Almacen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1)
+                .addGap(2, 2, 2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,13 +359,33 @@ public class JF_Almacen extends javax.swing.JFrame {
             List <Localidad> localidad_select = localidad.select_localidad(); //Se crea lista de objectos de la clase Localidad (foranea)
             String direccion = txt_insert_direccion.getText(); //Se guardan en variables de los txtfield
             String telefono = txt_insert_telefono.getText();
-            int cbx_id_localidad = cbx_insert_localidad.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
-            int id_almacen_localidad = localidad_select.get(cbx_id_localidad).getId(); //Se obtiene la id de la localidad seleccionada
-            Almacen almacen = new Almacen(direccion,telefono,id_almacen_localidad); //Se introduce un nuevo objecto con los datos anteriores
-            almacen.insert_almacen(); //Se ejecuta el insert con el objecto creado
             
+            
+            
+            if(direccion.isEmpty() || telefono.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+            Integer.parseInt(telefono);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+             resultado = false;
+        }
+            if(resultado){
+                    
+                
+                
+                    int cbx_id_localidad = cbx_insert_localidad.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
+                    int id_almacen_localidad = localidad_select.get(cbx_id_localidad).getId(); //Se obtiene la id de la localidad seleccionada
+                    Almacen almacen = new Almacen(direccion,telefono,id_almacen_localidad); //Se introduce un nuevo objecto con los datos anteriores
+                    almacen.insert_almacen(); //Se ejecuta el insert con el objecto creado
+                    
+                    
+                }
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         
     }//GEN-LAST:event_btn_insertActionPerformed

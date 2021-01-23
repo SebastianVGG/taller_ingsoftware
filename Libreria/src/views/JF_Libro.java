@@ -573,7 +573,25 @@ public class JF_Libro extends javax.swing.JFrame {
             String paginas = txt_insert_paginas.getText();
             String idioma = txt_insert_idioma.getText();
             String año = String.valueOf(chs_insert_year.getYear());
+            
+             
+            if(titulo.isEmpty() || descripcion.isEmpty() || isbn.isEmpty() || paginas.isEmpty() || idioma.isEmpty() || año.isEmpty())
+                    JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");  
+            else{
+            boolean resultado;
+            try {
+                Integer.parseInt(paginas);
+                resultado = true;
+                char [] isbn2 = isbn.toCharArray();
+                    for (int i = 0; i < isbn2.length; i++) {
+                        if(!Character.isDigit(isbn2[i]))
+                            resultado = false;
+                    }
 
+        } catch (NumberFormatException excepcion) { 
+             resultado = false;
+        }
+            if(resultado){
             int cbx_id_autor = cbx_insert_autor.getSelectedIndex();
             int cbx_id_editorial = cbx_insert_editorial.getSelectedIndex();
             int id_autor_libro = autor_select.get(cbx_id_autor).getId();
@@ -594,6 +612,10 @@ public class JF_Libro extends javax.swing.JFrame {
             if(response==2){
                 papel_libro.setVisible(true);
                 ebook_libro.setVisible(true);
+            }
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");  
             }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
