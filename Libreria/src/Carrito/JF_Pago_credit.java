@@ -206,7 +206,7 @@ public class JF_Pago_credit extends javax.swing.JFrame {
 
     private void btn_continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_continuarActionPerformed
            String tarjeta = txt_numero_tarjeta.getText();
-           
+
         if(tarjeta.isEmpty() || txt_ano.getText().isEmpty() || txt_cvc.getText().isEmpty())
             JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
         else{
@@ -225,9 +225,17 @@ public class JF_Pago_credit extends javax.swing.JFrame {
             }
             if(resultado){
             
-            String tipo = "Tarjeta de crédito";
-            JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tarjeta);
-            ver_cesta.setVisible(true);
+                try {
+                    String tipo = "Tarjeta de crédito";
+                    tarjeta = tarjeta.substring(tarjeta.length() -4, tarjeta.length());
+                     tarjeta = "**** **** **** "+tarjeta;
+                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta);
+                    ver_cesta.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else
                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             

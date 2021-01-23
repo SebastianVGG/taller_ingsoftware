@@ -7,6 +7,8 @@ package Carrito;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tables.Almacen;
 import tables.Cliente;
@@ -222,9 +224,17 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                 resultado = false;
             }
             if(resultado){
-        String tipo = "Tarjeta de crédito";        
-        JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tarjeta,tipo);
-            ver_cesta.setVisible(true);
+                try {
+                    String tipo = "Tarjeta de débito";
+                     tarjeta = tarjeta.substring(tarjeta.length() -4, tarjeta.length());
+                     tarjeta = "**** **** **** "+tarjeta;
+                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta);
+                    ver_cesta.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Pago_debit.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(JF_Pago_debit.class.getName()).log(Level.SEVERE, null, ex);
+                }
        }else
                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
        }

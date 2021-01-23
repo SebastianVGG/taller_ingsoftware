@@ -7,6 +7,8 @@ package Carrito;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tables.Almacen;
 import tables.Cliente;
 import tables.Ebook;
@@ -160,10 +162,11 @@ public class JF_Pago_paypal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_costo_total2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_nombre1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_costo_total2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(btn_contiunar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
@@ -184,10 +187,16 @@ public class JF_Pago_paypal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_contiunarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_contiunarActionPerformed
-        String tipo = "Tarjeta de crédito";
-        String tarjeta = "**** **** **** 4332";
-        JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tarjeta,tipo);
+        try {
+            String tipo = "Pay Pal";
+            String tarjeta = "**** **** **** 4332";
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta);
             ver_cesta.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_contiunarActionPerformed
 
     /**
