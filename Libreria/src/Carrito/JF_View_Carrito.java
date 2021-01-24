@@ -39,16 +39,11 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         initComponents();
     }
  
-       public JF_View_Carrito( Cliente cliente,int costo_total, List<element_list> list,String tipo, String tarjeta) throws SQLException {
+       public JF_View_Carrito( Cliente cliente, List<element_list> list) throws SQLException {
         initComponents();
         this.cliente=cliente;
         this.list=list;
-        this.costo_total=costo_total;
-        this.list=list;
-        this.tipo=tipo;
-        this.tarjeta=tarjeta;
          agregar_elementos();
-       
         txt_cesta.setText(agregarItem_cbx());
         costo_total();
         lbl_costo_total.setText(String.valueOf(this.costo_total));

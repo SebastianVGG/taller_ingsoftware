@@ -20,7 +20,7 @@ import views.element_list;
  *
  * @author Sebastian
  */
-public class JF_Pago_debit extends JF_View_Carrito {
+public class JF_Pago_debit extends javax.swing.JFrame {
     List<element_list> list = new ArrayList<element_list>();  
     Cliente cliente = new Cliente();
     int costo_total;
@@ -30,7 +30,7 @@ public class JF_Pago_debit extends JF_View_Carrito {
         this.costo_total=costo_total;
         this.list=list;
         limit_character();
-       
+       costo();
     }
 
     public JF_Pago_debit() {

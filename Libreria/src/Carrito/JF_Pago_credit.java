@@ -31,6 +31,7 @@ public class JF_Pago_credit extends javax.swing.JFrame {
         this.costo_total=costo_total;
         this.list=list;
         limit_character();
+        costo();
     }
 
     public JF_Pago_credit() {

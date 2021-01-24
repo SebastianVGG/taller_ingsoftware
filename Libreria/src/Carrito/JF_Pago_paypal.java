@@ -18,7 +18,7 @@ import views.element_list;
  *
  * @author Sebastian
  */
-public class JF_Pago_paypal extends JF_View_Carrito {
+public class JF_Pago_paypal extends javax.swing.JFrame {
     List<element_list> list = new ArrayList<element_list>();  
     Cliente cliente = new Cliente();
     int costo_total;
@@ -174,11 +174,17 @@ public class JF_Pago_paypal extends JF_View_Carrito {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_contiunarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_contiunarActionPerformed
-        String tipo = "Pay Pal";
-        String tarjeta = "**** **** **** 4332";
-        JF_View_Cesta ver_cesta = new JF_View_Cesta(this.cliente,this.costo_total,this.list,tipo,tarjeta);
-        dispose();
-        ver_cesta.setVisible(true);
+        try {
+            String tipo = "Pay Pal";
+            String tarjeta = "**** **** **** 4332";
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(this.cliente,this.costo_total,this.list,tipo,tarjeta);
+            dispose();
+            ver_cesta.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_contiunarActionPerformed
 
     /**
