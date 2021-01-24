@@ -68,8 +68,10 @@ public class JF_View_Cesta extends javax.swing.JFrame {
         public void set_dates() throws SQLException, ParseException{
             int id_venta=0;
             Date date = new Date();
+            float total = 0;
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(date);
             Font fuente = new Font("Monospaced", Font.PLAIN,10);
+            txaLibros.setFont(fuente);
             for (int i = 0; i < libros.size(); i++) {
                 
             Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i),this.cliente.getId(),libros.get(i).getId());
@@ -83,31 +85,30 @@ public class JF_View_Cesta extends javax.swing.JFrame {
             
             cesta.update_cesta_venta(id_venta,cesta.getId());
 
-            lbl_fecha_compra.setText(String.valueOf(cesta.getFecha_compraS()));
-            lbl_tipo_pago.setText(this.tipo_pago);
-            lbl_tarjeta.setText(this.tarjeta);
-            lbl_no_cesta.setText(String.valueOf(cesta.getId()));
-            lbl_nombre.setText(cliente.getNombre()+" "+cliente.getApellido1()+" "+cliente.getApellido2());
-            lbl_direccion.setText(cliente.getDireccion());
-            lbl_correo.setText(cliente.getEmail());
+//            lbl_fecha_compra.setText(String.valueOf(cesta.getFecha_compraS()));
+//            lbl_tipo_pago.setText(this.tipo_pago);
+//            lbl_tarjeta.setText(this.tarjeta);
+//            lbl_no_cesta.setText(String.valueOf(cesta.getId()));
+//            lbl_nombre.setText(cliente.getNombre()+" "+cliente.getApellido1()+" "+cliente.getApellido2());
+//            lbl_direccion.setText(cliente.getDireccion());
+//            lbl_correo.setText(cliente.getEmail());
             String aux = "                                                                              ";
             String todo = aux;
-            float total = 0;
-            todo = todo.substring(0, 2) + String.valueOf(this.cantidad) + aux;
-            todo = todo.substring(0, 14) + String.valueOf(libros.get(0).getId()) + aux;
-            todo = todo.substring(0, 24) + libros.get(0).getTitulo() + aux;
+            todo = todo.substring(0, 2) + String.valueOf(cantidades.get(i)) + aux;
+            todo = todo.substring(0, 14) + String.valueOf(libros.get(i).getId()) + aux;
+            todo = todo.substring(0, 24) + libros.get(i).getTitulo() + aux;
 //            todo.substring(6, 11).concat(String.valueOf(libro.getId()));
 //            todo.substring(12, 35).concat(libro.getTitulo());
             
 //            txaLibros.append(String.valueOf(this.cantidad));
 //            txaLibros.append(String.valueOf(libro.getId()));
 //            txaLibros.append(libro.getTitulo());
-            if(this.papel_ebook==true){
-                todo = todo.substring(0, 72) + papeles.get(0).getLugar_impresion() + aux;
-                todo = todo.substring(0, 93) + String.valueOf(papeles.get(0).getFecha_impresion()) + aux;
+            if(bools.get(i)=="Papel"){//this.papel_ebook
+                todo = todo.substring(0, 72) + papeles.get(i).getLugar_impresion() + aux;
+                todo = todo.substring(0, 93) + String.valueOf(papeles.get(i).getFecha_impresion()) + aux;
                 todo = todo.substring(0, 115) + "Book" + aux;
                 todo = todo.substring(0, 125) + "N/A" + aux;
-                todo = todo.substring(0, 136) + "$" + String.valueOf(papeles.get(0).getPrecio()) + "\n";
+                todo = todo.substring(0, 136) + "$" + String.valueOf(papeles.get(i).getPrecio()) + "\n";
 //                lbl_precio.setText(String.valueOf(papel.getPrecio()));
 //                lbl_numero_letras.setText(letritas.Convertir(this.cantidad*papel.getPrecio() + "", true));
 //                lbl_total.setText(String.valueOf(this.cantidad*papel.getPrecio()));
@@ -115,7 +116,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
 //                lbl_lugar_impresion.setText(papel.getLugar_impresion());
 //                lbl_peso.setText("N/A");
 //                lbl_tipo.setText("Libro fisico");
-                total = total + (this.cantidad*papeles.get(0).getPrecio());
+                total = total + (cantidades.get(i)*papeles.get(i).getPrecio());
                 
             }
             
@@ -124,10 +125,10 @@ public class JF_View_Cesta extends javax.swing.JFrame {
                 todo = todo.substring(0, 72) + "N/A" + aux;
                 todo = todo.substring(0, 93) + "N/A" + aux;
                 todo = todo.substring(0, 115) + "Ebook" + aux;
-                todo = todo.substring(0, 125) + ebooks.get(0).getTamaño() + aux;
-                todo = todo.substring(0, 136) + "$" + String.valueOf(ebooks.get(0).getPrecio()) + "\n";
+                todo = todo.substring(0, 125) + ebooks.get(i).getTamaño() + aux;
+                todo = todo.substring(0, 136) + "$" + String.valueOf(ebooks.get(i).getPrecio()) + "\n";
                 
-                total = total + (this.cantidad*ebooks.get(0).getPrecio());
+                total = total + (cantidades.get(i)*ebooks.get(i).getPrecio());
                 
 //                lbl_precio.setText(String.valueOf(ebook.getPrecio()));
 //                lbl_numero_letras.setText(letritas.Convertir(this.cantidad*ebook.getPrecio() + "", true));
@@ -136,13 +137,12 @@ public class JF_View_Cesta extends javax.swing.JFrame {
 //                lbl_fecha_impresion.setText("N/A");
 //                lbl_lugar_impresion.setText("N/A");
 //                lbl_tipo.setText("Ebook");
+                txaLibros.append(todo);
             }
-            txaLibros.setFont(fuente);
-            txaLibros.append(todo);
+            
+            }
             lbl_numero_letras.setText(letritas.Convertir(total + "",true));
-            lbl_total.setText(""+total);
-        }
-                
+            lbl_total.setText(""+total);   
             }
             
     /**
