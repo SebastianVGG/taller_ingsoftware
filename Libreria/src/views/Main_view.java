@@ -30,6 +30,7 @@ public class Main_view extends javax.swing.JFrame {
     
     public Main_view() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
         public Main_view(Cliente cliente) {
         initComponents();
@@ -55,39 +56,51 @@ public class Main_view extends javax.swing.JFrame {
         pnl_1 = new javax.swing.JPanel();
         btn_1 = new javax.swing.JButton();
         lbl_1 = new javax.swing.JLabel();
+        lbl_precio_1 = new javax.swing.JLabel();
         pnl_2 = new javax.swing.JPanel();
         btn_2 = new javax.swing.JButton();
         lbl_2 = new javax.swing.JLabel();
+        lbl_precio_2 = new javax.swing.JLabel();
         pnl_3 = new javax.swing.JPanel();
         btn_3 = new javax.swing.JButton();
         lbl_3 = new javax.swing.JLabel();
+        lbl_precio_3 = new javax.swing.JLabel();
         pnl_4 = new javax.swing.JPanel();
         btn_4 = new javax.swing.JButton();
         lbl_4 = new javax.swing.JLabel();
+        lbl_precio_4 = new javax.swing.JLabel();
         pnl_5 = new javax.swing.JPanel();
         btn_5 = new javax.swing.JButton();
         lbl_5 = new javax.swing.JLabel();
+        lbl_precio_5 = new javax.swing.JLabel();
         pnl_6 = new javax.swing.JPanel();
         btn_6 = new javax.swing.JButton();
         lbl_6 = new javax.swing.JLabel();
+        lbl_precio_6 = new javax.swing.JLabel();
         pnl_7 = new javax.swing.JPanel();
         btn_7 = new javax.swing.JButton();
         lbl_7 = new javax.swing.JLabel();
+        lbl_precio_7 = new javax.swing.JLabel();
         pnl_8 = new javax.swing.JPanel();
         btn_8 = new javax.swing.JButton();
         lbl_8 = new javax.swing.JLabel();
+        lbl_precio_8 = new javax.swing.JLabel();
         pnl_9 = new javax.swing.JPanel();
         btn_9 = new javax.swing.JButton();
         lbl_9 = new javax.swing.JLabel();
+        lbl_precio_9 = new javax.swing.JLabel();
         pnl_10 = new javax.swing.JPanel();
         btn_10 = new javax.swing.JButton();
         lbl_10 = new javax.swing.JLabel();
+        lbl_precio_10 = new javax.swing.JLabel();
         pnl_11 = new javax.swing.JPanel();
         btn_11 = new javax.swing.JButton();
         lbl_11 = new javax.swing.JLabel();
+        lbl_precio_11 = new javax.swing.JLabel();
         pnl_12 = new javax.swing.JPanel();
         btn_12 = new javax.swing.JButton();
         lbl_12 = new javax.swing.JLabel();
+        lbl_precio_12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btn_carrito = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
@@ -118,10 +131,10 @@ public class Main_view extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(251, 238, 218));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 12));
         jPanel5.setDoubleBuffered(false);
-        jPanel5.setEnabled(false);
-        jPanel5.setPreferredSize(new java.awt.Dimension(100, 1350));
+        jPanel5.setPreferredSize(new java.awt.Dimension(100, 1580));
 
         pnl_1.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_1.setBackground(new java.awt.Color(251, 238, 218));
         btn_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry Potter_La piedra filosofal.jpg"))); // NOI18N
@@ -134,21 +147,28 @@ public class Main_view extends javax.swing.JFrame {
         lbl_1.setBackground(new java.awt.Color(251, 238, 218));
         lbl_1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_1.setText("Harry Potter y la piedra filosofal");
+        lbl_1.setText("<html><center>Harry Potter y la piedra filosofal");
         lbl_1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_1.setAutoscrolls(true);
         lbl_1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lbl_1.setOpaque(true);
+
+        lbl_precio_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_1.setText("$ 390.86");
 
         javax.swing.GroupLayout pnl_1Layout = new javax.swing.GroupLayout(pnl_1);
         pnl_1.setLayout(pnl_1Layout);
         pnl_1Layout.setHorizontalGroup(
             pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_1Layout.createSequentialGroup()
-                .addGroup(pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         pnl_1Layout.setVerticalGroup(
             pnl_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,10 +176,13 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_precio_1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pnl_2.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_2.setBackground(new java.awt.Color(251, 238, 218));
         btn_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/harry-potter-y-la-camara-secreta.jpg"))); // NOI18N
@@ -172,21 +195,32 @@ public class Main_view extends javax.swing.JFrame {
         lbl_2.setBackground(new java.awt.Color(251, 238, 218));
         lbl_2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_2.setText("Harry Potter y la cámara secreta");
+        lbl_2.setText("<html><center>Harry Potter y la cámara secreta");
         lbl_2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_2.setAutoscrolls(true);
         lbl_2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_2.setOpaque(true);
+
+        lbl_precio_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_2.setText("$ 385.89");
 
         javax.swing.GroupLayout pnl_2Layout = new javax.swing.GroupLayout(pnl_2);
         pnl_2.setLayout(pnl_2Layout);
         pnl_2Layout.setHorizontalGroup(
             pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_2Layout.createSequentialGroup()
-                .addGroup(pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addGroup(pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_2Layout.createSequentialGroup()
+                        .addGroup(pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_precio_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnl_2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_2Layout.setVerticalGroup(
             pnl_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,10 +228,13 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnl_3.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_3.setBackground(new java.awt.Color(251, 238, 218));
         btn_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/harry-potter-y-el-prisionero-de-azkaban-4490.jpg"))); // NOI18N
@@ -210,21 +247,31 @@ public class Main_view extends javax.swing.JFrame {
         lbl_3.setBackground(new java.awt.Color(251, 238, 218));
         lbl_3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_3.setText("Harry Potter y el prisionero de Azkaban");
+        lbl_3.setText("<html><center>Harry Potter y el prisionero de Azkaban");
         lbl_3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_3.setAutoscrolls(true);
         lbl_3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_3.setOpaque(true);
+
+        lbl_precio_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_3.setText("$ 421.65");
 
         javax.swing.GroupLayout pnl_3Layout = new javax.swing.GroupLayout(pnl_3);
         pnl_3.setLayout(pnl_3Layout);
         pnl_3Layout.setHorizontalGroup(
             pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_3Layout.createSequentialGroup()
-                .addGroup(pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_3Layout.createSequentialGroup()
+                        .addComponent(lbl_precio_3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         pnl_3Layout.setVerticalGroup(
             pnl_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,10 +279,13 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_precio_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pnl_4.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_4.setBackground(new java.awt.Color(251, 238, 218));
         btn_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_El_Caliz_De_Fuego.jpg"))); // NOI18N
@@ -248,21 +298,30 @@ public class Main_view extends javax.swing.JFrame {
         lbl_4.setBackground(new java.awt.Color(251, 238, 218));
         lbl_4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_4.setText("Harry Potter y el cáliz de fuego");
+        lbl_4.setText("<html><center>Harry Potter y el cáliz de fuego");
         lbl_4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_4.setAutoscrolls(true);
         lbl_4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_4.setOpaque(true);
+
+        lbl_precio_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_4.setText("$ 512.00");
 
         javax.swing.GroupLayout pnl_4Layout = new javax.swing.GroupLayout(pnl_4);
         pnl_4.setLayout(pnl_4Layout);
         pnl_4Layout.setHorizontalGroup(
             pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_4Layout.createSequentialGroup()
-                .addGroup(pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_4Layout.createSequentialGroup()
+                        .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_4Layout.setVerticalGroup(
             pnl_4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,10 +329,12 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_5.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_5.setBackground(new java.awt.Color(251, 238, 218));
         btn_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_La_Orden_Del_Fenix.jpg"))); // NOI18N
@@ -286,21 +347,30 @@ public class Main_view extends javax.swing.JFrame {
         lbl_5.setBackground(new java.awt.Color(251, 238, 218));
         lbl_5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_5.setText("Harry Potter y la Orden del Fénix");
+        lbl_5.setText("<html><center>Harry Potter y la Orden del Fénix");
         lbl_5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_5.setAutoscrolls(true);
         lbl_5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_5.setOpaque(true);
+
+        lbl_precio_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_5.setText("$ 389.99");
 
         javax.swing.GroupLayout pnl_5Layout = new javax.swing.GroupLayout(pnl_5);
         pnl_5.setLayout(pnl_5Layout);
         pnl_5Layout.setHorizontalGroup(
             pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_5Layout.createSequentialGroup()
-                .addGroup(pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_5Layout.createSequentialGroup()
+                        .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_5Layout.setVerticalGroup(
             pnl_5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,10 +378,13 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pnl_6.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_6.setBackground(new java.awt.Color(251, 238, 218));
         btn_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_y_el_Misterio_del_Príncipe.jpg"))); // NOI18N
@@ -324,21 +397,30 @@ public class Main_view extends javax.swing.JFrame {
         lbl_6.setBackground(new java.awt.Color(251, 238, 218));
         lbl_6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_6.setText("Harry Potter y el misterio del principe");
+        lbl_6.setText("<html><center>Harry Potter y el misterio del príncipe");
         lbl_6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_6.setAutoscrolls(true);
         lbl_6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_6.setOpaque(true);
+
+        lbl_precio_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_6.setText("$ 432.80");
 
         javax.swing.GroupLayout pnl_6Layout = new javax.swing.GroupLayout(pnl_6);
         pnl_6.setLayout(pnl_6Layout);
         pnl_6Layout.setHorizontalGroup(
             pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_6Layout.createSequentialGroup()
-                .addGroup(pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_6Layout.createSequentialGroup()
+                        .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_6Layout.setVerticalGroup(
             pnl_6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,10 +428,12 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_7.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_7.setBackground(new java.awt.Color(251, 238, 218));
         btn_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_Las_Reliquias_De_La_Muerte.jpg"))); // NOI18N
@@ -362,32 +446,43 @@ public class Main_view extends javax.swing.JFrame {
         lbl_7.setBackground(new java.awt.Color(251, 238, 218));
         lbl_7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_7.setText("Harry Potter y las Reliquias de la Muerte");
+        lbl_7.setText("<html><center>Harry Potter y las Reliquias de la Muerte");
         lbl_7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_7.setAutoscrolls(true);
         lbl_7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_7.setOpaque(true);
+
+        lbl_precio_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_7.setText("$ 367.65");
 
         javax.swing.GroupLayout pnl_7Layout = new javax.swing.GroupLayout(pnl_7);
         pnl_7.setLayout(pnl_7Layout);
         pnl_7Layout.setHorizontalGroup(
             pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_7Layout.createSequentialGroup()
-                .addGroup(pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_7Layout.createSequentialGroup()
+                        .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_7Layout.setVerticalGroup(
             pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_7Layout.createSequentialGroup()
                 .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_8.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_8.setBackground(new java.awt.Color(251, 238, 218));
         btn_8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Harry_Potter_Y_El_Legado_Maldito.jpg"))); // NOI18N
@@ -400,32 +495,43 @@ public class Main_view extends javax.swing.JFrame {
         lbl_8.setBackground(new java.awt.Color(251, 238, 218));
         lbl_8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_8.setText("Harry Potter y el prisionero de Azkaban");
+        lbl_8.setText("<html><center>Harry Potter y el legado maldito");
         lbl_8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_8.setAutoscrolls(true);
         lbl_8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_8.setOpaque(true);
+
+        lbl_precio_8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_8.setText("$ 476.89");
 
         javax.swing.GroupLayout pnl_8Layout = new javax.swing.GroupLayout(pnl_8);
         pnl_8.setLayout(pnl_8Layout);
         pnl_8Layout.setHorizontalGroup(
             pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_8Layout.createSequentialGroup()
-                .addGroup(pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_8Layout.createSequentialGroup()
+                        .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_8Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_8Layout.setVerticalGroup(
             pnl_8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_8Layout.createSequentialGroup()
                 .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_9.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_9.setBackground(new java.awt.Color(251, 238, 218));
         btn_9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Juegos_De_Tronos.jpg"))); // NOI18N
@@ -438,32 +544,43 @@ public class Main_view extends javax.swing.JFrame {
         lbl_9.setBackground(new java.awt.Color(251, 238, 218));
         lbl_9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_9.setText("Juego de Tronos");
+        lbl_9.setText("<html><center>Juego de Tronos");
         lbl_9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_9.setAutoscrolls(true);
         lbl_9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_9.setOpaque(true);
+
+        lbl_precio_9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_9.setText("$ 564.24");
 
         javax.swing.GroupLayout pnl_9Layout = new javax.swing.GroupLayout(pnl_9);
         pnl_9.setLayout(pnl_9Layout);
         pnl_9Layout.setHorizontalGroup(
             pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_9Layout.createSequentialGroup()
-                .addGroup(pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_9Layout.createSequentialGroup()
+                        .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_9Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_9Layout.setVerticalGroup(
             pnl_9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_9Layout.createSequentialGroup()
                 .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_10.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_10.setBackground(new java.awt.Color(251, 238, 218));
         btn_10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/choque_De_Reyes.jpg"))); // NOI18N
@@ -476,32 +593,43 @@ public class Main_view extends javax.swing.JFrame {
         lbl_10.setBackground(new java.awt.Color(251, 238, 218));
         lbl_10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_10.setText("Choque de reyes");
+        lbl_10.setText("<html><center>Choque de reyes");
         lbl_10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_10.setAutoscrolls(true);
         lbl_10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_10.setOpaque(true);
+
+        lbl_precio_10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_10.setText("$ 467.41");
 
         javax.swing.GroupLayout pnl_10Layout = new javax.swing.GroupLayout(pnl_10);
         pnl_10.setLayout(pnl_10Layout);
         pnl_10Layout.setHorizontalGroup(
             pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_10Layout.createSequentialGroup()
-                .addGroup(pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_10Layout.createSequentialGroup()
+                        .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_10Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_10Layout.setVerticalGroup(
             pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_10Layout.createSequentialGroup()
                 .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(lbl_10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_precio_10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_11.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_11.setBackground(new java.awt.Color(251, 238, 218));
         btn_11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tormenta_De_Espadas.jpg"))); // NOI18N
@@ -514,21 +642,30 @@ public class Main_view extends javax.swing.JFrame {
         lbl_11.setBackground(new java.awt.Color(251, 238, 218));
         lbl_11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_11.setText("Tormenta de Espadas");
+        lbl_11.setText("<html><center>Tormenta de Espadas");
         lbl_11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_11.setAutoscrolls(true);
         lbl_11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_11.setOpaque(true);
+
+        lbl_precio_11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_11.setText("$ 453.10");
 
         javax.swing.GroupLayout pnl_11Layout = new javax.swing.GroupLayout(pnl_11);
         pnl_11.setLayout(pnl_11Layout);
         pnl_11Layout.setHorizontalGroup(
             pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_11Layout.createSequentialGroup()
-                .addGroup(pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_11Layout.createSequentialGroup()
+                        .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_11Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_11Layout.setVerticalGroup(
             pnl_11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -536,10 +673,12 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_11, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_precio_11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnl_12.setBackground(new java.awt.Color(251, 238, 218));
+        pnl_12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 2));
 
         btn_12.setBackground(new java.awt.Color(251, 238, 218));
         btn_12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/festin_De_Cuervos.jpg"))); // NOI18N
@@ -552,21 +691,30 @@ public class Main_view extends javax.swing.JFrame {
         lbl_12.setBackground(new java.awt.Color(251, 238, 218));
         lbl_12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_12.setText("Festín de Cuervos");
+        lbl_12.setText("<html><center>Festín de Cuervos");
         lbl_12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_12.setAutoscrolls(true);
         lbl_12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lbl_12.setOpaque(true);
+
+        lbl_precio_12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_precio_12.setText("$ 514.00");
 
         javax.swing.GroupLayout pnl_12Layout = new javax.swing.GroupLayout(pnl_12);
         pnl_12.setLayout(pnl_12Layout);
         pnl_12Layout.setHorizontalGroup(
             pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_12Layout.createSequentialGroup()
-                .addGroup(pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap()
+                .addGroup(pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_precio_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnl_12Layout.createSequentialGroup()
+                        .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_12Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnl_12Layout.setVerticalGroup(
             pnl_12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -574,7 +722,8 @@ public class Main_view extends javax.swing.JFrame {
                 .addComponent(btn_12, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_precio_12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -606,36 +755,31 @@ public class Main_view extends javax.swing.JFrame {
                     .addComponent(pnl_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnl_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnl_12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnl_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnl_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnl_7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(pnl_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnl_6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnl_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnl_10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnl_11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnl_2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnl_5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pnl_4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnl_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -643,7 +787,7 @@ public class Main_view extends javax.swing.JFrame {
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(137, 171, 700, 410);
+        jScrollPane1.setBounds(130, 180, 740, 410);
 
         jPanel3.setOpaque(false);
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -682,7 +826,7 @@ public class Main_view extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_carrito);
-        btn_carrito.setBounds(790, 120, 120, 40);
+        btn_carrito.setBounds(800, 120, 120, 40);
 
         btn_exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close_mainview.png"))); // NOI18N
         btn_exit.setBorderPainted(false);
@@ -693,7 +837,7 @@ public class Main_view extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_exit);
-        btn_exit.setBounds(890, 20, 40, 40);
+        btn_exit.setBounds(900, 20, 40, 40);
 
         lbl_correo_usuario.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_correo_usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -712,13 +856,13 @@ public class Main_view extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_cerrar_sesion1);
-        btn_cerrar_sesion1.setBounds(790, 70, 120, 40);
+        btn_cerrar_sesion1.setBounds(800, 70, 120, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -729,151 +873,6 @@ public class Main_view extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-        try {
-            int id = libros.select_id(lbl_1.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/Harry Potter_La piedra filosofal.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "NO SE PUEDE ABRIR LA VENTANA");  
-        }
-        
-    }//GEN-LAST:event_btn_1ActionPerformed
-
-    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
-        try {
-            int id = libros.select_id(lbl_2.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/harry-potter-y-la-camara-secreta.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_2ActionPerformed
-
-    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
-        try {
-            int id = libros.select_id(lbl_3.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/harry-potter-y-el-prisionero-de-azkaban-4490.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_3ActionPerformed
-
-    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
-        try {
-            int id = libros.select_id(lbl_4.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/Harry_Potter_Y_El_Caliz_De_Fuego.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_4ActionPerformed
-
-    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
-        try {
-            int id = libros.select_id(lbl_5.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/Harry_Potter_Y_La_Orden_Del_Fenix.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_5ActionPerformed
-
-    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
-        try {
-            int id = libros.select_id(lbl_6.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/Harry_Potter_y_el_Misterio_del_Príncipe.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_6ActionPerformed
-
-    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
-        try {
-            int id = libros.select_id(lbl_7.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/Harry_Potter_Y_Las_Reliquias_De_La_Muerte.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_7ActionPerformed
-
-    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
-        try {
-            int id = libros.select_id(lbl_8.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/Harry_Potter_Y_El_Legado_Maldito.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_8ActionPerformed
-
-    private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
-        try {
-            int id = libros.select_id(lbl_9.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/Juegos_De_Tronos.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_9ActionPerformed
-
-    private void btn_10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_10ActionPerformed
-        try {
-            int id = libros.select_id(lbl_10.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/choque_De_Reyes.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_10ActionPerformed
-
-    private void btn_11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_11ActionPerformed
-        try {
-            int id = libros.select_id(lbl_11.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/tormenta_De_Espadas.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_11ActionPerformed
-
-    private void btn_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_12ActionPerformed
-        try {
-            int id = libros.select_id(lbl_12.getText());
-            Libro libro = libros.select_one_libro(id);
-            String url = "/images/festin_De_Cuervos.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_12ActionPerformed
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
        mousepX=evt.getX();
@@ -907,6 +906,150 @@ public class Main_view extends javax.swing.JFrame {
        login.setLocationRelativeTo(null);
        login.setVisible(true);
     }//GEN-LAST:event_btn_cerrar_sesion1ActionPerformed
+
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+        try {
+            int id = libros.select_id(lbl_1.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/Harry Potter_La piedra filosofal.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "NO SE PUEDE ABRIR LA VENTANA");  
+        }
+    }//GEN-LAST:event_btn_1ActionPerformed
+
+    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
+        try {
+            int id = libros.select_id(lbl_2.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/harry-potter-y-la-camara-secreta.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_2ActionPerformed
+
+    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
+        try {
+            int id = libros.select_id(lbl_3.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/harry-potter-y-el-prisionero-de-azkaban-4490.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_3ActionPerformed
+
+    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
+        try {
+            int id = libros.select_id(lbl_4.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/Harry_Potter_Y_El_Caliz_De_Fuego.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_4ActionPerformed
+
+    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+        try {
+            int id = libros.select_id(lbl_5.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/Harry_Potter_Y_La_Orden_Del_Fenix.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_5ActionPerformed
+
+    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
+        try {
+            int id = libros.select_id(lbl_6.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/Harry_Potter_y_el_Misterio_del_Príncipe.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_6ActionPerformed
+
+    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
+        try {
+            int id = libros.select_id(lbl_7.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/Harry_Potter_Y_Las_Reliquias_De_La_Muerte.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_7ActionPerformed
+
+    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
+        try {
+            int id = libros.select_id(lbl_8.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/Harry_Potter_Y_El_Legado_Maldito.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_8ActionPerformed
+
+    private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
+        try {
+            int id = libros.select_id(lbl_9.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/Juegos_De_Tronos.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_9ActionPerformed
+
+    private void btn_10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_10ActionPerformed
+        try {
+            int id = libros.select_id(lbl_10.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/choque_De_Reyes.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_10ActionPerformed
+
+    private void btn_11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_11ActionPerformed
+        try {
+            int id = libros.select_id(lbl_11.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/tormenta_De_Espadas.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_11ActionPerformed
+
+    private void btn_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_12ActionPerformed
+        try {
+            int id = libros.select_id(lbl_12.getText().substring(14));
+            Libro libro = libros.select_one_libro(id);
+            String url = "/images/festin_De_Cuervos.jpg";
+            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
+            ver_libro.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -977,6 +1120,18 @@ public class Main_view extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_8;
     private javax.swing.JLabel lbl_9;
     private javax.swing.JLabel lbl_correo_usuario;
+    private javax.swing.JLabel lbl_precio_1;
+    private javax.swing.JLabel lbl_precio_10;
+    private javax.swing.JLabel lbl_precio_11;
+    private javax.swing.JLabel lbl_precio_12;
+    private javax.swing.JLabel lbl_precio_2;
+    private javax.swing.JLabel lbl_precio_3;
+    private javax.swing.JLabel lbl_precio_4;
+    private javax.swing.JLabel lbl_precio_5;
+    private javax.swing.JLabel lbl_precio_6;
+    private javax.swing.JLabel lbl_precio_7;
+    private javax.swing.JLabel lbl_precio_8;
+    private javax.swing.JLabel lbl_precio_9;
     private javax.swing.JPanel pnl_1;
     private javax.swing.JPanel pnl_10;
     private javax.swing.JPanel pnl_11;
