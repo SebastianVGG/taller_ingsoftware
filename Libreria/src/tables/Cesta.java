@@ -155,7 +155,7 @@ public class Cesta {
         myConnection.close();
     }
     
-    public void update_cesta(int id,int id_ventas,String fecha_compra, int cantidad1,int id_cliente, int id_libro) throws SQLException{
+    public void update_cesta(int id,int id_ventas,Date fecha_compra, int cantidad1,int id_cliente, int id_libro) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
