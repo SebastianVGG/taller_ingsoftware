@@ -5,6 +5,7 @@
  */
 package views;
 
+import Carrito.JF_View_Carrito;
 import Carrito.JF_View_Libro;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -88,9 +89,10 @@ public class Main_view extends javax.swing.JFrame {
         btn_12 = new javax.swing.JButton();
         lbl_12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btn_cerrar_sesion = new javax.swing.JButton();
+        btn_carrito = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
         lbl_correo_usuario = new javax.swing.JLabel();
+        btn_cerrar_sesion1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -669,18 +671,18 @@ public class Main_view extends javax.swing.JFrame {
         jPanel1.add(jPanel3);
         jPanel3.setBounds(0, 0, 880, 40);
 
-        btn_cerrar_sesion.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
-        btn_cerrar_sesion.setText("Cerrar sesión");
-        btn_cerrar_sesion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 10));
-        btn_cerrar_sesion.setContentAreaFilled(false);
-        btn_cerrar_sesion.setDefaultCapable(false);
-        btn_cerrar_sesion.addActionListener(new java.awt.event.ActionListener() {
+        btn_carrito.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        btn_carrito.setText("Ver cesta");
+        btn_carrito.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 10));
+        btn_carrito.setContentAreaFilled(false);
+        btn_carrito.setDefaultCapable(false);
+        btn_carrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cerrar_sesionActionPerformed(evt);
+                btn_carritoActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cerrar_sesion);
-        btn_cerrar_sesion.setBounds(790, 80, 120, 40);
+        jPanel1.add(btn_carrito);
+        btn_carrito.setBounds(790, 120, 120, 40);
 
         btn_exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close_mainview.png"))); // NOI18N
         btn_exit.setBorderPainted(false);
@@ -698,6 +700,19 @@ public class Main_view extends javax.swing.JFrame {
         lbl_correo_usuario.setText("jLabel1");
         jPanel1.add(lbl_correo_usuario);
         lbl_correo_usuario.setBounds(79, 40, 800, 30);
+
+        btn_cerrar_sesion1.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        btn_cerrar_sesion1.setText("Cerrar sesión");
+        btn_cerrar_sesion1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 102, 0), 10));
+        btn_cerrar_sesion1.setContentAreaFilled(false);
+        btn_cerrar_sesion1.setDefaultCapable(false);
+        btn_cerrar_sesion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cerrar_sesion1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cerrar_sesion1);
+        btn_cerrar_sesion1.setBounds(790, 70, 120, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -870,12 +885,11 @@ public class Main_view extends javax.swing.JFrame {
             this.setLocation(point.x-mousepX, point.y-mousepY);
     }//GEN-LAST:event_jPanel3MouseDragged
 
-    private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
-       dispose();
-       Main_login login = new Main_login();
-       login.setLocationRelativeTo(null);
-       login.setVisible(true);
-    }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
+    private void btn_carritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carritoActionPerformed
+       JF_View_Carrito carrito = new JF_View_Carrito();
+       carrito.setLocationRelativeTo(null);
+       carrito.setVisible(true);
+    }//GEN-LAST:event_btn_carritoActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
             String[] options = new String[] {"¡¡Si!!", "No :)"};
@@ -886,6 +900,10 @@ public class Main_view extends javax.swing.JFrame {
                  System.exit(0);
        
     }//GEN-LAST:event_btn_exitActionPerformed
+
+    private void btn_cerrar_sesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cerrar_sesion1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -935,7 +953,8 @@ public class Main_view extends javax.swing.JFrame {
     private javax.swing.JButton btn_7;
     private javax.swing.JButton btn_8;
     private javax.swing.JButton btn_9;
-    private javax.swing.JButton btn_cerrar_sesion;
+    private javax.swing.JButton btn_carrito;
+    private javax.swing.JButton btn_cerrar_sesion1;
     private javax.swing.JButton btn_exit;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

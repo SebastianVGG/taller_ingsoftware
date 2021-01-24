@@ -190,7 +190,6 @@ public class JF_Libro_ebook extends javax.swing.JFrame {
             
             Ebook ebook = new Ebook(tamaño,this.precio,this.id_libro);
             ebook.insert_ebook();
-            dispose();
             }else
                   JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             }

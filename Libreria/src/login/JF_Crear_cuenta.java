@@ -6,6 +6,7 @@
 package login;
 
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,6 +31,7 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
      public JF_Crear_cuenta() throws SQLException {
         initComponents();
         agregarItem_cbx();
+        restringir();
     }
 
     /**
@@ -374,5 +376,9 @@ public class JF_Crear_cuenta extends javax.swing.JFrame {
             cbx_insert_localidad_cliente.addItem(localidad_select.get(i).getNombre());
         } 
     }
-
+  void restringir(){
+            RestrictedTextField restricted1 = new RestrictedTextField(txtf_insert_telefono);
+            restricted1.setLimit(10);
+            restricted1.setOnlyNums(true);
+    }
 }

@@ -238,7 +238,6 @@ public class JF_Libro_papel extends javax.swing.JFrame {
                                     
                                     Papel papel = new Papel(this.fecha,lugar, this.precio, this.id_libro, id_almacen_papel);
                                     papel.insert_papel();
-                                    dispose();
                                 }
                                 else
                                      JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
