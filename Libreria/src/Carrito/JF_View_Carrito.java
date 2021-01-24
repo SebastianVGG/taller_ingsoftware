@@ -5,18 +5,51 @@
  */
 package Carrito;
 
+import views.element_list;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tables.Cliente;
+import tables.Ebook;
+import tables.Libro;
+import tables.Papel;
+
 /**
  *
  * @author Sebastian
  */
 public class JF_View_Carrito extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JF_View_Carrito
-     */
+     List<Papel> papeles = new ArrayList<Papel>();  
+     List<Ebook> ebooks = new ArrayList<Ebook>();  
+    Cliente cliente = new Cliente();
+     List<Libro> libros = new ArrayList<Libro>();  
+     List<Integer> cantidades = new ArrayList<Integer>();
+     List<String> bools = new ArrayList<String>();
+      List<element_list> list = new ArrayList<element_list>();  
+     
+     int costo_total;
+     int i_papel=0;
+     int i_ebook=0;
     public JF_View_Carrito() {
         initComponents();
     }
+ 
+       public JF_View_Carrito( Cliente cliente, List<element_list> list) throws SQLException {
+        initComponents();
+        this.cliente=cliente;
+        this.list=list;
+        agregar_elementos();
+        txt_cesta.setText(agregarItem_cbx());
+        costo_total();
+        lbl_costo_total.setText(String.valueOf(this.costo_total));
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,6 +71,8 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btn_eliminar = new javax.swing.JButton();
         btn_pagar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        lbl_costo_total = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,8 +94,23 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         jLabel5.setText("Eliminar de la cesta");
 
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
 
         btn_pagar.setText("Pagar cesta");
+        btn_pagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pagarActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Total");
+
+        lbl_costo_total.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_costo_total.setText("jLabel7");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,10 +125,14 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(108, 108, 108)
                 .addComponent(jLabel4)
-                .addGap(100, 470, Short.MAX_VALUE))
+                .addGap(170, 170, 170)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(lbl_costo_total, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
@@ -110,7 +164,11 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_costo_total, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
                         .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
@@ -136,6 +194,54 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ void agregar_elementos(){
+     for (int i = 0; i < list.size(); i++) {
+      this.libros=this.list.get(i).getLibros();
+     this.papeles=this.list.get(i).getPapeles();
+     this.ebooks=this.list.get(i).getEbooks();
+     this.bools=this.list.get(i).getBools();
+     this.cantidades=this.list.get(i).getCantidades();
+     }
+    
+ }
+    
+    
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        try {
+            int id_libro = cbx_libro.getSelectedIndex();
+            String titulo = libros.get(id_libro).getTitulo();
+            JOptionPane.showMessageDialog(null, "Libro "+titulo+" eliminado de la cesta ");
+            this.libros.remove(id_libro);
+            agregarItem_cbx();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_View_Carrito.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagarActionPerformed
+        if(this.libros.isEmpty())
+            JOptionPane.showMessageDialog(null, "La cesta está vacía!");
+        JF_Pago pago = new JF_Pago(this.costo_total);
+        pago.setLocationRelativeTo(null);
+        pago.setVisible(true);
+    }//GEN-LAST:event_btn_pagarActionPerformed
+
+    void costo_total(){
+        this.costo_total=0;
+        int papel=0;
+        int ebook=0;
+        for (int i = 0; i < this.libros.size(); i++) {
+            if(this.bools.get(i).equals("Papel")){
+                this.costo_total+=this.papeles.get(papel).getPrecio();
+                papel+=1;
+            }
+            else{
+                this.costo_total+=this.ebooks.get(ebook).getPrecio();
+                ebook+=1;
+            }
+        }
+
+    }
     /**
      * @param args the command line arguments
      */
@@ -180,8 +286,26 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_costo_total;
     private javax.swing.JTextArea txt_cesta;
     // End of variables declaration//GEN-END:variables
+    public String agregarItem_cbx() throws SQLException{
+        String datos="";
+        for (int i = 0; i <list.size(); i++) {
+            for (int j = 0; j < list.get(i).getLibros().size(); j++) {
+            if(this.list.get(i).getBools().get(j).equals("Papel")){
+            datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";}
+            else{
+                 datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro digital \n";
+            }
+               
+             cbx_libro.addItem(this.list.get(i).getLibros().get(j).getTitulo());
+        }
+        }
+           return datos;
+    }
+     
 }

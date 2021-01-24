@@ -6,45 +6,25 @@
 package Carrito;
 
 import Atxy2k.CustomTextField.RestrictedTextField;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import tables.Almacen;
-import tables.Cliente;
-import tables.Ebook;
-import tables.Libro;
-import tables.Papel;
+
 
 /**
  *
  * @author Sebastian
  */
-public class JF_Pago_credit extends javax.swing.JFrame {
+public class JF_Pago_credit extends JF_View_Carrito {
 
-    Libro libro = new Libro();
-    Papel papel = new Papel();
-    Ebook ebook = new Ebook();
-    Cliente cliente = new Cliente();
-    Almacen almacen = new Almacen();
-    int cantidad;
-    boolean papel_ebook;
-    
-    public JF_Pago_credit(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad) throws SQLException, ParseException {
-        initComponents();
-        this.libro=libro;
-        this.papel=papel;
-        this.ebook=ebook;
-        this.cliente=cliente;
-        this.papel_ebook=papel_ebook;
-        this.cantidad=cantidad;
-        limit_character();
-        costo();
-    }
+        int costo_total;
         public JF_Pago_credit() {
         initComponents();
+    }
+        
+        public JF_Pago_credit(int costo_total) {
+        initComponents();
         limit_character();
+        this.costo_total=costo_total;
+        costo();
     }
         
         void limit_character(){
@@ -71,11 +51,11 @@ public class JF_Pago_credit extends javax.swing.JFrame {
             restricted4.setOnlyNums(true);
         }
       void costo(){
-          if(papel_ebook){
-              lbl_costo_total.setText(String.valueOf("$ "+this.cantidad*this.papel.getPrecio())+" MX.");
+          if(bools.equals("Papel")){
+              lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
           }
           else{
-               lbl_costo_total.setText(String.valueOf("$ "+this.cantidad*this.ebook.getPrecio())+" MX.");
+               lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
           }
       }
       
@@ -269,17 +249,11 @@ public class JF_Pago_credit extends javax.swing.JFrame {
             }
             if(resultado){
             
-                try {
-                    String tipo = "Tarjeta de crédito";
-                     tarjeta4 = "**** **** **** "+tarjeta4;
-                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta4);
-                    dispose();
-                    ver_cesta.setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
-                    Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                String tipo = "Tarjeta de crédito";
+                tarjeta4 = "**** **** **** "+tarjeta4;
+                JF_View_Cesta ver_cesta = new JF_View_Cesta(this.costo_total,tipo,tarjeta4);
+                dispose();
+                ver_cesta.setVisible(true);
             }else
                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             

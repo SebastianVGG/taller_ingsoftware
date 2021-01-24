@@ -10,6 +10,8 @@ import Carrito.JF_View_Libro;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,6 +19,7 @@ import login.Main_login;
 
 import tables.Cliente;
 import tables.Libro;
+import tables.Papel;
 
 /**
  *
@@ -27,6 +30,12 @@ public class Main_view extends javax.swing.JFrame {
     int mousepY;
     Libro libros = new Libro();
     Cliente cliente = new Cliente();
+    List<element_list> lista = new ArrayList<element_list>();  
+
+
+    public void setList(element_list list) {
+        this.lista.add(list);
+    }
     
     public Main_view() {
         initComponents();
@@ -885,9 +894,14 @@ public class Main_view extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void btn_carritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carritoActionPerformed
-       JF_View_Carrito carrito = new JF_View_Carrito();
-       carrito.setLocationRelativeTo(null);
-       carrito.setVisible(true);
+
+        try {
+            JF_View_Carrito carrito = new JF_View_Carrito(this.cliente,this.lista);
+            carrito.setLocationRelativeTo(null);
+            carrito.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_carritoActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
@@ -912,8 +926,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_1.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry Potter_La piedra filosofal.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "NO SE PUEDE ABRIR LA VENTANA");  
         }

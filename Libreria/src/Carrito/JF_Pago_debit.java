@@ -11,11 +11,6 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import tables.Almacen;
-import tables.Cliente;
-import tables.Ebook;
-import tables.Libro;
-import tables.Papel;
 
 /**
  *
@@ -23,21 +18,9 @@ import tables.Papel;
  */
 public class JF_Pago_debit extends javax.swing.JFrame {
 
-    Libro libro = new Libro();
-    Papel papel = new Papel();
-    Ebook ebook = new Ebook();
-    Cliente cliente = new Cliente();
-    Almacen almacen = new Almacen();
-    int cantidad;
-    boolean papel_ebook;
-    public JF_Pago_debit(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad) throws SQLException, ParseException {
+    int costo_total;
+    public JF_Pago_debit(int costo_total){
         initComponents();
-        this.libro=libro;
-        this.papel=papel;
-        this.ebook=ebook;
-        this.cliente=cliente;
-        this.papel_ebook=papel_ebook;
-        this.cantidad=cantidad;
         limit_character();
         costo();
        
@@ -49,12 +32,8 @@ public class JF_Pago_debit extends javax.swing.JFrame {
     
     
           void costo(){
-          if(this.papel_ebook){
-              lbl_costo_total.setText(String.valueOf("$ "+this.cantidad*this.papel.getPrecio())+" MX.");
-          }
-          else{
-               lbl_costo_total.setText(String.valueOf("$ "+this.cantidad*this.ebook.getPrecio())+" MX.");
-          }
+              lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
+
       }
           
      void limit_character(){
@@ -263,17 +242,11 @@ public class JF_Pago_debit extends javax.swing.JFrame {
                 resultado = false;
             }
             if(resultado){
-                try {
-                    String tipo = "Tarjeta de débito";
-                     tarjeta4 = "**** **** **** "+tarjeta4;
-                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta4);
-                    dispose();
-                    ver_cesta.setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JF_Pago_debit.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
-                    Logger.getLogger(JF_Pago_debit.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                String tipo = "Tarjeta de débito";
+                tarjeta4 = "**** **** **** "+tarjeta4;
+                JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta4);
+                dispose();
+                ver_cesta.setVisible(true);
        }else
                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
        }

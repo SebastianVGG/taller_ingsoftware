@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Carrito;
+package views;
 
-import views.element_list;
+import Carrito.JF_View_Carrito;
+import Carrito.JF_View_Libro;
 import java.awt.Image;
-import java.awt.MouseInfo;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -21,14 +22,12 @@ import tables.Ebook;
 import tables.Editorial;
 import tables.Libro;
 import tables.Papel;
-import views.Main_view;
 
 /**
  *
  * @author Sebastian
  */
-public class JF_View_Libro extends javax.swing.JFrame {
-
+public class prueba extends javax.swing.JDialog {
     Libro libro = new Libro();
     Autor autor = new Autor();
     Editorial editorial = new Editorial();
@@ -36,26 +35,32 @@ public class JF_View_Libro extends javax.swing.JFrame {
     Papel papel = new Papel();
     Ebook ebook = new Ebook();
     Cliente cliente = new Cliente();
-    element_list list = new element_list();
     int id_libro_elegido;
     int mousepX;
     int mousepY;
     int cantidad;
-    public JF_View_Libro(String url, Libro libro_id, Cliente cliente) throws SQLException {
-       initComponents();
-        ScaleImage(url);
+    element_list list = new element_list();
+     List<element_list> lista = new ArrayList<element_list>();  
+    public prueba(java.awt.Frame parent, boolean modal,String url, Libro libro_id, Cliente cliente) throws SQLException {
+        super(parent, modal);
+        initComponents();
+ ScaleImage(url);
          this.id_libro_elegido=libro_id.getId();
          this.cliente=cliente;
          spf_cantidad.setValue(1);
         get_libro_dates(this.id_libro_elegido);
-         
+    }
+    public prueba(java.awt.Frame parent, boolean modal) throws SQLException {
+        super(parent, modal);
+        initComponents();
     }
 
-    private JF_View_Libro() {
-          initComponents();
+    public List<element_list> getLista() {
+        lista.add(this.list);
+        return lista;
     }
     
-    
+
     public void ScaleImage(String url){
         ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource(url));
         Image img = icon.getImage();
@@ -64,8 +69,7 @@ public class JF_View_Libro extends javax.swing.JFrame {
         lbl_picture.setIcon(scaledIcon);
         
     }
-    
-    public void get_libro_dates(int id_libro) throws SQLException{
+ public void get_libro_dates(int id_libro) throws SQLException{
         Libro datos_libro = libro.select_one_libro(id_libro);
         lbl_titulo.setText(datos_libro.getTitulo());
         txt_descripcion.setText(datos_libro.getDescripcion());
@@ -91,7 +95,6 @@ public class JF_View_Libro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
@@ -131,32 +134,7 @@ public class JF_View_Libro extends javax.swing.JFrame {
         spf_cantidad = new com.toedter.components.JSpinField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(null);
         setUndecorated(true);
-        setResizable(false);
-
-        jPanel5.setOpaque(false);
-        jPanel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanel5MouseDragged(evt);
-            }
-        });
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel5MousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
-        );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(21, 96, 189), 4, true));
@@ -443,7 +421,7 @@ public class JF_View_Libro extends javax.swing.JFrame {
                                 .addContainerGap())))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 20, Short.MAX_VALUE))))
+                        .addGap(0, 95, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,77 +456,46 @@ public class JF_View_Libro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 97, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 684, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_papelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_papelActionPerformed
-        try {
-            this.cantidad = (spf_cantidad.getValue());
-            this.libro= (libro.select_one_libro(id_libro_elegido));
-            this.papel= papel.select_id_libro(this.libro.getId());
-           String bool = "Papel";
-           this.list.agregar_papel(papel, libro, bool, cantidad);
-           new Main_view(this.list);
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_papelActionPerformed
-
-    private void btn_ebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ebookActionPerformed
-        try {
-            this.cantidad = (spf_cantidad.getValue());
-            this.libro= (libro.select_one_libro(id_libro_elegido));
-            this.ebook= ebook.select_one_ebook(this.libro.getId());
-           String bool = "Ebook";
-           this.list.agregar_ebook(ebook, libro, bool, cantidad);
-           new Main_view(this.list);
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_ebookActionPerformed
-
-    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-       mousepX=evt.getX();
-       mousepY=evt.getY();
-    }//GEN-LAST:event_jPanel5MousePressed
-
-    private void jPanel5MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseDragged
-        Point point = MouseInfo.getPointerInfo().getLocation();
-        this.setLocation(point.x-mousepX, point.y-mousepY);
-    }//GEN-LAST:event_jPanel5MouseDragged
 
     private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed
         dispose();
     }//GEN-LAST:event_btn_closeActionPerformed
 
     private void btn_ver_carritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ver_carritoActionPerformed
+    }//GEN-LAST:event_btn_ver_carritoActionPerformed
+
+    private void btn_ebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ebookActionPerformed
         try {
-            Main_view lista = new Main_view();
-            element_list list_ = lista.getList();
-            JF_View_Carrito carrito = new JF_View_Carrito(this.cliente, list_);
-            carrito.setLocationRelativeTo(null);
-            carrito.setVisible(true);
+            this.cantidad = (spf_cantidad.getValue());
+            this.libro= (libro.select_one_libro(id_libro_elegido));
+            this.ebook= ebook.select_one_ebook(this.libro.getId());
+            String bool = "Ebook";
+            this.list.agregar_ebook(ebook, libro, bool, cantidad);
         } catch (SQLException ex) {
             Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_ver_carritoActionPerformed
+    }//GEN-LAST:event_btn_ebookActionPerformed
+
+    private void btn_papelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_papelActionPerformed
+        try {
+            this.cantidad = (spf_cantidad.getValue());
+            this.libro= (libro.select_one_libro(id_libro_elegido));
+            this.papel= papel.select_id_libro(this.libro.getId());
+            String bool = "Papel";
+            this.list.agregar_papel(papel, libro, bool, cantidad);
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_papelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -567,20 +514,31 @@ public class JF_View_Libro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JF_View_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JF_View_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JF_View_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JF_View_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_View_Libro().setVisible(true);
+                try {
+                    prueba dialog = new prueba(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -601,7 +559,6 @@ public class JF_View_Libro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_autor;
@@ -625,6 +582,4 @@ public class JF_View_Libro extends javax.swing.JFrame {
     private com.toedter.components.JSpinField spf_cantidad;
     private javax.swing.JTextArea txt_descripcion;
     // End of variables declaration//GEN-END:variables
-
-
 }

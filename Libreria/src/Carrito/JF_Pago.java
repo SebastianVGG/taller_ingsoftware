@@ -5,39 +5,17 @@
  */
 package Carrito;
 
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import tables.Almacen;
-import tables.Cliente;
-import tables.Ebook;
-import tables.Libro;
-import tables.Papel;
 
-/**
- *
- * @author Sebastian
- */
-public class JF_Pago extends javax.swing.JFrame {
-    Libro libro = new Libro();
-    Papel papel = new Papel();
-    Ebook ebook = new Ebook();
-    Cliente cliente = new Cliente();
-    Almacen almacen = new Almacen();
-    int cantidad;
-    boolean papel_ebook;
+
+public class JF_Pago extends JF_View_Carrito{
+    int costo_total;
     public JF_Pago() {
         initComponents();
     }
-        public JF_Pago(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad) throws SQLException, ParseException {
+    
+    public JF_Pago(int costo_total) {
         initComponents();
-        this.libro=libro;
-        this.papel=papel;
-        this.ebook=ebook;
-        this.cliente=cliente;
-        this.papel_ebook=papel_ebook;
-        this.cantidad=cantidad;
+        this.costo_total=costo_total;
     }
 
     /**
@@ -179,50 +157,32 @@ public class JF_Pago extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbx_creditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_creditActionPerformed
-        try {
-            JF_Pago_credit pago = new JF_Pago_credit(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad);
-            if(rbx_credit.isSelected()){
-                pago.setLocationRelativeTo(null);
-                pago.setVisible(true);
-            }else{
-                pago.setVisible(false);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
+        JF_Pago_credit pago = new JF_Pago_credit(this.costo_total);
+        if(rbx_credit.isSelected()){
+            pago.setLocationRelativeTo(null);
+            pago.setVisible(true);
+        }else{
+            pago.setVisible(false);
         }
     }//GEN-LAST:event_rbx_creditActionPerformed
 
     private void rbx_debitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_debitActionPerformed
-        try {
-            JF_Pago_debit pago = new JF_Pago_debit(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad);
-            if(rbx_debit.isSelected()){
-                pago.setLocationRelativeTo(null);
-                pago.setVisible(true);
-            }else{
-                pago.setVisible(false);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
+        JF_Pago_debit pago = new JF_Pago_debit(this.costo_total);
+        if(rbx_debit.isSelected()){
+            pago.setLocationRelativeTo(null);
+            pago.setVisible(true);
+        }else{
+            pago.setVisible(false);
         }
     }//GEN-LAST:event_rbx_debitActionPerformed
 
     private void rbx_paypalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_paypalActionPerformed
-        try {
-            JF_Pago_paypal pago = new JF_Pago_paypal(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad);
-            if(rbx_paypal.isSelected()){
-                pago.setLocationRelativeTo(null);
-                pago.setVisible(true);
-            }else{
-                pago.setVisible(false);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
+        JF_Pago_paypal pago = new JF_Pago_paypal(this.costo_total);
+        if(rbx_paypal.isSelected()){
+            pago.setLocationRelativeTo(null);
+            pago.setVisible(true);
+        }else{
+            pago.setVisible(false);
         }
     }//GEN-LAST:event_rbx_paypalActionPerformed
 
