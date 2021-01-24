@@ -10,14 +10,18 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Sebastian
+ */
+public class JF_Pago1 extends javax.swing.JFrame {
 
-
-public class JF_Pago extends JF_View_Carrito{
-    public JF_Pago() {
+    /**
+     * Creates new form JF_Pago1
+     */
+    public JF_Pago1() {
         initComponents();
-        
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,7 +32,6 @@ public class JF_Pago extends JF_View_Carrito{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -44,8 +47,7 @@ public class JF_Pago extends JF_View_Carrito{
         rbx_credit = new javax.swing.JRadioButton();
         rbx_paypal = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -110,7 +112,6 @@ public class JF_Pago extends JF_View_Carrito{
         jPanel1.add(jButton1);
         jButton1.setBounds(170, 400, 140, 30);
 
-        buttonGroup1.add(rbx_debit);
         rbx_debit.setContentAreaFilled(false);
         rbx_debit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +121,6 @@ public class JF_Pago extends JF_View_Carrito{
         jPanel1.add(rbx_debit);
         rbx_debit.setBounds(20, 190, 21, 21);
 
-        buttonGroup1.add(rbx_credit);
         rbx_credit.setContentAreaFilled(false);
         rbx_credit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +130,6 @@ public class JF_Pago extends JF_View_Carrito{
         jPanel1.add(rbx_credit);
         rbx_credit.setBounds(20, 70, 20, 21);
 
-        buttonGroup1.add(rbx_paypal);
         rbx_paypal.setContentAreaFilled(false);
         rbx_paypal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,15 +155,9 @@ public class JF_Pago extends JF_View_Carrito{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbx_creditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_creditActionPerformed
-        JF_Pago_credit pago = new JF_Pago_credit();
-        if(rbx_credit.isSelected()){
-            pago.setLocationRelativeTo(null);
-            pago.setVisible(true);
-        }else{
-            pago.setVisible(false);
-        }
-    }//GEN-LAST:event_rbx_creditActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void rbx_debitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_debitActionPerformed
         JF_Pago_debit pago = new JF_Pago_debit();
@@ -175,6 +168,16 @@ public class JF_Pago extends JF_View_Carrito{
             pago.setVisible(false);
         }
     }//GEN-LAST:event_rbx_debitActionPerformed
+
+    private void rbx_creditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_creditActionPerformed
+        JF_Pago_credit pago = new JF_Pago_credit();
+        if(rbx_credit.isSelected()){
+            pago.setLocationRelativeTo(null);
+            pago.setVisible(true);
+        }else{
+            pago.setVisible(false);
+        }
+    }//GEN-LAST:event_rbx_creditActionPerformed
 
     private void rbx_paypalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_paypalActionPerformed
         try {
@@ -191,10 +194,6 @@ public class JF_Pago extends JF_View_Carrito{
             Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_rbx_paypalActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,26 +212,25 @@ public class JF_Pago extends JF_View_Carrito{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JF_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Pago1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JF_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Pago1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JF_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Pago1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JF_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Pago1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Pago().setVisible(true);
+                new JF_Pago1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel5;

@@ -6,7 +6,6 @@
 package views;
 
 import Carrito.JF_View_Carrito;
-import Carrito.JF_View_Libro;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.sql.SQLException;
@@ -19,7 +18,6 @@ import login.Main_login;
 
 import tables.Cliente;
 import tables.Libro;
-import tables.Papel;
 
 /**
  *
@@ -939,8 +937,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_2.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/harry-potter-y-la-camara-secreta.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -951,8 +950,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_3.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/harry-potter-y-el-prisionero-de-azkaban-4490.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -963,8 +963,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_4.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_El_Caliz_De_Fuego.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -975,8 +976,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_5.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_La_Orden_Del_Fenix.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -987,8 +989,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_6.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_y_el_Misterio_del_Príncipe.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -999,8 +1002,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_7.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_Las_Reliquias_De_La_Muerte.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1011,8 +1015,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_8.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_El_Legado_Maldito.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1023,8 +1028,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_9.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Juegos_De_Tronos.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1035,8 +1041,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_10.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/choque_De_Reyes.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1047,8 +1054,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_11.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/tormenta_De_Espadas.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1059,8 +1067,9 @@ public class Main_view extends javax.swing.JFrame {
             int id = libros.select_id(lbl_12.getText().substring(14));
             Libro libro = libros.select_one_libro(id);
             String url = "/images/festin_De_Cuervos.jpg";
-            JF_View_Libro ver_libro = new JF_View_Libro(url,libro,this.cliente);
-            ver_libro.setVisible(true);
+            prueba odl = new prueba(this, true, url, libro, this.cliente);
+            odl.setVisible(true);
+            this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
             Logger.getLogger(Main_view.class.getName()).log(Level.SEVERE, null, ex);
         }

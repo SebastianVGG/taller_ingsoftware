@@ -5,8 +5,6 @@
  */
 package views;
 
-import Carrito.JF_View_Carrito;
-import Carrito.JF_View_Libro;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -521,7 +519,7 @@ public class prueba extends javax.swing.JDialog {
             String bool = "Ebook";
             this.list.agregar_ebook(ebook, libro, bool, cantidad);
         } catch (SQLException ex) {
-            Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_ebookActionPerformed
 
@@ -533,7 +531,7 @@ public class prueba extends javax.swing.JDialog {
             String bool = "Papel";
             this.list.agregar_papel(papel, libro, bool, cantidad);
         } catch (SQLException ex) {
-            Logger.getLogger(JF_View_Libro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_papelActionPerformed
 

@@ -6,12 +6,8 @@
 package login;
 
 import views.*;
-import Carrito.JF_View_Libro;
 import java.awt.MouseInfo;
 import java.awt.Point;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import login.Main_login;
 

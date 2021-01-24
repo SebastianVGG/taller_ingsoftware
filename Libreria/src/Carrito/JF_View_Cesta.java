@@ -64,8 +64,8 @@ public class JF_View_Cesta extends JF_View_Carrito {
             String todo = aux;
             float total = 0;
             todo = todo.substring(0, 2) + String.valueOf(this.cantidad) + aux;
-            todo = todo.substring(0, 14) + String.valueOf(libro.getId()) + aux;
-            todo = todo.substring(0, 24) + libro.getTitulo() + aux;
+            todo = todo.substring(0, 14) + String.valueOf(libros.get(0).getId()) + aux;
+            todo = todo.substring(0, 24) + libros.get(0).getTitulo() + aux;
 //            todo.substring(6, 11).concat(String.valueOf(libro.getId()));
 //            todo.substring(12, 35).concat(libro.getTitulo());
             
@@ -73,11 +73,11 @@ public class JF_View_Cesta extends JF_View_Carrito {
 //            txaLibros.append(String.valueOf(libro.getId()));
 //            txaLibros.append(libro.getTitulo());
             if(this.papel_ebook==true){
-                todo = todo.substring(0, 72) + papel.getLugar_impresion() + aux;
-                todo = todo.substring(0, 93) + String.valueOf(papel.getFecha_impresion()) + aux;
+                todo = todo.substring(0, 72) + papeles.get(0).getLugar_impresion() + aux;
+                todo = todo.substring(0, 93) + String.valueOf(papeles.get(0).getFecha_impresion()) + aux;
                 todo = todo.substring(0, 115) + "Book" + aux;
                 todo = todo.substring(0, 125) + "N/A" + aux;
-                todo = todo.substring(0, 136) + "$" + String.valueOf(papel.getPrecio()) + "\n";
+                todo = todo.substring(0, 136) + "$" + String.valueOf(papeles.get(0).getPrecio()) + "\n";
 //                lbl_precio.setText(String.valueOf(papel.getPrecio()));
 //                lbl_numero_letras.setText(letritas.Convertir(this.cantidad*papel.getPrecio() + "", true));
 //                lbl_total.setText(String.valueOf(this.cantidad*papel.getPrecio()));
@@ -85,7 +85,7 @@ public class JF_View_Cesta extends JF_View_Carrito {
 //                lbl_lugar_impresion.setText(papel.getLugar_impresion());
 //                lbl_peso.setText("N/A");
 //                lbl_tipo.setText("Libro fisico");
-                total = total + (this.cantidad*papel.getPrecio());
+                total = total + (this.cantidad*papeles.get(0).getPrecio());
                 
             }
             
@@ -94,10 +94,10 @@ public class JF_View_Cesta extends JF_View_Carrito {
                 todo = todo.substring(0, 72) + "N/A" + aux;
                 todo = todo.substring(0, 93) + "N/A" + aux;
                 todo = todo.substring(0, 115) + "Ebook" + aux;
-                todo = todo.substring(0, 125) + ebook.getTamaño() + aux;
-                todo = todo.substring(0, 136) + "$" + String.valueOf(ebook.getPrecio()) + "\n";
+                todo = todo.substring(0, 125) + ebooks.get(0).getTamaño() + aux;
+                todo = todo.substring(0, 136) + "$" + String.valueOf(ebooks.get(0).getPrecio()) + "\n";
                 
-                total = total + (this.cantidad*ebook.getPrecio());
+                total = total + (this.cantidad*ebooks.get(0).getPrecio());
                 
 //                lbl_precio.setText(String.valueOf(ebook.getPrecio()));
 //                lbl_numero_letras.setText(letritas.Convertir(this.cantidad*ebook.getPrecio() + "", true));
