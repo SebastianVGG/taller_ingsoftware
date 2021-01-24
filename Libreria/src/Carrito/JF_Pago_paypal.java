@@ -7,20 +7,34 @@ package Carrito;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tables.Cliente;
+import views.element_list;
 
 /**
  *
  * @author Sebastian
  */
 public class JF_Pago_paypal extends JF_View_Carrito {
-
-    
-    public JF_Pago_paypal() throws SQLException, ParseException {
+    List<element_list> list = new ArrayList<element_list>();  
+    Cliente cliente = new Cliente();
+    int costo_total;
+    public JF_Pago_paypal( int costo_total, List<element_list> list,Cliente cliente) throws SQLException, ParseException {
         initComponents();
+        this.cliente=cliente;
+        this.costo_total=costo_total;
+        this.list=list;
         costo();
     }
+
+    public JF_Pago_paypal() {
+         initComponents();
+    }
+    
+    
 
 
               void costo(){
@@ -160,17 +174,11 @@ public class JF_Pago_paypal extends JF_View_Carrito {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_contiunarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_contiunarActionPerformed
-        try {
-            String tipo = "Pay Pal";
-            String tarjeta = "**** **** **** 4332";
-            JF_View_Cesta ver_cesta = new JF_View_Cesta(tipo,tarjeta);
-            dispose();
-            ver_cesta.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
-            Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String tipo = "Pay Pal";
+        String tarjeta = "**** **** **** 4332";
+        JF_View_Cesta ver_cesta = new JF_View_Cesta(this.cliente,this.costo_total,this.list,tipo,tarjeta);
+        dispose();
+        ver_cesta.setVisible(true);
     }//GEN-LAST:event_btn_contiunarActionPerformed
 
     /**
@@ -203,13 +211,7 @@ public class JF_Pago_paypal extends JF_View_Carrito {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new JF_Pago_paypal().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
-                    Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new JF_Pago_paypal().setVisible(true);
             }
         });
     }

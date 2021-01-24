@@ -7,13 +7,27 @@ package Carrito;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tables.Cliente;
+import views.element_list;
 
 
 
-public class JF_Pago extends JF_View_Carrito{
-    public JF_Pago() {
+public class JF_Pago extends javax.swing.JFrame {
+    List<element_list> list = new ArrayList<element_list>();  
+    Cliente cliente = new Cliente();
+    int costo_total;
+    public JF_Pago(Cliente cliente, int costo_total, List<element_list> list) {
+        initComponents();
+        this.cliente=cliente;
+        this.costo_total=costo_total;
+        this.list=list;
+    }
+    
+        public JF_Pago() {
         initComponents();
         
     }
@@ -157,7 +171,7 @@ public class JF_Pago extends JF_View_Carrito{
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbx_creditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_creditActionPerformed
-        JF_Pago_credit pago = new JF_Pago_credit();
+        JF_Pago_credit pago = new JF_Pago_credit(this.costo_total,this.list,this.cliente);
         if(rbx_credit.isSelected()){
             pago.setLocationRelativeTo(null);
             pago.setVisible(true);
@@ -167,7 +181,7 @@ public class JF_Pago extends JF_View_Carrito{
     }//GEN-LAST:event_rbx_creditActionPerformed
 
     private void rbx_debitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_debitActionPerformed
-        JF_Pago_debit pago = new JF_Pago_debit();
+        JF_Pago_debit pago = new JF_Pago_debit(this.costo_total,this.list,this.cliente);
         if(rbx_debit.isSelected()){
             pago.setLocationRelativeTo(null);
             pago.setVisible(true);
@@ -178,7 +192,7 @@ public class JF_Pago extends JF_View_Carrito{
 
     private void rbx_paypalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_paypalActionPerformed
         try {
-            JF_Pago_paypal pago = new JF_Pago_paypal();
+            JF_Pago_paypal pago = new JF_Pago_paypal(this.costo_total,this.list,this.cliente);
             if(rbx_paypal.isSelected()){
                 pago.setLocationRelativeTo(null);
                 pago.setVisible(true);

@@ -8,21 +8,33 @@ package Carrito;
 import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import tables.Cliente;
+import views.element_list;
 
 /**
  *
  * @author Sebastian
  */
 public class JF_Pago_debit extends JF_View_Carrito {
-
-
-    public JF_Pago_debit(){
+    List<element_list> list = new ArrayList<element_list>();  
+    Cliente cliente = new Cliente();
+    int costo_total;
+    public JF_Pago_debit(int costo_total, List<element_list> list,Cliente cliente){
         initComponents();
+        this.cliente=cliente;
+        this.costo_total=costo_total;
+        this.list=list;
         limit_character();
        
+    }
+
+    public JF_Pago_debit() {
+        initComponents();
     }
 
     
@@ -240,7 +252,7 @@ public class JF_Pago_debit extends JF_View_Carrito {
                 try {
                     String tipo = "Tarjeta de débito";
                     tarjeta4 = "**** **** **** "+tarjeta4;
-                    JF_View_Cesta ver_cesta = new JF_View_Cesta(tipo,tarjeta4);
+                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.cliente,this.costo_total,this.list,tipo,tarjeta4);
                     dispose();
                     ver_cesta.setVisible(true);
                 } catch (SQLException ex) {

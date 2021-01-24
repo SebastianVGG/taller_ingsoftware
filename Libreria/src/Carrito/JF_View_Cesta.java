@@ -25,7 +25,7 @@ import tables.Cesta;
  *
  * @author Sebastian
  */
-public class JF_View_Cesta extends JF_View_Carrito {
+public class JF_View_Cesta extends javax.swing.JFrame {
     Almacen almacen = new Almacen();
     Numero_Letras letritas = new Numero_Letras();
     

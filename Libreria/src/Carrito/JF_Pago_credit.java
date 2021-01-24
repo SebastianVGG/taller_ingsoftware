@@ -8,20 +8,33 @@ package Carrito;
 import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import tables.Cliente;
+import views.element_list;
 
 
 /**
  *
  * @author Sebastian
  */
-public class JF_Pago_credit extends JF_View_Carrito {
-
-        public JF_Pago_credit() {
+public class JF_Pago_credit extends javax.swing.JFrame {
+    List<element_list> list = new ArrayList<element_list>();  
+    Cliente cliente = new Cliente();
+    int costo_total;
+        public JF_Pago_credit(int costo_total, List<element_list> list,Cliente cliente) {
         initComponents();
+        this.cliente=cliente;
+        this.costo_total=costo_total;
+        this.list=list;
         limit_character();
+    }
+
+    public JF_Pago_credit() {
+        initComponents();
     }
         
         void limit_character(){
@@ -48,12 +61,7 @@ public class JF_Pago_credit extends JF_View_Carrito {
             restricted4.setOnlyNums(true);
         }
       void costo(){
-          if(bools.equals("Papel")){
               lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
-          }
-          else{
-               lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
-          }
       }
       
 
@@ -249,7 +257,7 @@ public class JF_Pago_credit extends JF_View_Carrito {
                 try {
                     String tipo = "Tarjeta de crédito";
                     tarjeta4 = "**** **** **** "+tarjeta4;
-                    JF_View_Cesta ver_cesta = new JF_View_Cesta(tipo,tarjeta4);
+                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.cliente,this.costo_total,this.list,tipo,tarjeta4);
                     dispose();
                     ver_cesta.setVisible(true);
                 } catch (SQLException ex) {

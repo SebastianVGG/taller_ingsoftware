@@ -7,10 +7,7 @@ package Carrito;
 
 import views.element_list;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -223,7 +220,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     private void btn_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagarActionPerformed
         if(this.list.isEmpty())
             JOptionPane.showMessageDialog(null, "La cesta está vacía!");
-        JF_Pago1 pago = new JF_Pago1();
+        JF_Pago pago = new JF_Pago(this.cliente,this.costo_total,this.list);
         pago.setLocationRelativeTo(null);
         pago.setVisible(true);
     }//GEN-LAST:event_btn_pagarActionPerformed
