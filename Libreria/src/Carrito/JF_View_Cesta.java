@@ -5,6 +5,7 @@
  */
 package Carrito;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
@@ -74,6 +75,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
             System.out.print(fecha);
             int id_cliente = cliente.getId();
             int id_libro = libro.getId();
+            Font fuente = new Font("Monospaced", Font.PLAIN,10);
             
             Cesta cesta = new Cesta(fecha,cantidad,id_cliente,id_libro);
             cesta.insert_cesta_s();
@@ -86,17 +88,22 @@ public class JF_View_Cesta extends javax.swing.JFrame {
             lbl_correo.setText(cliente.getEmail());
             String aux = "                                                                              ";
             String todo = aux;
-            todo = todo.substring(0, 10) + String.valueOf(this.cantidad) + aux;
-            todo = todo.substring(0, 30) + String.valueOf(libro.getId()) + aux;
-            todo = todo.substring(0, 55) + libro.getTitulo();
+            float total = 0;
+            todo = todo.substring(0, 2) + String.valueOf(this.cantidad) + aux;
+            todo = todo.substring(0, 14) + String.valueOf(libro.getId()) + aux;
+            todo = todo.substring(0, 24) + libro.getTitulo() + aux;
 //            todo.substring(6, 11).concat(String.valueOf(libro.getId()));
 //            todo.substring(12, 35).concat(libro.getTitulo());
-            txaLibros.append(todo);
+            
 //            txaLibros.append(String.valueOf(this.cantidad));
 //            txaLibros.append(String.valueOf(libro.getId()));
 //            txaLibros.append(libro.getTitulo());
-//            if(this.papel_ebook==true){
-//                
+            if(this.papel_ebook==true){
+                todo = todo.substring(0, 72) + papel.getLugar_impresion() + aux;
+                todo = todo.substring(0, 93) + String.valueOf(papel.getFecha_impresion()) + aux;
+                todo = todo.substring(0, 115) + "Book" + aux;
+                todo = todo.substring(0, 125) + "N/A" + aux;
+                todo = todo.substring(0, 136) + "$" + String.valueOf(papel.getPrecio()) + "\n";
 //                lbl_precio.setText(String.valueOf(papel.getPrecio()));
 //                lbl_numero_letras.setText(letritas.Convertir(this.cantidad*papel.getPrecio() + "", true));
 //                lbl_total.setText(String.valueOf(this.cantidad*papel.getPrecio()));
@@ -104,10 +111,20 @@ public class JF_View_Cesta extends javax.swing.JFrame {
 //                lbl_lugar_impresion.setText(papel.getLugar_impresion());
 //                lbl_peso.setText("N/A");
 //                lbl_tipo.setText("Libro fisico");
-//                
-//            }
-//            
-//            else{
+                total = total + (this.cantidad*papel.getPrecio());
+                
+            }
+            
+            else{
+                
+                todo = todo.substring(0, 72) + "N/A" + aux;
+                todo = todo.substring(0, 93) + "N/A" + aux;
+                todo = todo.substring(0, 115) + "Ebook" + aux;
+                todo = todo.substring(0, 125) + ebook.getTamaño() + aux;
+                todo = todo.substring(0, 136) + "$" + String.valueOf(ebook.getPrecio()) + "\n";
+                
+                total = total + (this.cantidad*ebook.getPrecio());
+                
 //                lbl_precio.setText(String.valueOf(ebook.getPrecio()));
 //                lbl_numero_letras.setText(letritas.Convertir(this.cantidad*ebook.getPrecio() + "", true));
 //                lbl_total.setText(String.valueOf(this.cantidad*ebook.getPrecio()));
@@ -115,8 +132,11 @@ public class JF_View_Cesta extends javax.swing.JFrame {
 //                lbl_fecha_impresion.setText("N/A");
 //                lbl_lugar_impresion.setText("N/A");
 //                lbl_tipo.setText("Ebook");
-//            }
-            
+            }
+            txaLibros.setFont(fuente);
+            txaLibros.append(todo);
+            lbl_numero_letras.setText(letritas.Convertir(total + "",true));
+            lbl_total.setText(""+total);
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -367,9 +387,9 @@ public class JF_View_Cesta extends javax.swing.JFrame {
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,6 +407,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txaLibros.setEditable(false);
         txaLibros.setColumns(20);
         txaLibros.setRows(5);
         jScrollPane2.setViewportView(txaLibros);
@@ -400,37 +421,38 @@ public class JF_View_Cesta extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 27, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addComponent(lbl_picture)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(40, 40, 40))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(lbl_picture)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_picture, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(30, 30, 30)
+                            .addComponent(lbl_picture, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,12 +475,12 @@ public class JF_View_Cesta extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(309, 309, 309)
                 .addComponent(btn_print, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
