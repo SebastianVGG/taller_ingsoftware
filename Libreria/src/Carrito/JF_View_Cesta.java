@@ -51,13 +51,15 @@ public class JF_View_Cesta extends javax.swing.JFrame {
         public JF_View_Cesta( Cliente cliente,int costo_total, List<element_list> list,String tipo, String tarjeta) throws SQLException, ParseException {
         initComponents();
         this.tipo=tipo;
+        this.list=list;
         this.tarjeta=tarjeta;
+        this.cliente=cliente;
          agregar_elementos();
         set_dates();
     }
         
  void agregar_elementos(){
-     for (int i = 0; i < list.size(); i++) {
+     for (int i = 0; i < this.list.size(); i++) {
       this.libros= this.list.get(i).getLibros();
      this.papeles=this.list.get(i).getPapeles();
      this.ebooks=this.list.get(i).getEbooks();
