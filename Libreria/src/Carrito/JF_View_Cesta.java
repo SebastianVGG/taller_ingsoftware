@@ -38,6 +38,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
      List<Papel> papeles = new ArrayList<Papel>();  
      List<Ebook> ebooks = new ArrayList<Ebook>();  
     Cliente cliente = new Cliente();
+    Cesta cesta = new Cesta();
      List<Libro> libros = new ArrayList<Libro>();  
      List<Integer> cantidades = new ArrayList<Integer>();
      List<String> bools = new ArrayList<String>();
@@ -68,7 +69,9 @@ public class JF_View_Cesta extends javax.swing.JFrame {
      }
  }
         public void set_dates() throws SQLException, ParseException{
-            int id_venta=0;
+            int last_id=cesta.get_last_id();
+            int id_venta = cesta.select_id_venta(last_id);
+            id_venta+=1;
             Date date = new Date();
             float total = 0;
             int countPapel = 0;
@@ -86,15 +89,6 @@ public class JF_View_Cesta extends javax.swing.JFrame {
                 
             Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i),this.cliente.getId(),libros.get(i).getId());
             cesta.insert_cesta_s();
-            
-            if(id_venta == 0){
-                
-            id_venta= cesta.get_id_venta(cesta.getId());
-            id_venta+=1;
-            }
-            
-            cesta.update_cesta_venta(id_venta,cesta.getId());
-            
             
             lbl_no_cesta.setText(String.valueOf(id_venta));
 
