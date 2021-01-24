@@ -9,6 +9,7 @@ import views.element_list;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,7 +33,6 @@ public class JF_View_Carrito extends javax.swing.JFrame {
      List<Integer> cantidades = new ArrayList<Integer>();
      List<String> bools = new ArrayList<String>();
       List<element_list> list = new ArrayList<element_list>();  
-     
      int costo_total;
      int i_papel=0;
      int i_ebook=0;
@@ -44,7 +44,8 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         initComponents();
         this.cliente=cliente;
         this.list=list;
-        agregar_elementos();
+         agregar_elementos();
+       
         txt_cesta.setText(agregarItem_cbx());
         costo_total();
         lbl_costo_total.setText(String.valueOf(this.costo_total));
@@ -136,9 +137,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbx_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -148,7 +147,10 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                                 .addGap(110, 110, 110))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btn_eliminar)
-                                .addGap(118, 118, 118))))))
+                                .addGap(118, 118, 118))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(cbx_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,22 +198,22 @@ public class JF_View_Carrito extends javax.swing.JFrame {
 
  void agregar_elementos(){
      for (int i = 0; i < list.size(); i++) {
-      this.libros=this.list.get(i).getLibros();
+      this.libros= this.list.get(i).getLibros();
      this.papeles=this.list.get(i).getPapeles();
      this.ebooks=this.list.get(i).getEbooks();
      this.bools=this.list.get(i).getBools();
      this.cantidades=this.list.get(i).getCantidades();
      }
-    
  }
     
     
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         try {
-            int id_libro = cbx_libro.getSelectedIndex();
-            String titulo = libros.get(id_libro).getTitulo();
-            JOptionPane.showMessageDialog(null, "Libro "+titulo+" eliminado de la cesta ");
-            this.libros.remove(id_libro);
+            String titulo = cbx_libro.getSelectedItem().toString();
+            System.out.println(titulo);
+             JOptionPane.showMessageDialog(null, "Libro "+titulo+" eliminado de la cesta ");
+     
+   
             agregarItem_cbx();
         } catch (SQLException ex) {
             Logger.getLogger(JF_View_Carrito.class.getName()).log(Level.SEVERE, null, ex);
@@ -219,7 +221,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagarActionPerformed
-        if(this.libros.isEmpty())
+        if(this.list.isEmpty())
             JOptionPane.showMessageDialog(null, "La cesta está vacía!");
         JF_Pago pago = new JF_Pago(this.costo_total);
         pago.setLocationRelativeTo(null);
@@ -297,12 +299,15 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         for (int i = 0; i <list.size(); i++) {
             for (int j = 0; j < list.get(i).getLibros().size(); j++) {
             if(this.list.get(i).getBools().get(j).equals("Papel")){
-            datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";}
+            datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";
+            cbx_libro.addItem("Papel - "+this.list.get(i).getLibros().get(j).getTitulo());
+            }
             else{
                  datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro digital \n";
+                 cbx_libro.addItem("Ebook - "+this.list.get(i).getLibros().get(j).getTitulo());
             }
                
-             cbx_libro.addItem(this.list.get(i).getLibros().get(j).getTitulo());
+             
         }
         }
            return datos;

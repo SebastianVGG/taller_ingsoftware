@@ -6,6 +6,10 @@
 package Carrito;
 
 import Atxy2k.CustomTextField.RestrictedTextField;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -15,16 +19,9 @@ import javax.swing.JOptionPane;
  */
 public class JF_Pago_credit extends JF_View_Carrito {
 
-        int costo_total;
         public JF_Pago_credit() {
         initComponents();
-    }
-        
-        public JF_Pago_credit(int costo_total) {
-        initComponents();
         limit_character();
-        this.costo_total=costo_total;
-        costo();
     }
         
         void limit_character(){
@@ -249,11 +246,17 @@ public class JF_Pago_credit extends JF_View_Carrito {
             }
             if(resultado){
             
-                String tipo = "Tarjeta de crédito";
-                tarjeta4 = "**** **** **** "+tarjeta4;
-                JF_View_Cesta ver_cesta = new JF_View_Cesta(this.costo_total,tipo,tarjeta4);
-                dispose();
-                ver_cesta.setVisible(true);
+                try {
+                    String tipo = "Tarjeta de crédito";
+                    tarjeta4 = "**** **** **** "+tarjeta4;
+                    JF_View_Cesta ver_cesta = new JF_View_Cesta(tipo,tarjeta4);
+                    dispose();
+                    ver_cesta.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else
                 JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             

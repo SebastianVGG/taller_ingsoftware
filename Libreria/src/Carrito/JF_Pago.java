@@ -5,6 +5,11 @@
  */
 package Carrito;
 
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 public class JF_Pago extends JF_View_Carrito{
@@ -157,7 +162,7 @@ public class JF_Pago extends JF_View_Carrito{
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbx_creditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_creditActionPerformed
-        JF_Pago_credit pago = new JF_Pago_credit(this.costo_total);
+        JF_Pago_credit pago = new JF_Pago_credit();
         if(rbx_credit.isSelected()){
             pago.setLocationRelativeTo(null);
             pago.setVisible(true);
@@ -167,7 +172,7 @@ public class JF_Pago extends JF_View_Carrito{
     }//GEN-LAST:event_rbx_creditActionPerformed
 
     private void rbx_debitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_debitActionPerformed
-        JF_Pago_debit pago = new JF_Pago_debit(this.costo_total);
+        JF_Pago_debit pago = new JF_Pago_debit();
         if(rbx_debit.isSelected()){
             pago.setLocationRelativeTo(null);
             pago.setVisible(true);
@@ -177,12 +182,18 @@ public class JF_Pago extends JF_View_Carrito{
     }//GEN-LAST:event_rbx_debitActionPerformed
 
     private void rbx_paypalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_paypalActionPerformed
-        JF_Pago_paypal pago = new JF_Pago_paypal(this.costo_total);
-        if(rbx_paypal.isSelected()){
-            pago.setLocationRelativeTo(null);
-            pago.setVisible(true);
-        }else{
-            pago.setVisible(false);
+        try {
+            JF_Pago_paypal pago = new JF_Pago_paypal();
+            if(rbx_paypal.isSelected()){
+                pago.setLocationRelativeTo(null);
+                pago.setVisible(true);
+            }else{
+                pago.setVisible(false);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(JF_Pago.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_rbx_paypalActionPerformed
 

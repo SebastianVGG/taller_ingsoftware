@@ -64,10 +64,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="cbx_libro" alignment="1" min="-2" pref="177" max="-2" attributes="0"/>
-                              <Component id="btn_pagar" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="btn_pagar" min="-2" pref="190" max="-2" attributes="0"/>
                           <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -80,6 +77,10 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btn_eliminar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="cbx_libro" min="-2" pref="280" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

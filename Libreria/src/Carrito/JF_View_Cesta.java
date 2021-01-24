@@ -13,39 +13,19 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import static java.time.temporal.TemporalQueries.localTime;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import tables.Almacen;
 import tables.Cesta;
-import tables.Cliente;
-import tables.Ebook;
-import tables.Libro;
-import tables.Papel;
+
 
 /**
  *
  * @author Sebastian
  */
-public class JF_View_Cesta extends javax.swing.JFrame {
-    Libro libro = new Libro();
-    Papel papel = new Papel();
-    Ebook ebook = new Ebook();
-    Cliente cliente = new Cliente();
+public class JF_View_Cesta extends JF_View_Carrito {
     Almacen almacen = new Almacen();
     Numero_Letras letritas = new Numero_Letras();
     
@@ -56,14 +36,8 @@ public class JF_View_Cesta extends javax.swing.JFrame {
     public JF_View_Cesta() {
         initComponents();
     }
-        public JF_View_Cesta(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad, String tipo, String tarjeta) throws SQLException, ParseException {
+        public JF_View_Cesta( String tipo, String tarjeta) throws SQLException, ParseException {
         initComponents();
-        this.libro=libro;
-        this.papel=papel;
-        this.ebook=ebook;
-        this.cliente=cliente;
-        this.papel_ebook=papel_ebook;
-        this.cantidad=cantidad;
         this.tipo_pago=tipo;
         this.tarjeta=tarjeta;
         set_dates();
@@ -74,7 +48,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(date);
             System.out.print(fecha);
             int id_cliente = cliente.getId();
-            int id_libro = libro.getId();
+            int id_libro = libros.get(0).getId();
             Font fuente = new Font("Monospaced", Font.PLAIN,10);
             
             Cesta cesta = new Cesta(fecha,cantidad,id_cliente,id_libro);

@@ -9,51 +9,24 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import tables.Almacen;
-import tables.Cliente;
-import tables.Ebook;
-import tables.Libro;
-import tables.Papel;
 
 /**
  *
  * @author Sebastian
  */
-public class JF_Pago_paypal extends javax.swing.JFrame {
+public class JF_Pago_paypal extends JF_View_Carrito {
 
-    Libro libro = new Libro();
-    Papel papel = new Papel();
-    Ebook ebook = new Ebook();
-    Cliente cliente = new Cliente();
-    Almacen almacen = new Almacen();
-    int cantidad;
-    boolean papel_ebook;
     
-    public JF_Pago_paypal(Papel papel, Ebook ebook, Libro libro,Cliente cliente,boolean papel_ebook, int cantidad) throws SQLException, ParseException {
+    public JF_Pago_paypal() throws SQLException, ParseException {
         initComponents();
-        this.libro=libro;
-        this.papel=papel;
-        this.ebook=ebook;
-        this.cliente=cliente;
-        this.papel_ebook=papel_ebook;
-        this.cantidad=cantidad;
         costo();
     }
 
-    public JF_Pago_paypal() {
-        initComponents();
-    }
 
               void costo(){
                   lbl_nombre.setText(this.cliente.getNombre() +" "+this.cliente.getApellido1()+" "+this.cliente.getApellido2());
-          if(this.papel_ebook){
-              lbl_costo_total.setText(String.valueOf("$ "+this.cantidad*this.papel.getPrecio())+" MX.");
-              lbl_costo_total2.setText(String.valueOf("$ "+this.cantidad*this.papel.getPrecio())+" MX.");
-          }
-          else{
-               lbl_costo_total.setText(String.valueOf("$ "+this.cantidad*this.ebook.getPrecio())+" MX.");
-               lbl_costo_total2.setText(String.valueOf("$ "+this.cantidad*this.ebook.getPrecio())+" MX.");
-          }
+                    lbl_costo_total.setText(String.valueOf("$ "+this.costo_total)+" MX.");
+                     lbl_costo_total2.setText(String.valueOf("$ "+this.costo_total)+" MX.");
       }
 
 
@@ -190,7 +163,7 @@ public class JF_Pago_paypal extends javax.swing.JFrame {
         try {
             String tipo = "Pay Pal";
             String tarjeta = "**** **** **** 4332";
-            JF_View_Cesta ver_cesta = new JF_View_Cesta(this.papel,this.ebook,this.libro,this.cliente,this.papel_ebook,this.cantidad,tipo,tarjeta);
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(tipo,tarjeta);
             dispose();
             ver_cesta.setVisible(true);
         } catch (SQLException ex) {
@@ -230,7 +203,13 @@ public class JF_Pago_paypal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Pago_paypal().setVisible(true);
+                try {
+                    new JF_Pago_paypal().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(JF_Pago_paypal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
