@@ -902,7 +902,10 @@ public class Main_view extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void btn_cerrar_sesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesion1ActionPerformed
-        // TODO add your handling code here:
+       dispose();
+        Main_login login = new Main_login();
+       login.setLocationRelativeTo(null);
+       login.setVisible(true);
     }//GEN-LAST:event_btn_cerrar_sesion1ActionPerformed
 
     /**
