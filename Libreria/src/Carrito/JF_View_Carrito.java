@@ -5,6 +5,7 @@
  */
 package Carrito;
 
+import java.awt.Font;
 import views.element_list;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class JF_View_Carrito extends javax.swing.JFrame {
  
        public JF_View_Carrito( Cliente cliente, List<element_list> list) throws SQLException {
         initComponents();
+        Font fuente = new Font("Monospaced", Font.PLAIN,10);
+        txt_cesta.setFont(fuente);
         this.cliente=cliente;
         this.list=list;
          agregar_elementos();
@@ -83,6 +86,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         txt_cesta.setColumns(20);
         txt_cesta.setRows(5);
         jScrollPane1.setViewportView(txt_cesta);
+        Font fuente = new Font("Monospaced", Font.PLAIN,10);
 
         jLabel2.setText("Titulo");
 
@@ -118,9 +122,9 @@ public class JF_View_Carrito extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(88, 88, 88)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149)
+                .addGap(219, 219, 219)
                 .addComponent(jLabel3)
                 .addGap(108, 108, 108)
                 .addComponent(jLabel4)
@@ -293,22 +297,34 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     private javax.swing.JTextArea txt_cesta;
     // End of variables declaration//GEN-END:variables
     public String agregarItem_cbx() throws SQLException{
-        String datos="";
+        String todo = "";
         for (int i = 0; i <list.size(); i++) {
-            for (int j = 0; j < list.get(i).getLibros().size(); j++) {
-            if(this.list.get(i).getBools().get(j).equals("Papel")){
-            datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";
-            cbx_libro.addItem("Papel - "+this.list.get(i).getLibros().get(j).getTitulo());
-            }
-            else{
-                 datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro digital \n";
-                 cbx_libro.addItem("Ebook - "+this.list.get(i).getLibros().get(j).getTitulo());
-            }
+            for (int j = 0; j < list.get(i).getLibros().size(); j++) {  
+            String aux = "                                  ";
+            String datos=aux;
+                if(this.list.get(i).getBools().get(j).equals("Papel")){
+                    datos = datos.substring(0, 4) + list.get(i).getCantidades().get(j) + aux;
+                    datos = datos.substring(0, 14) + list.get(i).getLibros().get(j).getTitulo() + aux;
+                    datos = datos.substring(0, 59) + list.get(i).getLibros().get(j).getIsbn() + aux;
+                    datos = datos.substring(0, 81) + "Libro Fisico\n";
+    //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";
+                    cbx_libro.addItem("Papel - "+this.list.get(i).getLibros().get(j).getTitulo());
+                    todo += datos;
+                }
+                else{
+                    datos = datos.substring(0, 4) + list.get(i).getCantidades().get(j) + aux;
+                    datos = datos.substring(0, 14) + list.get(i).getLibros().get(j).getTitulo() + aux;
+                    datos = datos.substring(0, 59) + list.get(i).getLibros().get(j).getIsbn() + aux;
+                    datos = datos.substring(0, 81) + "Libro Digital\n";
+    //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro digital \n";
+                    cbx_libro.addItem("Ebook - "+this.list.get(i).getLibros().get(j).getTitulo());
+                    todo += datos;
+                }
                
              
         }
         }
-           return datos;
+           return todo;
     }
      
 }
