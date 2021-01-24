@@ -395,7 +395,8 @@ public class JF_Cesta extends javax.swing.JFrame {
             if(res){
             int r = tb_cesta.getSelectedRow();
             int id_cesta = (int) tb_cesta.getValueAt(r, 0);
-            int id_venta = cesta.get_id_venta(id_cesta);
+            int last_id=cesta.get_last_id();
+            int id_venta = cesta.select_id_venta(last_id);
             id_venta+=1;
             int cbx_id_cliente = cbx_update_id_cliente.getSelectedIndex();
             int id_cesta_cliente = cliente_select.get(cbx_id_cliente).getId();
@@ -490,13 +491,13 @@ public class JF_Cesta extends javax.swing.JFrame {
                                 resultado = false;
                             }
                             if(resultado){
-
+                                int last_id=cesta.get_last_id();
+                                int id_venta = cesta.select_id_venta(last_id);
+                                id_venta+=1;
                                 int cbx_id_libro = cbx_insert_libro.getSelectedIndex(); //Se guarda el index de localidad (foranea) en una variable
                                 int id_cesta_libro = libro_select.get(cbx_id_libro).getId(); //Se obtiene la id de la localidad seleccionada
-                                Cesta cesta = new Cesta(fecha_insert,this.cantidad_insert,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
-                                int id_venta =cesta.get_id_venta(cesta.insert_cesta());//Se ejecuta el insert con el objecto creado
-                                id_venta+=1;
-                                cesta.update_cesta_venta(cesta.getId(), id_venta);
+                                Cesta cesta = new Cesta(id_venta,fecha_insert,this.cantidad_insert,id_cesta_cliente,id_cesta_libro); //Se introduce un nuevo objecto con los datos anteriores
+
                                 JOptionPane.showMessageDialog(null, "Nueva cesta");
                             }
                             else

@@ -30,11 +30,12 @@ public class Cesta {
     private int id_libro;
     private int id_venta;
     
-    public Cesta(Date fecha_compra,int cantidad, int id_cliente, int id_libro){
+    public Cesta(int id_venta,Date fecha_compra,int cantidad, int id_cliente, int id_libro){
         this.fecha_compra = fecha_compra;
         this.cantidad=cantidad;
         this.id_cliente = id_cliente;
         this.id_libro = id_libro;
+        this.id_venta=id_venta;
     }
 
     public Cesta(int id_venta,String fecha_compraS, int cantidad, int id_cliente, int id_libro) {
@@ -112,12 +113,27 @@ public class Cesta {
         return this.id;
     }
     
-    public int get_id_venta(int id_cesta) throws SQLException{
+    public int get_last_id() throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
              Statement statement = myConnection.createStatement();  
-            String sql = "SELECT MAX(id_venta) from cesta where id = "+id_cesta+"";
+            String sql = "SELECT MAX(id) from cesta";
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                this.id = rs.getInt(1);
+            }
+        statement.close();  
+        myConnection.close();
+        return this.id;
+    }
+    
+      public int select_id_venta(int idid) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+             Statement statement = myConnection.createStatement();  
+            String sql = "SELECT id_venta from cesta where id="+idid;
             ResultSet rs = statement.executeQuery(sql);
             if (rs.next()) {
                 this.id_venta = rs.getInt(1);
@@ -126,6 +142,8 @@ public class Cesta {
         myConnection.close();
         return this.id_venta;
     }
+    
+    
     
        public int insert_cesta() throws SQLException{
         Connection myConnection=DriverManager.getConnection(
