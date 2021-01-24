@@ -29,18 +29,24 @@ public class JF_View_Carrito extends javax.swing.JFrame {
      List<Libro> libros = new ArrayList<Libro>();  
      List<Integer> cantidades = new ArrayList<Integer>();
      List<String> bools = new ArrayList<String>();
-      List<element_list> list = new ArrayList<element_list>();  
+     List<element_list> list = new ArrayList<element_list>();  
      int costo_total;
+     String tipo;
+     String tarjeta;
      int i_papel=0;
      int i_ebook=0;
     public JF_View_Carrito() {
         initComponents();
     }
  
-       public JF_View_Carrito( Cliente cliente, List<element_list> list) throws SQLException {
+       public JF_View_Carrito( Cliente cliente,int costo_total, List<element_list> list,String tipo, String tarjeta) throws SQLException {
         initComponents();
         this.cliente=cliente;
         this.list=list;
+        this.costo_total=costo_total;
+        this.list=list;
+        this.tipo=tipo;
+        this.tarjeta=tarjeta;
          agregar_elementos();
        
         txt_cesta.setText(agregarItem_cbx());

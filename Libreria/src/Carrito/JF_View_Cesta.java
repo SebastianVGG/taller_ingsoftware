@@ -15,10 +15,17 @@ import java.awt.print.PrinterJob;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JComponent;
 import tables.Almacen;
 import tables.Cesta;
+import tables.Cliente;
+import tables.Ebook;
+import tables.Libro;
+import tables.Papel;
+import views.element_list;
 
 
 /**
@@ -28,31 +35,55 @@ import tables.Cesta;
 public class JF_View_Cesta extends javax.swing.JFrame {
     Almacen almacen = new Almacen();
     Numero_Letras letritas = new Numero_Letras();
-    
-    boolean papel_ebook;
-    int cantidad;
-    String tipo_pago;
-    String tarjeta;
+     List<Papel> papeles = new ArrayList<Papel>();  
+     List<Ebook> ebooks = new ArrayList<Ebook>();  
+    Cliente cliente = new Cliente();
+     List<Libro> libros = new ArrayList<Libro>();  
+     List<Integer> cantidades = new ArrayList<Integer>();
+     List<String> bools = new ArrayList<String>();
+     List<element_list> list = new ArrayList<element_list>();  
+     int costo_total;
+     String tipo;
+     String tarjeta;
     public JF_View_Cesta() {
         initComponents();
     }
-        public JF_View_Cesta( String tipo, String tarjeta) throws SQLException, ParseException {
+        public JF_View_Cesta( Cliente cliente,int costo_total, List<element_list> list,String tipo, String tarjeta) throws SQLException, ParseException {
         initComponents();
-        this.tipo_pago=tipo;
+        this.tipo=tipo;
         this.tarjeta=tarjeta;
+         agregar_elementos();
         set_dates();
     }
-
+        
+ void agregar_elementos(){
+     for (int i = 0; i < list.size(); i++) {
+      this.libros= this.list.get(i).getLibros();
+     this.papeles=this.list.get(i).getPapeles();
+     this.ebooks=this.list.get(i).getEbooks();
+     this.bools=this.list.get(i).getBools();
+     this.cantidades=this.list.get(i).getCantidades();
+     }
+ }
         public void set_dates() throws SQLException, ParseException{
+            int id_venta=0;
             Date date = new Date();
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(date);
-            System.out.print(fecha);
-            int id_cliente = cliente.getId();
-            int id_libro = libros.get(0).getId();
             Font fuente = new Font("Monospaced", Font.PLAIN,10);
-            
-            Cesta cesta = new Cesta(fecha,cantidad,id_cliente,id_libro);
+            for (int i = 0; i < libros.size(); i++) {
+                
+            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i),this.cliente.getId(),libros.get(i).getId());
             cesta.insert_cesta_s();
+            
+            if(id_venta == 0){
+                
+            id_venta= cesta.get_id_venta(cesta.getId());
+            id_venta+=1;
+            }
+            
+            cesta.update_cesta(cesta.getId(),id_venta, fecha, cantidades.get(i), id_venta, id_venta);
+            
+            
             lbl_fecha_compra.setText(String.valueOf(cesta.getFecha_compraS()));
             lbl_tipo_pago.setText(this.tipo_pago);
             lbl_tarjeta.setText(this.tarjeta);
@@ -112,6 +143,9 @@ public class JF_View_Cesta extends javax.swing.JFrame {
             lbl_numero_letras.setText(letritas.Convertir(total + "",true));
             lbl_total.setText(""+total);
         }
+                
+            }
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
