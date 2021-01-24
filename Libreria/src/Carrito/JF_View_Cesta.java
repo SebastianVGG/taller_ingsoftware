@@ -39,7 +39,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
      List<Ebook> ebooks = new ArrayList<Ebook>();  
     Cliente cliente = new Cliente();
     Cesta cesta = new Cesta();
-     List<Libro> libros = new ArrayList<Libro>();  
+     List<List<Libro>> list_libros = new ArrayList<List<Libro>>();  
      List<Integer> cantidades = new ArrayList<Integer>();
      List<String> bools = new ArrayList<String>();
      List<element_list> list = new ArrayList<element_list>();  
@@ -61,7 +61,7 @@ public class JF_View_Cesta extends javax.swing.JFrame {
         
  void agregar_elementos(){
      for (int i = 0; i < this.list.size(); i++) {
-      this.libros= this.list.get(i).getLibros();
+      this.list_libros.add(this.list.get(i).getLibros());
      this.papeles=this.list.get(i).getPapeles();
      this.ebooks=this.list.get(i).getEbooks();
      this.bools=this.list.get(i).getBools();
@@ -85,9 +85,10 @@ public class JF_View_Cesta extends javax.swing.JFrame {
             lbl_nombre.setText(cliente.getNombre()+" "+cliente.getApellido1()+" "+cliente.getApellido2());
             lbl_direccion.setText(cliente.getDireccion());
             lbl_correo.setText(cliente.getEmail());
-            for (int i = 0; i < libros.size(); i++) {
+            for (int i = 0; i < list_libros.size(); i++) 
+            for (int j = 0; j < list_libros.get(i).size(); j++) {
                 
-            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i),this.cliente.getId(),libros.get(i).getId());
+            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i),this.cliente.getId(),list_libros.get(i).get(j).getId());
             cesta.insert_cesta_s();
             
             lbl_no_cesta.setText(String.valueOf(id_venta));
