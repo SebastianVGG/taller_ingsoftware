@@ -166,6 +166,17 @@ public class Cesta {
         myConnection.close();
     }
     
+    public void update_cesta_venta(int id,int id_ventas) throws SQLException{
+        Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+        Statement statement = myConnection.createStatement();  
+        statement.executeUpdate("UPDATE cesta SET id_venta="+id_ventas+" WHERE id="+id);
+        JOptionPane.showMessageDialog(null, "cesta actualizada");  
+        statement.close();  
+        myConnection.close();
+    }
+    
     public Cesta select_one_cesta(int id) throws SQLException{
         Cesta provincia = new Cesta();
         Connection myConnection=DriverManager.getConnection(

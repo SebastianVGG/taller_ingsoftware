@@ -81,9 +81,8 @@ public class JF_View_Cesta extends javax.swing.JFrame {
             id_venta+=1;
             }
             
-            cesta.update_cesta(cesta.getId(),id_venta, fecha, cantidades.get(i), id_venta, id_venta);
-            
-            
+            cesta.update_cesta_venta(id_venta,cesta.getId());
+
             lbl_fecha_compra.setText(String.valueOf(cesta.getFecha_compraS()));
             lbl_tipo_pago.setText(this.tipo_pago);
             lbl_tarjeta.setText(this.tarjeta);
