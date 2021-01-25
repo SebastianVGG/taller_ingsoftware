@@ -734,8 +734,6 @@ if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido1.is
             RestrictedTextField restricted2 = new RestrictedTextField(txtf_update_telefono);
             restricted1.setLimit(10);
             restricted2.setLimit(10);
-            restricted1.setOnlyNums(true);
-            restricted2.setOnlyNums(true);
     }
 
 }

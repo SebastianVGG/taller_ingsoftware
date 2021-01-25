@@ -701,8 +701,6 @@ public class JF_Autor extends javax.swing.JFrame {
             RestrictedTextField restricted2 = new RestrictedTextField(txt_update_telefono);
             restricted1.setLimit(10);
             restricted2.setLimit(10);
-            restricted1.setOnlyNums(true);
-            restricted2.setOnlyNums(true);
     }
 
 

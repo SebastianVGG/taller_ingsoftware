@@ -539,7 +539,5 @@ public class JF_Ebook extends javax.swing.JFrame {
     void restringir(){
             RestrictedTextField restricted1 = new RestrictedTextField(txt_insert_precio);
             RestrictedTextField restricted2 = new RestrictedTextField(txt_update_precio);
-            restricted1.setLimit(6);
-            restricted2.setLimit(6);
     }
 }

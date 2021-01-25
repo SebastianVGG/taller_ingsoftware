@@ -208,5 +208,33 @@ public class Papel {
       rs.close();
       return provincias;
     }
-    
+    public List<Papel> select_id_papeles(int id_libro) throws SQLException{
+      List<Papel> provincias = new ArrayList<Papel>();  
+      Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+      Statement stmt = myConnection.createStatement(); 
+      String sql = "SELECT id, fecha_impresion, lugar_impresion, precio, id_libro_papel, id_almacen FROM papel Where id_libro_papel="+id_libro;
+      ResultSet rs = stmt.executeQuery(sql);
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+        Papel provincia = new Papel();
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.fecha_impresion=rs.getDate("fecha_impresion");
+        provincia.setFecha_impresion(this.fecha_impresion);
+        this.lugar_impresion=rs.getString("lugar_impresion");
+        provincia.setLugar_impresion(this.lugar_impresion);
+        this.precio=rs.getFloat("precio");
+        provincia.setPrecio(this.precio);
+        this.id_libro_papel=rs.getInt("id_libro_papel");
+        provincia.setId_libro_papel(this.id_libro_papel);
+        this.id_almacen=rs.getInt("id_almacen");
+        provincia.setId_almacen(this.id_almacen);
+        provincias.add(provincia);
+        }
+      
+      rs.close();
+      return provincias;
+    }
 }

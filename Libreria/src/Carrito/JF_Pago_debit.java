@@ -29,7 +29,7 @@ public class JF_Pago_debit extends javax.swing.JDialog {
         this.costo_total=costo_total;
         this.list=list;
         limit_character();
-       costo();
+         costo();
     }
              public boolean get_info(){
                  return this.info;
@@ -59,13 +59,6 @@ public class JF_Pago_debit extends javax.swing.JDialog {
             restricted_ano.setLimit(2);
             restricted_mes.setLimit(2);
             restricted_cvc.setLimit(3);
-            restricted_cvc.setOnlyNums(true);
-            restricted_ano.setOnlyNums(true);
-            restricted_mes.setOnlyNums(true);
-            restricted2.setOnlyNums(true);
-            restricted1.setOnlyNums(true);
-            restricted3.setOnlyNums(true);
-            restricted4.setOnlyNums(true);
         }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

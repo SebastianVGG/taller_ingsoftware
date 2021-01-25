@@ -29,24 +29,55 @@ public class Cesta {
     private int id_cliente;
     private int id_libro;
     private int id_venta;
+    private int id_papel;
+    private int id_ebook;
     
-    public Cesta(int id_venta,Date fecha_compra,int cantidad, int id_cliente, int id_libro){
+    public Cesta(int id_venta,Date fecha_compra,int cantidad, int id_cliente, int id_libro, int id_papel, int id_ebook){
         this.fecha_compra = fecha_compra;
         this.cantidad=cantidad;
         this.id_cliente = id_cliente;
         this.id_libro = id_libro;
         this.id_venta=id_venta;
+        this.id_papel=id_papel;
+        this.id_ebook=id_ebook;
     }
 
-    public Cesta(int id_venta,String fecha_compraS, int cantidad, int id_cliente, int id_libro) {
+    public Cesta(int id_venta,String fecha_compraS, int cantidad, int id_cliente, int id_libro, int id_papel, int id_ebook) {
         this.fecha_compraS = fecha_compraS;
         this.cantidad = cantidad;
         this.id_cliente = id_cliente;
         this.id_libro = id_libro;
         this.id_venta=id_venta;
+        this.id_papel=id_papel;
+        this.id_ebook=id_ebook;
+        
+    }
+
+    public int getId_papel() {
+        return id_papel;
+    }
+
+    public void setId_papel(int id_papel) {
+        this.id_papel = id_papel;
+    }
+
+    public int getId_ebook() {
+        return id_ebook;
+    }
+
+    public void setId_ebook(int id_ebook) {
+        this.id_ebook = id_ebook;
     }
     
     public Cesta(){
+    }
+
+    public int getId_venta() {
+        return id_venta;
+    }
+
+    public void setId_venta(int id_venta) {
+        this.id_venta = id_venta;
     }
 
     public int getId() {
@@ -194,7 +225,7 @@ public class Cesta {
         statement.close();  
         myConnection.close();
     }
-    
+  
     public Cesta select_one_cesta(int id) throws SQLException{
         Cesta provincia = new Cesta();
         Connection myConnection=DriverManager.getConnection(
@@ -227,13 +258,15 @@ public class Cesta {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
       Statement stmt = myConnection.createStatement(); 
-      String sql = "SELECT id, fecha_compra, cantidad, id_cliente, id_libro FROM cesta";
+      String sql = "SELECT id, id_venta, fecha_compra, cantidad, id_cliente, id_libro,id_papel,id_ebook FROM cesta";
       ResultSet rs = stmt.executeQuery(sql);
       //STEP 5: Extract data from result set
       while(rs.next()){
         Cesta provincia = new Cesta();
         this.id=rs.getInt("id");
         provincia.setId(this.id);
+        this.id_venta=rs.getInt("id_venta");
+        provincia.setId_venta(this.id_venta);
         this.fecha_compra=rs.getDate("fecha_compra");
         provincia.setFecha_compra(this.fecha_compra);
         this.cantidad=rs.getInt("cantidad");
@@ -242,6 +275,10 @@ public class Cesta {
         provincia.setId_cliente(this.id_cliente);
         this.id_libro=rs.getInt("id_libro");
         provincia.setId_libro(this.id_libro);
+        this.id_papel=rs.getInt("id_papel");
+        provincia.setId_papel(this.id_papel);
+        this.id_ebook=rs.getInt("id_ebook");
+        provincia.setId_ebook(this.id_ebook);
         provincias.add(provincia);
         }
       

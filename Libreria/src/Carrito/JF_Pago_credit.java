@@ -35,7 +35,6 @@ public class JF_Pago_credit extends javax.swing.JDialog {
         void limit_character(){
             RestrictedTextField restricted1 = new RestrictedTextField(txt_numero_tarjeta1);
             restricted1.setLimit(4);
-            restricted1.setOnlyNums(true);
             RestrictedTextField restricted2 = new RestrictedTextField(txt_numero_tarjeta2);
             RestrictedTextField restricted3 = new RestrictedTextField(txt_numero_tarjeta3);
             RestrictedTextField restricted4 = new RestrictedTextField(txt_numero_tarjeta4);
@@ -48,12 +47,7 @@ public class JF_Pago_credit extends javax.swing.JDialog {
             restricted_ano.setLimit(2);
             restricted_mes.setLimit(2);
             restricted_cvc.setLimit(3);
-            restricted_cvc.setOnlyNums(true);
-            restricted_ano.setOnlyNums(true);
-            restricted_mes.setOnlyNums(true);
-            restricted2.setOnlyNums(true);
-            restricted3.setOnlyNums(true);
-            restricted4.setOnlyNums(true);
+
         }
       void costo(){
               lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));

@@ -150,7 +150,31 @@ public class Ebook {
         return provincia;
     }
     
-    
+     public List<Ebook> select_id_ebook(int id_libro) throws SQLException{
+      List<Ebook> provincias = new ArrayList<Ebook>();  
+      Connection myConnection=DriverManager.getConnection(
+                "jdbc:mysql://localhost/libreria","root", ""
+                );
+      Statement stmt = myConnection.createStatement(); 
+      String sql = "SELECT id, tamaño, precio, id_libro_ebook FROM ebook Where id_libro_ebook="+id_libro;
+      ResultSet rs = stmt.executeQuery(sql);
+      //STEP 5: Extract data from result set
+      while(rs.next()){
+        Ebook provincia = new Ebook();
+        this.id=rs.getInt("id");
+        provincia.setId(this.id);
+        this.tamaño=rs.getString("tamaño");
+        provincia.setTamaño(this.tamaño);
+        this.precio=rs.getInt("precio");
+        provincia.setPrecio(this.precio);
+        this.id_libro_ebook=rs.getInt("id_libro_ebook");
+        provincia.setId_libro_ebook(this.id_libro_ebook);
+        provincias.add(provincia);
+        }
+      
+      rs.close();
+      return provincias;
+    } 
     public List<Ebook> select_ebook() throws SQLException{
       List<Ebook> provincias = new ArrayList<Ebook>();  
       Connection myConnection=DriverManager.getConnection(

@@ -802,9 +802,5 @@ public class JF_Libro extends javax.swing.JFrame {
             restricted2.setLimit(4);
             restricted4.setLimit(13);
             restricted5.setLimit(4);
-            restricted1.setOnlyNums(true);
-            restricted2.setOnlyNums(true);
-            restricted4.setOnlyNums(true);
-            restricted5.setOnlyNums(true);
     }
 }

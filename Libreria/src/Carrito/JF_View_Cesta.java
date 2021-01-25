@@ -100,13 +100,15 @@ public class JF_View_Cesta extends javax.swing.JDialog {
             int countPapel = 0;
             int countEbook = 0;
             for (int j = 0; j < list_libros.get(i).size(); j++) {
-                
-            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i).get(j),this.cliente.getId(),list_libros.get(i).get(j).getId());
+            if(bools.get(i).get(j)=="Papel"){    
+            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i).get(j),this.cliente.getId(),list_libros.get(i).get(j).getId(),papeles.get(i).get(countPapel).getId(),0);
             cesta.insert_cesta_s();
-            
             lbl_no_cesta.setText(String.valueOf(id_venta));
-
-            
+            }else{
+            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i).get(j),this.cliente.getId(),list_libros.get(i).get(j).getId(),0,ebooks.get(i).get(j).getId());
+            cesta.insert_cesta_s();
+            lbl_no_cesta.setText(String.valueOf(id_venta));
+            }
             String aux = "                                                                              ";
             String todo = aux;
             todo = todo.substring(0, 2) + String.valueOf(cantidades.get(i).get(j)) + aux;
