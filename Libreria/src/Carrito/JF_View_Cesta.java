@@ -523,7 +523,7 @@ public class JF_View_Cesta extends javax.swing.JDialog {
                 return  Printable.NO_SUCH_PAGE;
                 Graphics2D g2 = (Graphics2D) pg;
                 g2.translate(pf.getImageableX(), pf.getImageableY());
-                g2.scale(1, 1);
+                g2.scale(0.85, 1);
 
                 jPanel1.paint(g2);
                 return Printable.PAGE_EXISTS;

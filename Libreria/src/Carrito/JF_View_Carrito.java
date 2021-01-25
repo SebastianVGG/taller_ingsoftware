@@ -49,7 +49,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         this.list=list;
          agregar_elementos();
         txt_cesta.setText(agregarItem_cbx());
-        costo_total();
+        
         lbl_costo_total.setText(String.valueOf(this.costo_total));
     }
 
@@ -229,7 +229,17 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         if(this.list.isEmpty())
             JOptionPane.showMessageDialog(null, "La cesta está vacía!");
         JF_Pago pago = new JF_Pago(this, true,this.cliente,this.costo_total,this.list);
-        pago.get_info();
+        this.info = pago.get_info();
+        if(info){
+            try {
+                list.clear();
+                agregar_elementos();
+                txt_cesta.setText(agregarItem_cbx());
+                dispose();
+            } catch (SQLException ex) {
+                Logger.getLogger(JF_View_Carrito.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         pago.setLocationRelativeTo(null);
         pago.setVisible(true);
     }//GEN-LAST:event_btn_pagarActionPerformed
@@ -326,6 +336,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 }
         }
         }
+        costo_total();
            return todo;
     }
      

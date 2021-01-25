@@ -247,7 +247,9 @@ public class JF_Pago_debit extends javax.swing.JDialog {
                     String tipo = "Tarjeta de débito";
                     tarjeta4 = "**** **** **** "+tarjeta4;
             JF_View_Cesta ver_cesta = new JF_View_Cesta(this, true,this.cliente,this.costo_total,this.list,tipo,tarjeta4);
+           ver_cesta.setLocationRelativeTo(null);
             ver_cesta.setVisible(true);
+           
             this.info = ver_cesta.get_info_cesta();
             if(info){
                  dispose();

@@ -856,8 +856,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_1ActionPerformed
 
@@ -868,8 +869,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_2ActionPerformed
 
@@ -880,8 +882,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_3ActionPerformed
 
@@ -892,8 +895,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_4ActionPerformed
 
@@ -904,8 +908,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_5ActionPerformed
 
@@ -916,8 +921,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_6ActionPerformed
 
@@ -928,8 +934,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_7ActionPerformed
 
@@ -940,8 +947,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_8ActionPerformed
 
@@ -952,8 +960,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_9ActionPerformed
 
@@ -964,8 +973,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_10ActionPerformed
 
@@ -976,8 +986,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_11ActionPerformed
 
@@ -988,8 +999,9 @@ public class Main_view_LO extends javax.swing.JFrame {
             JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
             null, options, options[0]);
             if(response == 0){
+                ver_login.setLocationRelativeTo(null);
                 ver_login.setVisible(true);
-                this.setVisible(false);
+                dispose();
             }
     }//GEN-LAST:event_btn_12ActionPerformed
 
@@ -1005,8 +1017,9 @@ public class Main_view_LO extends javax.swing.JFrame {
 
     private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
             Main_login ver_login = new Main_login();
-            ver_login.setVisible(true);
-            this.setVisible(false);
+                ver_login.setLocationRelativeTo(null);
+                ver_login.setVisible(true);
+                dispose();
     }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed

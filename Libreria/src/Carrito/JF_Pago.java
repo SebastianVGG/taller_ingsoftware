@@ -21,7 +21,8 @@ public class JF_Pago extends javax.swing.JDialog {
     List<element_list> list = new ArrayList<element_list>();  
     Cliente cliente = new Cliente();
     int costo_total;
-    boolean info;
+    boolean info=false;
+    
     
     public JF_Pago(java.awt.Frame parent, boolean modal,Cliente cliente, int costo_total,List<element_list> list) {
         super(parent, modal);
@@ -169,9 +170,12 @@ boolean get_info(){
 }
     private void rbx_debitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_debitActionPerformed
         JF_Pago_debit pago = new JF_Pago_debit(this, true,this.costo_total,this.list,this.cliente);
+        this.info = pago.get_info();
         if(rbx_debit.isSelected()){
             pago.setLocationRelativeTo(null);
             pago.setVisible(true);
+                        if(info)
+                dispose();
         }else{
             pago.setVisible(false);
         }
@@ -179,9 +183,12 @@ boolean get_info(){
 
     private void rbx_creditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_creditActionPerformed
         JF_Pago_credit pago = new JF_Pago_credit(this, true,this.costo_total,this.list,this.cliente);
+                this.info = pago.get_info();
         if(rbx_credit.isSelected()){
             pago.setLocationRelativeTo(null);
             pago.setVisible(true);
+                        if(info)
+                dispose();
         }else{
             pago.setVisible(false);
         }
@@ -189,7 +196,7 @@ boolean get_info(){
 
     private void rbx_paypalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbx_paypalActionPerformed
         JF_Pago_paypal pago = new JF_Pago_paypal(this, true,this.costo_total,this.list,this.cliente);
-        info=pago.get_info();
+                this.info = pago.get_info();
         if(rbx_paypal.isSelected()){
             pago.setLocationRelativeTo(null);
             pago.setVisible(true);
