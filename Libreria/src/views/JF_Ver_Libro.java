@@ -28,7 +28,7 @@ import tables.Papel;
  *
  * @author Sebastian
  */
-public class prueba extends javax.swing.JDialog {
+public class JF_Ver_Libro extends javax.swing.JDialog {
     Libro libro = new Libro();
     Autor autor = new Autor();
     Editorial editorial = new Editorial();
@@ -42,7 +42,7 @@ public class prueba extends javax.swing.JDialog {
     int cantidad;
     element_list list = new element_list();
      List<element_list> lista = new ArrayList<element_list>();  
-    public prueba(java.awt.Frame parent, boolean modal,String url, Libro libro_id, Cliente cliente) throws SQLException {
+    public JF_Ver_Libro(java.awt.Frame parent, boolean modal,String url, Libro libro_id, Cliente cliente) throws SQLException {
         super(parent, modal);
         initComponents();
  ScaleImage(url);
@@ -51,7 +51,7 @@ public class prueba extends javax.swing.JDialog {
          spf_cantidad.setValue(1);
         get_libro_dates(this.id_libro_elegido);
     }
-    public prueba(java.awt.Frame parent, boolean modal) throws SQLException {
+    public JF_Ver_Libro(java.awt.Frame parent, boolean modal) throws SQLException {
         super(parent, modal);
         initComponents();
     }
@@ -72,7 +72,7 @@ public class prueba extends javax.swing.JDialog {
     }
  public void get_libro_dates(int id_libro) throws SQLException{
         Libro datos_libro = libro.select_one_libro(id_libro);
-        lbl_titulo.setText(datos_libro.getTitulo());
+        lbl_titulo.setText("<html><center>"+datos_libro.getTitulo());
         txt_descripcion.setText(datos_libro.getDescripcion());
         lbl_isbn.setText(datos_libro.getIsbn());
         lbl_paginas.setText(datos_libro.getPaginas());
@@ -168,6 +168,7 @@ public class prueba extends javax.swing.JDialog {
 
         lbl_titulo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         lbl_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_titulo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         lbl_titulo1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -203,8 +204,8 @@ public class prueba extends javax.swing.JDialog {
                                 .addComponent(lbl_autor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(10, 10, 10))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbl_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(733, 733, 733))))
+                        .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,8 +214,8 @@ public class prueba extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_picture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_autor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,7 +223,7 @@ public class prueba extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(126, Short.MAX_VALUE))))
+                        .addContainerGap(90, Short.MAX_VALUE))))
         );
 
         lbl_titulo3.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -506,7 +507,7 @@ public class prueba extends javax.swing.JDialog {
             this.list.agregar_ebook(ebook, libro, bool, cantidad);
             JOptionPane.showMessageDialog(null, "Agregaste un nuevo libro digital a tu cesta!"); 
         } catch (SQLException ex) {
-            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JF_Ver_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_ebookActionPerformed
 
@@ -519,7 +520,7 @@ public class prueba extends javax.swing.JDialog {
             this.list.agregar_papel(papel, libro, bool, cantidad);
             JOptionPane.showMessageDialog(null, "Agregaste un nuevo libro fisico a tu cesta!");  
         } catch (SQLException ex) {
-            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JF_Ver_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_papelActionPerformed
 
@@ -550,21 +551,22 @@ public class prueba extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Ver_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Ver_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Ver_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(prueba.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_Ver_Libro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    prueba dialog = new prueba(new javax.swing.JFrame(), true);
+                    JF_Ver_Libro dialog = new JF_Ver_Libro(new javax.swing.JFrame(), true);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent e) {
@@ -573,7 +575,7 @@ public class prueba extends javax.swing.JDialog {
                     });
                     dialog.setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JF_Ver_Libro.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

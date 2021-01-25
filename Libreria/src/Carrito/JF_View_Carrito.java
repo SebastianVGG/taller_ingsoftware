@@ -320,8 +320,6 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                     cbx_libro.addItem("Ebook - "+this.list.get(i).getLibros().get(j).getTitulo());
                     todo += datos;
                 }
-               
-             
         }
         }
            return todo;
