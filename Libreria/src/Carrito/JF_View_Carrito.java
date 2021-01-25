@@ -36,6 +36,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
      String tarjeta;
      int i_papel=0;
      int i_ebook=0;
+     boolean info = false;
     public JF_View_Carrito() {
         initComponents();
     }
@@ -207,7 +208,9 @@ public class JF_View_Carrito extends javax.swing.JFrame {
      this.cantidades=this.list.get(i).getCantidades();
      }
  }
-    
+    boolean info_get(){
+        return this.info;
+    }
     
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         try {
@@ -225,7 +228,8 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     private void btn_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagarActionPerformed
         if(this.list.isEmpty())
             JOptionPane.showMessageDialog(null, "La cesta está vacía!");
-        JF_Pago pago = new JF_Pago(this.cliente,this.costo_total,this.list);
+        JF_Pago pago = new JF_Pago(this, true,this.cliente,this.costo_total,this.list);
+        pago.get_info();
         pago.setLocationRelativeTo(null);
         pago.setVisible(true);
     }//GEN-LAST:event_btn_pagarActionPerformed
