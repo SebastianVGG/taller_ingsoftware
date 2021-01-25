@@ -15,17 +15,13 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tables.Cliente;
 import views.element_list;
-
-
-/**
- *
- * @author Sebastian
- */
-public class JF_Pago_credit extends javax.swing.JFrame {
+public class JF_Pago_credit extends javax.swing.JDialog {
     List<element_list> list = new ArrayList<element_list>();  
     Cliente cliente = new Cliente();
     int costo_total;
-        public JF_Pago_credit(int costo_total, List<element_list> list,Cliente cliente) {
+        boolean info=false;
+    public JF_Pago_credit(java.awt.Dialog parent, boolean modal,int costo_total, List<element_list> list,Cliente cliente) {
+        super(parent, modal);
         initComponents();
         this.cliente=cliente;
         this.costo_total=costo_total;
@@ -33,11 +29,9 @@ public class JF_Pago_credit extends javax.swing.JFrame {
         limit_character();
         costo();
     }
-
-    public JF_Pago_credit() {
-        initComponents();
-    }
-        
+             public boolean get_info(){
+                 return this.info;
+             }
         void limit_character(){
             RestrictedTextField restricted1 = new RestrictedTextField(txt_numero_tarjeta1);
             restricted1.setLimit(4);
@@ -64,7 +58,10 @@ public class JF_Pago_credit extends javax.swing.JFrame {
       void costo(){
               lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
       }
-      
+    public JF_Pago_credit(java.awt.Frame parent, boolean modal) {
+            super(parent, modal);
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +90,6 @@ public class JF_Pago_credit extends javax.swing.JFrame {
         lbl_costo_total = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -214,7 +210,7 @@ public class JF_Pago_credit extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_continuar)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -232,13 +228,13 @@ public class JF_Pago_credit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_continuarActionPerformed
-           String tarjeta1 = txt_numero_tarjeta1.getText();
-           String tarjeta2= txt_numero_tarjeta2.getText();
-           String tarjeta3 = txt_numero_tarjeta3.getText();
-           String tarjeta4 = txt_numero_tarjeta4.getText();
+        String tarjeta1 = txt_numero_tarjeta1.getText();
+        String tarjeta2= txt_numero_tarjeta2.getText();
+        String tarjeta3 = txt_numero_tarjeta3.getText();
+        String tarjeta4 = txt_numero_tarjeta4.getText();
 
         if(tarjeta1.isEmpty() || txt_ano.getText().isEmpty() || txt_cvc.getText().isEmpty() || tarjeta2.isEmpty() || tarjeta3.isEmpty() || tarjeta4.isEmpty())
-            JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
+        JOptionPane.showMessageDialog(null, "Dejaste algún campo vacío, tienes que llenarlo");
         else{
             boolean resultado;
             try {
@@ -249,28 +245,30 @@ public class JF_Pago_credit extends javax.swing.JFrame {
                 Integer.parseInt(txt_numero_tarjeta2.getText());
                 Integer.parseInt(txt_numero_tarjeta3.getText());
                 Integer.parseInt(txt_numero_tarjeta4.getText());
-                
+
             } catch (NumberFormatException excepcion) {
                 resultado = false;
             }
             if(resultado){
-            
+
                 try {
                     String tipo = "Tarjeta de crédito";
                     tarjeta4 = "**** **** **** "+tarjeta4;
-                    JF_View_Cesta ver_cesta = new JF_View_Cesta(this.cliente,this.costo_total,this.list,tipo,tarjeta4);
-                    dispose();
-                    ver_cesta.setVisible(true);
+            JF_View_Cesta ver_cesta = new JF_View_Cesta(this, true,this.cliente,this.costo_total,this.list,tipo,tarjeta4);
+            ver_cesta.setVisible(true);
+            this.info = ver_cesta.get_info_cesta();
+            if(info){
+                 dispose();
+            }
                 } catch (SQLException ex) {
                     Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {
                     Logger.getLogger(JF_Pago_credit.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else
-                JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
-            
-        }
+            JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
 
+        }
     }//GEN-LAST:event_btn_continuarActionPerformed
 
     /**
@@ -299,11 +297,19 @@ public class JF_Pago_credit extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JF_Pago_credit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_Pago_credit().setVisible(true);
+                JF_Pago_credit dialog = new JF_Pago_credit(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
