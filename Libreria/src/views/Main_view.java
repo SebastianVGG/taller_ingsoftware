@@ -453,7 +453,7 @@ public class Main_view extends javax.swing.JFrame {
         lbl_7.setBackground(new java.awt.Color(251, 238, 218));
         lbl_7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_7.setText("<html><center>Harry Potter y las Reliquias de la Muerte");
+        lbl_7.setText("<html><center>Harry Potter y las reliquias de la Muerte");
         lbl_7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_7.setAutoscrolls(true);
         lbl_7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -482,7 +482,7 @@ public class Main_view extends javax.swing.JFrame {
             pnl_7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_7Layout.createSequentialGroup()
                 .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_precio_7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -551,7 +551,7 @@ public class Main_view extends javax.swing.JFrame {
         lbl_9.setBackground(new java.awt.Color(251, 238, 218));
         lbl_9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_9.setText("<html><center>Juego de Tronos");
+        lbl_9.setText("<html><center>Juego de tronos");
         lbl_9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_9.setAutoscrolls(true);
         lbl_9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -629,7 +629,7 @@ public class Main_view extends javax.swing.JFrame {
             pnl_10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_10Layout.createSequentialGroup()
                 .addComponent(btn_10, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_precio_10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -649,7 +649,7 @@ public class Main_view extends javax.swing.JFrame {
         lbl_11.setBackground(new java.awt.Color(251, 238, 218));
         lbl_11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_11.setText("<html><center>Tormenta de Espadas");
+        lbl_11.setText("<html><center>Tormenta de espadas");
         lbl_11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_11.setAutoscrolls(true);
         lbl_11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -698,7 +698,7 @@ public class Main_view extends javax.swing.JFrame {
         lbl_12.setBackground(new java.awt.Color(251, 238, 218));
         lbl_12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         lbl_12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_12.setText("<html><center>Festín de Cuervos");
+        lbl_12.setText("<html><center>Festín de cuervos");
         lbl_12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbl_12.setAutoscrolls(true);
         lbl_12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -925,6 +925,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry Potter_La piedra filosofal.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -938,6 +939,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/harry-potter-y-la-camara-secreta.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -951,6 +953,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/harry-potter-y-el-prisionero-de-azkaban-4490.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -964,6 +967,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_El_Caliz_De_Fuego.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -977,6 +981,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_La_Orden_Del_Fenix.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -990,6 +995,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_y_el_Misterio_del_Príncipe.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -1003,6 +1009,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_Las_Reliquias_De_La_Muerte.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -1016,6 +1023,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Harry_Potter_Y_El_Legado_Maldito.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -1029,6 +1037,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/Juegos_De_Tronos.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -1042,6 +1051,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/choque_De_Reyes.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -1055,6 +1065,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/tormenta_De_Espadas.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
@@ -1068,6 +1079,7 @@ public class Main_view extends javax.swing.JFrame {
             Libro libro = libros.select_one_libro(id);
             String url = "/images/festin_De_Cuervos.jpg";
             JF_Ver_Libro odl = new JF_Ver_Libro(this, true, url, libro, this.cliente);
+            odl.setLocationRelativeTo(null);
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {

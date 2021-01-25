@@ -24,12 +24,12 @@ import tables.Papel;
  */
 public class JF_View_Carrito extends javax.swing.JFrame {
 
-     List<Papel> papeles = new ArrayList<Papel>();  
-     List<Ebook> ebooks = new ArrayList<Ebook>();  
+     List<List<Papel>> papeles = new ArrayList<List<Papel>>();  
+     List<List<Ebook>> ebooks = new ArrayList<List<Ebook>>();  
     Cliente cliente = new Cliente();
-     List<Libro> libros = new ArrayList<Libro>();  
-     List<Integer> cantidades = new ArrayList<Integer>();
-     List<String> bools = new ArrayList<String>();
+     List<List<Libro>> libros = new ArrayList<List<Libro>>();  
+     List<List<Integer>> cantidades = new ArrayList<List<Integer>>();
+     List<List<String>> bools = new ArrayList<List<String>>();
      List<element_list> list = new ArrayList<element_list>();  
      int costo_total;
      String tipo;
@@ -47,10 +47,10 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         txt_cesta.setFont(fuente);
         this.cliente=cliente;
         this.list=list;
-         agregar_elementos();
+        agregar_elementos();
         txt_cesta.setText(agregarItem_cbx());
         
-        lbl_costo_total.setText(String.valueOf(this.costo_total));
+        //lbl_costo_total.setText(String.valueOf(this.costo_total));
     }
 
 
@@ -201,11 +201,16 @@ public class JF_View_Carrito extends javax.swing.JFrame {
 
  void agregar_elementos(){
      for (int i = 0; i < list.size(); i++) {
-      this.libros= this.list.get(i).getLibros();
-     this.papeles=this.list.get(i).getPapeles();
-     this.ebooks=this.list.get(i).getEbooks();
-     this.bools=this.list.get(i).getBools();
-     this.cantidades=this.list.get(i).getCantidades();
+        this.libros.add(this.list.get(i).getLibros());
+        this.papeles.add(this.list.get(i).getPapeles());
+        this.ebooks.add(this.list.get(i).getEbooks());
+        this.bools.add(this.list.get(i).getBools());
+        this.cantidades.add(this.list.get(i).getCantidades());
+//     this.libros= this.list.get(i).getLibros();
+//     this.papeles=this.list.get(i).getPapeles();
+//     this.ebooks=this.list.get(i).getEbooks();
+//     this.bools=this.list.get(i).getBools();
+//     this.cantidades=this.list.get(i).getCantidades();
      }
  }
     boolean info_get(){
@@ -246,17 +251,19 @@ public class JF_View_Carrito extends javax.swing.JFrame {
 
     void costo_total(){
         this.costo_total=0;
+        for(int i = 0; i < this.libros.size(); i++){
         int papel=0;
         int ebook=0;
-        for (int i = 0; i < this.libros.size(); i++) {
-            if(this.bools.get(i).equals("Papel")){
-                this.costo_total+=this.papeles.get(papel).getPrecio();
+        for (int j = 0; j < this.libros.get(i).size(); j++) {
+            if(this.bools.get(i).get(j).equals("Papel")){
+                this.costo_total+=this.papeles.get(i).get(papel).getPrecio();
                 papel+=1;
             }
             else{
-                this.costo_total+=this.ebooks.get(ebook).getPrecio();
+                this.costo_total+=this.ebooks.get(j).get(ebook).getPrecio();
                 ebook+=1;
             }
+        }
         }
 
     }
@@ -312,7 +319,10 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public String agregarItem_cbx() throws SQLException{
         String todo = "";
+        float total = 0;
         for (int i = 0; i <list.size(); i++) {
+            int countPapel = 0;
+            int countEbook = 0;
             for (int j = 0; j < list.get(i).getLibros().size(); j++) {  
             String aux = "                                  ";
             String datos=aux;
@@ -324,6 +334,8 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";
                     cbx_libro.addItem("Papel - "+this.list.get(i).getLibros().get(j).getTitulo());
                     todo += datos;
+                    total = total + (cantidades.get(i).get(j)*papeles.get(i).get(countPapel).getPrecio());
+                    countPapel += 1;
                 }
                 else{
                     datos = datos.substring(0, 4) + list.get(i).getCantidades().get(j) + aux;
@@ -333,11 +345,14 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro digital \n";
                     cbx_libro.addItem("Ebook - "+this.list.get(i).getLibros().get(j).getTitulo());
                     todo += datos;
+                    total = total + (cantidades.get(i).get(j)*ebooks.get(i).get(countEbook).getPrecio());
+                    countEbook += 1;
                 }
         }
         }
-        costo_total();
-           return todo;
+        //costo_total();
+        lbl_costo_total.setText("" + total);
+        return todo;
     }
      
 }
