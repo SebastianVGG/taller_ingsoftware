@@ -24,27 +24,27 @@ import tables.Libro;
  * @author Sebastian
  */
 public class Main_view extends javax.swing.JFrame {
+
     int mousepX;
     int mousepY;
     Libro libros = new Libro();
     Cliente cliente = new Cliente();
-    List<element_list> lista = new ArrayList<element_list>();  
-
+    List<element_list> lista = new ArrayList<element_list>();
 
     public void setList(element_list list) {
         this.lista.add(list);
     }
-    
+
     public Main_view() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-        public Main_view(Cliente cliente) {
-        initComponents();
-        this.cliente=cliente;
-        lbl_correo_usuario.setText("¡B I E N V E N I D O! "+(cliente.getNombre())+" "+cliente.getApellido1()+" "+cliente.getApellido2()+" , "+cliente.getEmail());
 
-  
+    public Main_view(Cliente cliente) {
+        initComponents();
+        this.cliente = cliente;
+        lbl_correo_usuario.setText("¡B I E N V E N I D O! " + (cliente.getNombre()) + " " + cliente.getApellido1() + " " + cliente.getApellido2() + " , " + cliente.getEmail());
+
     }
 
     /**
@@ -882,19 +882,19 @@ public class Main_view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
-       mousepX=evt.getX();
-       mousepY=evt.getY();
+        mousepX = evt.getX();
+        mousepY = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
-            Point point = MouseInfo.getPointerInfo().getLocation();
-            this.setLocation(point.x-mousepX, point.y-mousepY);
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        this.setLocation(point.x - mousepX, point.y - mousepY);
     }//GEN-LAST:event_jPanel3MouseDragged
 
     private void btn_carritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_carritoActionPerformed
 
         try {
-            JF_View_Carrito carrito = new JF_View_Carrito(this.cliente,this.lista);
+            JF_View_Carrito carrito = new JF_View_Carrito(this.cliente, this.lista);
             carrito.setLocationRelativeTo(null);
             carrito.setVisible(true);
         } catch (SQLException ex) {
@@ -903,20 +903,21 @@ public class Main_view extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_carritoActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-            String[] options = new String[] {"¡¡Si!!", "No :)"};
-            int response = JOptionPane.showOptionDialog(null, "¿Seguro que deseas salir?", "EXIT",
-            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-            null, options, options[0]);
-            if(response == 0)
-                 System.exit(0);
-       
+        String[] options = new String[]{"¡¡Si!!", "No :)"};
+        int response = JOptionPane.showOptionDialog(null, "¿Seguro que deseas salir?", "EXIT",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[0]);
+        if (response == 0) {
+            System.exit(0);
+        }
+
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void btn_cerrar_sesion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesion1ActionPerformed
-       dispose();
+        dispose();
         Main_login login = new Main_login();
-       login.setLocationRelativeTo(null);
-       login.setVisible(true);
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
     }//GEN-LAST:event_btn_cerrar_sesion1ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
@@ -929,7 +930,7 @@ public class Main_view extends javax.swing.JFrame {
             odl.setVisible(true);
             this.lista.addAll(odl.getLista());
         } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "NO SE PUEDE ABRIR LA VENTANA");  
+            JOptionPane.showMessageDialog(null, "NO SE PUEDE ABRIR LA VENTANA");
         }
     }//GEN-LAST:event_btn_1ActionPerformed
 
