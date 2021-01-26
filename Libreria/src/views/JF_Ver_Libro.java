@@ -502,7 +502,7 @@ public class JF_Ver_Libro extends javax.swing.JDialog {
         try {
             this.cantidad = (spf_cantidad.getValue());
             this.libro= (libro.select_one_libro(id_libro_elegido));
-            this.ebook= ebook.select_one_ebook(this.libro.getId());
+            this.ebook= ebook.select_id_libro(this.libro.getId());
             String bool = "Ebook";
             this.list.agregar_ebook(ebook, libro, bool, cantidad);
             JOptionPane.showMessageDialog(null, "Agregaste un nuevo libro digital a tu cesta!"); 

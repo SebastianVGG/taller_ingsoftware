@@ -43,11 +43,11 @@ public class JF_View_Cesta extends javax.swing.JDialog {
      List<List<Integer>> cantidades = new ArrayList<List<Integer>>();
      List<List<String>> bools = new ArrayList<List<String>>();
      List<element_list> list = new ArrayList<element_list>();  
-     int costo_total;
+      float costo_total;
      String tipo;
      String tarjeta;
 
-    public JF_View_Cesta(java.awt.Dialog parent, boolean modal,Cliente cliente,int costo_total, List<element_list> list,String tipo, String tarjeta) throws SQLException, ParseException {
+    public JF_View_Cesta(java.awt.Dialog parent, boolean modal,Cliente cliente,float costo_total, List<element_list> list,String tipo, String tarjeta) throws SQLException, ParseException {
         super(parent, modal);
         initComponents();
         this.tipo=tipo;
@@ -105,7 +105,7 @@ public class JF_View_Cesta extends javax.swing.JDialog {
             cesta.insert_cesta_s();
             lbl_no_cesta.setText(String.valueOf(id_venta));
             }else{
-            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i).get(j),this.cliente.getId(),list_libros.get(i).get(j).getId(),0,ebooks.get(i).get(j).getId());
+            Cesta cesta = new Cesta(id_venta,fecha,cantidades.get(i).get(j),this.cliente.getId(),list_libros.get(i).get(j).getId(),0,ebooks.get(i).get(countEbook).getId());
             cesta.insert_cesta_s();
             lbl_no_cesta.setText(String.valueOf(id_venta));
             }

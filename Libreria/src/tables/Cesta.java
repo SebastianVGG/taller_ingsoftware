@@ -132,7 +132,7 @@ public class Cesta {
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
-        String SQL_INSERT = "INSERT INTO cesta (id, id_venta, fecha_compra, cantidad, id_cliente, id_libro) VALUES (NULL,"+this.id_venta+", '"+this.fecha_compraS+"',"+this.cantidad+","+this.id_cliente+","+this.id_libro+")";
+        String SQL_INSERT = "INSERT INTO cesta (id, id_venta, fecha_compra, cantidad, id_cliente, id_libro, id_papel, id_ebook) VALUES (NULL,"+this.id_venta+", '"+this.fecha_compraS+"',"+this.cantidad+","+this.id_cliente+","+this.id_libro+","+this.id_papel+","+this.id_ebook+")";
         PreparedStatement statement = myConnection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
         statement.execute();
         ResultSet rs = statement.getGeneratedKeys();

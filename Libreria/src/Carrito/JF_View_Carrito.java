@@ -31,12 +31,12 @@ public class JF_View_Carrito extends javax.swing.JFrame {
      List<List<Integer>> cantidades = new ArrayList<List<Integer>>();
      List<List<String>> bools = new ArrayList<List<String>>();
      List<element_list> list = new ArrayList<element_list>();  
-     int costo_total;
+    float costo_total;
      String tipo;
      String tarjeta;
      int i_papel=0;
      int i_ebook=0;
-     boolean info = false;
+     boolean info;
     public JF_View_Carrito() {
         initComponents();
     }
@@ -70,17 +70,18 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        cbx_libro = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         btn_eliminar = new javax.swing.JButton();
         btn_pagar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        lbl_costo_total = new javax.swing.JLabel();
+        txt_costo_total = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Cantidad");
 
         txt_cesta.setEditable(false);
@@ -89,13 +90,17 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txt_cesta);
         Font fuente = new Font("Monospaced", Font.PLAIN,10);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Titulo");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("isbn");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Tipo");
 
-        jLabel5.setText("Eliminar de la cesta");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Eliminar cesta");
 
         btn_eliminar.setText("Eliminar");
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,10 +116,17 @@ public class JF_View_Carrito extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Total");
 
-        lbl_costo_total.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbl_costo_total.setText("jLabel7");
+        txt_costo_total.setEditable(false);
+        txt_costo_total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_costo_total.setText("jTextField1");
+        txt_costo_total.setBorder(null);
+        txt_costo_total.setOpaque(false);
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setText("$");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,31 +141,30 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(108, 108, 108)
                 .addComponent(jLabel4)
-                .addGap(170, 170, 170)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(lbl_costo_total, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(168, 168, 168)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_costo_total, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(110, 110, 110))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_eliminar)
-                                .addGap(118, 118, 118))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbx_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20))))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(jLabel5))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(91, 91, 91))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,18 +181,17 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_costo_total, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_costo_total, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(63, 63, 63)
                         .addComponent(btn_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(cbx_libro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btn_eliminar)
-                        .addGap(43, 43, 43)))
+                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -200,7 +210,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
  void agregar_elementos(){
-     for (int i = 0; i < list.size(); i++) {
+     for (int i = 0; i < this.list.size(); i++) {
         this.libros.add(this.list.get(i).getLibros());
         this.papeles.add(this.list.get(i).getPapeles());
         this.ebooks.add(this.list.get(i).getEbooks());
@@ -218,23 +228,24 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     }
     
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        try {
-            String titulo = cbx_libro.getSelectedItem().toString();
-            System.out.println(titulo);
-             JOptionPane.showMessageDialog(null, "Libro "+titulo+" eliminado de la cesta ");
-     
-   
-            agregarItem_cbx();
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_View_Carrito.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.list.clear();
+        this.libros.clear();
+        this.papeles.clear();
+        this.ebooks.clear();
+        this.bools.clear();
+        this.cantidades.clear();
+        txt_cesta.setText("");
+        txt_costo_total.setText(" 0.00");
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagarActionPerformed
         if(this.list.isEmpty())
             JOptionPane.showMessageDialog(null, "La cesta está vacía!");
+        else{
         JF_Pago pago = new JF_Pago(this, true,this.cliente,this.costo_total,this.list);
-        this.info = pago.get_info();
+        pago.setLocationRelativeTo(null);
+        pago.setVisible(true);
+         this.info = pago.get_info();
         if(info){
             try {
                 list.clear();
@@ -245,8 +256,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 Logger.getLogger(JF_View_Carrito.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        pago.setLocationRelativeTo(null);
-        pago.setVisible(true);
+        }
     }//GEN-LAST:event_btn_pagarActionPerformed
 
     void costo_total(){
@@ -305,21 +315,20 @@ public class JF_View_Carrito extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_pagar;
-    private javax.swing.JComboBox<String> cbx_libro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_costo_total;
     private javax.swing.JTextArea txt_cesta;
+    private javax.swing.JTextField txt_costo_total;
     // End of variables declaration//GEN-END:variables
     public String agregarItem_cbx() throws SQLException{
         String todo = "";
-        float total = 0;
         for (int i = 0; i <list.size(); i++) {
             int countPapel = 0;
             int countEbook = 0;
@@ -332,9 +341,8 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                     datos = datos.substring(0, 59) + list.get(i).getLibros().get(j).getIsbn() + aux;
                     datos = datos.substring(0, 81) + "Libro Fisico\n";
     //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";
-                    cbx_libro.addItem("Papel - "+this.list.get(i).getLibros().get(j).getTitulo());
                     todo += datos;
-                    total = total + (cantidades.get(i).get(j)*papeles.get(i).get(countPapel).getPrecio());
+                    this.costo_total= this.costo_total + (cantidades.get(i).get(j)*papeles.get(i).get(countPapel).getPrecio());
                     countPapel += 1;
                 }
                 else{
@@ -343,15 +351,14 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                     datos = datos.substring(0, 59) + list.get(i).getLibros().get(j).getIsbn() + aux;
                     datos = datos.substring(0, 81) + "Libro Digital\n";
     //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro digital \n";
-                    cbx_libro.addItem("Ebook - "+this.list.get(i).getLibros().get(j).getTitulo());
                     todo += datos;
-                    total = total + (cantidades.get(i).get(j)*ebooks.get(i).get(countEbook).getPrecio());
+                    this.costo_total = this.costo_total + (cantidades.get(i).get(j)*ebooks.get(i).get(countEbook).getPrecio());
                     countEbook += 1;
                 }
         }
         }
         //costo_total();
-        lbl_costo_total.setText("" + total);
+        txt_costo_total.setText("" + this.costo_total);
         return todo;
     }
      

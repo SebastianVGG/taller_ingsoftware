@@ -16,10 +16,10 @@ import views.element_list;
 public class JF_Pago_paypal extends javax.swing.JDialog {
     List<element_list> list = new ArrayList<element_list>();  
     Cliente cliente = new Cliente();
-    int costo_total;
+     float costo_total;
     boolean info=false;
     
-    public JF_Pago_paypal(java.awt.Dialog parent, boolean modal,int costo_total, List<element_list> list,Cliente cliente) {
+    public JF_Pago_paypal(java.awt.Dialog parent, boolean modal, float costo_total, List<element_list> list,Cliente cliente) {
         super(parent, modal);
         initComponents();
         this.cliente=cliente;
