@@ -52,8 +52,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Editorial cesta">
-                <Property name="tabTitle" type="java.lang.String" value="Editorial cesta"/>
+              <JTabbedPaneConstraints tabName="Agregar cesta">
+                <Property name="tabTitle" type="java.lang.String" value="Agregar cesta"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -229,8 +229,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Agregar cesta">
-                <Property name="tabTitle" type="java.lang.String" value="Agregar cesta"/>
+              <JTabbedPaneConstraints tabName="Editar cesta">
+                <Property name="tabTitle" type="java.lang.String" value="Editar cesta"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

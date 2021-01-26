@@ -50,8 +50,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Editar almacenes ">
-                <Property name="tabTitle" type="java.lang.String" value="Editar almacenes "/>
+              <JTabbedPaneConstraints tabName="Agregar almacen">
+                <Property name="tabTitle" type="java.lang.String" value="Agregar almacen"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -208,8 +208,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Nuevos almacenes">
-                <Property name="tabTitle" type="java.lang.String" value="Nuevos almacenes"/>
+              <JTabbedPaneConstraints tabName="Editar almacen">
+                <Property name="tabTitle" type="java.lang.String" value="Editar almacen"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

@@ -320,6 +320,7 @@ public class JF_Libro extends javax.swing.JFrame {
 
         txt_update_descripcion.setColumns(20);
         txt_update_descripcion.setRows(5);
+        txt_update_descripcion.setWrapStyleWord(true);
         txt_update_descripcion.setLineWrap(true);
         jScrollPane2.setViewportView(txt_update_descripcion);
 

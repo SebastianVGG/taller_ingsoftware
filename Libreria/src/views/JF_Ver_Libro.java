@@ -319,6 +319,7 @@ public class JF_Ver_Libro extends javax.swing.JDialog {
         txt_descripcion.setEditable(false);
         txt_descripcion.setColumns(20);
         txt_descripcion.setRows(5);
+        txt_descripcion.setWrapStyleWord(true);
         txt_descripcion.setLineWrap(true);
         jScrollPane1.setViewportView(txt_descripcion);
 
