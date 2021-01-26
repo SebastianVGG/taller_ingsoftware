@@ -61,6 +61,8 @@ public class JF_Cesta extends javax.swing.JFrame {
         txt_update_cantidad.setText("");
         txt_insert_cantidad.setText("");
         label_id.setText("");
+        txt_update_ebook.setText("");
+        txt_update_papel.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -487,6 +489,9 @@ public class JF_Cesta extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             int r = tb_cesta.getSelectedRow();
             int id_cesta = (int) tb_cesta.getValueAt(r, 0);
@@ -496,6 +501,7 @@ public class JF_Cesta extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_delete1ActionPerformed
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed

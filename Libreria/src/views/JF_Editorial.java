@@ -463,7 +463,10 @@ Editorial editorial = new Editorial();
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-    try {
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
+        try {
         int r = tbl_editorial.getSelectedRow();
         int id_editorial = (int) tbl_editorial.getValueAt(r, 0);
         editorial.delete_editorial(id_editorial);
@@ -472,6 +475,7 @@ Editorial editorial = new Editorial();
     } catch (SQLException ex) {
         Logger.getLogger(JF_Editorial.class.getName()).log(Level.SEVERE, null, ex);
     }
+            }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed

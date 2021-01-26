@@ -562,6 +562,9 @@ public class JF_Autor extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             int r = tbl_autor.getSelectedRow();
             int id_autor = (int) tbl_autor.getValueAt(r, 0);
@@ -571,6 +574,7 @@ public class JF_Autor extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_delete1ActionPerformed
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
@@ -580,6 +584,7 @@ public class JF_Autor extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_btn_refrescar1ActionPerformed
 
     /**

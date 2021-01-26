@@ -564,6 +564,9 @@ public class JF_Libro extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             int r = tbl_libro.getSelectedRow();
             int id_libro = (int) tbl_libro.getValueAt(r, 0);
@@ -573,6 +576,7 @@ public class JF_Libro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_delete1ActionPerformed
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed

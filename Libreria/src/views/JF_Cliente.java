@@ -538,6 +538,9 @@ Cliente cliente = new Cliente();
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             int r = tbl_cliente.getSelectedRow();
             int id_cliente = (int) tbl_cliente.getValueAt(r, 0);
@@ -547,6 +550,7 @@ Cliente cliente = new Cliente();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed

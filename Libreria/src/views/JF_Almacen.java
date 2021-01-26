@@ -454,6 +454,9 @@ public class JF_Almacen extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             if(label_id.getText().isEmpty())
                 JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
@@ -467,6 +470,7 @@ public class JF_Almacen extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed

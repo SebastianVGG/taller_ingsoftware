@@ -394,6 +394,9 @@ public class JF_Localidad extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_refrescarActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             int r = tbl_localidad.getSelectedRow();
             int id_localidad = (int) tbl_localidad.getValueAt(r, 0);
@@ -403,6 +406,7 @@ public class JF_Localidad extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Localidad.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     /**
