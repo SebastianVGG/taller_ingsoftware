@@ -265,7 +265,7 @@
                           <Component id="jPanel4" max="32767" attributes="0"/>
                           <Component id="jPanel5" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -376,12 +376,20 @@
                                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="label_id" min="-2" pref="104" max="-2" attributes="0"/>
-                                      <Component id="cbx_update_id_libro" pref="210" max="32767" attributes="0"/>
-                                      <Component id="cbx_update_id_cliente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="date_update_fecha" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="cbx_update_id_libro" pref="210" max="32767" attributes="0"/>
+                                              <Component id="cbx_update_id_cliente" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="date_update_fecha" min="-2" pref="134" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="label_id" min="-2" pref="210" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -391,49 +399,54 @@
                                   <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="23" max="32767" attributes="0"/>
+                          <EmptySpace pref="62" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txt_update_papel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_update_ebook" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txt_update_ebook" pref="31" max="32767" attributes="0"/>
+                              <Component id="txt_update_papel" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Component id="txt_update_ebook" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="label_id" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_update_papel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txt_update_papel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="label_id" max="32767" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       <Component id="date_update_fecha" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_update_ebook" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txt_update_cantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -457,11 +470,6 @@
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="ID"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="label_id">
-                  <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
@@ -526,6 +534,14 @@
                 <Component class="javax.swing.JTextField" name="txt_update_ebook">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="label_id">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                   </Properties>
                 </Component>
               </SubComponents>

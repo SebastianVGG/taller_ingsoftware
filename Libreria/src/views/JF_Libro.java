@@ -74,7 +74,7 @@ public class JF_Libro extends javax.swing.JFrame {
         txt_insert_direccion.setText("");
         txt_update_isbn.setText("");
         txt_insert_isbn.setText("");
-        
+        label_id.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -106,7 +106,6 @@ public class JF_Libro extends javax.swing.JFrame {
         tbl_libro = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        label_id = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txt_update_titulo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -124,6 +123,7 @@ public class JF_Libro extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txt_update_paginas = new javax.swing.JTextField();
         txt_update_idioma = new javax.swing.JTextField();
+        label_id = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btn_refrescar1 = new javax.swing.JButton();
         btn_update1 = new javax.swing.JButton();
@@ -306,8 +306,6 @@ public class JF_Libro extends javax.swing.JFrame {
 
         jLabel8.setText("ID");
 
-        label_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         jLabel9.setText("Titulo");
 
         jLabel10.setText("Autor");
@@ -329,6 +327,9 @@ public class JF_Libro extends javax.swing.JFrame {
 
         jLabel17.setText("Idioma");
 
+        label_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        label_id.setBorder(null);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -348,16 +349,15 @@ public class JF_Libro extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
                         .addGap(70, 70, 70)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_update_isbn)
-                                .addComponent(txt_update_idioma)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_update_paginas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_update_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_update_isbn)
+                            .addComponent(txt_update_idioma)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_update_paginas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_update_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(label_id))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
@@ -378,10 +378,10 @@ public class JF_Libro extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_update_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -511,7 +511,9 @@ public class JF_Libro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update1ActionPerformed
-        
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             List <Autor> autor_select = autor.select_all();
             List <Editorial> editorial_select = editorial.select_editorial();
@@ -557,10 +559,14 @@ public class JF_Libro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
         
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             int r = tbl_libro.getSelectedRow();
             int id_libro = (int) tbl_libro.getValueAt(r, 0);
@@ -570,6 +576,7 @@ public class JF_Libro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Libro.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_delete1ActionPerformed
 
     private void btn_refrescar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescar1ActionPerformed
@@ -729,7 +736,7 @@ public class JF_Libro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel label_id;
+    private javax.swing.JTextField label_id;
     private javax.swing.JTable tbl_libro;
     private javax.swing.JTextField txt_insert_direccion;
     private javax.swing.JTextField txt_insert_idioma;

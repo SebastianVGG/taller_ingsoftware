@@ -65,6 +65,7 @@ Cliente cliente = new Cliente();
         txtf_insert_password.setText("");
         txtf_update_telefono.setText("");
         txtf_insert_telefono.setText("");
+        label_id.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -96,7 +97,6 @@ Cliente cliente = new Cliente();
         tbl_cliente = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        label_id = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtf_update_email = new javax.swing.JTextField();
         txtf_update_password = new javax.swing.JTextField();
@@ -113,6 +113,7 @@ Cliente cliente = new Cliente();
         jLabel16 = new javax.swing.JLabel();
         txtf_update_direccion = new javax.swing.JTextField();
         txtf_update_telefono = new javax.swing.JTextField();
+        label_id = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         btn_refrescar = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
@@ -295,8 +296,6 @@ Cliente cliente = new Cliente();
 
         jLabel8.setText("ID");
 
-        label_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         jLabel17.setText("Email");
 
         jLabel19.setText("Contraseña");
@@ -312,6 +311,9 @@ Cliente cliente = new Cliente();
         jLabel18.setText("Telefono");
 
         jLabel16.setText("Direccion");
+
+        label_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        label_id.setBorder(null);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -337,7 +339,7 @@ Cliente cliente = new Cliente();
                     .addComponent(txtf_update_email)
                     .addComponent(txtf_update_nombre)
                     .addComponent(txtf_update_apellido1)
-                    .addComponent(label_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(label_id))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
@@ -355,10 +357,13 @@ Cliente cliente = new Cliente();
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label_id)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -533,6 +538,9 @@ Cliente cliente = new Cliente();
     }//GEN-LAST:event_btn_insertActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             int r = tbl_cliente.getSelectedRow();
             int id_cliente = (int) tbl_cliente.getValueAt(r, 0);
@@ -542,9 +550,13 @@ Cliente cliente = new Cliente();
         } catch (SQLException ex) {
             Logger.getLogger(JF_Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             List <Localidad> localidad_select = localidad.select_localidad();
             int r = tbl_cliente.getSelectedRow();
@@ -584,6 +596,7 @@ if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido1.is
         } catch (SQLException ex) {
            
         }
+            }
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_refrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refrescarActionPerformed
@@ -676,7 +689,7 @@ if(direccion.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido1.is
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel label_id;
+    private javax.swing.JTextField label_id;
     private javax.swing.JTable tbl_cliente;
     private javax.swing.JTextField txtf_insert_apellido1;
     private javax.swing.JTextField txtf_insert_apellido2;
