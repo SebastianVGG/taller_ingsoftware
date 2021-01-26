@@ -125,7 +125,7 @@ public class JF_View_Cesta extends javax.swing.JDialog {
                 todo = todo.substring(0, 93) + String.valueOf(papeles.get(i).get(countPapel).getFecha_impresion()) + aux;
                 todo = todo.substring(0, 115) + "Book" + aux;
                 todo = todo.substring(0, 125) + "N/A" + aux;
-                todo = todo.substring(0, 136) + "$" + String.valueOf(papeles.get(i).get(countPapel).getPrecio()) + "\n";
+                todo = todo.substring(0, 136) + "$" + String.valueOf(cantidades.get(i).get(j)*papeles.get(i).get(countPapel).getPrecio()) + "\n";
 //                lbl_precio.setText(String.valueOf(papel.getPrecio()));
 //                lbl_numero_letras.setText(letritas.Convertir(this.cantidad*papel.getPrecio() + "", true));
 //                lbl_total.setText(String.valueOf(this.cantidad*papel.getPrecio()));
@@ -143,7 +143,7 @@ public class JF_View_Cesta extends javax.swing.JDialog {
                 todo = todo.substring(0, 93) + "N/A" + aux;
                 todo = todo.substring(0, 115) + "Ebook" + aux;
                 todo = todo.substring(0, 125) + ebooks.get(i).get(countEbook).getTamaño() + aux;
-                todo = todo.substring(0, 136) + "$" + String.valueOf(ebooks.get(i).get(countEbook).getPrecio()) + "\n";
+                todo = todo.substring(0, 136) + "$" + String.valueOf(cantidades.get(i).get(j)*ebooks.get(i).get(countEbook).getPrecio()) + "\n";
                 
                 total = total + (cantidades.get(i).get(j)*ebooks.get(i).get(countEbook).getPrecio());
                 
