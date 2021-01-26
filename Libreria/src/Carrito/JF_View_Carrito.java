@@ -94,7 +94,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         jLabel2.setText("Titulo");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("isbn");
+        jLabel3.setText("Importe");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Tipo");
@@ -139,9 +139,9 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(219, 219, 219)
                 .addComponent(jLabel3)
-                .addGap(108, 108, 108)
+                .addGap(83, 83, 83)
                 .addComponent(jLabel4)
-                .addGap(168, 168, 168)
+                .addGap(193, 193, 193)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +338,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 if(this.list.get(i).getBools().get(j).equals("Papel")){
                     datos = datos.substring(0, 4) + list.get(i).getCantidades().get(j) + aux;
                     datos = datos.substring(0, 14) + list.get(i).getLibros().get(j).getTitulo() + aux;
-                    datos = datos.substring(0, 59) + list.get(i).getLibros().get(j).getIsbn() + aux;
+                    datos = datos.substring(0, 59) + (papeles.get(i).get(countPapel).getPrecio()*cantidades.get(i).get(j)) + aux;
                     datos = datos.substring(0, 81) + "Libro Fisico\n";
     //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro fisico \n";
                     todo += datos;
@@ -348,7 +348,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
                 else{
                     datos = datos.substring(0, 4) + list.get(i).getCantidades().get(j) + aux;
                     datos = datos.substring(0, 14) + list.get(i).getLibros().get(j).getTitulo() + aux;
-                    datos = datos.substring(0, 59) + list.get(i).getLibros().get(j).getIsbn() + aux;
+                    datos = datos.substring(0, 59) + (ebooks.get(i).get(countEbook).getPrecio()*cantidades.get(i).get(j)) + aux;
                     datos = datos.substring(0, 81) + "Libro Digital\n";
     //              datos+=String.valueOf(list.get(i).getCantidades().get(j)) + " "+list.get(i).getLibros().get(j).getTitulo()+" "+list.get(i).getLibros().get(j).getIsbn()+" Libro digital \n";
                     todo += datos;
