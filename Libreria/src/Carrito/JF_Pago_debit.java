@@ -40,7 +40,7 @@ public class JF_Pago_debit extends javax.swing.JDialog {
     }
 
           void costo(){
-              lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
+              lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MXN."));
 
       }
           

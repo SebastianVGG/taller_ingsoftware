@@ -323,8 +323,6 @@ void password(){
                         }
                         else if(txt_correo.getText().equals(email_admin) & txtp_pass.getText().equals(pass_admin)){
                            dispose();
-                            view.setLocationRelativeTo(null);
-                            view.setVisible(true);
                             view_admin.setLocationRelativeTo(null);
                             view_admin.setVisible(true);
                         }

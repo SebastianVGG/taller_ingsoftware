@@ -358,7 +358,7 @@ public class JF_View_Carrito extends javax.swing.JFrame {
         }
         }
         //costo_total();
-        txt_costo_total.setText("" + this.costo_total);
+        txt_costo_total.setText("" + this.costo_total +" MXN");
         return todo;
     }
      
