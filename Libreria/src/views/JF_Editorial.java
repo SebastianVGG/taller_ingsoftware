@@ -62,7 +62,7 @@ Editorial editorial = new Editorial();
         txt_insert_telefono.setText("");
         txt_update_url.setText("");
         txt_insert_url.setText("");
-        
+        label_id.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,7 +88,6 @@ Editorial editorial = new Editorial();
         tbl_editorial = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        label_id = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_update_nombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -99,6 +98,7 @@ Editorial editorial = new Editorial();
         jLabel11 = new javax.swing.JLabel();
         txt_update_direccion = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        label_id = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btn_update = new javax.swing.JButton();
         btn_refrescar = new javax.swing.JButton();
@@ -249,8 +249,6 @@ Editorial editorial = new Editorial();
 
         jLabel4.setText("ID");
 
-        label_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         jLabel8.setText("Nombre");
 
         jLabel9.setText("Localidad");
@@ -260,6 +258,9 @@ Editorial editorial = new Editorial();
         jLabel11.setText("url");
 
         jLabel12.setText("Direccion");
+
+        label_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        label_id.setBorder(null);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -286,7 +287,7 @@ Editorial editorial = new Editorial();
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(cbx_update_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(label_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(label_id))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,10 +301,10 @@ Editorial editorial = new Editorial();
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_update_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +321,7 @@ Editorial editorial = new Editorial();
                             .addComponent(txt_update_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
                             .addComponent(jLabel11))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(cbx_update_localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -420,7 +421,10 @@ Editorial editorial = new Editorial();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-    try {
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
+        try {
         List <Localidad> localidad_select = localidad.select_localidad();
         int r = tbl_editorial.getSelectedRow();
         int id_editorial = (int) tbl_editorial.getValueAt(r, 0);
@@ -455,6 +459,7 @@ Editorial editorial = new Editorial();
     } catch (SQLException ex) {
         Logger.getLogger(JF_Editorial.class.getName()).log(Level.SEVERE, null, ex);
     }
+            }
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -592,7 +597,7 @@ Editorial editorial = new Editorial();
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel label_id;
+    private javax.swing.JTextField label_id;
     private javax.swing.JTable tbl_editorial;
     private javax.swing.JTextField txt_insert_direccion;
     private javax.swing.JTextField txt_insert_nombre;

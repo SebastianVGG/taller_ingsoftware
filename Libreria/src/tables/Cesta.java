@@ -180,7 +180,7 @@ public class Cesta {
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
-        String SQL_INSERT = "INSERT INTO cesta (id, fecha_compra, cantidad, id_cliente, id_libro) VALUES (NULL, '"+this.fecha_compra+"',"+this.cantidad+","+this.id_cliente+","+this.id_libro+")";
+        String SQL_INSERT = "INSERT INTO cesta (id,id_venta, fecha_compra, cantidad, id_cliente, id_libro,id_papel,id_ebook) VALUES (NULL,"+this.id_venta+", '"+this.fecha_compra+"',"+this.cantidad+","+this.id_cliente+","+this.id_libro+","+this.id_papel+","+this.id_ebook+")";
         PreparedStatement statement = myConnection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
         statement.execute();
         ResultSet rs = statement.getGeneratedKeys();
@@ -204,12 +204,12 @@ public class Cesta {
         myConnection.close();
     }
     
-    public void update_cesta(int id,int id_ventas,Date fecha_compra, int cantidad1,int id_cliente, int id_libro) throws SQLException{
+    public void update_cesta(int id,int id_ventas,Date fecha_compra, int cantidad1,int id_cliente, int id_libro, int papel, int ebook) throws SQLException{
         Connection myConnection=DriverManager.getConnection(
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        statement.executeUpdate("UPDATE cesta SET id_venta="+id_ventas+", fecha_compra='"+fecha_compra+"', cantidad="+cantidad1+", id_cliente="+id_cliente+", id_libro="+id_libro+" WHERE id="+id);
+        statement.executeUpdate("UPDATE cesta SET id_venta="+id_ventas+", fecha_compra='"+fecha_compra+"', cantidad="+cantidad1+", id_cliente="+id_cliente+", id_libro="+id_libro+", id_papel="+papel+", id_ebook="+ebook+" WHERE id="+id);
         JOptionPane.showMessageDialog(null, "cesta actualizada");  
         statement.close();  
         myConnection.close();
@@ -232,7 +232,7 @@ public class Cesta {
                 "jdbc:mysql://localhost/libreria","root", ""
                 );
         Statement statement = myConnection.createStatement();  
-        String sql= "SELECT id, fecha_compra, cantidad, id_cliente, id_libro FROM cesta WHERE id="+id;
+        String sql= "SELECT id, fecha_compra, cantidad, id_cliente, id_libro,id_papel,id_ebook FROM cesta WHERE id="+id;
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next()){
         this.id=rs.getInt("id");
@@ -245,6 +245,10 @@ public class Cesta {
         provincia.setId_cliente(this.id_cliente);
         this.id_libro=rs.getInt("id_libro");
         provincia.setId_libro(this.id_libro);
+        this.id_papel=rs.getInt("id_papel");
+        provincia.setId_papel(this.id_papel);
+        this.id_ebook=rs.getInt("id_ebook");
+        provincia.setId_ebook(this.id_ebook);
         }
         statement.close();  
         myConnection.close();

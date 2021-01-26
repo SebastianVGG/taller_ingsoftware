@@ -39,7 +39,6 @@ public class JF_Almacen extends javax.swing.JFrame {
             RestrictedTextField restricted2 = new RestrictedTextField(txt_update_telefono);
             restricted1.setLimit(10);
             restricted2.setLimit(10);
-            restricted2.setOnlyNums(true);
     }
 
     public void get_almacen_dates(int id_almacen) throws SQLException{ //Se obtienen los datos de la tabla para los txt y cbx
@@ -62,6 +61,7 @@ public class JF_Almacen extends javax.swing.JFrame {
         txt_insert_direccion.setText("");
         txt_update_telefono.setText("");
         txt_insert_telefono.setText("");
+        label_id.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -83,13 +83,13 @@ public class JF_Almacen extends javax.swing.JFrame {
         tbl_almacen = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        label_id = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txt_update_direccion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cbx_update_localidad = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         txt_update_telefono = new javax.swing.JTextField();
+        label_id = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btn_refrescar = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
@@ -217,6 +217,9 @@ public class JF_Almacen extends javax.swing.JFrame {
 
         jLabel7.setText("Telefono");
 
+        label_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        label_id.setBorder(null);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -243,18 +246,18 @@ public class JF_Almacen extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(137, 137, 137)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_update_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_update_direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                            .addComponent(label_id)))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(label_id, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_update_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -344,7 +347,7 @@ public class JF_Almacen extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Nuevos almacenes", jPanel1);
@@ -412,6 +415,9 @@ public class JF_Almacen extends javax.swing.JFrame {
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         
         try {
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
             List <Localidad> localidad_select = localidad.select_localidad(); //Lista de objectos foranea
             int r = tbl_almacen.getSelectedRow();
             int id_almacen = (int) tbl_almacen.getValueAt(r, 0);
@@ -441,19 +447,23 @@ public class JF_Almacen extends javax.swing.JFrame {
             }else
                  JOptionPane.showMessageDialog(null, "Revisa la información, el tipo de dato es incorrecto");
             }
+            }
         } catch (SQLException ex) {
-           
-        }
-        
+
+        }  
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         try {
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
             int r = tbl_almacen.getSelectedRow();
             int id_almacen = (int) tbl_almacen.getValueAt(r, 0);
             almacen.delete_almacen(id_almacen);
             refrescar();
             label_id.setText("");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JF_Almacen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -540,7 +550,7 @@ public class JF_Almacen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel label_id;
+    private javax.swing.JTextField label_id;
     private javax.swing.JTable tbl_almacen;
     private javax.swing.JTextField txt_insert_direccion;
     private javax.swing.JTextField txt_insert_telefono;

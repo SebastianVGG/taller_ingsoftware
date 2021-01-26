@@ -51,6 +51,7 @@ public class JF_Ebook extends javax.swing.JFrame {
         txt_insert_tamaño.setText("");
         txt_update_precio.setText("");
         txt_insert_precio.setText("");
+        label_id.setText("");
         
     }
     @SuppressWarnings("unchecked")
@@ -73,13 +74,13 @@ public class JF_Ebook extends javax.swing.JFrame {
         tbl_ebook = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        label_id = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txt_update_tamaño = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         cbx_update_libro = new javax.swing.JComboBox<>();
         txt_update_precio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        label_id = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btn_refrescar1 = new javax.swing.JButton();
         btn_update1 = new javax.swing.JButton();
@@ -201,13 +202,14 @@ public class JF_Ebook extends javax.swing.JFrame {
 
         jLabel4.setText("ID");
 
-        label_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         jLabel5.setText("Tamaño");
 
         jLabel6.setText("Libro");
 
         jLabel7.setText("Precio");
+
+        label_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        label_id.setBorder(null);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -225,21 +227,21 @@ public class JF_Ebook extends javax.swing.JFrame {
                     .addComponent(txt_update_precio)
                     .addComponent(txt_update_tamaño)
                     .addComponent(cbx_update_libro, 0, 137, Short.MAX_VALUE)
-                    .addComponent(label_id, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(label_id))
                 .addGap(487, 487, 487))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(32, 32, 32)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(label_id, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_update_tamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_update_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
@@ -325,7 +327,7 @@ public class JF_Ebook extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editar ebook", jPanel1);
@@ -345,6 +347,9 @@ public class JF_Ebook extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update1ActionPerformed
+            if(label_id.getText().isEmpty())
+                JOptionPane.showMessageDialog(null, "No has seleccionado un campo");  
+            else{
         try {
             List <Libro> libro_select = libro.select();
             int r = tbl_ebook.getSelectedRow();
@@ -374,6 +379,7 @@ public class JF_Ebook extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_Ebook.class.getName()).log(Level.SEVERE, null, ex);
         }
+            }
     }//GEN-LAST:event_btn_update1ActionPerformed
 
     private void btn_delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete1ActionPerformed
@@ -499,7 +505,7 @@ public class JF_Ebook extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel label_id;
+    private javax.swing.JTextField label_id;
     private javax.swing.JTable tbl_ebook;
     private javax.swing.JTextField txt_insert_precio;
     private javax.swing.JTextField txt_insert_tamaño;
