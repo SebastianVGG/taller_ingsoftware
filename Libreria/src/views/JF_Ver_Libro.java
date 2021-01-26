@@ -29,6 +29,7 @@ import tables.Papel;
  * @author Sebastian
  */
 public class JF_Ver_Libro extends javax.swing.JDialog {
+
     Libro libro = new Libro();
     Autor autor = new Autor();
     Editorial editorial = new Editorial();
@@ -41,16 +42,18 @@ public class JF_Ver_Libro extends javax.swing.JDialog {
     int mousepY;
     int cantidad;
     element_list list = new element_list();
-     List<element_list> lista = new ArrayList<element_list>();  
-    public JF_Ver_Libro(java.awt.Frame parent, boolean modal,String url, Libro libro_id, Cliente cliente) throws SQLException {
+    List<element_list> lista = new ArrayList<element_list>();
+
+    public JF_Ver_Libro(java.awt.Frame parent, boolean modal, String url, Libro libro_id, Cliente cliente) throws SQLException {
         super(parent, modal);
         initComponents();
- ScaleImage(url);
-         this.id_libro_elegido=libro_id.getId();
-         this.cliente=cliente;
-         spf_cantidad.setValue(1);
+        ScaleImage(url);
+        this.id_libro_elegido = libro_id.getId();
+        this.cliente = cliente;
+        spf_cantidad.setValue(1);
         get_libro_dates(this.id_libro_elegido);
     }
+
     public JF_Ver_Libro(java.awt.Frame parent, boolean modal) throws SQLException {
         super(parent, modal);
         initComponents();
@@ -60,19 +63,19 @@ public class JF_Ver_Libro extends javax.swing.JDialog {
         lista.add(this.list);
         return lista;
     }
-    
 
-    public void ScaleImage(String url){
+    public void ScaleImage(String url) {
         ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource(url));
         Image img = icon.getImage();
-        Image imgScale = img.getScaledInstance(lbl_picture.getWidth(),lbl_picture.getHeight(), Image.SCALE_SMOOTH);
+        Image imgScale = img.getScaledInstance(lbl_picture.getWidth(), lbl_picture.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         lbl_picture.setIcon(scaledIcon);
-        
+
     }
- public void get_libro_dates(int id_libro) throws SQLException{
+
+    public void get_libro_dates(int id_libro) throws SQLException {
         Libro datos_libro = libro.select_one_libro(id_libro);
-        lbl_titulo.setText("<html><center>"+datos_libro.getTitulo());
+        lbl_titulo.setText("<html><center>" + datos_libro.getTitulo());
         txt_descripcion.setText(datos_libro.getDescripcion());
         lbl_isbn.setText(datos_libro.getIsbn());
         lbl_paginas.setText(datos_libro.getPaginas());
@@ -87,6 +90,7 @@ public class JF_Ver_Libro extends javax.swing.JDialog {
         lbl_autor.setText(datos_autor.getNombre());
         lbl_editorial.setText(datos_editorial.getNombre());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -499,39 +503,47 @@ public class JF_Ver_Libro extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_closeActionPerformed
 
     private void btn_ebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ebookActionPerformed
-        try {
-            this.cantidad = (spf_cantidad.getValue());
-            this.libro= (libro.select_one_libro(id_libro_elegido));
-            this.ebook= ebook.select_id_libro(this.libro.getId());
-            String bool = "Ebook";
-            this.list.agregar_ebook(ebook, libro, bool, cantidad);
-            JOptionPane.showMessageDialog(null, "Agregaste un nuevo libro digital a tu cesta!"); 
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Ver_Libro.class.getName()).log(Level.SEVERE, null, ex);
+        if(list.bools.size() < 13){
+            try {
+                this.cantidad = (spf_cantidad.getValue());
+                this.libro = (libro.select_one_libro(id_libro_elegido));
+                this.ebook = ebook.select_id_libro(this.libro.getId());
+                String bool = "Ebook";
+                this.list.agregar_ebook(ebook, libro, bool, cantidad);
+                JOptionPane.showMessageDialog(null, "Agregaste un nuevo libro digital a tu cesta!");
+            } catch (SQLException ex) {
+                Logger.getLogger(JF_Ver_Libro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No puedes agremar mas libros a la cesta!");
         }
     }//GEN-LAST:event_btn_ebookActionPerformed
 
     private void btn_papelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_papelActionPerformed
-        try {
-            this.cantidad = (spf_cantidad.getValue());
-            this.libro= (libro.select_one_libro(id_libro_elegido));
-            this.papel= papel.select_id_libro(this.libro.getId());
-            String bool = "Papel";
-            this.list.agregar_papel(papel, libro, bool, cantidad);
-            JOptionPane.showMessageDialog(null, "Agregaste un nuevo libro fisico a tu cesta!");  
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_Ver_Libro.class.getName()).log(Level.SEVERE, null, ex);
+        if(list.bools.size() < 13){    
+            try {
+                this.cantidad = (spf_cantidad.getValue());
+                this.libro = (libro.select_one_libro(id_libro_elegido));
+                this.papel = papel.select_id_libro(this.libro.getId());
+                String bool = "Papel";
+                this.list.agregar_papel(papel, libro, bool, cantidad);
+                JOptionPane.showMessageDialog(null, "Agregaste un nuevo libro fisico a tu cesta!");
+            } catch (SQLException ex) {
+                Logger.getLogger(JF_Ver_Libro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No puedes agremar mas libros a la cesta!");
         }
     }//GEN-LAST:event_btn_papelActionPerformed
 
     private void jPanel5MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseDragged
         Point point = MouseInfo.getPointerInfo().getLocation();
-        this.setLocation(point.x-mousepX, point.y-mousepY);
+        this.setLocation(point.x - mousepX, point.y - mousepY);
     }//GEN-LAST:event_jPanel5MouseDragged
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-        mousepX=evt.getX();
-        mousepY=evt.getY();
+        mousepX = evt.getX();
+        mousepY = evt.getY();
     }//GEN-LAST:event_jPanel5MousePressed
 
     /**
