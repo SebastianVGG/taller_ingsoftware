@@ -397,8 +397,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="lbl_numero_letras" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lbl_total" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lbl_total" min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

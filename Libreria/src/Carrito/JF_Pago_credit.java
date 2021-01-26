@@ -50,7 +50,7 @@ public class JF_Pago_credit extends javax.swing.JDialog {
 
         }
       void costo(){
-              lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MX."));
+              lbl_costo_total.setText(String.valueOf("$ "+this.costo_total+" MXN."));
       }
     public JF_Pago_credit(java.awt.Frame parent, boolean modal) {
             super(parent, modal);

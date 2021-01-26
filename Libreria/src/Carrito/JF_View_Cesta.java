@@ -161,7 +161,7 @@ public class JF_View_Cesta extends javax.swing.JDialog {
             }
             }
             lbl_numero_letras.setText(letritas.Convertir(total + "",true));
-            lbl_total.setText("$"+total);   
+            lbl_total.setText("$"+total+" MXN.");   
         }
             
     @SuppressWarnings("unchecked")
@@ -361,8 +361,7 @@ public class JF_View_Cesta extends javax.swing.JDialog {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(lbl_numero_letras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lbl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
